@@ -1,7 +1,6 @@
 import {useState} from 'react'
 import './table.css'
 
-
 const Table = (props) => {
 
     const initDataShow = props.limit && props.bodyData ? props.bodyData.slice(0, Number(props.limit)) : props.bodyData

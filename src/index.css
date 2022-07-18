@@ -83,7 +83,8 @@ a {
 }
 
 a:hover {
-    color: var(--main-color);
+    /* color: var(--main-color); */
+    color: #949AB1;
 }
 
 button {

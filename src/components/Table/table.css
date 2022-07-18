@@ -1,5 +1,6 @@
 .table-wrapper{
     overflow-y: auto;
+    color: #949AB1;
 }
 
 table {
@@ -9,7 +10,9 @@ table {
 }
 
 thead {
-    background-color: var(--second-bg);
+    /* background-color: var(--second-bg); */
+    background-color: #949AB1;
+    color: white;
 }
 
 tr {
