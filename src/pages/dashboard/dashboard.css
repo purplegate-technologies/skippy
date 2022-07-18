@@ -1,0 +1,35 @@
+.col-3 {
+  width: 25%;
+}
+
+/* .chartGrid {
+
+} */
+.chartGrid {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.chartGrid > * {
+  width: 100%;
+  max-width: 100%;
+  padding: 20px;
+}
+
+@media screen and (max-width: 1153px) {
+  .col-3 {
+    width: 50%;
+  }
+  .chartGrid {
+    display: block;
+  }
+  .chartGrid > * {
+    display: flex;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .col-3 {
+    width: 100%;
+  }
+}

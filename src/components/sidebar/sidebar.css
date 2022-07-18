@@ -1,0 +1,114 @@
+.sidebar {
+  height: 100vh;
+  /* min-width: var(--sidebar-width); */
+  min-width: 18vw;
+  position: fixed;
+  left: 0;
+  top: 0;
+  transition: all 0.3s ease;
+  /* background-color: var(--main-bg); */
+  /* box-shadow: var(--box-shadow); */
+
+  /* top: 122px; */
+  /* width: 320px; */
+  background: #ffffff;
+
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  justify-content: space-between;
+  /* padding: 2rem 0; */
+  gap: 2rem 0;
+}
+
+.sidebar__logo {
+  height: 150px;
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  padding: 16px 15px;
+}
+
+.sidebar__logo > img {
+  height: 45px;
+}
+
+.sidebar__item {
+  padding: 0 0px;
+}
+
+.sidebar__item-inner {
+  padding: 16px 15px;
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  transition: color 0.3s ease 0s;
+
+  /* font-family: 'Manrope'; */
+  font-style: normal;
+  font-size: 18px;
+  line-height: 25px;
+  /* identical to box height */
+  color: #949ab1;
+}
+
+.sidebar__item-inner > i {
+  margin-right: 10px;
+  font-size: 1.3rem;
+}
+
+.sidebar__item-inner > i > svg {
+  color: #ffc107;
+}
+.sidebar__item-inner > span {
+  text-transform: capitalize;
+}
+
+/* .sidebar__item-inner:hover {
+  color: var(--main-color);
+} */
+
+.sidebar__item-inner.active {
+  /* border-radius: var(--border-radius); */
+  background: #f1f3ff;
+  /* background-image: linear-gradient(
+        to right,
+         #F1F3FF,
+            var(--main-color),
+        var(--second-color)
+    ); */
+  /* color: var(--txt-white); */
+  color: #516cf5;
+}
+
+.btwNav {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+}
+
+.logout {
+  /* padding: 0.5rem 1rem; */
+  padding: 0.5rem 15px;
+  /* border-radius: 0.6rem; */
+  color: white;
+  background-color: #516cf5;
+}
+/* .logout:hover {
+  background-color: #da0;
+} */
+.logout a {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  /* font-family: "Manrope"; */
+  font-style: normal;
+  font-weight: 600;
+  font-size: 21px;
+  line-height: 29px;
+  /* identical to box height */
+
+  color: rgba(255, 255, 255, 0.991555);
+}
