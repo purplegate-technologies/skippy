@@ -37,9 +37,9 @@ const StatusCards = () => {
     return (
         <div>
             <h4 className='cardHead'>Overview</h4>
-            <div className="row-status">
+            <div className="row">
                 {statusData.map((item: StatusCardProps) => (
-                    <div className="col-6 col-3" key={item.title}>
+                    <div className="col-3" key={item.title}>
                         <StatusCard icon={item.icon} count={item.count} title={item.title} percent={item.percent} from={item.from} />
                     </div>
                 ))}

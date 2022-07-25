@@ -7,8 +7,14 @@ import reportWebVitals from './reportWebVitals';
 import './index.css';
 import { BrowserRouter } from 'react-router-dom';
 
+import './assets/css/grid.css'
+import './assets/css/index.css'
+// import './assets/css/theme.css'
+
 const container = document.getElementById('root')!;
 const root = createRoot(container);
+
+document.title = "Skippy"
 
 root.render(
   <React.StrictMode>

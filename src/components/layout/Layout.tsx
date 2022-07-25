@@ -27,7 +27,7 @@ const Layout = () => {
   return (
     <>
       {/* <div className={`layout ${themeReducer.mode} ${themeReducer.color}`}> */}
-      <div className={`layout bg-red-700`}>
+      <section className={`layout`}>
         <Sidebar />
         {/* <ScrollTop /> */}
         <div className="layout__content">
@@ -36,7 +36,7 @@ const Layout = () => {
             <Outlet />
           </div>
         </div>
-      </div>
+      </section>
     </>
   )
 }

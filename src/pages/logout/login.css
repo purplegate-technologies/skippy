@@ -1,13 +1,58 @@
 .loginBody {
   height: 100vh;
-  /* background-color: red; */
+  background: #fcfcff;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+}
+.logoLogin > span{
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 25px;
+  /* identical to box height */
+
+  text-align: center;
+
+  color: #282828;
+  margin-bottom: 74px;
 }
 
 .login {
   display: flex;
   align-items: center;
-  justify-content: center;  
+  justify-content: center;
+  /* background: #ffffff; */
+  box-shadow: 0px 1px 10px rgba(1, 65, 114, 0.1);
+  border-radius: 5px;
+  margin: 20px;
+  padding: 52px 55px;
+}
+
+.userInput {
+  padding: 10px;
+  max-width: 100%;
+}
+.userInput > input {
+  border-bottom: 1px solid var(--txt-pre);
+  outline: none;
+  padding: 1rem 0 5px 0;
+  width: 100%;
+  overflow-y: hidden;
+  background: transparent !important;
+}
+.userInput > input::placeholder {
+  margin-left: -15px;
+}
+
+
+/* Error message */
+.errmsg {
+  color: red;
+  font-size: 14px;
+}
+.offscreen {
+  color: green;
+  font-size: 10px;
 }

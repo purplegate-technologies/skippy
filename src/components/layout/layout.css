@@ -1,5 +1,6 @@
 .layout {
-    color: var(--main-color);
+    /* color: var(--main-color); */
+    color: 949AB1;
     overflow: hidden;
 }
 
@@ -15,6 +16,7 @@
 
 @media only screen and (max-width: 1190px) {
     .layout__content {
+        /* padding-left: 220px; */
         padding-left: 220px;
     }
 }

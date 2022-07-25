@@ -1,67 +1,124 @@
-.table-wrapper{
-    overflow-y: auto;
-    color: #949AB1;
+.table-wrapper {
+  overflow-y: auto;
+  color: var(--txt-pre);
 }
 
 table {
-    width: 100%;
-    min-width: 300px;
-    border-spacing: 0;
+  width: 100%;
+  min-width: 300px;
+  border-spacing: 0;
 }
 
 thead {
-    /* background-color: var(--second-bg); */
-    background-color: #949AB1;
-    color: white;
+  /* background-color: var(--second-bg); */
+  background-color: var(--txt-pre);
+  color: white;
 }
 
 tr {
-    text-align: left;
+  text-align: left;
 }
 
-th, td {
-    text-transform: capitalize;
-    padding: 10px 10px;
-    font-size: .8rem;
-} 
+th,
+td {
+  text-transform: capitalize;
+  padding: 10px 10px;
+  font-size: 0.8rem;
+}
+td {
+  color: #464646;
+}
 
 tbody > tr:hover {
-    background-color: var(--main-color);
-    color: var(--txt-white);
+  background-color: #fff8f7;
+  /* background-color: #FFF8F7; */
+  /* color: var(--txt-white); */
 }
 
-
 .table__pagination {
-    display: flex;
-    width: 100%;
-    justify-content: flex-end;
-    align-items: center;
-    margin-top: 20px;
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  align-items: center;
+  /* margin-top: 20px; */
 }
 
 .table__pagination-item ~ .table__pagination-item {
-    margin-left: 10px;
+  margin-left: 10px;
 }
 
 .table__pagination-item {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    font-size: .8rem;
+  width: 30px;
+  height: 30px;
+  border-radius: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.8rem;
+  color: var(--second-color);
+}
+
+.footerPagination {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.tableSelectDropDown {
+  position: relative;
+  background: #ffffff;
+  border: 0.96px solid var(--txt-pre);
+  border-radius: 1.92px;
+  padding: 5px;
+  max-width: 20%;
+  height: 30px;
+  border-radius: 2.92px;
+  outline: none;
+}
+.tableSelectDropDown > * {
+  position: absolute;
+  /* background-color: var(--main-color); */
+  max-width: 200%;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  outline: none;
+  border: none;
+}
+
+/* Point the arrow upwards when the select box is open (active): */
+.tableSelectDropDown.select-arrow-active:after {
+  border-color: transparent transparent #fff transparent;
+  top: 7px;
+}
+
+.tableSelectDropDown:after {
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #fff transparent transparent transparent;
+}
+
+.tableSelectDropDown select {
+  display: none;
 }
 
 .table__pagination-item.active,
 .table__pagination-item.active:hover {
-    background-color: var(--main-color);
-    color: var(--txt-white);
-    font-weight: 600;
+  background-color: var(--second-color);
+  color: var(--txt-white);
+  font-weight: 600;
 }
 
 .table__pagination-item:hover {
-    color: var(--txt-white);
-    background-color: var(--second-color);
+  color: var(--txt-white);
+  background-color: var(--second-color);
 }

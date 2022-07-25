@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { UserData } from './data'
 import StatusCards from '../../components/statusCard/StatusCards'
 import BarChart from '../../components/charts/BarChart'
+import SearchBar from '../../components/support/SearchBar'
 
 const Dashboard = () => {
 
@@ -27,32 +28,37 @@ const Dashboard = () => {
         ],
     })
     return (
-        <div>
-
-            {/* StatusCards */}
+        <section>
             <StatusCards />
             <h4 className='dashheade'>Ads  Statistics</h4>
-            <div className='chartGrid'>
-                <div>help</div>
-                <div style={{ width: 800 }}>
-                    <BarChart chartData={userData} />
+            <div className='row '>
+                <div className="col-6">
+
+                    <div style={{ width: 500 }}>
+                        <BarChart chartData={userData} />
+                    </div>
+                </div>
+                <div className="col-6">
+                    <div style={{ width: 500 }}>
+                        <BarChart chartData={userData} />
+                    </div>
                 </div>
             </div>
-            <div className='chartGrid'>
-                <div>
-                    <div style={{ width: 400 }}>
+            <div className='row'>
+                <div className='col-6 px-3'>
+                    <div style={{  }}>
                         <h6 className='text-black'>Total advert Watch Trend</h6>
-                    </div>
                     <LinearGradientChart chartData={userData} />
+                    </div>
                 </div>
-                <div>
-                    <div style={{ width: 400 }}>
+                <div className='col-6 px-5'>
+                    <div style={{  }}>
                         <h6 className='text-black'>Total Payout Trend</h6>
                     </div>
                     <LinearGradientChart chartData={userData} />
                 </div>
             </div>
-        </div>
+        </section>
     )
 }
 

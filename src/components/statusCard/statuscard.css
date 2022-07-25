@@ -4,7 +4,7 @@
   margin-right: 15px;
   display: flex;
   align-items: center;
-  background: var(--main-bg);
+  /* background: var(--main-bg); */
   box-shadow: var(--box-shadow);
   /* border-radius: var(--border-radius); */
   border-radius: 10px;
@@ -27,28 +27,18 @@
   color: #171837;
 }
 
-/* Card List */
-.row-status {
-  display: flex;
-  flex-flow: wrap;
-}
-.col-3 {
-  width: 25%;
-}
 
 @media screen and (max-width: 1153px) {
-  .col-3 {
+  /* .col-3 {
     width: 50%;
-  }
+  } */
 }
 
 /*  status Card list ends */
 
-.percentUp:hover {
-  background: #8a9cff;
-}
 .percentUp {
   /* background: #8a9cff; */
+  max-width: 50px;
   background: #f1f3ff;
   border-radius: 6px;
   font-style: normal;
@@ -58,6 +48,10 @@
   text-align: center;
   padding: 3px;
   color: #516cf5;
+}
+
+.percentUp:hover {
+  background: #8a9cff;
 }
 
 .status-card:hover {

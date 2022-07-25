@@ -1,5 +1,5 @@
 import './sidebar.css'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 // import logo from "../../assets/images/logo.png"
 // import sidebar_items from "../../assets/JsonData/sidebar_routes.json"
 import CompanyLogo from "../../assets/svg/CompanyLogo"
@@ -10,6 +10,10 @@ import AdvertisementsIcon from '../../assets/svg/AdvertisementsIcon'
 import FinanceIcon from '../../assets/svg/FinanceIcon'
 import ManageUsersIcon from '../../assets/svg/ManageUsersIcon'
 import ActivityLogIcon from '../../assets/svg/ActivityLogIcon'
+
+import { useAppDispatch, useAppSelector } from '../../app/hooks'
+import { logout, selectAuth } from '../../features/auth/authSlice'
+import {toast} from "react-toastify"
 
 const sidebar_items: any = [
     {
@@ -51,6 +55,17 @@ const iconArr = [
 const Sidebar = () => {
     const location = useLocation()
     // const activePath = window.location.pathname;
+
+    const { user } = useAppSelector(selectAuth)
+    const navigate = useNavigate()
+    const dispatch = useAppDispatch()
+    const handleLogout = () => {
+        dispatch(logout());
+        toast.success("User Logged Out Successfully")
+        navigate('/login')
+
+    }
+
     return (
         <div className="sidebar">
             <div>
@@ -76,7 +91,8 @@ const Sidebar = () => {
                 </div>
             </div>
 
-            <div className="logout">
+            <div className="logout" onClick={() => handleLogout()}>
+            {/* <h4>Name: {name}</h4> */}
                 <Link to="">
                     <LogoutIcon />
                     <span className="logout">Logout</span>

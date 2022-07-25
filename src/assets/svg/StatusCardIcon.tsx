@@ -1,5 +1,3 @@
-import * as React from "react"
-
 interface IProps extends React.SVGProps<SVGSVGElement> {
   hovering: boolean
 }
