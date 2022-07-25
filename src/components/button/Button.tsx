@@ -80,8 +80,8 @@ const Button = ({
       <button
         type={type}
         disabled={disabled || loading}
-        className={`${className} flex bg-black py-[10px] px-5 rounded-[3px] bg-[#516CF5] text-white hover:text-grey`}
-        // className={computedClasses.join(" ")}
+        // className={`${className} flex bg-black py-[10px] px-5 rounded-[3px] bg-[#516CF5] text-white hover:text-grey`}
+        className={computedClasses.join(" ")}
         onClick={onClick}
       >
         {loading ? "..." : prefixIcon}

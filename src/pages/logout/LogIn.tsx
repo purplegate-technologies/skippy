@@ -141,7 +141,7 @@ const LogIn = () => {
 
   return (
     <div className="h-screen">
-      <div className="absolute scale-75 top-[-95px] left-[-32px]" >
+      <div className="absolute scale-75 top-[-98px] left-[-40px]" >
       <LoginBackGIcons />
       </div>
     <div className='loginBody flex items-center justify-center'>

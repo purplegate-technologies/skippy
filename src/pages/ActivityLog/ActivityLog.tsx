@@ -33,8 +33,6 @@ const ActivityLog = () => {
 
   return (
     <>
-    <div>ActivityLog</div>
-
     {/* Suport Search */}
 
     <SearchBar HeaderTitle='Activity Log' placeholder='Search Activity' text="Invite User"  />
