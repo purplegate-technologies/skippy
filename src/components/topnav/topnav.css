@@ -5,6 +5,7 @@
   padding: 20px;
   height: var(--topnav-height);
   border-bottom: 3px solid #F1F3FF;
+  gap: 35px;
 }
 
 .topnav__search {
@@ -17,6 +18,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
+  margin: auto;
   box-shadow: var(--box-shadow);
   overflow: hidden;
   width: 100%;
@@ -48,7 +50,10 @@
   align-items: center;
 }
 .topnav__right > *  {
-  margin-left: 60px;
+  /* margin-left: 60px; */
+  margin: auto;
+  margin-left: 0px;
+  gap: 20;
 }
 
 .topnav__right-item {

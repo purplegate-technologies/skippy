@@ -5,7 +5,8 @@
   align-items: center;
   justify-content: center;
 }
-.logoLogin > span{
+
+.logoLogin > span {
   font-family: "Manrope";
   font-style: normal;
   font-weight: 400;
@@ -20,20 +21,19 @@
 }
 
 .login {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  /* background: #ffffff; */
   box-shadow: 0px 1px 10px rgba(1, 65, 114, 0.1);
   border-radius: 5px;
-  margin: 20px;
-  padding: 52px 55px;
 }
 
 .userInput {
   padding: 10px;
   max-width: 100%;
 }
+
+.userInput > * {
+  /* margin: 20px; */
+}
+
 .userInput > input {
   border-bottom: 1px solid var(--txt-pre);
   outline: none;
@@ -42,16 +42,17 @@
   overflow-y: hidden;
   background: transparent !important;
 }
+
 .userInput > input::placeholder {
   margin-left: -15px;
 }
-
 
 /* Error message */
 .errmsg {
   color: red;
   font-size: 14px;
 }
+
 .offscreen {
   color: green;
   font-size: 10px;

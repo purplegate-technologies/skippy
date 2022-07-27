@@ -71,7 +71,7 @@ const Sidebar = () => {
             <div>
                 <div className="sidebar__logo">
                     {/* <img src={""} alt="company logo" /> */}
-                    <CompanyLogo />
+                    <Link to="/"><CompanyLogo /></Link>
                     <Link to="/" style={{ textDecoration: 'none', color: 'black', marginLeft: '8px' }}>Admin@skippy.com</Link>
                 </div>
                 <div className="btwNav">

@@ -1,16 +1,16 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import StatusCards from '../../components/statusCard/StatusCards'
 import advertlist from "../../assets/jsonData/advert-list.json"
 import Table from '../../components/Table/Table'
 import SearchBar from '../../components/support/SearchBar'
+// import Input from '../../components/input/Input'
+import "./styles.css"
 
 
 const ManageUsers = () => {
 
-  const [mobile, setMobile] = useState("")
-  const [email, setEmail] = useState("")
+  const [tabIndex, setTabIndex ] = useState<string>("Administrators")
 
-  
   const customerTableHead = [
     '',
     'name',
@@ -41,24 +41,63 @@ const ManageUsers = () => {
       {/* Tabs */}
 
       {/* Support Search  */}
-      <SearchBar HeaderTitle='Administrators' text="Create Admin"  />
+      <SearchBar HeaderTitle='Administrators' text="Create Admin" />
 
       {/* Table */}
-      <div className="row">
-        <div className="col-12">
-          <div className="card">
-            <div className="card__body">
-              <Table
-                limit='10'
-                headData={customerTableHead}
-                renderHead={(item: any, index: number) => renderHead(item, index)}
-                bodyData={advertlist}
-                renderBody={(item: any, index: number) => renderBody(item, index)}
-              />
+
+      <div className="my-5">
+        <div className=" flex gap-6 h-full items-center flex-row my-4 ml-4 border-b-2 border-[#F1F3FF] text-[#949AB1] cursor-pointer relative">
+          <p className={"tabIndex py-3 hover:border-b-2 hover:border-[#516CF5] cursor-pointer hover:text-[#516CF5]" + (tabIndex === "Administrators" && "tabIndex")} onClick={() => setTabIndex("Administrators")}>Administrators{" "}</p>
+          <p className={"tabIndex py-3 hover:border-b-2 hover:border-[#516CF5] cursor-pointer hover:text-[#516CF5]" + (tabIndex !== "Administrators" && "tabIndex")} onClick={() => setTabIndex("App Users")}>App Users</p>
+        </div>
+        {/* Tab Container */}
+
+        {tabIndex !== "Administrators" && (<>
+          {/* tab index */}
+
+          {/* tab end */}
+          <div className="row">
+            <div className="col-12">
+              <div className="card">
+                {/* Tabs */}
+                <div className="card__body">
+                  <Table
+                    limit='10'
+                    headData={customerTableHead}
+                    renderHead={(item: any, index: number) => renderHead(item, index)}
+                    bodyData={advertlist}
+                    renderBody={(item: any, index: number) => renderBody(item, index)}
+                  />
+                </div>
+              </div>
             </div>
           </div>
-        </div>
+          {/* end of atabIndex === "Administrators" */}
+        </>)}
+        {tabIndex === "Administrators" && (<>
+          {/* tab index */}
+
+          {/* tab end */}
+          <div className="row">
+            <div className="col-12">
+              <div className="card">
+                {/* Tabs */}
+                <div className="card__body">
+                  <Table
+                    limit='10'
+                    headData={customerTableHead}
+                    renderHead={(item: any, index: number) => renderHead(item, index)}
+                    bodyData={advertlist}
+                    renderBody={(item: any, index: number) => renderBody(item, index)}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          {/* end of atabIndex === "Administrators" */}
+        </>)}
       </div>
+      {/* /////// */}
     </div>
   )
 }

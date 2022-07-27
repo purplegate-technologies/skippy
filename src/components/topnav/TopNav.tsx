@@ -2,6 +2,7 @@ import BellIcon from '../../assets/svg/BellIcon'
 import NavImgIcon from '../../assets/svg/NavImgIcon'
 import SearchIcon from '../../assets/svg/SearchIcon'
 import SettingIcon from '../../assets/svg/SettingIcon'
+import Input from '../input/Input'
 import './topnav.css'
 
 
@@ -32,14 +33,14 @@ const renderUserToggle = (user: any) => (
 const TopNav = () => {
     return (
         <div className="topnav">
-            <div className="topnav__search">
+            <div className="topnav__search text-2xl">
                 <input type="text" name="search" placeholder="Search..." />
                 {/* <i className="bx bx-search"></i> */}
                 <i><SearchIcon /></i>
             </div>
 
             <div className="topnav__right">
-                <div></div>
+                {/* <div></div> */}
                 {/* <div className="topnav__right-item">
                     dropdown here 
                     <Dropdown

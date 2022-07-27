@@ -34,7 +34,7 @@ const Advertisements = () => {
     </tr>
   )
 
-  const [userData, setUserrData] = useState({
+  const [userData] = useState({
     labels: UserData.map((data) => data.day.toUpperCase()),
     datasets: [
       {
@@ -59,7 +59,7 @@ const Advertisements = () => {
       <StatusCards />
       {/* Support Search */}
 
-      <SearchBar HeaderTitle='All Adverts' placeholder='Enter Brand/Ad Name' text="Create Advert"  />
+      <SearchBar HeaderTitle='All Adverts' placeholder='Enter Brand/Ad Name' text='Create Advert' />
 
       {/* Charts */}
       <div className='row  my-5 items-center'>

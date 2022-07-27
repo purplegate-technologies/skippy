@@ -37,7 +37,7 @@ interface Iprops {
 
 const Input = ({
     type = "text",
-    label = "lable",
+    label = "",
     value = "",
     placeholder = "Placeholder",
     name = "name",
@@ -103,7 +103,7 @@ const Input = ({
 
     return (
         <div className={`form-input  ${divStyel} ` + (error && "error")}>
-            <label htmlFor={name} className="block mb-1">
+            <label htmlFor={name} className="block mb-1 text-sm">
                 {label}{" "}
                 <p className="text-[#EB0000] inline">{`${requiredMsg}`}</p>
             </label>

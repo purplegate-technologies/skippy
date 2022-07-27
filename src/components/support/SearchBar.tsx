@@ -8,18 +8,18 @@ interface IProps {
     placeholder?:  string
     HeaderTitle?: string
     text?: string
+    children?: React.ReactNode;
 }
 
-const SearchBar = ({ className = "", placeholder="Search", HeaderTitle, text }: IProps) => {
+const SearchBar = ({ className = "", placeholder="Search", HeaderTitle, text, children=null }: IProps) => {
     return (
         <div>
-            <div className='flex flex-1 items-center justify-between my-5'>
+            <div className='flex flex-1 items-center justify-between my-7 ml-3 mr-5'>
                 <h2>{HeaderTitle}</h2>
                 <ThreeVdots />
             </div>
 
-        <form
-            className={`h-[45px] flex items-center bg-[#f1f3fb] rounded-[10px] ${className}`}>
+        <form className={`h-[45px] flex items-center bg-[#f1f3fb] rounded-[10px] ${className}`}>
             <div>
                 <SearchIcon className="ml-[.1rem] lg:ml-[1.3125rem] lg:mr-4 mr-3" />
             </div>
@@ -29,7 +29,7 @@ const SearchBar = ({ className = "", placeholder="Search", HeaderTitle, text }: 
                 placeholder={placeholder}
                 />
 
-            <Button prefixIcon={<SearchIcon />} text={text} className="mx-4" />
+            <Button prefixIcon={<SearchIcon />} text={text} {...{children}} className="mx-4" />
         </form>
     </div>
     )
