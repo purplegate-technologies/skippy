@@ -1,13 +1,12 @@
 // import React from 'react';
 // import logo from './logo.svg';
 // import { Counter } from './features/counter/Counter';
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Layout from "./components/layout/Layout";
 import ScrollTop from "./components/scrollTop/ScrollTop";
 import RequiredAuth from "./features/auth/RequiredAuth";
 import ActivityLog from "./pages/ActivityLog/ActivityLog";
 import Advertisements from "./pages/Advertisements/Advertisements";
-import Blank from "./pages/blank/Blank";
 import Dashboard from "./pages/dashboard/Dashboard";
 import Finance from "./pages/Finance/Finance";
 import LogIn from "./pages/logout/LogIn";
@@ -16,6 +15,7 @@ import Traffic from "./pages/Traffic/Traffic";
 
 import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import UserDetails from "./pages/Userdetails/UserDetails";
 
 function App() {
   return (
@@ -24,7 +24,7 @@ function App() {
       <Routes>
         {/* public routes */}
         <Route path="login" element={<LogIn />} />
-        <Route path="*" element={<Blank />} />
+        <Route path="*" element={<Navigate to='/' />} />
 
         {/* protected routes */}
         <Route element={<RequiredAuth />}>
@@ -35,9 +35,10 @@ function App() {
             <Route path="finance" element={<Finance />} />
             <Route path="manage-users" element={<ManageUsers />} />
             <Route path="activity-log" element={<ActivityLog />} />
+            <Route path="user-details" element={<UserDetails />} />
           </Route>
         </Route>
-        
+
       </Routes>
       <ScrollTop />
     </>

@@ -62,7 +62,7 @@ const Advertisements = () => {
       <SearchBar HeaderTitle='All Adverts' placeholder='Enter Brand/Ad Name' text='Create Advert' />
 
       {/* Charts */}
-      <div className='row  my-5 items-center'>
+      <div className='row items-center'>
         <div className='col-6 px-3'>
           <div style={{ }}>
             <h6 className='text-black'>Total advert Watch Trend</h6>

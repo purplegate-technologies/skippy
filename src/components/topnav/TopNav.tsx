@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import BellIcon from '../../assets/svg/BellIcon'
 import NavImgIcon from '../../assets/svg/NavImgIcon'
 import SearchIcon from '../../assets/svg/SearchIcon'
@@ -40,9 +41,8 @@ const TopNav = () => {
             </div>
 
             <div className="topnav__right">
-                {/* <div></div> */}
                 {/* <div className="topnav__right-item">
-                    dropdown here 
+                    dropdown here
                     <Dropdown
                         // icon="bx bx-user"
                         customToggle={() => renderUserToggle(current_user)}
@@ -51,11 +51,11 @@ const TopNav = () => {
                     />
                 </div> */}
 
-                <div className="topnav__right-item">
+                <Link to="#" className="topnav__right-item">
                     <BellIcon />
-                </div>
-                
-                <div className="topnav__right-item">
+                </Link>
+
+                <Link to="#" className="topnav__right-item">
                     {/* dropdown here  */}
                     {/* <Dropdown
                         icon="bx bx-bell"
@@ -65,14 +65,14 @@ const TopNav = () => {
                         renderFooter={() => <Link to="/">View All</Link>}
                     /> */}
                     <SettingIcon />
-                </div>
+                </Link>
 
-                <div className="topnav__right-item">
+                <Link to="/user-details" className="topnav__right-item">
                     {/* theme settings */}
                     {/* <Dropdown icon="bx bx-user" /> */}
                     {/* <ThemeMenu /> */}
                     <NavImgIcon />
-                </div>
+                </Link>
             </div>
         </div>
     )

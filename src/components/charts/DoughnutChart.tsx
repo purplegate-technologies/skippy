@@ -21,20 +21,21 @@ ChartJS.register(
     ...registerables
 );
 
-const DoughnutChart = () => {
+const DoughnutChart = ({className=''}: {className: string}) => {
 
 
     const chartData = [20, 80];
     const showData = chartData[0] + "%";
     const data1 = {
         labels: ["Red", "Green"],
+
         datasets: [
             {
                 data: chartData,
                 backgroundColor: ["#B8D803", "#9E44F8"]
             }
         ],
-        text: showData
+        text: showData,
     };
     // var originalDoughnutDraw = ChartJS.controllers.doughnut.prototype.draw;
     // ChartJS.helpers.extend(ChartJS.controllers.doughnut.prototype, {
@@ -69,8 +70,8 @@ const DoughnutChart = () => {
     };
 
     return (
-        <div>
-            <Doughnut data={data1} options={options} height={250} />
+        <div className={className}>
+            <Doughnut data={data1} options={options} height={180} width={180} />
         </div>
     )
 }

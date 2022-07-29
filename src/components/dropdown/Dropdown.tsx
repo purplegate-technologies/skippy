@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import { useRef } from 'react'
 import "./dropdown.css"
 
 const clickOutSideRef = (content_ref: any, toggle_ref: any) => {
@@ -21,7 +21,7 @@ const Dropdown = ({icon, badge, customToggle, contentData, renderItems, renderFo
   const dropdown_content_el = useRef(null)
 
   clickOutSideRef(dropdown_content_el, dropdown_toggle_el)
-  
+
   return (
     <div className="dropdown">
         <button ref={dropdown_toggle_el} className="dropdown__toggle">
@@ -33,7 +33,7 @@ const Dropdown = ({icon, badge, customToggle, contentData, renderItems, renderFo
             {contentData &&  renderItems && contentData.map((item: any, index: number) => renderItems(item,index))}
             {renderFooter && <div className="dropdown__footer">
               {renderFooter()}
-            </div> 
+            </div>
             }
         </div>
     </div>

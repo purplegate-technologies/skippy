@@ -41,7 +41,7 @@ const Button = ({
   //     if (danger) {
   //         // return colors.danger
   //         return { color: 'red'}
-  //     } 
+  //     }
   //     if(secondary) {
   //         // return colors.secondary
   //         return { color: 'graylight'}
@@ -74,8 +74,16 @@ const Button = ({
       computedClasses.push("bg-opacity-50 ")
   }
   computedClasses.push(className)
-    
-  
+
+
+  const SIZES = {
+    small: 'p-1 min-w-120',
+    medium: 'p-2 min-w-152',
+    large: 'p-3 min-w-196',
+    full: 'p-3 min-w-196 w-full'
+  }
+
+
     return (
       <button
         type={type}
@@ -91,5 +99,5 @@ const Button = ({
       </button>
     );
   };
-  
+
   export default Button;
