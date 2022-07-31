@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { logOut, setCredentials } from '../../features/auth/authSlice'
+import { logout, setCredentials } from '../../features/auth/authSlice'
 import { RootState } from '../../app/store'
 import { AdvertsApiSlice, AuthType } from '../apiTyoe'
 
@@ -36,9 +36,9 @@ const baseQueryWithReauth = async (args: any, api: any, extraOptions: any) => {
             // retry the original query with new access token
             result = await baseQuery(args, api, extraOptions)
         } else {
-            // api.dispatch(logOut())
+            // api.dispatch(logout())
             setTimeout(() => {
-                api.dispatch(logOut());
+                api.dispatch(logout());
             }, 1000);
         }
     }
@@ -109,9 +109,11 @@ export const apiSlice = createApi({
         }),
         //  End Adverts
 
-        // 
+        //
     })
 })
+
+// const {useCreateAdvertMutation, useGetAdvertAdminQuery} = apiSlice
 
 
   // if (

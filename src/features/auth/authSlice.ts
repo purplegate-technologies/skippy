@@ -5,6 +5,7 @@ interface AuthState {
     user: null | {}
     token: string | null
 }
+
 const initialState: AuthState = {
     user: {},
     token: null,
@@ -13,12 +14,26 @@ export const authSlice = createSlice({
     name: "auth",
     initialState,
     reducers: {
-        setUserDetails: (state, {payload: {user}}) => {
+        setUserDetail: (state, { payload }) => {
+            console.log(payload, "user details");
+            state.user = {
+                firstName: payload.firstName,
+                lastName: payload.lastName,
+                phone: payload.phone,
+                email: payload.email,
+                isAdmin: payload.isAdmin,
+                status: payload.status,
+                type: payload.type,
+                role: payload.role,
+                id: payload._id,
+            };
+        },
+        setUserDetails: (state, { payload: { user } }) => {
             state.user = user;
-          },
-          setUserToken: (state, {payload: {token}}) => {
+        },
+        setUserToken: (state, { payload: { token } }) => {
             state.token = token;
-          },
+        },
         setUser: (state, action: PayloadAction<{ user: {}, token: string }>) => {
             const { user, token } = action.payload
             localStorage.setItem(
@@ -33,19 +48,14 @@ export const authSlice = createSlice({
             state.user = action.payload.user;
             state.token = action.payload.token;
         },
-        logout: (state) => {
-            localStorage.clear();
-            state.user = null;
-            state.token = null;
-        },
-////////////////////////////////////////////
+
         // Dave authentication
         setCredentials: (state, action: PayloadAction<{ user: string, accessToken: string }>) => {
             const { user, accessToken } = action.payload
             state.user = user
             state.token = accessToken
         },
-        logOut: (state) => {
+        logout: (state) => {
             localStorage.clear();
             state.user = null
             state.token = null
@@ -58,15 +68,12 @@ export const authSlice = createSlice({
     }
 })
 
-export const { setUser, logout, setCredentials, logOut, setUserDetails, setUserToken } = authSlice.actions;
-// dave
-// export const {  setCredentials, logOut } = authSlice.actions;
+export const { setUser, logout, setCredentials, setUserDetails, setUserToken } = authSlice.actions;
 
 export const selectAuth = (state: RootState) => state.auth
-export const selectAuthUser = (state: RootState) => state.auth.user
-export const selectAuthToken = (state: RootState) => state.auth.token
+
+// selector to select use and token details from the store
+export const selectCurrentUser = (state: RootState) => state.auth.user
+export const selectCurrentToken = (state: RootState) => state.auth.token
 
 export default authSlice.reducer;
-
-export const selectCurrentUser = (state : RootState) => state.auth.user
-export const selectCurrentToken = (state : RootState) => state.auth.token
