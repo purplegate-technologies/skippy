@@ -2,9 +2,9 @@ import './login.css'
 import CompanyLogo from "../../assets/svg/CompanyLogo"
 import { Link, useNavigate } from 'react-router-dom'
 import { useLoginUserMutation } from '../../services/authApis'
-import { useAppDispatch } from '../../app/hooks'
+import { useAppDispatch, useAppSelector } from '../../app/hooks'
 import React, { useEffect, useRef, useState } from 'react'
-import { setUser, setUserDetails, setUserToken } from '../../features/auth/authSlice'
+import { selectCurrentToken, setUser, setUserDetails, setUserToken } from '../../features/auth/authSlice'
 import { toast } from 'react-toastify';
 import Button from '../../components/button/Button'
 import LoginBackGIcons from '../../assets/svg/LoginBackGIcons'
@@ -37,6 +37,9 @@ const LogIn = () => {
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
 
+  const  tokenForUser  = useAppSelector(selectCurrentToken)
+
+
   const [loginUser,
     {
       data: loginData,
@@ -54,7 +57,7 @@ const LogIn = () => {
   // }, [email, password])
 
 
-  console.log(loginData, "loginData loginData data data")
+  console.log(loginData, " loginData dloginDataata data")
 
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -68,48 +71,47 @@ const LogIn = () => {
         const response: any = await loginUser({ email, password }).unwrap();
         console.log(response, "response response response")
 
-        const { token, user }: any = loginData
+        const { token, admin }: any = loginData
         // set user data and token in redux store
-        dispatch(setUserDetails({ user: response?.data }));
-        dispatch(setUserToken({ token: response?._meta.token }));
-        toast.success("Login successful");
+        // dispatch(setUserDetails({ user: admin.firstName }));
+        // dispatch(setUserToken({ token }));
+        dispatch(setUser({ user: admin.firstName, token }))
         console.log('login now')
-        console.log(dispatch(setUser({ user, token })), "dispatch(setUser({ user, token}))")
-        dispatch(setUser({ user, token }))
+        // console.log(dispatch(setUser({ user: admin.firstName, token })), "dispatch(setUser({ user, token}))")
+        // toast.success("Login successful");
         // setFormValue({email: '', password:''})
-        navigate('/')
+        // tokenForUser && navigate('/')
       } else {
         toast.error("Please fill all Input field")
-        console.log('Not logined ')
       }
     } catch (err: any) {
+      console.log(err.response_message, "err err err")
       if (!err?.response) {
-        toast.error(!err?.response);
+        toast.error(!err?.response_message);
         setErrMsg("No Server Response")
       } else if (err.response?.status === 400) {
         toast.error(err.response?.status);
         setErrMsg("Missing Email or Password")
       } else if (err?.response?.status === 401) {
-        toast.error(err.data._meta.error.message);
+        toast.error(err?.response?.message);
+        // toast.error(err.data._meta.error.message);
         setErrMsg("Unauthorized")
       } else {
         setErrMsg("Login Failed")
       }
-      errRef.current.focus()
+      // errRef.current.focus()
     }
   }
 
 
-  //////////////
-
-
   useEffect(() => {
     if (isLoginSuccess) {
+      const { token, admin }: any = loginData
+      dispatch(setUser({ user: admin?.firstName, token}))
+      tokenForUser && navigate('/')
       toast.success("User Login Successfully")
-      // dispatch(setUser({ name: loginData, token: loginData}))  
-      navigate('/')
     }
-  }, [isLoginSuccess])
+  }, [isLoginSuccess, navigate, tokenForUser, dispatch, loginData])
 
 
   return (
@@ -118,14 +120,13 @@ const LogIn = () => {
         <LoginBackGIcons />
       </div>
       <div className='loginBody'>
-        {/* <p className={errMsg ? "errmsg" : "offscreen"}>{isLoginError && JSON.stringify(isLoginError.valueOf())}</p> */}
 
-          <div className='text-center logoLogin flex flex-col justify-center items-center absolute top-[13%] md:top-[12%]'>
-            <div className='flex items-center gap-5'>
-              <CompanyLogo className='md:scale-110 my-1' /> <h1 className='font-bold text-lg md:text-[30px]'>Skippy</h1>
-            </div>
-            <span className='text-center text-[18px] color-[#282828]'>Click Play & Get Paid</span>
+        <div className='text-center logoLogin flex flex-col justify-center items-center absolute top-[13%] md:top-[12%]'>
+          <div className='flex items-center gap-5'>
+            <CompanyLogo className='md:scale-110 my-1' /> <h1 className='font-bold text-lg md:text-[30px]'>Skippy</h1>
           </div>
+          <span className='text-center text-[18px] color-[#282828]'>Click Play & Get Paid</span>
+        </div>
 
         <div className="login z-10 p-3 w-full max-w-[23rem] md:bg-white bg-transparent">
 
@@ -134,24 +135,24 @@ const LogIn = () => {
             <h1 className='font-bold'>Admin</h1>
           </div>
 
-          <form className='userInput' action="" onSubmit={handleLogin}>      
-              {/* <p ref={errRef} className={errMsg ? "errmsg text-center" : "offscreen"} aria-live="assertive">{errMsg}</p> */}
-              <div className="userInput">
-                <input type="email" name="email" value={email} placeholder='Email' onChange={handleChange} />
-              </div>
+          <form className='userInput' action="" onSubmit={handleLogin}>
+           <p className={errMsg ? "errmsg ml-2 font-semibold" : "offscreen"}>{isLoginError && <>{errMsg}</>}</p>
+            {/* <p ref={errRef} className={errMsg ? "errmsg text-center" : "offscreen"} aria-live="assertive">{errMsg}</p> */}
+            <div className="userInput">
+              <Input className="childinput" label="Email" type="email" name="email" value={email} placeholder='Email' onChange={handleChange} />
+            </div>
 
-              <div className="userInput">
-                <input type="password" name='password' value={password} placeholder='Password' onChange={handleChange} />
-                {/* <Input label='Password' className="w-full outline-none border-solid border-b border-emerald-300 overflow-x-auto bg-transparent pt-4  pr-0 pb-1 pl-0" type="password" name='password' value={password} placeholder='Password' onChange={handleChange} /> */}
-              </div>
+            <div className="userInput">
+              <Input className="childinput" label="Password" type="password" name='password' value={password} placeholder='Password' onChange={handleChange} />
+            </div>
 
-              <div className='my-3 userInput'>
-                <span className="text-[#FF5A5A] font-bold text-sm">Reset Passsword</span>
-              </div>
+            <div className='mb-3 userInput'>
+              <span className="text-[#FF5A5A] font-bold text-sm">Reset Passsword</span>
+            </div>
 
-              <div className="">
-                <Button className='w-full' size='medium' type='submit'>Sign In</Button>
-              </div>            
+            <div className="">
+              <Button className='w-full' size='medium' type='submit'>Sign In</Button>
+            </div>
           </form>
 
         </div>

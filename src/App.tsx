@@ -9,13 +9,14 @@ import ActivityLog from "./pages/ActivityLog/ActivityLog";
 import Advertisements from "./pages/Advertisements/Advertisements";
 import Dashboard from "./pages/dashboard/Dashboard";
 import Finance from "./pages/Finance/Finance";
-import LogIn from "./pages/logout/LogIn";
+import LogIn from "./pages/login/LogIn";
 import ManageUsers from "./pages/ManageUsers/ManageUsers";
 import Traffic from "./pages/Traffic/Traffic";
 
 import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import UserDetails from "./pages/Userdetails/UserDetails";
+import Settings from "./pages/Settings/Settings";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
             <Route path="manage-users" element={<ManageUsers />} />
             <Route path="activity-log" element={<ActivityLog />} />
             <Route path="user-details" element={<UserDetails />} />
+            <Route path="settings" element={<Settings />} />
           </Route>
         </Route>
 

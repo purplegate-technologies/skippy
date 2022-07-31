@@ -8,7 +8,7 @@ import "./layout.css"
 
 // import ThemeAction from '../../redux/actions/ThemeAction'
 
-const Layout = () => {
+const   Layout = () => {
 //   const themeReducer = useSelector(state => state.ThemeReducer)
 
   const dispatch = useDispatch()

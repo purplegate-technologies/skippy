@@ -31,6 +31,7 @@ interface Iprops {
     full?: boolean
     checked?: boolean
     divStyel?: string
+    labelStyle?: string
     minLength?: number
     maxLength?: number
 }
@@ -53,10 +54,11 @@ const Input = ({
     className = "",
     checked = false,
     divStyel = "",
+    labelStyle = "",
     maxLength,
     minLength,
 }: Iprops) => {
-    
+
     const input = (
         <input
             className={className}
@@ -84,18 +86,11 @@ const Input = ({
 
     if (type === "radio") {
         return (
-            <div
-                className={
-                    "inline-block mr-5 select-none" + (error && "error")
-                }>
-                {input}
-                <label htmlFor={name} className={`${("margin_rightLeft")}-2`}>
-                    {`${label}`}
-                </label>
+            <div className={"inline-block mr-5 select-none" + (error && "error")}>{input}
+                <label htmlFor={name} className={labelStyle}>{`${label}`}</label>
                 {/* <label htmlFor={name} className={`${t("margin_rightLeft")}-2`}>
                     {`${label}`}
                 </label> */}
-
                 <span>{error}</span>
             </div>
         )
@@ -103,13 +98,11 @@ const Input = ({
 
     return (
         <div className={`form-input  ${divStyel} ` + (error && "error")}>
-            <label htmlFor={name} className="block mb-1 text-sm">
+            <label htmlFor={name} className={`block text-xs text-[#516CF5]  ${labelStyle}`}>
                 {label}{" "}
                 <p className="text-[#EB0000] inline">{`${requiredMsg}`}</p>
             </label>
-
             {input}
-
             <span>{error}</span>
         </div>
     )

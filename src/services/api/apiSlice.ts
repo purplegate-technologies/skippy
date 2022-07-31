@@ -8,8 +8,8 @@ const baseQuery = fetchBaseQuery({
     baseUrl: API_ENDPOINT,
     credentials: 'include',
     prepareHeaders: (headers, { getState }: { getState: any }) => {
-        // const token = (getState() as RootState).auth.token
-        const token = (getState()).auth.token
+        const token = (getState() as RootState).auth.token
+        // const token = (getState()).auth.token
         if (token) {
             headers.set("authorization", `Bearer ${token}`)
             headers.set("Access-Control-Allow-Origin", `*`);
@@ -21,18 +21,18 @@ const baseQuery = fetchBaseQuery({
 const baseQueryWithReauth = async (args: any, api: any, extraOptions: any) => {
     let result = await baseQuery(args, api, extraOptions)
 
-    // 401 (Unauthorized) and 403 (Forbidden) status codes 
+    // 401 (Unauthorized) and 403 (Forbidden) status codes
     // if (result?.error?.originalStatus === 403 || result.error && result.error.status === 401) {
-    if (result?.error?.status === 403 || result.error && result.error.status === 401) {
+    if ((result?.error?.status === 403 || result.error) && result.error.status === 401) {
         console.log('sending refresh token')
-        // send refresh token to get new access token 
+        // send refresh token to get new access token
         const refreshResult: any = await baseQuery('/refresh', api, extraOptions)
         console.log(refreshResult)
         if (refreshResult?.data) {
             const user = api.getState().auth.user
-            // store the new token 
+            // store the new token
             api.dispatch(setCredentials({ ...refreshResult.data, user }))
-            // retry the original query with new access token 
+            // retry the original query with new access token
             result = await baseQuery(args, api, extraOptions)
         } else {
             // api.dispatch(logOut())

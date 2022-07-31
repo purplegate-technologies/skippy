@@ -76,9 +76,9 @@ const Advertisements = () => {
           <LinearGradientChart chartData={userData} />
         </div>
       </div>
-
+      <div className='my-5' />
       {/* Table */}
-      <div className="row">
+      <div className="row ">
         <div className="col-12">
           <div className="card">
             <div className="card__body">

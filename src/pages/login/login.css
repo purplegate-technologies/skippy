@@ -34,15 +34,19 @@
   /* margin: 20px; */
 }
 
-.userInput > input {
+/* .userInput > input { */
+.userInput .childinput {
   border-bottom: 1px solid var(--txt-pre);
   outline: none;
-  padding: 1rem 0 5px 0;
+  padding: .5rem 0 1px 0;
   width: 100%;
   overflow-y: hidden;
   background: transparent !important;
 }
 
+.userInput > .childinput::placeholder {
+  margin-left: -15px;
+}
 .userInput > input::placeholder {
   margin-left: -15px;
 }

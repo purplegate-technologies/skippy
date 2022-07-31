@@ -1,21 +1,13 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
 import { RootState } from "../app/store";
-
-
-export interface AuthType {
-    firstName?: string;
-    lastName?: string;
-    email?: string;
-    password?: string;
-    confirmPassword?: string
-}
+import { AuthType } from "./authTyoe";
 
 export const authApi = createApi({
     reducerPath: 'authApi',
     baseQuery: fetchBaseQuery({
-        baseUrl: `https://skippyapi.herokuapp.com/v1/`,  // this 
-        // baseUrl: `https://testtourapp.herokuapp.com/`,  // this 
-        // baseUrl: process.env.REACT_APP_API_URL,  // this 
+        baseUrl: `https://skippyapi.herokuapp.com/v1/`,  // this
+        // baseUrl: `https://testtourapp.herokuapp.com/`,  // this
+        // baseUrl: process.env.REACT_APP_API_URL,  // this
         credentials: 'include',
         prepareHeaders: (headers, { getState }: { getState: any }) => {
             const token = (getState() as RootState).auth.token

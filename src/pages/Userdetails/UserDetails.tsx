@@ -24,7 +24,7 @@ const UserDetails = () => {
                         </div>
                     </div>
                     {/*  */}
-                    <div className="flex items-center justify-between border flex-1">
+                    <div className="flex items-center justify-between border flex-1 lg:mt-auto mt-10">
                         <div className="flex flex-col items-center border w-full p-2">
                             <p className='text-[#171837] text-[28px]'>30</p>
                             <span className='text-[#949AB1] text-xs'>Created Adverts</span>
@@ -40,6 +40,7 @@ const UserDetails = () => {
                     </div>
                 </div>
             </div>
+
             {/* Tabs */}
             <div className="">
                 <div className=" flex gap-6 h-full items-center flex-row my-4 ml-4 border-b-2 border-[#F1F3FF] text-[#949AB1] cursor-pointer relative">
@@ -51,10 +52,9 @@ const UserDetails = () => {
              {/* Tab Container */}
 
         {tabIndex === "MyDetails" && (<>
-
-
+            MyDetails
         </>)}
-        {tabIndex !== "MyDetails" && (<></>)}
+        {tabIndex !== "MyDetails" && (<>Avtivity Logs</>)}
           {/* tab index */}
 
           {/* tab end */}

@@ -55,7 +55,7 @@ const TopNav = () => {
                     <BellIcon />
                 </Link>
 
-                <Link to="#" className="topnav__right-item">
+                <Link to="/settings" className="topnav__right-item">
                     {/* dropdown here  */}
                     {/* <Dropdown
                         icon="bx bx-bell"
