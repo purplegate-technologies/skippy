@@ -60,7 +60,7 @@ const Traffic = () => {
   };
 
   return (
-    <div>
+    <section className='mb-10'>
       <StatusCards />
 
       <div className='traffic-flex'>
@@ -164,7 +164,7 @@ const Traffic = () => {
           <BarChart chartData={userData} />
         </div>
       </div>
-    </div>
+    </section>
   )
 }
 

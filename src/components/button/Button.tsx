@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./styles.css"
 interface IProps {
   prefixIcon?: React.ReactNode;
@@ -11,6 +12,7 @@ interface IProps {
   disabled?: boolean;
   type?: "button" | "submit" | "reset";
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  to?: string
 }
 
   // const btnEnableDisable = !props.disabled ? "btn-enable" : "btn-disabled";
@@ -27,6 +29,7 @@ const Button = ({
     disabled = false,
     type = "button",
     onClick = () => {},
+    to=""
   }: IProps) => {
 
   //   const getBgColor = () => {
@@ -94,7 +97,7 @@ const Button = ({
       >
         {loading ? "..." : prefixIcon}
         {text}
-        {" "}{children}{ " "}
+        <Link to={to}>{" "}{children}{ " "}</Link>
         {suffixIcon}
       </button>
     );

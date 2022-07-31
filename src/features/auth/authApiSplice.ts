@@ -1,18 +1,39 @@
 import { apiSlice } from "../../services/api/apiSlice";
+import { AuthType } from "../../services/authTyoe";
 
 export const authApiSlice = apiSlice.injectEndpoints({
     endpoints: builder => ({
         login: builder.mutation({
-            query: credentials => ({
+            query: body => ({
                 url: `/auth/login`,
                 method: 'POST',
-                body: { ...credentials }
-            })
+                // body: { ...credentials }
+                body
+            }),
+            transformResponse: (response: { data: AuthType }, meta, arg) => response.data,
+            invalidatesTags: ['Auth'],
+        }),
+        reset: builder.mutation({
+            query: body => ({
+                url: `/auth/reset-password`,
+                method: 'POST',
+                body
+            }),
+            transformResponse: (response: { data: AuthType }, meta, arg) => response.data,
+            invalidatesTags: ['Auth'],
+        }),
+        RecoverReset: builder.mutation({
+            query: body => ({
+                url: `/auth/recover-password`,
+                method: 'POST',
+                body
+            }),
+            transformResponse: (response: { data: AuthType }, meta, arg) => response.data,
+            invalidatesTags: ['Auth'],
         }),
     })
 })
 
 export const {
-    useLoginMutation
+    useLoginMutation, useResetMutation, useRecoverResetMutation
 } = authApiSlice
-    

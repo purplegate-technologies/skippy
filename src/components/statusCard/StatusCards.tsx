@@ -36,7 +36,7 @@ const statusData = [
 const StatusCards = () => {
     return (
         <div>
-            <h4 className='cardHead'>Overview</h4>
+            <h4 className='cardHead font-semibold'>Overview</h4>
             <div className="row">
                 {statusData.map((item: StatusCardProps) => (
                     <div className="col-3" key={item.title}>

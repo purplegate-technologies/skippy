@@ -28,34 +28,33 @@ const Dashboard = () => {
         ],
     })
     return (
-        <section>
+        <section className='mb-10'>
             <StatusCards />
             <h4 className='dashheade'>Ads  Statistics</h4>
-            <div className='row '>
+            <div className='row justify-center'>
                 <div className="col-6">
-
-                    <div style={{ width: 500 }}>
+                    <div className='basis-1/2 mx-4'>
                         <BarChart chartData={userData} />
                     </div>
                 </div>
                 <div className="col-6">
-                    <div style={{ width: 500 }}>
+                    <div className='basis-1/2 mx-4'>
                         <BarChart chartData={userData} />
                     </div>
                 </div>
             </div>
-            <div className='row'>
-                <div className='col-6 px-3'>
-                    <div style={{  }}>
+            <div className='row justify-center'>
+                <div className='col-6'>
+                    <div className='basis-1/2 mx-4'>
                         <h6 className='text-black'>Total advert Watch Trend</h6>
-                    <LinearGradientChart chartData={userData} />
+                        <LinearGradientChart chartData={userData} />
                     </div>
                 </div>
-                <div className='col-6 px-5'>
-                    <div style={{  }}>
+                <div className='col-6'>
+                    <div className='basis-1/2 mx-4'>
                         <h6 className='text-black'>Total Payout Trend</h6>
+                        <LinearGradientChart chartData={userData} />
                     </div>
-                    <LinearGradientChart chartData={userData} />
                 </div>
             </div>
         </section>

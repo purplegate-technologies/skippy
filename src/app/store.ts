@@ -20,9 +20,13 @@ export const store = configureStore({
     [authApi.reducerPath]: authApi.reducer,
 
     // dave
-    [apiSlice.reducerPath]: apiSlice.reducer,
+    [apiSlice.reducerPath]: apiSlice.reducer, // auth
+    // [apiSlice.reducerPath]: apiSlice.reducer, //
   },
-  middleware: getDefaultMiddleware => getDefaultMiddleware({serializableCheck: false}).concat(authApi.middleware, apiSlice.middleware),
+  middleware: getDefaultMiddleware => getDefaultMiddleware({serializableCheck: false}).concat(
+    // authApi.middleware,
+    apiSlice.middleware
+    ),
   devTools: true
 });
 

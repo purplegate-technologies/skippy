@@ -17,6 +17,7 @@ import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import UserDetails from "./pages/Userdetails/UserDetails";
 import Settings from "./pages/Settings/Settings";
+import CreateAderts from "./createAderts/CreateAderts";
 
 function App() {
   return (
@@ -31,7 +32,9 @@ function App() {
         <Route element={<RequiredAuth />}>
           <Route path="/" element={<Layout />}>
             <Route index element={<Dashboard />} />
-            <Route path="advertisements" element={<Advertisements />} />
+            <Route path="advertisements" element={<Advertisements />}>
+              <Route path="create-adverts" element={<CreateAderts />} />
+            </Route>
             <Route path="traffic" element={<Traffic />} />
             <Route path="finance" element={<Finance />} />
             <Route path="manage-users" element={<ManageUsers />} />

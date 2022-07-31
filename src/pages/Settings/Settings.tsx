@@ -9,7 +9,7 @@ const Settings = () => {
     const [firstName, setFirstName] = useState("")
     const [lastName, setLastName] = useState("")
     const [email, setEmail] = useState("")
-    const [mobile, setMobile] = useState()
+    const [mobile, setMobile] = useState("")
     const [roles, setRoles] = useState("Finances and billing")
 
     const selectSTyle = {
@@ -32,8 +32,6 @@ const Settings = () => {
 
     return (
         <>
-
-
             <form
                 className={`h-full px-10 mx-auto flex justify-center items-center max-w-[1000px]`}
                 // onSubmit={HandleSubmit}>
@@ -41,7 +39,7 @@ const Settings = () => {
                 <div>
 
                     <div className="flex items-center justify-between my-5 ">
-                        <h1 className="text-[#282828] text-3xl">Create Administrator</h1>
+                        <h1 className="text-[#282828] text-3xl text-semibold">Create Administrator</h1>
                         <Link to="" onClick={() => navigate(-1)} className="text-[#516CF5]" >&#60; &#60; Back</Link>
                     </div>
 
@@ -126,12 +124,12 @@ const Settings = () => {
                                 divStyel="contactUs-form-lable"
                                 className={"border-[#949AB1] border-1 rounded p-2 my-3 w-full"}
                                 label={("MOBILE NUMBER")}
-                                name="email"
+                                name="mobile"
                                 placeholder={("09039278115")}
                                 type="tel"
                                 requiredMsg="*"
                                 value={email}
-                                onChange={(e: Event) => setEmail((e.target as HTMLInputElement).value)}
+                                onChange={(e: Event) => setMobile((e.target as HTMLInputElement).value)}
                             />
 
                             <Switch label="Activate Account" />

@@ -7,35 +7,36 @@ import Input from '../input/Input'
 
 interface IProps {
     className?: string
-    placeholder?:  string
+    placeholder?: string
     HeaderTitle?: string
     text?: string
     children?: React.ReactNode;
+    to?: string
 }
 
 
 
-const SearchBar = ({ className = "", placeholder="Search", HeaderTitle, text, children=null }: IProps) => {
+const SearchBar = ({ className = "", placeholder = "Search", HeaderTitle, text, children = null, to = "" }: IProps) => {
     return (
         <div className='my-5'>
             <div className='flex flex-1 items-center justify-between my-7 ml-3 mr-5'>
-                <h2>{HeaderTitle}</h2>
+                <h2 className='font-semibold'>{HeaderTitle}</h2>
                 <ThreeVdots />
             </div>
 
-        <form className={`h-[45px] flex items-center bg-[#f1f3fb] rounded-[10px] ${className}`}>
-            <div>
-                <SearchIconSupport className="ml-[.1rem] lg:ml-[1.3125rem] lg:mr-4 mr-3" />
-            </div>
-            <Input
-                className={`flex-1 text-xs lg:text-lg md:text-sm`}
-                type="text"
-                placeholder={placeholder}
-                />
+            <form className={`flex items-center gap-4 justify-between ${className}`}>
+                <div className='h-[45px] flex w-full items-center bg-[#f1f3fb] rounded-[10px'>
+                    <SearchIconSupport className="ml-[.9rem] lg:ml-[1.3125rem] lg:mr-4 mr-3" />
+                    <Input
+                        className={`flex-1 text-xs w-full lg:text-lg md:text-sm`}
+                        type="text" value=''
+                        placeholder={placeholder}
+                    />
+                </div>
 
-            <Button text={text} {...{children}} className="ml-auto"/>
-        </form>
-    </div>
+                <Button to={to} text={text} {...{ children }} className="ml-auto" />
+            </form>
+        </div>
     )
 }
 

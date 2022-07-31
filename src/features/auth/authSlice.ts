@@ -3,7 +3,6 @@ import { RootState } from "../../app/store";
 interface AuthState {
     user: string | null
     token: string | null
-
 }
 const initialState: AuthState = {
     user: null,

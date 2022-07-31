@@ -6,6 +6,7 @@ import LinearGradientChart from '../../components/charts/LinearGradientChart'
 import { useState } from 'react'
 import { UserData } from '../dashboard/data'
 import SearchBar from '../../components/support/SearchBar'
+import { Outlet } from 'react-router-dom'
 
 const Advertisements = () => {
 
@@ -59,21 +60,21 @@ const Advertisements = () => {
       <StatusCards />
       {/* Support Search */}
 
-      <SearchBar HeaderTitle='All Adverts' placeholder='Enter Brand/Ad Name' text='Create Advert' />
+      <SearchBar to="/create-adverts" HeaderTitle='All Adverts' placeholder='Enter Brand/Ad Name' text='Create Advert' children="" />
 
       {/* Charts */}
       <div className='row items-center'>
         <div className='col-6 px-3'>
-          <div style={{ }}>
+          <div className='basis-1/2 mx-4'>
             <h6 className='text-black'>Total advert Watch Trend</h6>
+            <LinearGradientChart chartData={userData} />
           </div>
-          <LinearGradientChart chartData={userData} />
         </div>
         <div className='col-6 px-3'>
-          <div style={{ }}>
+          <div className='basis-1/2 mx-4'>
             <h6 className='text-black'>Total Payout Trend</h6>
+            <LinearGradientChart chartData={userData} />
           </div>
-          <LinearGradientChart chartData={userData} />
         </div>
       </div>
       <div className='my-5' />
@@ -95,6 +96,7 @@ const Advertisements = () => {
       </div>
 
       {/* Table End */}
+      <Outlet />
     </div>
   )
 }
