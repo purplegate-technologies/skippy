@@ -5,3 +5,11 @@ export interface AuthType {
     password?: string;
     confirmPassword?: string
 }
+
+export interface AdvertsApiSlice {
+    title: string,
+    points: number,
+    type: string,
+    file: any,
+    status: string
+}

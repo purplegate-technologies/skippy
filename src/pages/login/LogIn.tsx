@@ -62,6 +62,9 @@ const LogIn = () => {
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
+
+    console.log(loginData, "loginData loginData loginData loginData ")
+
     try {
       if (email && password) {
         // await loginUser({ email, password })
@@ -107,7 +110,7 @@ const LogIn = () => {
   useEffect(() => {
     if (isLoginSuccess) {
       const { token, admin }: any = loginData
-      dispatch(setUser({ user: admin?.firstName, token}))
+      dispatch(setUser({ user: admin, token}))
       tokenForUser && navigate('/')
       toast.success("User Login Successfully")
     }

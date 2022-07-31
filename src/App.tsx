@@ -17,9 +17,11 @@ import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import UserDetails from "./pages/Userdetails/UserDetails";
 import Settings from "./pages/Settings/Settings";
-import CreateAderts from "./createAderts/CreateAderts";
+import CreateAderts from "./pages/createAderts/CreateAderts";
+import { selectCurrentToken } from "./features/auth/authSlice";
 
 function App() {
+  // const  token  = useAppSelector(selectCurrentToken)
   return (
     <>
     <ToastContainer />

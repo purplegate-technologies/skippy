@@ -1,9 +1,15 @@
 import { useState } from 'react'
+import { useAppSelector } from '../../app/hooks'
 import Breadcrubs from '../../components/breadcrubs/Breadcrubs'
+import { selectCurrentUser } from '../../features/auth/authSlice'
+import ActivityLog from '../ActivityLog/ActivityLog'
+import MyDetails from './MyDetails'
 import './userdetails.css'
 
 const UserDetails = () => {
     const [tabIndex, setTabIndex] = useState<string>("MyDetails")
+    const user: any = useAppSelector(selectCurrentUser)
+    console.log(user, "user")
 
     return (
         <div>
@@ -16,10 +22,10 @@ const UserDetails = () => {
                             alt="Avatar"
                             className="rounded-full w-14 shadow-lg" />
                         <div className='ml-3'>
-                            <p className='text-[20px] my-2'>Imani Johnson</p>
+                            <p className='text-[20px] my-2'>{user?.lastName} {user?.firstName} </p>
                             <span className='flex items-center gap-5'>
-                                <p className='text-sm'><span className='text-[#516CF5]'>Email:</span> admin@skippy.com</p>
-                                <p className='text-sm'><span className='text-[#516CF5]'>Mobile Number:</span> 0801 234 5678</p>
+                                <p className='text-sm'><span className='text-[#516CF5]'>Email:</span> {user?.email}</p>
+                                <p className='text-sm'><span className='text-[#516CF5]'>Mobile Number:</span> {user?.phone}</p>
                             </span>
                         </div>
                     </div>
@@ -49,17 +55,18 @@ const UserDetails = () => {
                 </div>
             </div>
 
-             {/* Tab Container */}
+            {/* Tab Container */}
 
-        {tabIndex === "MyDetails" && (<>
-            MyDetails
-        </>)}
-        {tabIndex !== "MyDetails" && (<>Avtivity Logs</>)}
-          {/* tab index */}
+            {/* tab index */}
+            {tabIndex === "MyDetails" && (<>
+                <MyDetails />
+            </>)}
+            {tabIndex !== "MyDetails" && (<>
+                <ActivityLog />
+            </>)}
 
-          {/* tab end */}
 
-            {/* end */}
+            {/* tab end */}
         </div>
     )
 }

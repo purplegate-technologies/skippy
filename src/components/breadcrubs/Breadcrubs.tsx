@@ -11,10 +11,10 @@ const Breadcrubs = () => {
         <ol className="list-reset flex text-sm">
           {bread.map((item, index) => {
             const disabled = isLast(index)
-            return <>
-              <li key={index} className="text-sm"><Link to={disabled ? '#' : `/dashboard/${index}`} className={`${disabled ? 'text-gray-600' : ' text-blue-600 hover:text-blue-700'}`}>{item}</Link></li>
-              <li><span className={`${disabled && 'hidden invisible'}text-gray-500 mx-2`}>{">"}</span></li>
-            </>
+            return <li key={index} className="text-sm">
+              <Link to={disabled ? '#' : `/dashboard/${index}`} className={`${disabled ? 'text-gray-600' : ' text-blue-600 hover:text-blue-700'}`}>{item}</Link>
+              <li className='inline'><span className={`${disabled && 'hidden invisible'}text-gray-500 mx-2`}>{">"}</span></li>
+            </li>
           })}
         </ol>
       </nav>

@@ -1,5 +1,5 @@
 import { apiSlice } from "../../services/api/apiSlice";
-import { AuthType } from "../../services/authTyoe";
+import { AuthType } from "../../services/apiTyoe";
 
 export const authApiSlice = apiSlice.injectEndpoints({
     endpoints: builder => ({
