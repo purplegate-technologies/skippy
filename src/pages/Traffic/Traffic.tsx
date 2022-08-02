@@ -117,7 +117,7 @@ const Traffic = () => {
                 </div>
                 |
                 <div className='flex flex-col items-center'>
-                <span className="text-[#949AB1] text-xs my-1">Last Month</span>
+                  <span className="text-[#949AB1] text-xs my-1">Last Month</span>
                   <p className="text-[#171837] text-2xl">120,124</p>
                 </div>
               </div>
@@ -160,8 +160,10 @@ const Traffic = () => {
         </div>
         {/* end of grid donuts */}
 
-        <div style={{ width: 500 }}>
-          <BarChart chartData={userData} />
+        <div className="grid grid-cols-1 gap-8">
+          <div className="basis-full mx-4">
+            <BarChart chartData={userData} />
+          </div>
         </div>
       </div>
     </section>

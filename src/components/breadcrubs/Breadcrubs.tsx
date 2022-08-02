@@ -1,21 +1,49 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+interface BreadcrumsbProps {
+  url?: string
+  name?: string
+}
+interface BreadcrumsbItemsProps {
+  breadcrumbsItems: Array<BreadcrumsbProps>
+}
+const BreadcrumbItems = () => {
+  const bread: BreadcrumsbProps[] = [
+    {
+      name: 'Dashboard', url: 'dashboard'
+    },
+    {
+      name: 'Manage Users',
+      url: "manage-users"
+    }, {
+      name: 'User Detail',
+    }
+  ]
+  const isLast = (index: number) => index === bread.length - 1
+  return (
+    <>
+      {bread.map((item, index, array) => {
+        const disabled = isLast(index)
+        const { name, url } = item
+        return (
+          <li key={index} className="text-sm">
+            <Link to={disabled ? '#' : `${url}`} className={`${disabled ? 'text-gray-600' : ' text-blue-600 hover:text-blue-700'}`}>{name}</Link>
+            <li className='inline'><span className={`${disabled && 'hidden invisible'}text-gray-500 mx-2`}>{">"}</span></li>
+          </li>
+        )
+      })}
+    </>
+  )
+}
 
 const Breadcrubs = () => {
   // https://heroicons.com/
-  const bread: string[] = ['Dashboard', 'Manage Users', 'User Detail']
-  const isLast = (index: number) => index === bread.length - 1
+
   return (
     <>
       <nav className="bg-grey-light rounded-md w-full">
         <ol className="list-reset flex text-sm">
-          {bread.map((item, index) => {
-            const disabled = isLast(index)
-            return <li key={index} className="text-sm">
-              <Link to={disabled ? '#' : `/dashboard/${index}`} className={`${disabled ? 'text-gray-600' : ' text-blue-600 hover:text-blue-700'}`}>{item}</Link>
-              <li className='inline'><span className={`${disabled && 'hidden invisible'}text-gray-500 mx-2`}>{">"}</span></li>
-            </li>
-          })}
+          <BreadcrumbItems />
         </ol>
       </nav>
 
