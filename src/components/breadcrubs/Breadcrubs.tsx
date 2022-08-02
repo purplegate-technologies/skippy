@@ -27,7 +27,7 @@ const BreadcrumbItems = () => {
         const { name, url } = item
         return (
           <li key={index} className="text-sm">
-            <Link to={disabled ? '#' : `${url}`} className={`${disabled ? 'text-gray-600' : ' text-blue-600 hover:text-blue-700'}`}>{name}</Link>
+            <Link to={disabled ? '#' : `/${url}`} className={`${disabled ? 'text-gray-600' : ' text-blue-600 hover:text-blue-700'}`}>{name}</Link>
             <li className='inline'><span className={`${disabled && 'hidden invisible'}text-gray-500 mx-2`}>{">"}</span></li>
           </li>
         )
