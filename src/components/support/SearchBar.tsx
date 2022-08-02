@@ -12,11 +12,12 @@ interface IProps {
     text?: string
     children?: React.ReactNode;
     to?: string | any
+    onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 
 
-const SearchBar = ({ className = "", placeholder = "Search", HeaderTitle, text, children = null, to = "" }: IProps) => {
+const SearchBar = ({ className = "", placeholder = "Search", HeaderTitle, text, children = null, to = "", onClick }: IProps) => {
     return (
         <div className='my-5'>
             <div className='flex flex-1 items-center justify-between my-7 ml-3 mr-5'>
@@ -34,7 +35,7 @@ const SearchBar = ({ className = "", placeholder = "Search", HeaderTitle, text, 
                     />
                 </div>
 
-                <Button to={to} text={text} {...{ children }} className="ml-auto" />
+                <Button to={to} text={text} {...{ children }} className="ml-auto" {...{onClick}} />
             </form>
         </div>
     )

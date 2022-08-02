@@ -160,8 +160,8 @@ const Traffic = () => {
         </div>
         {/* end of grid donuts */}
 
-        <div className="grid grid-cols-1 gap-8">
-          <div className="basis-full mx-4">
+        <div className="grid md:grid-cols-2">
+          <div className="basis-1/2 mx-4">
             <BarChart chartData={userData} />
           </div>
         </div>

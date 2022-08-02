@@ -22,12 +22,12 @@
 }
 
 .sidebar__logo {
-  height: 150px;
+  height: var(--topnav-height);
+  border-bottom: 3px solid #F1F3FF;
   display: flex;
   align-items: center;
-  /* justify-content: center; */
-  padding: 0px 15px;
-  margin: -20px 0 0 0;
+  padding: 0px 15px ;
+  margin: 0px 0 10px 0;
 }
 
 .sidebar__logo > img {
@@ -93,7 +93,7 @@
   padding: 0.5rem 15px;
   /* border-radius: 0.6rem; */
   color: white;
-  background-color: #516cf5; 
+  background-color: #516cf5;
 }
 /* .logout:hover {
   background-color: #da0;

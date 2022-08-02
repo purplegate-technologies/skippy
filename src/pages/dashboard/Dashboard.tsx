@@ -28,6 +28,7 @@ const Dashboard = () => {
         ],
     })
     return (
+        <>
         <section className='mb-10'>
             <StatusCards />
             <h4 className='dashheade'>Ads  Statistics</h4>
@@ -58,6 +59,7 @@ const Dashboard = () => {
                 </div>
             </div>
         </section>
+        </>
     )
 }
 

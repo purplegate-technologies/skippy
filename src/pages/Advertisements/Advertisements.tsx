@@ -6,10 +6,10 @@ import LinearGradientChart from '../../components/charts/LinearGradientChart'
 import { useState } from 'react'
 import { UserData } from '../dashboard/data'
 import SearchBar from '../../components/support/SearchBar'
-import { Outlet } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const Advertisements = () => {
-
+const navigate = useNavigate()
 
   const customerTableHead = [
     '',
@@ -55,18 +55,12 @@ const Advertisements = () => {
     ],
   })
 
-  const routeOutlet: any =
-    'create-adverts'
-
-
   return (
     <div>
       <StatusCards />
       {/* Support Search */}
 
-      <SearchBar to={`${routeOutlet}`} HeaderTitle='All Adverts' placeholder='Enter Brand/Ad Name'
-      text='Create Advert'
-       children="Create Advert" />
+      <SearchBar HeaderTitle='All Adverts' placeholder='Enter Brand/Ad Name' text='Create Advert' onClick={() => navigate('/create-adverts')} />
 
       {/* Charts */}
       <div className='row items-center'>
@@ -102,7 +96,7 @@ const Advertisements = () => {
       </div>
 
       {/* Table End */}
-      <Outlet />
+      {/* <Outlet /> */}
     </div>
   )
 }

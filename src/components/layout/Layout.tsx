@@ -42,3 +42,20 @@ const   Layout = () => {
 }
 
 export default Layout
+
+
+// return (
+//   <>
+//     {/* <div className={`layout ${themeReducer.mode} ${themeReducer.color}`}> */}
+//     <section className={`layout`}>
+//       <Sidebar />
+//       {/* <ScrollTop /> */}
+//       <div className="layout__content">
+//         <TopNav />
+//         <div className="layout__content-main">
+//           <Outlet />
+//         </div>
+//       </div>
+//     </section>
+//   </>
+// )

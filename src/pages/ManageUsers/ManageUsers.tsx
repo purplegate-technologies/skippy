@@ -5,9 +5,11 @@ import Table from '../../components/Table/Table'
 import SearchBar from '../../components/support/SearchBar'
 // import Input from '../../components/input/Input'
 import "./styles.css"
+import { useNavigate } from 'react-router-dom'
 
 
 const ManageUsers = () => {
+  const navigate = useNavigate()
 
   const [tabIndex, setTabIndex ] = useState<string>("Administrators")
 
@@ -41,7 +43,7 @@ const ManageUsers = () => {
       {/* Tabs */}
 
       {/* Support Search  */}
-      <SearchBar HeaderTitle='Administrators' text="Create Admin" />
+      <SearchBar HeaderTitle='Administrators' text="Create Admin" onClick={() => navigate('/settings')} />
 
       {/* Table */}
 

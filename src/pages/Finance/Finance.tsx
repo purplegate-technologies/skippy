@@ -4,10 +4,11 @@ import Table from '../../components/Table/Table'
 
 import advertlist from "../../assets/jsonData/advert-list.json"
 import SearchBar from '../../components/support/SearchBar'
+import { useNavigate } from 'react-router-dom'
 
 
 const Finance = () => {
-
+  const navigate = useNavigate()
 
   const customerTableHead = [
     '',
@@ -38,7 +39,7 @@ const Finance = () => {
       <StatusCards />
       {/* Support Search */}
 
-      <SearchBar HeaderTitle='All Vouchers' placeholder='Enter Brand/Voucher Name' text="Create Voucher"  />
+      <SearchBar className='' HeaderTitle='All Vouchers' placeholder='Enter Brand/Voucher Name' text="Create Voucher" onClick={() => navigate('/create-voucher')}  />
 
       {/* Table */}
       <div className="row">

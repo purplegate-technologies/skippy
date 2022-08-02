@@ -73,6 +73,7 @@ const Sidebar = () => {
                     {/* <img src={""} alt="company logo" /> */}
                     <Link to="/"><CompanyLogo /></Link>
                     <Link to="/" style={{ textDecoration: 'none', color: 'black', marginLeft: '8px' }}>Admin@skippy.com</Link>
+                    <div className='h-10' />
                 </div>
                 <div className="btwNav">
                     {sidebar_items.map((item: any, i: number) => {

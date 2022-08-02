@@ -13,18 +13,20 @@ import LogIn from "./pages/login/LogIn";
 import ManageUsers from "./pages/ManageUsers/ManageUsers";
 import Traffic from "./pages/Traffic/Traffic";
 
-import { ToastContainer} from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import UserDetails from "./pages/Userdetails/UserDetails";
 import Settings from "./pages/Settings/Settings";
 import CreateAderts from "./pages/createAderts/CreateAderts";
 import { selectCurrentToken } from "./features/auth/authSlice";
+import CreatVoucher from "./pages/create-voucher/CreatVoucher";
+import FinanceDetails from "./pages/finance-details/FinanceDetails";
 
 function App() {
   // const  token  = useAppSelector(selectCurrentToken)
   return (
     <>
-    <ToastContainer />
+      <ToastContainer />
       <Routes>
         {/* public routes */}
         <Route path="login" element={<LogIn />} />
@@ -32,11 +34,13 @@ function App() {
 
         {/* protected routes */}
         <Route element={<RequiredAuth />}>
+          <Route path="create-adverts" element={<CreateAderts />} />
+          <Route path="create-voucher" element={<CreatVoucher />} />
+          <Route path="finance-details" element={<FinanceDetails />} />
+          
           <Route path="/" element={<Layout />}>
             <Route index element={<Dashboard />} />
-            <Route path="advertisements" element={<Advertisements />}>
-              <Route path="create-adverts" element={<CreateAderts />} />
-            </Route>
+            <Route path="advertisements" element={<Advertisements />} />
             <Route path="traffic" element={<Traffic />} />
             <Route path="finance" element={<Finance />} />
             <Route path="manage-users" element={<ManageUsers />} />

@@ -29,7 +29,6 @@ const Button = ({
     disabled = false,
     type = "button",
     onClick = () => {},
-    to=""
   }: IProps) => {
 
   //   const getBgColor = () => {
@@ -96,8 +95,8 @@ const Button = ({
         onClick={onClick}
       >
         {loading ? "..." : prefixIcon}
-        <Link to={to}>{text}</Link>
-        <Link to={to}>{" "}{children}{ " "}</Link>
+        {text}
+        {" "}{children}{ " "}
         {suffixIcon}
       </button>
     );
