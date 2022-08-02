@@ -55,12 +55,18 @@ const Advertisements = () => {
     ],
   })
 
+  const routeOutlet: any =
+    'create-adverts'
+
+
   return (
     <div>
       <StatusCards />
       {/* Support Search */}
 
-      <SearchBar to="/create-adverts" HeaderTitle='All Adverts' placeholder='Enter Brand/Ad Name' text='Create Advert' children="" />
+      <SearchBar to={`${routeOutlet}`} HeaderTitle='All Adverts' placeholder='Enter Brand/Ad Name'
+      text='Create Advert'
+       children="Create Advert" />
 
       {/* Charts */}
       <div className='row items-center'>

@@ -10,13 +10,16 @@ interface BreadcrumsbItemsProps {
 const BreadcrumbItems = () => {
   const bread: BreadcrumsbProps[] = [
     {
-      name: 'Dashboard', url: 'dashboard'
+      name: 'Dashboard',
+      url: ''
     },
     {
       name: 'Manage Users',
       url: "manage-users"
-    }, {
+    },
+    {
       name: 'User Detail',
+      url: "user-detail"
     }
   ]
   const isLast = (index: number) => index === bread.length - 1

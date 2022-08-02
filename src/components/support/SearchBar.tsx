@@ -11,7 +11,7 @@ interface IProps {
     HeaderTitle?: string
     text?: string
     children?: React.ReactNode;
-    to?: string
+    to?: string | any
 }
 
 

@@ -96,7 +96,7 @@ const Button = ({
         onClick={onClick}
       >
         {loading ? "..." : prefixIcon}
-        {text}
+        <Link to={to}>{text}</Link>
         <Link to={to}>{" "}{children}{ " "}</Link>
         {suffixIcon}
       </button>
