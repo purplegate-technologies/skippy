@@ -67,8 +67,31 @@ export const authApiSlice = apiSlice.injectEndpoints({
             transformResponse: (response: { data: AdvertsApiSlice }, meta, arg) => response.data,
             invalidatesTags: ['Advert'],
         }),
-
         //  End Adverts
+
+        // User Auth
+        // Create A User Account
+        createUserAcc: builder.mutation({
+            query: body => ({
+                url: `/users`,
+                method: 'PUT',
+                body
+            }),
+            transformResponse: (response: { data: AdvertsApiSlice }, meta, arg) => response.data,
+            invalidatesTags: ['Advert'],
+        }),
+
+        // Authenticate User
+        authenticateUser: builder.mutation({
+            query: body => ({
+                url: `/users/auth`,
+                method: 'POST',
+                body
+            }),
+            transformResponse: (response: { data: AdvertsApiSlice }, meta, arg) => response.data,
+            invalidatesTags: ['Advert'],
+        }),
+
     })
 })
 
@@ -76,8 +99,12 @@ export const {
     useLoginMutation,
     useResetMutation,
     useRecoverResetMutation,
+    
     useCreateAdvertMutation,
     useGetAdvertAdminQuery,
     useGetAdvertQuery,
     useGetAdvertUserQuery,
+
+    useCreateUserAccMutation,
+    useAuthenticateUserMutation
 } = authApiSlice

@@ -59,20 +59,20 @@ const Settings = () => {
                                     const select = e.target as HTMLSelectElement
                                     setRoles(select.options.item(select.selectedIndex)?.innerText!)
                                 }}>
-                                <option value="Finances and billing">
-                                    {("ROLE ONE")}
+                                <option value="super-admin">
+                                    {("Super Admin")}
                                 </option>
-                                <option value="Managing my tickets">
-                                    {("ROLE TWO")}
+                                <option value="normal">
+                                    {("Normal Admin")}
                                 </option>
-                                <option value="Managing my listings">
-                                    {("ROLE THREE")}
+                                <option value="Manager">
+                                    {("Regular Admin")}
                                 </option>
-                                <option value="My PASSTickets account">
-                                    {("ROLE FOUR")}
+                                <option value="account">
+                                    {("Bad Admin")}
                                 </option>
-                                <option value="Other">
-                                    {("ROLE FIVE")}
+                                <option value="other">
+                                    {("Other")}
                                 </option>
                             </select>
                         </div>

@@ -6,14 +6,38 @@ import ActivityLog from '../ActivityLog/ActivityLog'
 import MyDetails from './MyDetails'
 import './userdetails.css'
 
+
+
+export interface BreadcrumbsProps {
+    url?: string
+    name?: string
+    lenght?: number
+  }
+  export interface BreadcrumsbItemsProps {
+    bread?: BreadcrumbsProps[]
+  }
+  const bread: BreadcrumbsProps[] = [
+    {
+      name: 'Dashboard',
+      url: ''
+    },
+    {
+      name: 'Manage Users',
+      url: "manage-users"
+    },
+    {
+      name: 'User Detail',
+      url: "user-detail"
+    }
+  ]
+
 const UserDetails = () => {
     const [tabIndex, setTabIndex] = useState<string>("MyDetails")
     const user: any = useAppSelector(selectCurrentUser)
-    console.log(user, "user")
 
     return (
         <div>
-            <Breadcrubs />
+            <Breadcrubs {...{bread}} />
             <div className="userdetails my-5 border rounded-xl shadow-sm p-4">
 
                 <div className="grid lg:grid-flow-col">
