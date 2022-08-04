@@ -39,7 +39,7 @@ const Finance = () => {
       <StatusCards />
       {/* Support Search */}
 
-      <SearchBar className='' HeaderTitle='All Vouchers' placeholder='Enter Brand/Voucher Name' text="Create Voucher" onClick={() => navigate('/create-voucher')}  />
+      <SearchBar className='' HeaderTitle='All Vouchers' placeholder='Enter Brand/Voucher Name' text="Create Voucher" onClick={() => navigate('/finance-details')}  />
 
       {/* Table */}
       <div className="row">

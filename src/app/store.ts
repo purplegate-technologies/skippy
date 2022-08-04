@@ -17,7 +17,7 @@ export const store = configureStore({
   reducer: {
     counter: counterReducer,
     auth: authReducer,
-    [authApi.reducerPath]: authApi.reducer,
+    // [authApi.reducerPath]: authApi.reducer,
 
     // dave
     [apiSlice.reducerPath]: apiSlice.reducer, // auth

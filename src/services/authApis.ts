@@ -5,15 +5,14 @@ import { AuthType } from "./apiTyoe";
 export const authApi = createApi({
     reducerPath: 'authApi',
     baseQuery: fetchBaseQuery({
-        baseUrl: `https://skippyapi.herokuapp.com/v1/`,  // this
-        // baseUrl: `https://testtourapp.herokuapp.com/`,  // this
-        // baseUrl: process.env.REACT_APP_API_URL,  // this
+        // baseUrl: `https://testtourapp.herokuapp.com/`
+        baseUrl: process.env.REACT_APP_API_KEY,  // this
         credentials: 'include',
         prepareHeaders: (headers, { getState }: { getState: any }) => {
             const token = (getState() as RootState).auth.token
             if (token) {
                 headers.set("authorization", `Bearer ${token}`)
-                headers.set("Access-Control-Allow-Origin", ``);
+                headers.set("Access-Control-Allow-Origin", `*`);
                 // headers.set("Access-Control-Allow-Origin", `*`);
                 // header in the response must not be the wildcard '*'
             }

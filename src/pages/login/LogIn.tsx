@@ -1,7 +1,7 @@
 import './login.css'
 import CompanyLogo from "../../assets/svg/CompanyLogo"
-import { Link, useNavigate } from 'react-router-dom'
-import { useLoginUserMutation } from '../../services/authApis'
+import { useNavigate } from 'react-router-dom'
+// import { useLoginUserMutation } from '../../services/authApis'
 import { useAppDispatch, useAppSelector } from '../../app/hooks'
 import React, { useEffect, useRef, useState } from 'react'
 import { selectCurrentToken, setUser, setUserDetails, setUserToken } from '../../features/auth/authSlice'
@@ -9,6 +9,7 @@ import { toast } from 'react-toastify';
 import Button from '../../components/button/Button'
 import LoginBackGIcons from '../../assets/svg/LoginBackGIcons'
 import Input from '../../components/input/Input'
+import { useLoginMutation } from '../../features/auth/authApiSplice'
 
 
 export interface initialStateType {
@@ -49,15 +50,13 @@ const LogIn = () => {
       isLoading,
       reset,
       status,
-    }] = useLoginUserMutation()
+    }] = useLoginMutation()
   const handleChange = (e: any) => setFormValue({ ...formValue, [e.target.name]: e.target.value })
 
   // useEffect(() => {
   // userRef.current.focus()
   // }, [email, password])
 
-
-  console.log(loginData, " loginData dloginDataata data")
 
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -76,19 +75,18 @@ const LogIn = () => {
 
         const { token, admin }: any = loginData
         // set user data and token in redux store
-        // dispatch(setUserDetails({ user: admin.firstName }));
-        // dispatch(setUserToken({ token }));
+        dispatch(setUserDetails({ user: admin.firstName }));
+        dispatch(setUserToken({ token }));
         dispatch(setUser({ user: admin.firstName, token }))
         console.log('login now')
-        // console.log(dispatch(setUser({ user: admin.firstName, token })), "dispatch(setUser({ user, token}))")
-        // toast.success("Login successful");
-        // setFormValue({email: '', password:''})
-        // tokenForUser && navigate('/')
+        toast.success("Login successful");
+        setFormValue({email: '', password:''})
+        tokenForUser && navigate('/', { replace: true })
       } else {
         toast.error("Please fill all Input field")
       }
     } catch (err: any) {
-      console.log(err.response_message, "err err err")
+      console.log(err.data, "err err err")
       if (!err?.response) {
         toast.error(!err?.response_message);
         setErrMsg("No Server Response")
@@ -111,7 +109,7 @@ const LogIn = () => {
     if (isLoginSuccess) {
       const { token, admin }: any = loginData
       dispatch(setUser({ user: admin, token}))
-      tokenForUser && navigate('/')
+      tokenForUser && navigate('/', { replace: true })
       toast.success("User Login Successfully")
     }
   }, [isLoginSuccess, navigate, tokenForUser, dispatch, loginData])

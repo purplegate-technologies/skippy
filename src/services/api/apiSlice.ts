@@ -2,19 +2,18 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { logout, setCredentials } from '../../features/auth/authSlice'
 import { RootState } from '../../app/store'
 import { AdvertsApiSlice, AuthType } from '../apiTyoe'
-
-const API_ENDPOINT = `https://skippyapi.herokuapp.com/v1/`
+import { toast } from 'react-toastify'
 
 const baseQuery = fetchBaseQuery({
-    baseUrl: API_ENDPOINT,
+    baseUrl: process.env.REACT_APP_API_KEY,
     credentials: 'include',
     prepareHeaders: (headers, { getState }: { getState: any }) => {
         const token = (getState() as RootState).auth.token
-        // const token = (getState()).auth.token
         if (token) {
             headers.set("authorization", `Bearer ${token}`)
             headers.set("Access-Control-Allow-Origin", `*`);
         }
+        // headers.set("x-api-key", process.env.REACT_APP_API_KEY)
         return headers
     }
 })
@@ -28,7 +27,7 @@ const baseQueryWithReauth = async (args: any, api: any, extraOptions: any) => {
         console.log('sending refresh token')
         // send refresh token to get new access token
         const refreshResult: any = await baseQuery('/refresh', api, extraOptions)
-        console.log(refreshResult)
+        console.log(refreshResult, "refreshResult refreshResult refreshResult refreshResult ")
         if (refreshResult?.data) {
             const user = api.getState().auth.user
             // store the new token
@@ -37,6 +36,7 @@ const baseQueryWithReauth = async (args: any, api: any, extraOptions: any) => {
             result = await baseQuery(args, api, extraOptions)
         } else {
             // api.dispatch(logout())
+            toast.error("Something went wrong, Please login again!")
             setTimeout(() => {
                 api.dispatch(logout());
             }, 1000);
@@ -49,7 +49,7 @@ const baseQueryWithReauth = async (args: any, api: any, extraOptions: any) => {
 export const apiSlice = createApi({
     baseQuery: baseQueryWithReauth,
     reducerPath: "authApi",
-    tagTypes: ['Auth', 'Advert'],
+    tagTypes: ['Auth', 'Advert', "UserAuth", "UserAuth", "Wallet"],
     endpoints: builder => ({
         login: builder.mutation({
             query: body => ({
@@ -97,7 +97,7 @@ export const apiSlice = createApi({
             transformResponse: (response: { data: AdvertsApiSlice }, meta, arg) => response.data
         }),
         getAdvertUser: builder.query({ // get advert user
-            query: body => `/adverts/user`,
+            query: () => `/adverts/user`,
             transformResponse: (response: { data: AdvertsApiSlice }, meta, arg) => response.data,
             providesTags: ['Advert'],
         }),
@@ -109,7 +109,7 @@ export const apiSlice = createApi({
         }),
         //  End Adverts
 
-        //
+        //User Auth
     })
 })
 

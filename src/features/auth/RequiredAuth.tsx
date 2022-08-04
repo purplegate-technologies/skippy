@@ -4,7 +4,7 @@ import { selectCurrentToken } from './authSlice'
 
 const RequiredAuth = () => {
     const  token  = useAppSelector(selectCurrentToken)
-    console.log(token, "token help")
+    // console.log(token, "token help")
     const location = useLocation()
     return token ? <Outlet /> : <Navigate to="/login" state={{ from: location }} replace />
 }

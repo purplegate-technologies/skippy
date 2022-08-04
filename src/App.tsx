@@ -21,6 +21,7 @@ import CreateAderts from "./pages/createAderts/CreateAderts";
 import { selectCurrentToken } from "./features/auth/authSlice";
 import CreatVoucher from "./pages/create-voucher/CreatVoucher";
 import FinanceDetails from "./pages/finance-details/FinanceDetails";
+import AdvertisementDetails from "./pages/advertisements-details/AdvertisementDetails";
 
 function App() {
   // const  token  = useAppSelector(selectCurrentToken)
@@ -30,19 +31,20 @@ function App() {
       <Routes>
         {/* public routes */}
         <Route path="login" element={<LogIn />} />
-        <Route path="*" element={<Navigate to='/' />} />
+        <Route path="*" element={<Navigate to='/' />} />  
 
         {/* protected routes */}
         <Route element={<RequiredAuth />}>
           <Route path="create-adverts" element={<CreateAderts />} />
           <Route path="create-voucher" element={<CreatVoucher />} />
-          <Route path="finance-details" element={<FinanceDetails />} />
-          
+
           <Route path="/" element={<Layout />}>
             <Route index element={<Dashboard />} />
             <Route path="advertisements" element={<Advertisements />} />
+            <Route path="advertisements-details" element={<AdvertisementDetails />} />
             <Route path="traffic" element={<Traffic />} />
             <Route path="finance" element={<Finance />} />
+            <Route path="finance-details" element={<FinanceDetails />} />
             <Route path="manage-users" element={<ManageUsers />} />
             <Route path="activity-log" element={<ActivityLog />} />
             <Route path="user-details" element={<UserDetails />} />

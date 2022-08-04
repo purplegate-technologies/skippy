@@ -60,7 +60,7 @@ const navigate = useNavigate()
       <StatusCards />
       {/* Support Search */}
 
-      <SearchBar HeaderTitle='All Adverts' placeholder='Enter Brand/Ad Name' text='Create Advert' onClick={() => navigate('/create-adverts')} />
+      <SearchBar HeaderTitle='All Adverts' placeholder='Enter Brand/Ad Name' text='Create Advert' onClick={() => navigate('/advertisements-details')} />
 
       {/* Charts */}
       <div className='row items-center'>

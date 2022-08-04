@@ -48,7 +48,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
             transformResponse: (response: { data: AdvertsApiSlice }, meta, arg) => response.data
         }),
         getAdvertUser: builder.query({ // get advert user
-            query: body => `/adverts/user`,
+            query: () => `/adverts/user`,
             transformResponse: (response: { data: AdvertsApiSlice }, meta, arg) => response.data,
             providesTags: ['Advert'],
         }),
@@ -99,7 +99,7 @@ export const {
     useLoginMutation,
     useResetMutation,
     useRecoverResetMutation,
-    
+
     useCreateAdvertMutation,
     useGetAdvertAdminQuery,
     useGetAdvertQuery,
@@ -108,3 +108,6 @@ export const {
     useCreateUserAccMutation,
     useAuthenticateUserMutation
 } = authApiSlice
+
+// __.gail__ full video from a tiktok i saw
+
