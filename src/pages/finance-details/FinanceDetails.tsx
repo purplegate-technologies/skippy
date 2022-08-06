@@ -5,6 +5,7 @@ import EditIcon from '../../assets/svg/EditIcon'
 import ExportIcon from '../../assets/svg/ExportIcon'
 import Breadcrubs from '../../components/breadcrubs/Breadcrubs'
 import Button from '../../components/button/Button'
+import DoughnutChart from '../../components/charts/DoughnutChart'
 
 export interface BreadcrumbsProps {
     url?: string
@@ -110,42 +111,42 @@ const FinanceDetails = () => {
 
                     {tabIndex === "Info" && (<>
                         <div>
-                            <h1 className="m-6 font-bold text-[#171837] text-xl">Voucher Info</h1>
+                            <h1 className="border-b p-6 font-bold text-[#171837] text-xl">Voucher Statistics</h1>
 
-                            <div className="flex flex-col border card">
-                                <div className="flex items-center justify-between px-4">
+                            <div className="flex flex-col px-4 mt-7">
+                                <div className="flex items-center justify-between mb-7">
                                     <p className="text-[#949AB1] text-xs">Category</p>
                                     <p className="text-[#516CF5] text-xs text-right">Netflix Price Slash Promo</p>
                                 </div>
-                                <div className="flex items-center justify-between px-4">
+                                <div className="flex items-center justify-between mb-7">
                                     <p className="text-[#949AB1] text-xs">Brand Name/Ad Title</p>
                                     <p className="text-[#171837] text-xs text-right">Netflix Price Slash Promo</p>
                                 </div>
-                                <div className="flex items-center justify-between px-4">
+                                <div className="flex items-center justify-between mb-7">
                                     <p className="text-[#949AB1] text-xs">Action Link</p>
                                     <p className="text-[#171837] text-xs text-right">https://netflix.com/</p>
                                 </div>
-                                <div className="flex items-center justify-between px-4">
+                                <div className="flex items-center justify-between mb-7">
                                     <p className="text-[#949AB1] text-xs">Duration</p>
                                     <p className="text-[#171837] text-xs text-right">01:30 mins</p>
                                 </div>
-                                <div className="flex items-center justify-between px-4">
+                                <div className="flex items-center justify-between mb-7">
                                     <p className="text-[#949AB1] text-xs">Point per Play</p>
                                     <p className="text-[#171837] text-xs text-right">100</p>
                                 </div>
-                                <div className="flex items-center justify-between px-4">
+                                <div className="flex items-center justify-between mb-7">
                                     <p className="text-[#949AB1] text-xs">Created By</p>
                                     <p className="text-[#171837] text-xs text-right">Imani Johnson</p>
                                 </div>
-                                <div className="flex items-center justify-between px-4">
+                                <div className="flex items-center justify-between mb-7">
                                     <p className="text-[#949AB1] text-xs">Add Date</p>
                                     <p className="text-[#171837] text-xs text-right">01/05/2021</p>
                                 </div>
-                                <div className="flex items-center justify-between px-4">
+                                <div className="flex items-center justify-between mb-7">
                                     <p className="text-[#949AB1] text-xs">Last Modified</p>
                                     <p className="text-[#171837] text-xs text-right">01/05/2021</p>
                                 </div>
-                                <div className="flex items-center justify-between px-4">
+                                <div className="flex items-center justify-between mb-7">
                                     <p className="text-[#949AB1] text-xs">Modified By</p>
                                     <p className="text-[#171837] text-xs text-right">Imani Johnson</p>
                                 </div>
@@ -153,8 +154,29 @@ const FinanceDetails = () => {
                             </div>
                         </div>
                     </>)}
-                    {tabIndex !== "Info" && (<></>)}
+                    {tabIndex === "Statistics" && (<>
+                    <div className="con">
+                        <h1 className="m-6 font-bold text-[#171837] text-xl">Voucher Info</h1>
 
+                        <div className="flex flex-col border">
+                            <div className='p-4'>
+                                <p className='text-base'>Voucher Quantity</p>
+                                <p className="text-[#516CF5] text-lg">100</p>
+                            </div>
+                            <DoughnutChart className='flex items-center justify-center' />
+                            <div className="grid grid-cols-2 place-items-center text-center">
+                                <div className="p-4 border w-full">
+                                    <h1>30</h1>
+                                    <p className="">Available</p>
+                                </div>
+                                <div className="p-4 border w-full">
+                                    <h1>30</h1>
+                                    <p className="">Redeemed</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </>)}
 
                 </div>
             </div>

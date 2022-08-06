@@ -82,11 +82,15 @@ const AdvertisementDetails = () => {
       </div>
 
       <div className="grid grid-cols-2 gap-10">
-        <div className="self-center">
-        <VideoPlayer options={videoJsOptions}
+        <div className="md:basis-1/2 flex flex-col bg-white">
+
+          <VideoPlayer
+          // options={videoJsOptions}
+          />
         </div>
 
-        <div className="self-center bg-white">
+        <div className="md:basis-1/2 flex flex-col bg-white">
+
           <div className="">
             <div className=" flex h-full borderitems-center flex-row border-[#F1F3FF] text-[#949AB1] relative">
               <p className={"tabIndex text-center p-3 w-24 hover:border-t-2 hover:border-[#516CF5] cursor-pointer hover:text-[#516CF5]" + (tabIndex === "Info" && "tabIndex text-[#516CF5] border-t-2 border-t-[#516CF5]")} onClick={() => setTabIndex("Info")}>Info{" "}</p>
@@ -96,42 +100,42 @@ const AdvertisementDetails = () => {
 
           {tabIndex === "Info" && (<>
             <div>
-              <h1 className="m-6 font-bold text-[#171837] text-xl">Advert Info</h1>
+              <h1 className="border-b p-6 font-bold text-[#171837] text-xl">Advert Info</h1>
 
-              <div className="flex flex-col border card">
-                <div className="flex items-center justify-between px-4">
+              <div className="flex flex-col px-4 mt-7">
+                <div className="flex items-center justify-between mb-7">
                   <p className="text-[#949AB1] text-xs">Category</p>
                   <p className="text-[#516CF5] text-xs text-right">Netflix Price Slash Promo</p>
                 </div>
-                <div className="flex items-center justify-between px-4">
+                <div className="flex items-center justify-between mb-7">
                   <p className="text-[#949AB1] text-xs">Brand Name/Ad Title</p>
                   <p className="text-[#171837] text-xs text-right">Netflix Price Slash Promo</p>
                 </div>
-                <div className="flex items-center justify-between px-4">
+                <div className="flex items-center justify-between mb-7">
                   <p className="text-[#949AB1] text-xs">Action Link</p>
                   <p className="text-[#171837] text-xs text-right">https://netflix.com/</p>
                 </div>
-                <div className="flex items-center justify-between px-4">
+                <div className="flex items-center justify-between mb-7">
                   <p className="text-[#949AB1] text-xs">Duration</p>
                   <p className="text-[#171837] text-xs text-right">01:30 mins</p>
                 </div>
-                <div className="flex items-center justify-between px-4">
+                <div className="flex items-center justify-between mb-7">
                   <p className="text-[#949AB1] text-xs">Point per Play</p>
                   <p className="text-[#171837] text-xs text-right">100</p>
                 </div>
-                <div className="flex items-center justify-between px-4">
+                <div className="flex items-center justify-between mb-7">
                   <p className="text-[#949AB1] text-xs">Created By</p>
                   <p className="text-[#171837] text-xs text-right">Imani Johnson</p>
                 </div>
-                <div className="flex items-center justify-between px-4">
+                <div className="flex items-center justify-between mb-7">
                   <p className="text-[#949AB1] text-xs">Add Date</p>
                   <p className="text-[#171837] text-xs text-right">01/05/2021</p>
                 </div>
-                <div className="flex items-center justify-between px-4">
+                <div className="flex items-center justify-between mb-7">
                   <p className="text-[#949AB1] text-xs">Last Modified</p>
                   <p className="text-[#171837] text-xs text-right">01/05/2021</p>
                 </div>
-                <div className="flex items-center justify-between px-4">
+                <div className="flex items-center justify-between mb-7">
                   <p className="text-[#949AB1] text-xs">Modified By</p>
                   <p className="text-[#171837] text-xs text-right">Imani Johnson</p>
                 </div>
