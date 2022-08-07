@@ -110,12 +110,13 @@
 // }
 
 
-import { useState } from "react";
+import React, { useState } from "react";
+import Button from "../../components/button/Button";
 import Input from "../../components/input/Input";
 import "./styles.css"
 
 const ClassInviteUsers = () => {
-    const [tags, setTags] = useState<string[]>(["please", "do not"]);
+    const [tags, setTags] = useState<string[]>([]);
     const addTag = (e: any) => {
 
         if (e.key === "Enter") {
@@ -126,27 +127,38 @@ const ClassInviteUsers = () => {
             }
         }
     };
-    const removeTag = (removedTag: any) => {
+    const removeTag = (removedTag: string) => {
         const newTags = tags.filter((tag) => tag !== removedTag);
         setTags(newTags);
     };
+
+    const HandleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+        setTags([])
+    }
     return (
 
-        <form className='max-w-screen-lg bg-white m-auto h-1/2'>
+        <form className='max-w-sm bg-white p-10 h-1/2 rounded-md' onSubmit={HandleSubmit}>
             <h1 className='text-[#282828] text-3xl font-bold'>Invite People</h1>
-            <p className="text=[#949AB1] text-sm">Enter email address(s) to invite</p>
+            <p className="text-[#949AB1] text-base">Enter email address(s) to invite</p>
 
-            <h1>Tags input with React</h1>
+            <label className="block text-[#516CF5] mt-5">Email</label>
             <div className="tag-container">
                 {tags.map((tag, index) => {
                     return (
                         <div key={index} className="tag">
-                            {tag} <span onClick={() => removeTag(tag)}>x</span>
+                            {tag} <span className="text-[#516CF5] font-bold" onClick={() => removeTag(tag)}>x</span>
                         </div>
                     );
                 })}
 
-                <input  placeholder="" onKeyDown={addTag} />
+                {/* <Input required className="input" type="email" placeholder="Type or paste email addresses and press `Enter`..." onKeyDown={addTag} /> */}
+                <div>
+                    <input type="email" placeholder="Type or paste email addresses and press `Enter`..." onKeyDown={addTag} />
+                </div>
+            </div>
+            <div className="flex items-center justify-end mt-5">
+                <Button type="submit" size='medium'>Send Invite</Button>
             </div>
         </form>
     )

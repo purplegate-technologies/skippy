@@ -36,7 +36,7 @@ const ActivityLog = () => {
     <>
     {/* Suport Search */}
 
-    <SearchBar HeaderTitle='Activity Log' placeholder='Search Activity' text="Invite User" onClick={() => navigate('')} />
+    <SearchBar HeaderTitle='Activity Log' placeholder='Search Activity' text="Invite User" onClick={() => navigate('/invite-users')} />
 
     {/* Table */}
     <div className="row">
