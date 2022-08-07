@@ -138,7 +138,7 @@ const ClassInviteUsers = () => {
     }
     return (
 
-        <form className='max-w-sm bg-white p-10 h-1/2 rounded-md' onSubmit={HandleSubmit}>
+        <form className='bg-white p-10 h-1/2 rounded-md' onSubmit={HandleSubmit}>
             <h1 className='text-[#282828] text-3xl font-bold'>Invite People</h1>
             <p className="text-[#949AB1] text-base">Enter email address(s) to invite</p>
 

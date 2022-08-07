@@ -14,8 +14,8 @@ const InviteUser = () => {
     };
 
     return (
-        <section className='flex items-center justify-center'>
-            <div className="">
+        <section className=''>
+            <div className="max-w-2xl mx-auto">
                 <InviteUsersForm />
             </div>
         </section>
