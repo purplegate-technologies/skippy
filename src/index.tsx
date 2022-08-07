@@ -11,6 +11,8 @@ import './assets/css/grid.css'
 import './assets/css/index.css'
 // import './assets/css/theme.css'
 
+import "video.js/dist/video-js.css";
+
 const container = document.getElementById('root')!;
 const root = createRoot(container);
 

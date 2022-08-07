@@ -20,6 +20,7 @@ interface Iprops {
     onChange?: Function
     onBlur?: Function
     onClick?: Function
+    onKeyDown?: Function
     onKeyPress?: Function
     required?: boolean
     requiredMsg?: string
@@ -47,6 +48,7 @@ const Input = ({
     onBlur = () => {},
     onClick = () => {},
     onKeyPress = () => {},
+    onKeyDown = () => {},
     required = true,
     requiredMsg = "",
     error = "",
@@ -70,6 +72,7 @@ const Input = ({
             onChange={(e) => onChange(e)}
             onBlur={(e) => onBlur(e)}
             onClick={(e) => onClick(e)}
+            onKeyDown={(e) => onClick(e)}
             onKeyPress={(e) => onClick(e)}
             disabled={disabled}
             checked={checked}

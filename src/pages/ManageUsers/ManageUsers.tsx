@@ -43,7 +43,7 @@ const ManageUsers = () => {
       {/* Tabs */}
 
       {/* Support Search  */}
-      <SearchBar HeaderTitle='Administrators' text="Create Admin" onClick={() => navigate('/settings')} />
+      {/* <SearchBar HeaderTitle='Administrators' text="Create Admin" onClick={() => navigate('/settings')} /> */}
 
       {/* Table */}
 
@@ -56,6 +56,7 @@ const ManageUsers = () => {
 
         {tabIndex !== "Administrators" && (<>
           {/* tab index */}
+          <SearchBar HeaderTitle='App Users' text="Invite User" onClick={() => navigate('/invite-users')} />
 
           {/* tab end */}
           <div className="row">
@@ -78,6 +79,7 @@ const ManageUsers = () => {
         </>)}
         {tabIndex === "Administrators" && (<>
           {/* tab index */}
+          <SearchBar HeaderTitle='Administrators' text="Create Admin" onClick={() => navigate('/settings')} />
 
           {/* tab end */}
           <div className="row">

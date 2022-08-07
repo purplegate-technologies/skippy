@@ -10,9 +10,13 @@ const MyDetails = () => {
     const [mobile, setMobile] = useState("")
     const [roles, setRoles] = useState("Finances and billing")
 
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+    }
+
     return (
         <div className="max-w-3xl">
-            <div className="card -mb-5">
+            <form onSubmit={handleSubmit} className="card -mb-5">
                 <div className="grid md:grid-cols-2 gap-x-4 ">
                     {/* <div className="flex justify-between gap-[2.8rem] mb-8"> */}
                     <Input
@@ -97,7 +101,7 @@ const MyDetails = () => {
 
                 </div>
                 <Button className="mt-[2.5rem] mb-[2.36rem] capitalize" text="Save Changes" type="submit" />
-            </div>
+            </form>
         </div>
     )
 }

@@ -30,14 +30,16 @@ const Settings = () => {
     }
     const navigate = useNavigate();
 
+    const HandleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+    }
+
     return (
         <>
             <form
                 className={`h-full px-10 mx-auto flex justify-center items-center max-w-[1000px]`}
-                // onSubmit={HandleSubmit}>
-                onSubmit={() => null}>
+                onSubmit={HandleSubmit}>
                 <div>
-
                     <div className="flex items-center justify-between my-5 ">
                         <h1 className="text-[#282828] text-3xl text-semibold">Create Administrator</h1>
                         <Link to="" onClick={() => navigate(-1)} className="text-[#516CF5]" >&#60; &#60; Back</Link>

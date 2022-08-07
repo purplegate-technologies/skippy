@@ -22,6 +22,7 @@ import { selectCurrentToken } from "./features/auth/authSlice";
 import CreatVoucher from "./pages/create-voucher/CreatVoucher";
 import FinanceDetails from "./pages/finance-details/FinanceDetails";
 import AdvertisementDetails from "./pages/advertisements-details/AdvertisementDetails";
+import InviteUser from "./pages/InviteUser/InviteUser";
 
 function App() {
   // const  token  = useAppSelector(selectCurrentToken)
@@ -31,7 +32,7 @@ function App() {
       <Routes>
         {/* public routes */}
         <Route path="login" element={<LogIn />} />
-        <Route path="*" element={<Navigate to='/' />} />  
+        <Route path="*" element={<Navigate to='/' />} />
 
         {/* protected routes */}
         <Route element={<RequiredAuth />}>
@@ -46,6 +47,7 @@ function App() {
             <Route path="finance" element={<Finance />} />
             <Route path="finance-details" element={<FinanceDetails />} />
             <Route path="manage-users" element={<ManageUsers />} />
+            <Route path="invite-users" element={<InviteUser />} />
             <Route path="activity-log" element={<ActivityLog />} />
             <Route path="user-details" element={<UserDetails />} />
             <Route path="settings" element={<Settings />} />

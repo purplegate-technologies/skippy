@@ -3,10 +3,11 @@ import Table from '../../components/Table/Table'
 import advertlist from "../../assets/jsonData/advert-list.json"
 import "./activity.css"
 import SearchBar from '../../components/support/SearchBar'
+import { useNavigate } from 'react-router-dom'
 
 const ActivityLog = () => {
+  const navigate = useNavigate()
 
-  
   const customerTableHead = [
     '',
     'name',
@@ -35,8 +36,8 @@ const ActivityLog = () => {
     <>
     {/* Suport Search */}
 
-    <SearchBar HeaderTitle='Activity Log' placeholder='Search Activity' text="Invite User"  />
-    
+    <SearchBar HeaderTitle='Activity Log' placeholder='Search Activity' text="Invite User" onClick={() => navigate('')} />
+
     {/* Table */}
     <div className="row">
         <div className="col-12">
