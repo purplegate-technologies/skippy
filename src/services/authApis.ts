@@ -6,7 +6,7 @@ export const authApi = createApi({
     reducerPath: 'authApi',
     baseQuery: fetchBaseQuery({
         // baseUrl: `https://testtourapp.herokuapp.com/`
-        baseUrl: process.env.REACT_APP_API_KEY,  // this
+        baseUrl: process.env.REACT_APP_API_KEY,  
         credentials: 'include',
         prepareHeaders: (headers, { getState }: { getState: any }) => {
             const token = (getState() as RootState).auth.token

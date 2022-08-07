@@ -4,7 +4,19 @@ import StatusCards from '../../components/statusCard/StatusCards'
 import { UserData } from '../dashboard/data'
 import DoughnutChart from '../../components/charts/DoughnutChart';
 import Button from '../../components/button/Button';
+import { AntPieChart } from '../../components/charts/AntPieChart';
 
+
+export const barChartData = [
+  {
+    type: "Success",
+    value: 575,
+  },
+  {
+    type: "Declined",
+    value: 175,
+  },
+];
 
 const Traffic = () => {
 
@@ -68,7 +80,7 @@ const Traffic = () => {
         <h1 className='my-6 mr-4 font-bold text-[#171837]'>Traffic  Statistics</h1>
 
         {/* card grid of three */}
-        <div className=" mx-auto grid md:grid-cols-3 gap-8 flex-">
+        <div className=" mx-auto grid lg:grid-cols-3 gap-8 flex-">
           {/* card chart */}
           <div className="py-6 card">
             {/* <div className="grid md:grid-cols-2 gap-8"> */}
@@ -93,7 +105,11 @@ const Traffic = () => {
                   </div>
                 </div>
 
-                <DoughnutChart className='flex items-center justify-center' />
+                {/* <DoughnutChart className='flex items-center justify-center' /> */}
+                <div className="h-36 flex items-start justify-center">
+
+                <AntPieChart data={barChartData} color={["#9E44F8", "#9E44F8"]}  />
+                </div>
               </div>
 
             </div>
