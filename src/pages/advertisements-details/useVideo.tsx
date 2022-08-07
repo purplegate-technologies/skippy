@@ -7,7 +7,7 @@ export const useVideoJS = (videoJsOptions: any) => {
     const player = React.useRef<videojs.Player>();
 
   React.useEffect(() => {
-    player.current = videojs(videoNode.current, videoJsOptions)
+    player.current = videojs(videoNode.current, videoJsOptions,)
 
     return () => {
         if (player.current) {
@@ -18,6 +18,7 @@ export const useVideoJS = (videoJsOptions: any) => {
   }, [])
 
   const Video = React.useCallback(
+      () => {},[],
     // ({children, ...props}) => {
     //   return (
     //     <div data-vjs-player key={changedKey}>
@@ -28,7 +29,6 @@ export const useVideoJS = (videoJsOptions: any) => {
     //   )
     // },
     // [changedKey],
-    () => {},[],
   )
   return {Video, player: player.current}
 }

@@ -41,7 +41,20 @@ const VideoPlayer: React.FC<IVideoPlayerProps> = ({ options, className, onReady 
     };
   }, [options, onReady]);
 
-  return <><video ref={videoNode} className={`${className} h-full pt-[100%] embed-responsive embed-responsive-1by1 relative w-full overflow-hidden`} />
+  return <>
+  <video ref={videoNode} className={`${className} hidden h-full pt-[100%] embed-responsive embed-responsive-1by1 relative w-full overflow-hidden`} />
+    <div>
+      <div
+        className="pt-[100%] embed-responsive embed-responsive-1by1 relative w-full overflow-hidden"
+      >
+        <iframe allowFullScreen className="embed-responsive-item absolute top-0 right-0 bottom-0 left-0 w-full h-full"
+          src="https://www.youtube.com/embed/vlDzYIIOYmM?enablejsapi=2&amp;origin=https%3A%2F%2Fmdbootstrap.com"
+          // allowfullscreen=""
+          data-gtm-yt-inspected-2340190_699="true"
+        // id="240632615"
+        ></iframe>
+      </div>
+    </div>
   </>;
 };
 

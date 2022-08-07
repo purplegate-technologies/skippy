@@ -50,21 +50,17 @@ const AdvertisementDetails = () => {
   };
 
   const videoJsOptions = {
-    // fill: true,
-    // fluid: true,
-    // preload: 'auto',
-    // html5: {
-    //   hls: {
-    //     enableLowInitialPlaylist: true,
-    //     smoothQualityChange: true,
-    //     overrideNative: true,
-    //   },
-    // },
-    sources: [
-      {
-        src: "//vjs.zencdn.net/v/oceans.mp4",
-        type: "video/mp4"
-      },
+  autoplay: false,
+  playbackRates: [0.5, 1, 1.25, 1.5, 2],
+  width: 720,
+  height: 300,
+  controls: true,
+  sources: [
+    {
+      src: '//vjs.zencdn.net/v/oceans.mp4',
+      type: 'video/mp4',
+    },
+
       // {
       //   src: "https://www.youtube.com/watch?v=K9GymlBfrXg",
       //   type: "video/mp4"
@@ -119,7 +115,7 @@ const AdvertisementDetails = () => {
 
           <VideoPlayer
             options={videoJsOptions}
-            className=""
+            className="video-js"
             onReady={handlePlayerReady}
           />
         </div>
