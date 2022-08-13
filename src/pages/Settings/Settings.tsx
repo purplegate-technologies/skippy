@@ -32,6 +32,7 @@ const Settings = () => {
 
     const HandleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        // setFirstName()
     }
 
     return (

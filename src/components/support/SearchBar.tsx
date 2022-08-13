@@ -23,7 +23,7 @@ const SearchBar = ({ className = "", placeholder = "Search", HeaderTitle, text, 
             <div className='flex flex-1 items-center justify-between my-7 ml-3 mr-5'>
                 <h2 className='font-semibold'>{HeaderTitle}</h2>
 
-                useClickable
+                
                 <ThreeVdots  />
             </div>
 
