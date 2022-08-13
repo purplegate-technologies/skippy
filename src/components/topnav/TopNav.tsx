@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import BellIcon from '../../assets/svg/BellIcon'
 import NavImgIcon from '../../assets/svg/NavImgIcon'
 import SearchIcon from '../../assets/svg/SearchIcon'
@@ -32,6 +32,10 @@ const renderUserToggle = (user: any) => (
 )
 
 const TopNav = () => {
+    const location = useLocation()
+    const activePath = location.pathname
+    // activePath === "/settings" ? "topnav__item topnav__item--active" : "topnav__item"
+    console.log(activePath, "activePath")
     return (
         <div className="topnav">
             <div className="topnav__search text-2xl">
@@ -55,7 +59,7 @@ const TopNav = () => {
                     <BellIcon />
                 </Link>
 
-                <Link to="/settings" className="topnav__right-item">
+                <Link to="/settings" className={`topnav__right-item ${activePath && "bg-blue-600"}`}>
                     {/* dropdown here  */}
                     {/* <Dropdown
                         icon="bx bx-bell"
@@ -64,10 +68,10 @@ const TopNav = () => {
                         renderItems={(item: any, index: number) => renderNotificationItem(item, index)}
                         renderFooter={() => <Link to="/">View All</Link>}
                     /> */}
-                    <SettingIcon />
+                    <SettingIcon  {...{activePath}} />
                 </Link>
 
-                <Link to="/user-details" className="topnav__right-item">
+                <Link to="/user-details" className={`topnav__right-item `}>
                     {/* theme settings */}
                     {/* <Dropdown icon="bx bx-user" /> */}
                     {/* <ThemeMenu /> */}
