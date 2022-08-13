@@ -59,7 +59,7 @@ const TopNav = () => {
                     <BellIcon />
                 </Link>
 
-                <Link to="/settings" className={`topnav__right-item ${activePath && "bg-blue-600"}`}>
+                <Link to="/settings" className={`topnav__right-item ${activePath === "/settings" && "bg-blue-600"}`}>
                     {/* dropdown here  */}
                     {/* <Dropdown
                         icon="bx bx-bell"
