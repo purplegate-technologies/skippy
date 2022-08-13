@@ -76,7 +76,7 @@ const AdvertisementDetails = () => {
     <section>
       <div className="flex items-center justify-between">
         <Breadcrubs {...{ bread }} />
-        <Link to="" onClick={() => navigate(-1)} className="text-[#516CF5]" >&#60; &#60; Back</Link>
+        <Link to="" onClick={() => navigate(-1)} className="flex text-[#516CF5]" ><span>&#60;</span> &#60; <span> Back</span></Link>
       </div>
 
       <div className="adverts-details my-5 border rounded-xl shadow-sm p-4">
@@ -93,16 +93,16 @@ const AdvertisementDetails = () => {
             </div>
           </div>
           {/*  */}
-          <div className="flex items-center justify-between lg:mt-auto mt-10">
-            <div className="flex flex-col items-center w-1/2 p-1">
+          <div className="flex float-right place-self-end gap-x-3 lg:mt-auto mt-10">
+            <div onClick={() => {}} className="flex flex-col cursor-pointer items-center p-1">
               <EditIcon />
               <span className='text-[#949AB1] text-xs'>Edit</span>
             </div>
-            <div className="flex flex-col items-center w-1/2 p-1">
+            <div onClick={() => {}} className="flex flex-col cursor-pointer items-center p-1">
               <DeactiviteIcon />
               <span className='text-[#949AB1] text-xs'>Deactivite</span>
             </div>
-            <div className="flex flex-col items-center w-1/2 p-1">
+            <div onClick={() => {}} className="flex flex-col cursor-pointer items-center p-1">
               <ExportIcon />
               <span className='text-[#949AB1] text-xs'>Export</span>
             </div>

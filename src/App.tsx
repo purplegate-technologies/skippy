@@ -19,10 +19,11 @@ import UserDetails from "./pages/Userdetails/UserDetails";
 import Settings from "./pages/Settings/Settings";
 import CreateAderts from "./pages/createAderts/CreateAderts";
 import { selectCurrentToken } from "./features/auth/authSlice";
-import CreatVoucher from "./pages/create-voucher/CreatVoucher";
+import CreateVoucher from "./pages/create-voucher/CreateVoucher";
 import FinanceDetails from "./pages/finance-details/FinanceDetails";
 import AdvertisementDetails from "./pages/advertisements-details/AdvertisementDetails";
 import InviteUser from "./pages/InviteUser/InviteUser";
+import VoucherDetails from "./pages/VoucherDetails/VoucherDetails";
 
 function App() {
   // const  token  = useAppSelector(selectCurrentToken)
@@ -37,7 +38,9 @@ function App() {
         {/* protected routes */}
         <Route element={<RequiredAuth />}>
           <Route path="create-adverts" element={<CreateAderts />} />
-          <Route path="create-voucher" element={<CreatVoucher />} />
+          <Route path="create-voucher" element={<CreateVoucher />} />
+          <Route path="voucher-details" element={<VoucherDetails />} />
+
 
           <Route path="/" element={<Layout />}>
             <Route index element={<Dashboard />} />
