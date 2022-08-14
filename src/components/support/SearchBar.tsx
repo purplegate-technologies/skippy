@@ -19,12 +19,12 @@ interface IProps {
 
 const SearchBar = ({ className = "", placeholder = "Search", HeaderTitle, text, children = null, to = "", onClick }: IProps) => {
     return (
-        <div className='my-5'>
-            <div className='flex flex-1 items-center justify-between my-7 ml-3 mr-5'>
+        <div className='mb-5'>
+            <div className='flex flex-1 items-center justify-between mb-7 ml-3 mr-5'>
                 <h2 className='font-semibold'>{HeaderTitle}</h2>
 
-                
-                <ThreeVdots  />
+
+                <ThreeVdots className='cursor-pointer' />
             </div>
 
             <form className={`flex items-center gap-4 justify-between ${className}`}>
@@ -37,7 +37,7 @@ const SearchBar = ({ className = "", placeholder = "Search", HeaderTitle, text, 
                     />
                 </div>
 
-                <Button to={to} text={text} {...{ children }} className="ml-auto" {...{onClick}} />
+                <Button to={to} text={text} {...{ children }} className="ml-auto px-10" {...{onClick}} />
             </form>
         </div>
     )

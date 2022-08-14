@@ -39,12 +39,13 @@ const Finance = () => {
       <StatusCards />
       {/* Support Search */}
 
-      <SearchBar className='' HeaderTitle='All Vouchers' placeholder='Enter Brand/Voucher Name' text="Create Voucher" onClick={() => navigate('/finance-details')}  />
 
+    <div className="card">
+      <SearchBar className='' HeaderTitle='All Vouchers' placeholder='Enter Brand/Voucher Name' text="Create Voucher" onClick={() => navigate('/finance-details')}  />
       {/* Table */}
       <div className="row">
         <div className="col-12">
-          <div className="card">
+          <div className="">
             <div className="card__body">
               <Table
                 limit='10'
@@ -57,6 +58,9 @@ const Finance = () => {
           </div>
         </div>
       </div>
+
+    </div>
+
     </div>
   )
 }

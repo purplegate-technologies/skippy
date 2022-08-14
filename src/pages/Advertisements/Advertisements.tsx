@@ -60,7 +60,6 @@ const navigate = useNavigate()
       <StatusCards />
       {/* Support Search */}
 
-      <SearchBar HeaderTitle='All Adverts' placeholder='Enter Brand/Ad Name' text='Create Advert' onClick={() => navigate('/advertisements-details')} />
 
       {/* Charts */}
       <div className='row items-center'>
@@ -78,10 +77,13 @@ const navigate = useNavigate()
         </div>
       </div>
       <div className='my-5' />
+
+      <div className="card">
+      <SearchBar HeaderTitle='All Adverts' placeholder='Enter Brand/Ad Name' text='Create Advert' onClick={() => navigate('/advertisements-details')} />
       {/* Table */}
       <div className="row ">
         <div className="col-12">
-          <div className="card">
+          <div className="">
             <div className="card__body">
               <Table
                 limit='10'
@@ -93,6 +95,8 @@ const navigate = useNavigate()
             </div>
           </div>
         </div>
+      </div>
+
       </div>
 
       {/* Table End */}

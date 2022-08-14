@@ -6,9 +6,9 @@ import {
     DetailedHTMLProps,
     InputHTMLAttributes
 } from 'react';
-import Input from './Input';
-import { AIarrowdown1Outlin } from 'arvara-icons';
-import { ClickOutside } from '../hooks/useClickOutside';
+// import { AIarrowdown1Outlin } from 'arvara-icons';
+import { ClickOutside } from '../../app/useClickOutside';
+import Input from '../input/Input';
 
 export interface DropdownOption<T = string> {
     value: T;
@@ -40,7 +40,7 @@ export default function DropDown({
     data = [],
     defaultValue = '',
     searchable = false,
-    ...rest
+    ...props
 }: Props) {
     const [open, setOpen] = useState(false);
     const [options, setOptions] = useState(data);
@@ -79,18 +79,18 @@ export default function DropDown({
         >
             <div></div>
             <Input
-                {...rest}
+                // {...props}
                 label={label}
                 value={value}
-                ref={innerRef}
+                // ref={innerRef}
                 onChange={onChange}
                 onClick={() => setOpen(!open)}
                 className="pointer-events-[initial]"
-                TrailingIcon={() => (
-                    <span onClick={() => setOpen(!open)}>
-                        <AIarrowdown1Outlin />
-                    </span>
-                )}
+                // TrailingIcon={() => (
+                //     <span onClick={() => setOpen(!open)}>
+                //         <AIarrowdown1Outlin />
+                //     </span>
+                // )}
             />
             {open && (
                 <div
