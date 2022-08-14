@@ -8,6 +8,10 @@ export interface IFormType {
 }
 
 export const initInput: IFormType = { input: "", error: "" }
+interface InputIconProps {
+    TrailingIcon?: () => JSX.Element
+    Loadingicon? : () => JSX.Element
+}
 
 
 interface Iprops {
@@ -35,6 +39,7 @@ interface Iprops {
     labelStyle?: string
     minLength?: number
     maxLength?: number
+    TrailingIcon?: Function | any
 }
 
 const Input = ({
@@ -44,11 +49,11 @@ const Input = ({
     placeholder = "Placeholder",
     name = "name",
     children,
-    onChange = () => {},
-    onBlur = () => {},
-    onClick = () => {},
-    onKeyPress = () => {},
-    onKeyDown = () => {},
+    onChange = () => { },
+    onBlur = () => { },
+    onClick = () => { },
+    onKeyPress = () => { },
+    onKeyDown = () => { },
     required = true,
     requiredMsg = "",
     error = "",
@@ -59,7 +64,9 @@ const Input = ({
     labelStyle = "",
     maxLength,
     minLength,
-}: Iprops) => {
+    TrailingIcon = null
+
+}: Iprops & InputIconProps) => {
 
     const input = (
         <input
@@ -78,6 +85,7 @@ const Input = ({
             checked={checked}
             maxLength={maxLength}
             minLength={minLength}
+            // TrailingIcon={TrailingIcon}
         />
     )
 
@@ -107,6 +115,13 @@ const Input = ({
             </label>
             {input}
             <span>{error}</span>
+
+            {/* new trailing icon */}
+            {/* {TrailingIcon() && (
+                <span className="trailing-icon">
+                'TrailingIcon'
+                </span>
+            )} */}
         </div>
     )
 }

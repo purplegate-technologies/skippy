@@ -13,6 +13,10 @@ import './assets/css/index.css'
 
 import "video.js/dist/video-js.css";
 
+// react-date-range
+import 'react-date-range/dist/styles.css'; // main css file
+import 'react-date-range/dist/theme/default.css'; // theme css file
+
 const container = document.getElementById('root')!;
 const root = createRoot(container);
 

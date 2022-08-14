@@ -11,7 +11,7 @@ import { useNavigate } from 'react-router-dom'
 const ManageUsers = () => {
   const navigate = useNavigate()
 
-  const [tabIndex, setTabIndex ] = useState<string>("Administrators")
+  const [tabIndex, setTabIndex] = useState<string>("Administrators")
 
   const customerTableHead = [
     '',
@@ -56,47 +56,53 @@ const ManageUsers = () => {
 
         {tabIndex !== "Administrators" && (<>
           {/* tab index */}
-          <SearchBar HeaderTitle='App Users' text="Invite User" onClick={() => navigate('/invite-users')} />
 
-          {/* tab end */}
-          <div className="row">
-            <div className="col-12">
-              <div className="card">
-                {/* Tabs */}
-                <div className="card__body">
-                  <Table
-                    limit='10'
-                    headData={customerTableHead}
-                    renderHead={(item: any, index: number) => renderHead(item, index)}
-                    bodyData={advertlist}
-                    renderBody={(item: any, index: number) => renderBody(item, index)}
-                  />
+          <div className="card">
+            <SearchBar HeaderTitle='App Users' text="Invite User" onClick={() => navigate('/invite-users')} />
+            {/* tab end */}
+            <div className="row">
+              <div className="col-12">
+                <div className="">
+                  {/* Tabs */}
+                  <div className="card__body">
+                    <Table
+                      limit='10'
+                      headData={customerTableHead}
+                      renderHead={(item: any, index: number) => renderHead(item, index)}
+                      bodyData={advertlist}
+                      renderBody={(item: any, index: number) => renderBody(item, index)}
+                    />
+                  </div>
                 </div>
               </div>
             </div>
+
           </div>
           {/* end of atabIndex === "Administrators" */}
         </>)}
         {tabIndex === "Administrators" && (<>
           {/* tab index */}
-          <SearchBar HeaderTitle='Administrators' text="Create Admin" onClick={() => navigate('/settings')} />
+          <div className="card">
+            <SearchBar HeaderTitle='Administrators' text="Create Admin" onClick={() => navigate('/settings')} />
 
-          {/* tab end */}
-          <div className="row">
-            <div className="col-12">
-              <div className="card">
-                {/* Tabs */}
-                <div className="card__body">
-                  <Table
-                    limit='10'
-                    headData={customerTableHead}
-                    renderHead={(item: any, index: number) => renderHead(item, index)}
-                    bodyData={advertlist}
-                    renderBody={(item: any, index: number) => renderBody(item, index)}
-                  />
+            {/* tab end */}
+            <div className="row">
+              <div className="col-12">
+                <div className="">
+                  {/* Tabs */}
+                  <div className="card__body">
+                    <Table
+                      limit='10'
+                      headData={customerTableHead}
+                      renderHead={(item: any, index: number) => renderHead(item, index)}
+                      bodyData={advertlist}
+                      renderBody={(item: any, index: number) => renderBody(item, index)}
+                    />
+                  </div>
                 </div>
               </div>
             </div>
+
           </div>
           {/* end of atabIndex === "Administrators" */}
         </>)}

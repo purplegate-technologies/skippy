@@ -34,25 +34,28 @@ const ActivityLog = () => {
 
   return (
     <>
-    {/* Suport Search */}
+      {/* Suport Search */}
 
-    <SearchBar HeaderTitle='Activity Log' placeholder='Search Activity' text="Invite User" onClick={() => navigate('/invite-users')} />
+      <div className="card">
+        <SearchBar HeaderTitle='Activity Log' placeholder='Search Activity' text="Invite User" onClick={() => navigate('/invite-users')} />
 
-    {/* Table */}
-    <div className="row">
-        <div className="col-12">
-          <div className="card">
-            <div className="card__body">
-              <Table
-                limit='10'
-                headData={customerTableHead}
-                renderHead={(item: any, index: number) => renderHead(item, index)}
-                bodyData={advertlist}
-                renderBody={(item: any, index: number) => renderBody(item, index)}
-              />
+        {/* Table */}
+        <div className="row">
+          <div className="col-12">
+            <div className="">
+              <div className="card__body">
+                <Table
+                  limit='10'
+                  headData={customerTableHead}
+                  renderHead={(item: any, index: number) => renderHead(item, index)}
+                  bodyData={advertlist}
+                  renderBody={(item: any, index: number) => renderBody(item, index)}
+                />
+              </div>
             </div>
           </div>
         </div>
+
       </div>
     </>
   )

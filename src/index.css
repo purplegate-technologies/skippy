@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 /* import 'react-redux-toastr/lib/css/react-redux-toastr.min.css' */
 * {
   padding: 0;
