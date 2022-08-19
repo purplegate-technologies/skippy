@@ -24,6 +24,7 @@ import FinanceDetails from "./pages/finance-details/FinanceDetails";
 import AdvertisementDetails from "./pages/advertisements-details/AdvertisementDetails";
 import InviteUser from "./pages/InviteUser/InviteUser";
 import VoucherDetails from "./pages/VoucherDetails/VoucherDetails";
+import ResetPassword from "./pages/login/ResetPassword";
 
 function App() {
   // const  token  = useAppSelector(selectCurrentToken)
@@ -32,6 +33,7 @@ function App() {
       <ToastContainer />
       <Routes>
         {/* public routes */}
+        <Route path="reset" element={<ResetPassword />} />
         <Route path="login" element={<LogIn />} />
         <Route path="*" element={<Navigate to='/' />} />
 

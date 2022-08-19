@@ -1,6 +1,6 @@
 import './login.css'
 import CompanyLogo from "../../assets/svg/CompanyLogo"
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 // import { useLoginUserMutation } from '../../services/authApis'
 import { useAppDispatch, useAppSelector } from '../../app/hooks'
 import React, { useEffect, useRef, useState } from 'react'
@@ -148,7 +148,7 @@ const LogIn = () => {
             </div>
 
             <div className='mb-3 userInput'>
-              <span className="text-[#FF5A5A] font-bold text-sm">Reset Passsword</span>
+              <Link to="/reset" className="text-[#FF5A5A] font-bold text-sm">Reset Passsword</Link>
             </div>
 
             <div className="">

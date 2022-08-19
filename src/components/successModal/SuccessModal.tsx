@@ -1,6 +1,6 @@
 // import { ReactComponent as Cancel } from "../../assets/icons/Path.svg";
 // import { ReactComponent as Mark } from "../../assets/icons/checkmark.svg";
-import "./style.scss";
+import "./successModal.css";
 const SuccessModal = ({ icon, text, closeModal }: any) => {
   return (
     <div onClick={closeModal} className="successModal">
