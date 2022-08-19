@@ -55,6 +55,7 @@
     ]
   },
   "devDependencies": {
+    "@types/react-date-range": "^1.4.4",
     "@types/video.js": "^7.3.43",
     "autoprefixer": "^10.4.7",
     "postcss": "^8.4.14",

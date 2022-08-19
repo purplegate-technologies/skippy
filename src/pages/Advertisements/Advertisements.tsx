@@ -8,8 +8,12 @@ import { UserData } from '../dashboard/data'
 import SearchBar from '../../components/support/SearchBar'
 import { useNavigate } from 'react-router-dom'
 import CategoryFilter from '../../components/CategoryFilter/CategoryFilter'
+import { useGetAdvertStatsQuery } from '../../features/stats/statsApis'
 
 const Advertisements = () => {
+  const {data: advertData} = useGetAdvertStatsQuery()
+
+  console.log(advertData, "useGetAdvertStatsQuery")
 const navigate = useNavigate()
 
   const customerTableHead = [
@@ -78,6 +82,10 @@ const navigate = useNavigate()
         </div>
       </div>
       <div className='my-5' />
+
+      <div className="card">
+      <SearchBar HeaderTitle='All Adverts' placeholder='Enter Brand/Ad Name' text='Create Advert' onClick={() => navigate('/advertisements-details')} />
+      <CategoryFilter />
       {/* Table */}
       <div className="row ">
         <div className="col-12">
