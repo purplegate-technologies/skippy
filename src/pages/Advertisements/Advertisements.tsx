@@ -78,10 +78,6 @@ const navigate = useNavigate()
         </div>
       </div>
       <div className='my-5' />
-
-      <div className="card">
-      <SearchBar HeaderTitle='All Adverts' placeholder='Enter Brand/Ad Name' text='Create Advert' onClick={() => navigate('/advertisements-details')} />
-      <CategoryFilter />
       {/* Table */}
       <div className="row ">
         <div className="col-12">

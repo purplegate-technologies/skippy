@@ -43,7 +43,7 @@ const Finance = () => {
 
     <div className="card">
       <SearchBar className='' HeaderTitle='All Vouchers' placeholder='Enter Brand/Voucher Name' text="Create Voucher" onClick={() => navigate('/finance-details')}  />
-      {/* <CategoryFilter /> */}
+
       {/* Table */}
       <div className="row">
         <div className="col-12">

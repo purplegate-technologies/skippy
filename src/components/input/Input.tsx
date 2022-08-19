@@ -115,13 +115,6 @@ const Input = ({
             </label>
             {input}
             <span>{error}</span>
-
-            {/* new trailing icon */}
-            {/* {TrailingIcon() && (
-                <span className="trailing-icon">
-                'TrailingIcon'
-                </span>
-            )} */}
         </div>
     )
 }
