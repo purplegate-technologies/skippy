@@ -6,6 +6,7 @@ import SearchBar from '../../components/support/SearchBar'
 // import Input from '../../components/input/Input'
 import "./styles.css"
 import { useNavigate } from 'react-router-dom'
+import CategoryFilter from '../../components/CategoryFilter/CategoryFilter'
 
 
 const ManageUsers = () => {
@@ -59,6 +60,7 @@ const ManageUsers = () => {
 
           <div className="card">
             <SearchBar HeaderTitle='App Users' text="Invite User" onClick={() => navigate('/invite-users')} />
+            <CategoryFilter />
             {/* tab end */}
             <div className="row">
               <div className="col-12">
