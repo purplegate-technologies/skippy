@@ -68,9 +68,9 @@ const Advertisements = () => {
 
 
       {/* Charts */}
-      <div className='row items-center my-10'>
-        <div className='col-6 px-3'>
-          <div className='basis-1/2 mx-4'>
+      <div className='row items-center my-10 gap-x-3'>
+        <div className='col-6 card'>
+          <div className='basis-1/2'>
             <div className="flex items-center justify-between">
               <h6 className='text-[#171837] text-sm'>nternal Ads Watch Trend</h6>
               <ThreeVdots />
@@ -78,8 +78,8 @@ const Advertisements = () => {
             <LinearGradientChart chartData={userData} />
           </div>
         </div>
-        <div className='col-6 px-3'>
-          <div className='basis-1/2 mx-4'>
+        <div className='col-6 card'>
+          <div className='basis-1/2'>
             <div className="flex items-center justify-between">
               <h6 className='text-[#171837] text-sm'>External Ads Watch Trend</h6>
               <ThreeVdots />

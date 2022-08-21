@@ -3,11 +3,11 @@
 :root {
   --main-bg: #ffffff;
   --second-bg: #fafafb;
-  --txt-color: #000; 
-  --txt-color: #455560; 
+  --txt-color: #000;
+  --txt-color: #455560;
   --txt-pre: #949ab1;
   --txt-white: #fff;
-  --main-color: #349eff; 
+  --main-color: #349eff;
   --second-color: #516CF5;
   --box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 
@@ -67,7 +67,7 @@ a {
 
 a:hover {
   /* color: var(--main-color); */
-  color: #949ab1; 
+  color: #949ab1;
 }
 
 button {
@@ -97,7 +97,8 @@ input {
 }
 
 .card {
-  padding: 20px;
+  padding: 15px;
+  /* padding: 20px; */
   margin-bottom: 30px;
   background-color: var(--main-bg);
   box-shadow: var(--box-shadow);

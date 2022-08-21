@@ -178,7 +178,7 @@ const Traffic = () => {
         {/* end of grid donuts */}
 
         <div className="grid md:grid-cols-2">
-          <div className="basis-1/2 mx-4">
+          <div className="card">
           <div className="flex items-center justify-between">
               <h6 className='text-[#171837] text-sm'>Active Daily Users</h6>
               <ThreeVdots />
