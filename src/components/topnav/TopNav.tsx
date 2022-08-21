@@ -35,7 +35,7 @@ const TopNav = () => {
     const location = useLocation()
     const activePath = location.pathname
     // activePath === "/settings" ? "topnav__item topnav__item--active" : "topnav__item"
-    console.log(activePath, "activePath")
+    
     return (
         <div className="topnav">
             <div className="topnav__search text-2xl">

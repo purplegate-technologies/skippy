@@ -61,7 +61,8 @@ const data = {
             label: "First dataset",
             data: [33, 53, 85, 41, 44, 65],
             fill: true,
-            backgroundColor: "rgba(75,192,192,0.2)",
+            // backgroundColor: "rgba(75,192,192,0.2)",
+            backgroundColor: "#742774",
             borderColor: "rgba(75,192,192,1)"
         },
         {
@@ -75,7 +76,7 @@ const data = {
 
 
 
-const LinearGradientChart = ({ chartData }: any) => {
+const LinearGradientChart = ({ chartData, backgroundColor }: any) => {
     const chartRef = useRef<any>();
     const onClick = (event: Event  | any) => {
       console.log(getElementAtEvent(chartRef.current, event));

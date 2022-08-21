@@ -13,7 +13,7 @@ export const walletApiSlice = apiSlice.injectEndpoints({
             providesTags: ['Wallet'],
         }),
         getRedeemPoints: builder.query({ // get advert user
-            query: (id) => `wallet/${id}/redeem`,
+            query: (id: number) => `wallet/${id}/redeem`,
             transformResponse: (response: { data: {} }, meta, arg) => response.data,
             providesTags: ['Wallet'],
         }),

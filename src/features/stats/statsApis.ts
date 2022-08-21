@@ -60,7 +60,8 @@ export const statsApiSlice = apiSlice.injectEndpoints({
             // transformResponse: (response: { data: getDashbbordStatsTypes }, meta, arg) => response.data,
             providesTags: ['Stats'],
         }),
-        getDashboardStats: builder.query<getDashbbordStatsTypes, void>({ // get dashboard stats
+        // getDashboardStats: builder.query<getDashbbordStatsTypes, void>({ // get dashboard stats
+        getDashboardStats: builder.query<{} | undefined | any, void>({ // get dashboard stats
             query: () => `stats/dashboard`,
             // transformResponse: (response: { data: {} }, meta, arg) => response.data,
             providesTags: ['Stats'],

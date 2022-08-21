@@ -56,7 +56,7 @@ export const options = {
 const labels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", 'July'];
 
 
-const BarChart = ({ chartData }: any) => {
+const BarChart = ({ chartData, }: any) => {
 
     const chartRef = useRef<any>();
     const onClick = (event: Event | any) => {
