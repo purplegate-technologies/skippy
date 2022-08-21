@@ -5,6 +5,7 @@ import { UserData } from '../dashboard/data'
 import DoughnutChart from '../../components/charts/DoughnutChart';
 import Button from '../../components/button/Button';
 import { AntPieChart } from '../../components/charts/AntPieChart';
+import ThreeVdots from '../../assets/svg/ThreeVdots';
 
 
 export const barChartData = [
@@ -178,6 +179,10 @@ const Traffic = () => {
 
         <div className="grid md:grid-cols-2">
           <div className="basis-1/2 mx-4">
+          <div className="flex items-center justify-between">
+              <h6 className='text-[#171837] text-sm'>Active Daily Users</h6>
+              <ThreeVdots />
+            </div>
             <BarChart chartData={userData} />
           </div>
         </div>

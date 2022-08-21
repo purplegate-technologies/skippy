@@ -9,12 +9,13 @@ import SearchBar from '../../components/support/SearchBar'
 import { useNavigate } from 'react-router-dom'
 import CategoryFilter from '../../components/CategoryFilter/CategoryFilter'
 import { useGetAdvertStatsQuery } from '../../features/stats/statsApis'
+import ThreeVdots from '../../assets/svg/ThreeVdots'
 
 const Advertisements = () => {
-  const {data: advertData} = useGetAdvertStatsQuery()
+  const { data: advertData } = useGetAdvertStatsQuery()
 
   console.log(advertData, "useGetAdvertStatsQuery")
-const navigate = useNavigate()
+  const navigate = useNavigate()
 
   const customerTableHead = [
     '',
@@ -67,16 +68,22 @@ const navigate = useNavigate()
 
 
       {/* Charts */}
-      <div className='row items-center'>
+      <div className='row items-center my-10'>
         <div className='col-6 px-3'>
           <div className='basis-1/2 mx-4'>
-            <h6 className='text-black'>Total advert Watch Trend</h6>
+            <div className="flex items-center justify-between">
+              <h6 className='text-[#171837] text-sm'>nternal Ads Watch Trend</h6>
+              <ThreeVdots />
+            </div>
             <LinearGradientChart chartData={userData} />
           </div>
         </div>
         <div className='col-6 px-3'>
           <div className='basis-1/2 mx-4'>
-            <h6 className='text-black'>Total Payout Trend</h6>
+            <div className="flex items-center justify-between">
+              <h6 className='text-[#171837] text-sm'>External Ads Watch Trend</h6>
+              <ThreeVdots />
+            </div>
             <LinearGradientChart chartData={userData} />
           </div>
         </div>
@@ -84,24 +91,24 @@ const navigate = useNavigate()
       <div className='my-5' />
 
       <div className="card">
-      <SearchBar HeaderTitle='All Adverts' placeholder='Enter Brand/Ad Name' text='Create Advert' onClick={() => navigate('/advertisements-details')} />
-      <CategoryFilter />
-      {/* Table */}
-      <div className="row ">
-        <div className="col-12">
-          <div className="">
-            <div className="card__body">
-              <Table
-                limit='10'
-                headData={customerTableHead}
-                renderHead={(item: any, index: number) => renderHead(item, index)}
-                bodyData={advertlist}
-                renderBody={(item: any, index: number) => renderBody(item, index)}
-              />
+        <SearchBar HeaderTitle='All Adverts' placeholder='Enter Brand/Ad Name' text='Create Advert' onClick={() => navigate('/advertisements-details')} />
+        <CategoryFilter />
+        {/* Table */}
+        <div className="row ">
+          <div className="col-12">
+            <div className="">
+              <div className="card__body">
+                <Table
+                  limit='10'
+                  headData={customerTableHead}
+                  renderHead={(item: any, index: number) => renderHead(item, index)}
+                  bodyData={advertlist}
+                  renderBody={(item: any, index: number) => renderBody(item, index)}
+                />
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
       </div>
 

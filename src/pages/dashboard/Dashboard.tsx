@@ -6,6 +6,7 @@ import StatusCards from '../../components/statusCard/StatusCards'
 import BarChart from '../../components/charts/BarChart'
 import SearchBar from '../../components/support/SearchBar'
 import { useGetDashboardStatsQuery } from '../../features/stats/statsApis'
+import ThreeVdots from '../../assets/svg/ThreeVdots'
 
 const Dashboard = () => {
     const { data, isSuccess, isFetching, isLoading } = useGetDashboardStatsQuery()
@@ -88,10 +89,13 @@ const Dashboard = () => {
                         </div>
                     </div>
                 </div>
-                <div className='row justify-center'>
+                <div className='row justify-center my-10'>
                     <div className='col-6'>
                         <div className='basis-1/2 mx-4'>
-                            <h6 className='text-black'>Total advert Watch Trend</h6>
+                            <div className="flex items-center justify-between">
+                                <h6 className='text-[#171837] text-sm'>Total advert Watch Trend</h6>
+                                <ThreeVdots />
+                            </div>
                             <LinearGradientChart chartData={userData}
                             // {...{ backgroundColor }}
                             />
@@ -99,7 +103,10 @@ const Dashboard = () => {
                     </div>
                     <div className='col-6'>
                         <div className='basis-1/2 mx-4'>
-                            <h6 className='text-black'>Total Payout Trend</h6>
+                            <div className="flex items-center justify-between">
+                                <h6 className='text-[#171837] text-sm'>Total Payout Trend</h6>
+                                <ThreeVdots />
+                            </div>
                             <LinearGradientChart chartData={userData} />
                         </div>
                     </div>
