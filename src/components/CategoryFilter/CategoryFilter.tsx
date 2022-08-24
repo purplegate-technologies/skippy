@@ -24,8 +24,8 @@ const CategoryFilter = () => {
         <div className='flex items-center justify-between gap-1 bg-[#F6F6F6] p-4'>
             {/* <DropDown defaultValue='Select Category' data={[]} className='border-[#949AB1] ' />
             <DropDown defaultValue='Select Status' data={[]} className='border-[#949AB1] ' /> */}
-            <Dropdown> Select Category</Dropdown>
-            <Dropdown> Select Status</Dropdown>
+            <Dropdown  className="p-4 border bg-red"> Select Category</Dropdown>
+            <Dropdown className="p-4 border"> Select Status</Dropdown>
 
             {/* <Dropdown>
             Select Status

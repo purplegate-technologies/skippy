@@ -17,7 +17,7 @@ const Advertisements = () => {
   console.log(advertData, "useGetAdvertStatsQuery")
   const navigate = useNavigate()
 
-  const customerTableHead = [
+  const customerTableHead: Array<string> = [
     '',
     'name',
     'email',

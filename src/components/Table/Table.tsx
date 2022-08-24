@@ -1,9 +1,19 @@
-import {useState} from 'react'
+import {ReactNode, useState} from 'react'
 import './table.css'
 
-const Table = (props) => {
 
-    const initDataShow = props.limit && props.bodyData ? props.bodyData.slice(0, Number(props.limit)) : props.bodyData
+interface tableProps {
+    limit: string
+    // remove: (n: string) => void;
+    headData: string[]
+    renderHead: any
+    renderBody: any
+    bodyData: {}[]
+
+}
+const Table = ({limit, headData, renderBody, renderHead, bodyData}: tableProps) => {
+
+    const initDataShow = limit && bodyData ? bodyData.slice(0, Number(limit)) : bodyData
 
     const [dataShow, setDataShow] = useState(initDataShow)
     const [currPage, setCurrPage] = useState(0)
@@ -13,22 +23,22 @@ const Table = (props) => {
     const [maxPageNumberLimit, setmaxPageNumberLimit] = useState(5);
     const [minPageNumberLimit, setminPageNumberLimit] = useState(0);
     // let pages = 1
-    let pages = 1
+    const pages: number | any = 1
 
-    let range = []
+    const range: Array<number> = []
 
-    if (props.limit !== undefined) {
-        let page = Math.floor(props.bodyData.length / Number(props.limit))
-        pages = props.bodyData.length % Number(props.limit) === 0 ? page : page + 1
+    if (limit !== undefined) {
+        let page = Math.floor(bodyData.length / Number(limit))
+        pages = bodyData.length % Number(limit) === 0 ? page : page + 1
         range = [...Array(pages).keys()]
     }
 
 
-    const selectPage = (page) => {
-        const start = Number(props.limit) * page
-        const end = start + Number(props.limit)
+    const selectPage = (page: number) => {
+        const start = Number(limit) * page
+        const end = start + Number(limit)
 
-        setDataShow(props.bodyData.slice(start, end))
+        setDataShow(bodyData.slice(start, end))
 
         setCurrPage(page)
     }
@@ -37,24 +47,24 @@ const Table = (props) => {
     const handleNextbtn = () => {
         setCurrPage(currPage + 1);
         selectPage(currPage + 1)
-    
+
         if (currPage + 1 > maxPageNumberLimit) {
           setmaxPageNumberLimit(maxPageNumberLimit + pageNumberLimit);
           setminPageNumberLimit(minPageNumberLimit + pageNumberLimit);
         }
-      };
-    
+      }
+
       const handlePrevbtn = () => {
         setCurrPage(currPage - 1);
         // selectPage(currPage - 1)
-    
+
         if ((currPage - 1) % pageNumberLimit == 0) {
           setmaxPageNumberLimit(maxPageNumberLimit - pageNumberLimit);
           setminPageNumberLimit(minPageNumberLimit - pageNumberLimit);
         }
       };
 
-      
+
         let pageIncrementBtn = null;
         if (pages.length > maxPageNumberLimit) {
             pageIncrementBtn = <li onClick={handleNextbtn}> &hellip; </li>;
@@ -74,21 +84,21 @@ const Table = (props) => {
             <div className="table-wrapper">
                 <table>
                     {
-                        props.headData && props.renderHead ? (
+                        headData && renderHead ? (
                             <thead>
                                 <tr>
                                     {
-                                        props.headData.map((item, index) => props.renderHead(item, index))
+                                        headData.map((item, index) => renderHead(item, index))
                                     }
                                 </tr>
                             </thead>
                         ) : null
                     }
                     {
-                        props.bodyData && props.renderBody ? (
+                        bodyData && renderBody ? (
                             <tbody>
                                 {
-                                    dataShow.map((item, index) => props.renderBody(item, index))
+                                    dataShow.map((item, index) => renderBody(item, index))
                                 }
                             </tbody>
                         ) : null
@@ -109,17 +119,17 @@ const Table = (props) => {
                 </div>
                 {pages > 1 ? (
                         <div className="table__pagination">
-                            <button onClick={handlePrevbtn} disabled={currPage == pages[0] ? true : false}>Prev</button>                            
+                            <button onClick={handlePrevbtn} disabled={currPage === pages[0] ? true : false}>Prev</button>
                                {range.map((item, index) => {
                                     if (item < maxPageNumberLimit + 1 && item > minPageNumberLimit) {
                                     return <div key={index} className={`table__pagination-item ${currPage === index && 'active'}`} onClick={() => selectPage(index)}>
                                         {item}
-                                    </div>                                        
+                                    </div>
                                     } else {
                                         return null
                                     }
                                 })}
-                            <button onClick={handleNextbtn} disabled={currPage == pages[pages.length - 1] ? true : false}>Next</button>
+                            <button onClick={handleNextbtn} disabled={currPage === pages[pages.length - 1] ? true : false}>Next</button>
                         </div>
                     ) : null
                 }

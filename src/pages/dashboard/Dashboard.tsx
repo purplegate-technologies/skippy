@@ -54,6 +54,12 @@ const Dashboard = () => {
     })
     return (
         <>
+                {Object.keys(data).map( (key, index) => {
+                    <div key={index}>
+                        
+                    </div>
+                })}
+
             <section className='mb-10'>
                 <StatusCards />
                 <h4 className='dashheade'>Ads  Statistics</h4>
@@ -62,23 +68,26 @@ const Dashboard = () => {
                 {/* <div className='row justify-center'> */}
                 <div className='grid lg:grid-cols-3'>
                     {/* <div className="col-6"> */}
-                    <div className="col-span-1">
+                    <div className="col-span-1  self-center">
                         {/* <div className='basis-1/2 mx-4'> */}
                         <div className='mx-4 flex flex-col justify-between'>
                             {/* <BarChart chartData={userData} /> */}
                             <div>
-                                <div className="bg-[#516CF5]"></div>
-                                <p className='text-[#949AB1 text-xs my-3'>Active Daily Players</p>
+                                <p className='text-[#949AB1 text-xs'>Active Daily Players</p>
                                 <h1 className="font-bold">980</h1>
                             </div>
-                            <div>
-                                <div className="bg-[#A3B1FA]"></div>
-                                <p className='text-[#949AB1 text-xs my-3'>Total Internal Ad’s</p>
-                                <h1 className="font-bold">980</h1>
+                            <div className="my-3">
+                                <div className="bg-[#516CF5] w-5 h-2 my-2 rounded-full">
+                                    <div className="h-2"></div>
+                                </div>
+                                <p className='text-[#949AB1 text-xs'>Total Internal Ad’s</p>
+                                <h1 className="font-bold">800</h1>
                             </div>
-                            <div>
-                                <div className="bg-[#A3B1FA]"></div>
-                                <p className='text-[#949AB1 text-xs my-3'>Total Internal Ad’s</p>
+                            <div className="my-3">
+                                <div className="bg-[#A3B1FA] w-5 h-2 my-2 rounded-full">
+                                    <div className="h-2"></div>
+                                </div>
+                                <p className='text-[#949AB1 text-xs'>Total Internal Ad’s</p>
                                 <h1 className="font-bold">980</h1>
                             </div>
                         </div>

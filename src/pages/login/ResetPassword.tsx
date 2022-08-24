@@ -86,7 +86,7 @@ const ResetPassword = () => {
     if (isSuccess) {
       const { token, admin }: any = resetData
       // dispatch(setUser({ user: admin, token}))
-     navigate('/', { replace: true })
+     navigate('/login', { replace: true })
       toast.success("User Login Successfully")
     }
   }, [isSuccess, navigate])

@@ -3,6 +3,7 @@ import BellIcon from '../../assets/svg/BellIcon'
 import NavImgIcon from '../../assets/svg/NavImgIcon'
 import SearchIcon from '../../assets/svg/SearchIcon'
 import SettingIcon from '../../assets/svg/SettingIcon'
+import Dropdown from '../dropdown/Dropdown'
 import Input from '../input/Input'
 import './topnav.css'
 
@@ -35,7 +36,7 @@ const TopNav = () => {
     const location = useLocation()
     const activePath = location.pathname
     // activePath === "/settings" ? "topnav__item topnav__item--active" : "topnav__item"
-    
+
     return (
         <div className="topnav">
             <div className="topnav__search text-2xl">
@@ -61,13 +62,13 @@ const TopNav = () => {
 
                 <Link to="/settings" className={`topnav__right-item ${activePath === "/settings" && "bg-blue-600"}`}>
                     {/* dropdown here  */}
-                    {/* <Dropdown
+                    <Dropdown
                         icon="bx bx-bell"
                         badge="12"
-                        contentData={notifications}
+                        contentData={[]}
                         renderItems={(item: any, index: number) => renderNotificationItem(item, index)}
                         renderFooter={() => <Link to="/">View All</Link>}
-                    /> */}
+                    />
                     <SettingIcon  {...{activePath}} />
                 </Link>
 
