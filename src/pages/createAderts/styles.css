@@ -1,0 +1,13 @@
+.tag {
+    text-align: center;
+}
+
+.slick-slide img {
+    margin: auto;
+    width: 50%;
+    height: 50%;
+    background: red;
+}
+.slick-arrow .slick-prev {
+    background: #000;
+}

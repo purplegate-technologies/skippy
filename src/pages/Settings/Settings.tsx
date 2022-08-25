@@ -127,11 +127,11 @@ const Settings = () => {
                                 name="mobile"
                                 placeholder={("09039278115")}
                                 type="tel"
-                                value={email}
+                                value={mobile}
                                 onChange={(e: Event) => setMobile((e.target as HTMLInputElement).value)}
                             />
 
-                            <Switch label="Activate Account" />
+                            <Switch label="Activate Account"  />
                             <Button className="mt-[2.5rem] mb-[2.36rem] capitalize" text="Save Changes" type="submit" />
                         </div>
                     </div>

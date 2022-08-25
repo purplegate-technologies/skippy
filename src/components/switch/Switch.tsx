@@ -18,7 +18,7 @@ export default function Switch(
 		checked: check,
 		onChange = () => {}
 	} = props;
-	const [checked, setChecked] = useState(check);
+	const [checked, setChecked] = useState(	check);
 
 	return (
 		<>
