@@ -4,11 +4,27 @@ import Input from '../../components/input/Input'
 
 const MyDetails = () => {
 
-    const [firstName, setFirstName] = useState("")
-    const [lastName, setLastName] = useState("")
-    const [email, setEmail] = useState("")
-    const [mobile, setMobile] = useState("")
-    const [roles, setRoles] = useState("Finances and billing")
+    const initialValues = {
+        firstName: '',
+        surname: '',
+        email: '',
+        phoneNumber:"",
+        password: '',
+        confirmPassword: ''
+    }
+
+    const [formValues, setFormValues] = useState(initialValues)
+    // const [firstName, setFirstName] = useState("")
+    // const [surname, setLastName] = useState("")
+    // const [email, setEmail] = useState("")
+    // const [phoneNumber, setPhoneNumber] = useState("")
+    // const [roles, setRoles] = useState("Finances and billing")
+
+    const { firstName, surname, email, phoneNumber, confirmPassword, password } = formValues
+
+    const  handleChange  = (e: React.ChangeEvent<HTMLFormElement>) => {
+        setFormValues({...formValues, [e.target.values]: e.target.name})
+    }
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -27,9 +43,9 @@ const MyDetails = () => {
                         label={("FIRST NAME")}
                         name={"Firstname"}
                         placeholder={("First Name")}
-                        requiredMsg="*"
                         value={firstName}
-                        onChange={(e: Event) => setFirstName((e.target as HTMLInputElement).value)}
+                        onChange={handleChange}
+                        // onChange={(e: Event) => setFirstName((e.target as HTMLInputElement).value)}
                     />
                     <Input
                         // divStyel="w-[19rem]contactUs-form-lable"
@@ -38,9 +54,8 @@ const MyDetails = () => {
                         label={("SURNAME")}
                         name="surname"
                         placeholder={("User Name")}
-                        requiredMsg="*"
-                        value={lastName}
-                        onChange={(e: Event) => setLastName((e.target as HTMLInputElement).value)}
+                        value={surname}
+                        onChange={handleChange}
                     />
                 </div>
 
@@ -54,21 +69,19 @@ const MyDetails = () => {
                         name="email"
                         placeholder={("admin@skippy.com")}
                         type="email"
-                        requiredMsg="*"
                         value={email}
-                        onChange={(e: Event) => setEmail((e.target as HTMLInputElement).value)}
+                        onChange={handleChange}
                     />
                     <Input
                         // divStyel="w-[19rem]contactUs-form-lable"
                         divStyel="contactUs-form-lable"
                         className={"border-[#949AB1] border-1 rounded p-2 my-3 w-full"}
                         label={("MOBILE NUMBER")}
-                        name="mobile"
+                        name="phoneNumber"
                         placeholder={("09039278115")}
                         type="tel"
-                        requiredMsg="*"
-                        value={email}
-                        onChange={(e: Event) => setMobile((e.target as HTMLInputElement).value)}
+                        value={phoneNumber}
+                        onChange={handleChange}
                     />
 
                 </div>
@@ -78,25 +91,23 @@ const MyDetails = () => {
                         // divStyel="w-[19rem]contactUs-form-lable"
                         divStyel="contactUs-form-lable"
                         className={"border-[#949AB1] border-1 rounded p-2 my-3 w-full"}
-                        label={("EMAIL")}
-                        name="email"
-                        placeholder={("admin@skippy.com")}
-                        type="email"
-                        requiredMsg="*"
-                        value={email}
-                        onChange={(e: Event) => setEmail((e.target as HTMLInputElement).value)}
+                        label={("Password")}
+                        name="password"
+                        placeholder="Password"
+                        type="password"
+                        value={password}
+                        onChange={handleChange}
                     />
                     <Input
                         // divStyel="w-[19rem]contactUs-form-lable"
                         divStyel="contactUs-form-lable"
                         className={"border-[#949AB1] border-1 rounded p-2 my-3 w-full"}
                         label={("MOBILE NUMBER")}
-                        name="mobile"
+                        name="confirmPassword"
                         placeholder={("09039278115")}
-                        type="tel"
-                        requiredMsg="*"
-                        value={email}
-                        onChange={(e: Event) => setMobile((e.target as HTMLInputElement).value)}
+                        type="password"
+                        value={confirmPassword}
+                        onChange={handleChange}
                     />
 
                 </div>
