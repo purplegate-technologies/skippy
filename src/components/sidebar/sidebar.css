@@ -6,11 +6,6 @@
   left: 0;
   top: 0;
   transition: all 0.3s ease;
-  /* background-color: var(--main-bg); */
-  /* box-shadow: var(--box-shadow); */
-
-  /* top: 122px; */
-  /* width: 320px; */
   background: #ffffff;
 
   display: flex;

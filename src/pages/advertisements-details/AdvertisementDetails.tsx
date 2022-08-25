@@ -61,10 +61,10 @@ const AdvertisementDetails = () => {
       type: 'video/mp4',
     },
 
-      // {
-      //   src: "https://www.youtube.com/watch?v=K9GymlBfrXg",
-      //   type: "video/mp4"
-      // },
+      {
+        src: "https://www.youtube.com/watch?v=K9GymlBfrXg",
+        type: "video/mp4"
+      },
       // {
       //   src: "https://www.youtube.com/watch?v=0wvd5HD2zzQ&list=RDGMEMWO-g6DgCWEqKlDtKbJA1Gw&index=4",
       //   type: "video/mp4"
@@ -94,10 +94,12 @@ const AdvertisementDetails = () => {
           </div>
           {/*  */}
           <div className="flex float-right place-self-end gap-x-3 lg:mt-auto mt-10">
+            <Link to="/create-adverts">
             <div onClick={() => {}} className="flex flex-col cursor-pointer items-center p-1">
               <EditIcon />
               <span className='text-[#949AB1] text-xs'>Edit</span>
             </div>
+            </Link>
             <div onClick={() => {}} className="flex flex-col cursor-pointer items-center p-1">
               <DeactiviteIcon />
               <span className='text-[#949AB1] text-xs'>Deactivite</span>

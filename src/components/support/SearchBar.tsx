@@ -28,7 +28,7 @@ const SearchBar = ({ className = "", placeholder = "Search", HeaderTitle, text, 
             </div>
 
             <form className={`flex items-center gap-4 justify-between ${className}`}>
-                <div className='h-[45px] flex w-full items-center bg-[#f1f3fb] rounded-[10px'>
+                <div className='h-[45px] flex w-full items-center bg-[#f1f3fb] rounded-[10px]'>
                     <SearchIconSupport className="ml-[.9rem] lg:ml-[1.3125rem] lg:mr-4 mr-3" />
                     <Input
                         className={`flex-1 text-xs w-full lg:text-lg md:text-sm`}

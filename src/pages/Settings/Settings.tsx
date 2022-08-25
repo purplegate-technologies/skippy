@@ -91,7 +91,6 @@ const Settings = () => {
                                 label={("FIRST NAME")}
                                 name={"Firstname"}
                                 placeholder={("First Name")}
-                                requiredMsg="*"
                                 value={firstName}
                                 onChange={(e: Event) => setFirstName((e.target as HTMLInputElement).value)}
                             />
@@ -102,7 +101,6 @@ const Settings = () => {
                                 label={("SURNAME")}
                                 name="surname"
                                 placeholder={("User Name")}
-                                requiredMsg="*"
                                 value={lastName}
                                 onChange={(e: Event) => setLastName((e.target as HTMLInputElement).value)}
                             />
@@ -118,7 +116,6 @@ const Settings = () => {
                                 name="email"
                                 placeholder={("admin@skippy.com")}
                                 type="email"
-                                requiredMsg="*"
                                 value={email}
                                 onChange={(e: Event) => setEmail((e.target as HTMLInputElement).value)}
                             />
@@ -130,7 +127,6 @@ const Settings = () => {
                                 name="mobile"
                                 placeholder={("09039278115")}
                                 type="tel"
-                                requiredMsg="*"
                                 value={email}
                                 onChange={(e: Event) => setMobile((e.target as HTMLInputElement).value)}
                             />

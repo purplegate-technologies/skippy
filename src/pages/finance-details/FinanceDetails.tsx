@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import DeactiviteIcon from '../../assets/svg/Deactivite'
 import EditIcon from '../../assets/svg/EditIcon'
 import ExportIcon from '../../assets/svg/ExportIcon'
@@ -54,16 +54,18 @@ const FinanceDetails = () => {
                     {/*  */}
                     <div className="flex items-center gap-3">
                         <div className="flex flex-col items-center cursor-pointer w-1/2 p-1">
-                            <EditIcon />
-                            <span onClick={() => {}} className='text-[#949AB1] text-xs'>Edit</span>
+                            <Link to="/create-voucher">
+                                <EditIcon />
+                                <span onClick={() => { }} className='text-[#949AB1] text-xs'>Edit</span>
+                            </Link>
                         </div>
                         <div className="flex flex-col items-center cursor-pointer w-1/2 p-1">
                             <DeactiviteIcon />
-                            <span onClick={() => {}} className='text-[#949AB1] text-xs'>Deactivite</span>
+                            <span onClick={() => { }} className='text-[#949AB1] text-xs'>Deactivite</span>
                         </div>
                         <div className="flex flex-col items-center cursor-pointer w-1/2 p-1">
                             <ExportIcon />
-                            <span onClick={() => {}} className='text-[#949AB1] text-xs'>Export</span>
+                            <span onClick={() => { }} className='text-[#949AB1] text-xs'>Export</span>
                         </div>
                     </div>
                     {/* <div className="flex items-center ju lg:mt-auto mt-10">

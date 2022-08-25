@@ -40,9 +40,9 @@ const MyDetails = () => {
                         labelStyle=""
                         divStyel="lable w-full"
                         className={"border-[#949AB1] border-1 rounded p-2 my-3 w-full"}
-                        label={("FIRST NAME")}
-                        name={"Firstname"}
-                        placeholder={("First Name")}
+                        label="FIRST NAME"
+                        name="Firstname"
+                        placeholder="First Name"
                         value={firstName}
                         onChange={handleChange}
                         // onChange={(e: Event) => setFirstName((e.target as HTMLInputElement).value)}
@@ -51,9 +51,9 @@ const MyDetails = () => {
                         // divStyel="w-[19rem]contactUs-form-lable"
                         divStyel="contactUs-form-lable"
                         className={"border-[#949AB1] border-1 rounded p-2 my-3 w-full"}
-                        label={("SURNAME")}
+                        label="SURNAME"
                         name="surname"
-                        placeholder={("User Name")}
+                        placeholder="SURNAME"
                         value={surname}
                         onChange={handleChange}
                     />
@@ -65,9 +65,9 @@ const MyDetails = () => {
                         // divStyel="w-[19rem]contactUs-form-lable"
                         divStyel="contactUs-form-lable"
                         className={"border-[#949AB1] border-1 rounded p-2 my-3 w-full"}
-                        label={("EMAIL")}
+                        label="EMAIL"
                         name="email"
-                        placeholder={("admin@skippy.com")}
+                        placeholder="admin@skippy.com"
                         type="email"
                         value={email}
                         onChange={handleChange}
@@ -76,9 +76,9 @@ const MyDetails = () => {
                         // divStyel="w-[19rem]contactUs-form-lable"
                         divStyel="contactUs-form-lable"
                         className={"border-[#949AB1] border-1 rounded p-2 my-3 w-full"}
-                        label={("MOBILE NUMBER")}
+                        label="MOBILE NUMBER"
                         name="phoneNumber"
-                        placeholder={("09039278115")}
+                        placeholder="09039278115"
                         type="tel"
                         value={phoneNumber}
                         onChange={handleChange}
@@ -91,7 +91,7 @@ const MyDetails = () => {
                         // divStyel="w-[19rem]contactUs-form-lable"
                         divStyel="contactUs-form-lable"
                         className={"border-[#949AB1] border-1 rounded p-2 my-3 w-full"}
-                        label={("Password")}
+                        label="PASSWORD"
                         name="password"
                         placeholder="Password"
                         type="password"
@@ -102,9 +102,9 @@ const MyDetails = () => {
                         // divStyel="w-[19rem]contactUs-form-lable"
                         divStyel="contactUs-form-lable"
                         className={"border-[#949AB1] border-1 rounded p-2 my-3 w-full"}
-                        label={("MOBILE NUMBER")}
+                        label="cONFRIM PASSWORD"
                         name="confirmPassword"
-                        placeholder={("09039278115")}
+                        placeholder="Confrim Password"
                         type="password"
                         value={confirmPassword}
                         onChange={handleChange}
