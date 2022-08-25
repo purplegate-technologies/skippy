@@ -1,19 +1,9 @@
-import {ReactNode, useState} from 'react'
+import {useState} from 'react'
 import './table.css'
 
+const Table = (props) => {
 
-interface tableProps {
-    limit: string
-    // remove: (n: string) => void;
-    headData: string[]
-    renderHead: any
-    renderBody: any
-    bodyData: {}[]
-
-}
-const Table = ({limit, headData, renderBody, renderHead, bodyData}: tableProps) => {
-
-    const initDataShow = limit && bodyData ? bodyData.slice(0, Number(limit)) : bodyData
+    const initDataShow = props.limit && props.bodyData ? props.bodyData.slice(0, Number(props.limit)) : props.bodyData
 
     const [dataShow, setDataShow] = useState(initDataShow)
     const [currPage, setCurrPage] = useState(0)
@@ -23,22 +13,22 @@ const Table = ({limit, headData, renderBody, renderHead, bodyData}: tableProps) 
     const [maxPageNumberLimit, setmaxPageNumberLimit] = useState(5);
     const [minPageNumberLimit, setminPageNumberLimit] = useState(0);
     // let pages = 1
-    const pages: number | any = 1
+    let pages = 1
 
-    const range: Array<number> = []
+    let range = []
 
-    if (limit !== undefined) {
-        let page = Math.floor(bodyData.length / Number(limit))
-        pages = bodyData.length % Number(limit) === 0 ? page : page + 1
+    if (props.limit !== undefined) {
+        let page = Math.floor(props.bodyData.length / Number(props.limit))
+        pages = props.bodyData.length % Number(props.limit) === 0 ? page : page + 1
         range = [...Array(pages).keys()]
     }
 
 
-    const selectPage = (page: number) => {
-        const start = Number(limit) * page
-        const end = start + Number(limit)
+    const selectPage = (page) => {
+        const start = Number(props.limit) * page
+        const end = start + Number(props.limit)
 
-        setDataShow(bodyData.slice(start, end))
+        setDataShow(props.bodyData.slice(start, end))
 
         setCurrPage(page)
     }
@@ -52,13 +42,13 @@ const Table = ({limit, headData, renderBody, renderHead, bodyData}: tableProps) 
           setmaxPageNumberLimit(maxPageNumberLimit + pageNumberLimit);
           setminPageNumberLimit(minPageNumberLimit + pageNumberLimit);
         }
-      }
+      };
 
       const handlePrevbtn = () => {
         setCurrPage(currPage - 1);
         // selectPage(currPage - 1)
 
-        if ((currPage - 1) % pageNumberLimit == 0) {
+        if ((currPage - 1) % pageNumberLimit === 0) {
           setmaxPageNumberLimit(maxPageNumberLimit - pageNumberLimit);
           setminPageNumberLimit(minPageNumberLimit - pageNumberLimit);
         }
@@ -84,24 +74,32 @@ const Table = ({limit, headData, renderBody, renderHead, bodyData}: tableProps) 
             <div className="table-wrapper">
                 <table>
                     {
-                        headData && renderHead ? (
+                        props.headData && props.renderHead ? (
                             <thead>
                                 <tr>
                                     {
-                                        headData.map((item, index) => renderHead(item, index))
+                                        props.headData.map((item, index) => props.renderHead(item, index))
                                     }
                                 </tr>
                             </thead>
                         ) : null
                     }
                     {
-                        bodyData && renderBody ? (
+                        props.bodyData && props.renderBody ? (
                             <tbody>
                                 {
-                                    dataShow.map((item, index) => renderBody(item, index))
+                                    dataShow.map((item, index) => props.renderBody(item, index))
                                 }
                             </tbody>
-                        ) : null
+                        ) : (
+                            <body className='divide-y divide-grey-slate'>
+                                <tr>
+                                    <td
+                                    // colSpan={}
+                                     className='text-center p-10 text-2l font-bold'>No Data</td>
+                                </tr>
+                            </body>
+                        )
                     }
                 </table>
             </div>

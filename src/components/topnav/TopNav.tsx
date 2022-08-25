@@ -11,9 +11,25 @@ import './topnav.css'
 const renderNotificationItem = (item: any, index: number) => (
     <div className="notification-item" key={index}>
         <i className={item.icon}></i>
+        <span>{item.heading}</span>
         <span>{item.content}</span>
     </div>
 )
+
+const notification = [
+    {
+        headding: "Notification",
+        content: "my name os lala and i notify you"
+    },
+    {
+        headding: "Notification",
+        content: "my name os lala and i notify you"
+    },
+    {
+        headding: "Notification",
+        content: "my name os lala and i notify you"
+    },
+]
 
 const current_user = {
     display_name: "Gerald Kachi",
@@ -46,36 +62,24 @@ const TopNav = () => {
             </div>
 
             <div className="topnav__right">
-                {/* <div className="topnav__right-item">
-                    dropdown here
-                    <Dropdown
-                        // icon="bx bx-user"
-                        customToggle={() => renderUserToggle(current_user)}
-                        contentData={user_menu}
-                        renderItems={(item: any, index: number) => renderUserMenu(item, index)}
-                    />
-                </div> */}
 
                 <Link to="#" className="topnav__right-item">
-                    <BellIcon />
-                </Link>
-
-                <Link to="/settings" className={`topnav__right-item ${activePath === "/settings" && "bg-blue-600"}`}>
-                    {/* dropdown here  */}
                     <Dropdown
                         icon="bx bx-bell"
                         badge="12"
-                        contentData={[]}
+                        contentData={notification}
                         renderItems={(item: any, index: number) => renderNotificationItem(item, index)}
                         renderFooter={() => <Link to="/">View All</Link>}
-                    />
-                    <SettingIcon  {...{activePath}} />
+                    >
+                    <BellIcon />
+                    </Dropdown>
+                </Link>
+
+                <Link to="/settings" className={`topnav__right-item ${activePath === "/settings" && "bg-blue-600"}`}>
+                    <SettingIcon  {...{ activePath }} />
                 </Link>
 
                 <Link to="/user-details" className={`topnav__right-item `}>
-                    {/* theme settings */}
-                    {/* <Dropdown icon="bx bx-user" /> */}
-                    {/* <ThemeMenu /> */}
                     <NavImgIcon />
                 </Link>
             </div>

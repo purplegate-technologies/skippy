@@ -28,7 +28,7 @@ type IToggle = {
 const clickOutSideRef = (content_ref: any, toggle_ref: any ) => {
   document.addEventListener("mousedown", (e) => {
     // user click toggle
-    if (toggle_ref.current && toggle_ref.current.includes(e.target)) {
+    if (toggle_ref.current && toggle_ref.current.contains(e.target)) {
       content_ref.current.classList.toggle('active')
     } else {
       // user click outside the toggle and content

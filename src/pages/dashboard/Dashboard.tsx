@@ -11,7 +11,8 @@ import ThreeVdots from '../../assets/svg/ThreeVdots'
 const Dashboard = () => {
     const { data, isSuccess, isFetching, isLoading } = useGetDashboardStatsQuery()
 
-    console.log(data, "useGetDashboardStatsQuery")
+    // console.log(data, "useGetDashboardStatsQuery")
+    // console.log(Object.keys(data).map((key, i) => <span key={i}>{key.endDate}</span>), " {Object.keys(data).map( (key, index) => {<div key={index}>{key?.endDate}</div>})}")
 
 
     // Object.keys(data).map((key) => {
@@ -54,11 +55,11 @@ const Dashboard = () => {
     })
     return (
         <>
-                {Object.keys(data).map( (key, index) => {
+                {/* {Object.keys(data).map( (key, index) => {
                     <div key={index}>
-                        
+                            {key?.endDate}
                     </div>
-                })}
+                })} */}
 
             <section className='mb-10'>
                 <StatusCards />
