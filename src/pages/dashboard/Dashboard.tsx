@@ -13,7 +13,8 @@ const Dashboard = () => {
 
     // console.log(data, "useGetDashboardStatsQuery")
     // console.log(Object.values(data).map((key: any, i) => <>{key?.endDate}</>), "Obect.values")
-    console.log(Object.values(data?.data), "Object.values(data?.data)")
+    console.log((data?.data), "data)")
+    console.log(Object.values(data?.data).map(data => data), "Object.values(data?.data)")
 
 
     // Object.keys(data).map((key) => {
@@ -36,13 +37,6 @@ const Dashboard = () => {
                 label: "Ads Watched",
                 data: datasetDash.map((data) => data.adsWatched),
                 backgroundColor: "#A3B1FA",
-                // backgroundColor: [
-                //     "rgba(75,192,192,1)",
-                //     "#ecf0f1",
-                //     "#50AF95",
-                //     "#f3ba2f",
-                //     "#A3B1FA",
-                // ],
                 borderColor: "#A3B1FA",
                 borderWidth: 1,
             },
