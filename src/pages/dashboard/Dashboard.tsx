@@ -35,6 +35,9 @@ const Dashboard = () => {
     })
 
     const [dataSet, setDataSet] = useState(userData)
+    const [dataMonth, setDataMonth] = useState(userData)
+    const [dataWeek, setDataWeek] = useState(userData)
+    const [chartDate, setChartDate] = useState('year');
     const { data } = useGetDashboardStatsQuery()
 
 
@@ -44,18 +47,18 @@ const Dashboard = () => {
         const Externalmonths: string[] = [];
         const InternalMonthsValue: number[] = [];
         const ExternalMonthsValue: number[] = [];
-        Object.entries(data?.data?.monthOfYearGraph?.internal).map(val => {
+        Object.entries(data?.data?.dayOfMonthGraph?.internal).map(val => {
             Internalmonths.push(val[0]);
             //@ts-ignore
             InternalMonthsValue.push(val[1]);
         });
-        Object.entries(data?.data?.monthOfYearGraph?.external).map(val => {
+        Object.entries(data?.data?.dayOfMonthGraph?.external).map(val => {
             Externalmonths.push(val[0]);
             //@ts-ignore
             ExternalMonthsValue.push(val[1]);
         });
 
-        setDataSet({
+        setDataMonth({
             labels: Internalmonths.map(data => data.toUpperCase()),
             datasets: [
                 {
@@ -69,8 +72,8 @@ const Dashboard = () => {
                 {
                     label: "External Ads Watched",
                     data: ExternalMonthsValue.map((data) => data),
-                    backgroundColor: "#2a71d0",
-                    borderColor: "#2a71d0",
+                    backgroundColor: "#A3B1FA",
+                    borderColor: "#A3B1FA",
                     borderWidth: 1,
                     borderRadius: 5,
                 }
@@ -81,22 +84,96 @@ const Dashboard = () => {
 
     },[data]);
 
+    useEffect(() => {
+        if(data && data?.data) {
+         const Internalmonths: string[] = [];
+         const Externalmonths: string[] = [];
+         const InternalMonthsValue: number[] = [];
+         const ExternalMonthsValue: number[] = [];
+         Object.entries(data?.data?.monthOfYearGraph?.internal).map(val => {
+             Internalmonths.push(val[0]);
+             //@ts-ignore
+             InternalMonthsValue.push(val[1]);
+         });
+         Object.entries(data?.data?.monthOfYearGraph?.external).map(val => {
+             Externalmonths.push(val[0]);
+             //@ts-ignore
+             ExternalMonthsValue.push(val[1]);
+         });
 
+         setDataSet({
+             labels: Internalmonths.map(data => data.toUpperCase()),
+             datasets: [
+                 {
+                     label: "Internal Ads Watched",
+                     data: InternalMonthsValue.map((data) => data),
+                     backgroundColor: "#2a71d0",
+                     borderColor: "#2a71d0",
+                     borderWidth: 1,
+                     borderRadius: 5,
+                 },
+                 {
+                     label: "External Ads Watched",
+                     data: ExternalMonthsValue.map((data) => data),
+                     backgroundColor: "#A3B1FA",
+                     borderColor: "#A3B1FA",
+                     borderWidth: 1,
+                     borderRadius: 5,
+                 }
+             ]
+         });
 
+        }
 
+     },[data]);
+
+     useEffect(() => {
+        // weekly stats
+        if(data && data?.data) {
+         const Internalmonths: string[] = [];
+         const Externalmonths: string[] = [];
+         const InternalMonthsValue: number[] = [];
+         const ExternalMonthsValue: number[] = [];
+         Object.entries(data?.data?.dayOfWeekGraph?.internal).map(val => {
+             Internalmonths.push(val[0]);
+             //@ts-ignore
+             InternalMonthsValue.push(val[1]);
+         });
+         Object.entries(data?.data?.dayOfWeekGraph?.external).map(val => {
+             Externalmonths.push(val[0]);
+             //@ts-ignore
+             ExternalMonthsValue.push(val[1]);
+         });
+
+         setDataWeek({
+             labels: Internalmonths.map(data => data.toUpperCase()),
+             datasets: [
+                 {
+                     label: "Internal Ads Watched",
+                     data: InternalMonthsValue.map((data) => data),
+                     backgroundColor: "#2a71d0",
+                     borderColor: "#2a71d0",
+                     borderWidth: 1,
+                     borderRadius: 5,
+                 },
+                 {
+                     label: "External Ads Watched",
+                     data: ExternalMonthsValue.map((data) => data),
+                     backgroundColor: "#A3B1FA",
+                     borderColor: "#A3B1FA",
+                     borderWidth: 1,
+                     borderRadius: 5,
+                 }
+             ]
+         });
+
+        }
+
+     },[data]);
 
 
     return (
         <>
-            {/* {Object.values(data).map((item: any, index) => {
-                <div key={index}>
-                    HELP
-                    <span>
-                        {item}
-                    </span>
-                </div>
-            })} */}
-
             <section className='mb-10'>
                 <StatusCards />
                 <h4 className='dashheade'>Ads  Statistics</h4>
@@ -128,9 +205,14 @@ const Dashboard = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="lg:col-span-2">
+                    <div className="lg:col-span-2 text-[#949AB1]">
                         <div className='mx-4'>
-                            <BarChart chartData={dataSet} />
+                            <div className="gap-10 flex- items-center">
+                                <span className={`cursor-pointer mr-2 ${chartDate === "year" && 'text-[#516CF5]'}`} onClick={() => setChartDate('year')}>Year</span>
+                                <span className={`cursor-pointer mr-2 ${chartDate === "month" && 'text-[#516CF5]'}`} onClick={() => setChartDate('month')}>Month</span>
+                                <span className={`cursor-pointer mr-2 ${chartDate === "week" && 'text-[#516CF5]'}`} onClick={() => setChartDate('week')}>Week</span>
+                            </div>
+                            <BarChart chartData={(chartDate === 'year' && dataSet) || (chartDate === 'month' && dataMonth) || (chartDate === 'week' && dataWeek)} />
                         </div>
                     </div>
                 </div>
@@ -142,7 +224,6 @@ const Dashboard = () => {
                                 <ThreeVdots />
                             </div>
                             <LinearGradientChart chartData={userData}
-                            // {...{ backgroundColor }}
                             />
                         </div>
                     </div>
