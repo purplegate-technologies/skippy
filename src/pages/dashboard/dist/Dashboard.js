@@ -10,6 +10,20 @@ var BarChart_1 = require("../../components/charts/BarChart");
 var statsApis_1 = require("../../features/stats/statsApis");
 var ThreeVdots_1 = require("../../assets/svg/ThreeVdots");
 var Dashboard = function () {
+    var lineData = react_1.useState({
+        // labels: Object.values(data?.data).map((data) => data.month.toUpperCase()),
+        labels: data_1.datasetDash.map(function (data) { return data.month.toUpperCase(); }),
+        datasets: [
+            {
+                label: "internal Ads Watched",
+                data: data_1.datasetDash.map(function (data) { return data.adsWatched; }),
+                backgroundColor: "#B150F9",
+                borderColor: "#B150F9",
+                borderWidth: 1,
+                borderRadius: 5
+            },
+        ]
+    })[0];
     var _a = react_1.useState({
         // labels: Object.values(data?.data).map((data) => data.month.toUpperCase()),
         labels: data_1.datasetDash.map(function (data) { return data.month.toUpperCase(); }),
@@ -35,7 +49,9 @@ var Dashboard = function () {
     var _b = react_1.useState(userData), dataSet = _b[0], setDataSet = _b[1];
     var _c = react_1.useState(userData), dataMonth = _c[0], setDataMonth = _c[1];
     var _d = react_1.useState(userData), dataWeek = _d[0], setDataWeek = _d[1];
-    var _e = react_1.useState('year'), chartDate = _e[0], setChartDate = _e[1];
+    var _e = react_1.useState(userData), totalAdvertTrend = _e[0], setAdvertTrend = _e[1];
+    var _f = react_1.useState(userData), totalPayoutTrend = _f[0], setPayoutTrend = _f[1];
+    var _g = react_1.useState('year'), chartDate = _g[0], setChartDate = _g[1];
     var data = statsApis_1.useGetDashboardStatsQuery().data;
     react_1.useEffect(function () {
         var _a, _b, _c, _d;
@@ -77,6 +93,7 @@ var Dashboard = function () {
             });
         }
     }, [data]);
+    // Bar Chart js
     react_1.useEffect(function () {
         var _a, _b, _c, _d;
         if (data && (data === null || data === void 0 ? void 0 : data.data)) {
@@ -158,6 +175,62 @@ var Dashboard = function () {
             });
         }
     }, [data]);
+    // end of bar chart
+    // Line Chart
+    // Total Advert Watch Trend
+    react_1.useEffect(function () {
+        var _a;
+        // weekly stats
+        if (data && (data === null || data === void 0 ? void 0 : data.data)) {
+            var totalAdsGraph_1 = [];
+            var totalVoucherUsageGraphValue_1 = [];
+            Object.entries((_a = data === null || data === void 0 ? void 0 : data.data) === null || _a === void 0 ? void 0 : _a.totalAdsGraph).map(function (val) {
+                totalAdsGraph_1.push(val[0]);
+                //@ts-ignore
+                totalVoucherUsageGraphValue_1.push(val[1]);
+            });
+            setAdvertTrend({
+                labels: totalAdsGraph_1.map(function (data) { return data.toUpperCase(); }),
+                datasets: [
+                    {
+                        label: "Ads Watched",
+                        data: totalVoucherUsageGraphValue_1.map(function (data) { return data; }),
+                        backgroundColor: "#2a71d0",
+                        borderColor: "#2a71d0",
+                        borderWidth: 1,
+                        borderRadius: 5
+                    },
+                ]
+            });
+        }
+    }, [data]);
+    //  Total Payout Trend
+    react_1.useEffect(function () {
+        var _a;
+        // weekly stats
+        if (data && (data === null || data === void 0 ? void 0 : data.data)) {
+            var totalVoucherUsageGraph_1 = [];
+            var totalVoucherUsageGraphValue_2 = [];
+            Object.entries((_a = data === null || data === void 0 ? void 0 : data.data) === null || _a === void 0 ? void 0 : _a.totalVoucherUsageGraph).map(function (val) {
+                totalVoucherUsageGraph_1.push(val[0]);
+                //@ts-ignore
+                totalVoucherUsageGraphValue_2.push(val[1]);
+            });
+            setPayoutTrend({
+                labels: totalVoucherUsageGraph_1.map(function (data) { return data.toUpperCase(); }),
+                datasets: [
+                    {
+                        label: "Ads Watched",
+                        data: totalVoucherUsageGraphValue_2.map(function (data) { return data; }),
+                        backgroundColor: "#2a71d0",
+                        borderColor: "#2a71d0",
+                        borderWidth: 1,
+                        borderRadius: 5
+                    },
+                ]
+            });
+        }
+    }, [data]);
     return (React.createElement(React.Fragment, null,
         React.createElement("section", { className: 'mb-10' },
             React.createElement(StatusCards_1["default"], null),
@@ -189,15 +262,15 @@ var Dashboard = function () {
                 React.createElement("div", { className: 'col-6 card' },
                     React.createElement("div", { className: 'basis-1/2' },
                         React.createElement("div", { className: "flex items-center justify-between" },
-                            React.createElement("h6", { className: 'text-[#171837] text-sm' }, "Total advert Watch Trend"),
+                            React.createElement("h6", { className: 'text-[#171837] text-sm' }, "Total Advert Watch Trend"),
                             React.createElement(ThreeVdots_1["default"], null)),
-                        React.createElement(LinearGradientChart_1["default"], { chartData: userData }))),
+                        React.createElement(LinearGradientChart_1["default"], { chartData: totalAdvertTrend }))),
                 React.createElement("div", { className: 'col-6 card' },
                     React.createElement("div", { className: 'basis-1/2' },
                         React.createElement("div", { className: "flex items-center justify-between" },
                             React.createElement("h6", { className: 'text-[#171837] text-sm' }, "Total Payout Trend"),
                             React.createElement(ThreeVdots_1["default"], null)),
-                        React.createElement(LinearGradientChart_1["default"], { chartData: userData })))))));
+                        React.createElement(LinearGradientChart_1["default"], { chartData: totalPayoutTrend })))))));
 };
 exports["default"] = Dashboard;
 // creating ssh key

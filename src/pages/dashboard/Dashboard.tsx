@@ -11,6 +11,20 @@ import ThreeVdots from '../../assets/svg/ThreeVdots'
 
 const Dashboard = () => {
 
+    const [lineData] = useState({
+        // labels: Object.values(data?.data).map((data) => data.month.toUpperCase()),
+        labels: datasetDash.map((data) => data.month.toUpperCase()),
+        datasets: [
+            {
+                label: "internal Ads Watched",
+                data: datasetDash.map((data) => data.adsWatched),
+                backgroundColor: "#B150F9",
+                borderColor: "#B150F9",
+                borderWidth: 1,
+                borderRadius: 5,
+            },
+        ],
+    })
     const [userData, setUserrData] = useState({
         // labels: Object.values(data?.data).map((data) => data.month.toUpperCase()),
         labels: datasetDash.map((data) => data.month.toUpperCase()),
@@ -37,7 +51,12 @@ const Dashboard = () => {
     const [dataSet, setDataSet] = useState(userData)
     const [dataMonth, setDataMonth] = useState(userData)
     const [dataWeek, setDataWeek] = useState(userData)
-    const [chartDate, setChartDate] = useState('year');
+
+    const [totalAdvertTrend, setAdvertTrend] = useState(userData)
+    const [totalPayoutTrend, setPayoutTrend] = useState(userData)
+
+    const [chartDate, setChartDate] = useState('year')
+
     const { data } = useGetDashboardStatsQuery()
 
 
@@ -83,6 +102,8 @@ const Dashboard = () => {
        }
 
     },[data]);
+
+    // Bar Chart js
 
     useEffect(() => {
         if(data && data?.data) {
@@ -171,6 +192,76 @@ const Dashboard = () => {
 
      },[data]);
 
+    // end of bar chart
+
+
+    // Line Chart
+    // Total Advert Watch Trend
+
+    useEffect(() => {
+        // weekly stats
+        if(data && data?.data) {
+         const totalAdsGraph: string[] = [];
+         const totalVoucherUsageGraphValue: number[] = [];
+
+         Object.entries(data?.data?.totalAdsGraph).map(val => {
+             totalAdsGraph.push(val[0]);
+             //@ts-ignore
+             totalVoucherUsageGraphValue.push(val[1]);
+         });
+
+
+         setAdvertTrend({
+             labels: totalAdsGraph.map(data => data.toUpperCase()),
+             datasets: [
+                 {
+                     label: "Ads Watched",
+                     data: totalVoucherUsageGraphValue.map((data) => data),
+                     backgroundColor: "#2a71d0",
+                     borderColor: "#2a71d0",
+                     borderWidth: 1,
+                     borderRadius: 5,
+                 },
+             ]
+         });
+
+        }
+
+     },[data]);
+
+    //  Total Payout Trend
+    useEffect(() => {
+        // weekly stats
+        if(data && data?.data) {
+         const totalVoucherUsageGraph: string[] = [];
+         const totalVoucherUsageGraphValue: number[] = [];
+
+         Object.entries(data?.data?.totalVoucherUsageGraph).map(val => {
+             totalVoucherUsageGraph.push(val[0]);
+             //@ts-ignore
+             totalVoucherUsageGraphValue.push(val[1]);
+         });
+
+
+         setPayoutTrend({
+             labels: totalVoucherUsageGraph.map(data => data.toUpperCase()),
+             datasets: [
+                 {
+                     label: "Ads Watched",
+                     data: totalVoucherUsageGraphValue.map((data) => data),
+                     backgroundColor: "#2a71d0",
+                     borderColor: "#2a71d0",
+                     borderWidth: 1,
+                     borderRadius: 5,
+                 },
+             ]
+         });
+
+        }
+
+     },[data]);
+
+
 
     return (
         <>
@@ -220,10 +311,10 @@ const Dashboard = () => {
                     <div className='col-6 card'>
                         <div className='basis-1/2'>
                             <div className="flex items-center justify-between">
-                                <h6 className='text-[#171837] text-sm'>Total advert Watch Trend</h6>
+                                <h6 className='text-[#171837] text-sm'>Total Advert Watch Trend</h6>
                                 <ThreeVdots />
                             </div>
-                            <LinearGradientChart chartData={userData}
+                            <LinearGradientChart chartData={totalAdvertTrend}
                             />
                         </div>
                     </div>
@@ -233,7 +324,7 @@ const Dashboard = () => {
                                 <h6 className='text-[#171837] text-sm'>Total Payout Trend</h6>
                                 <ThreeVdots />
                             </div>
-                            <LinearGradientChart chartData={userData} />
+                            <LinearGradientChart chartData={totalPayoutTrend} />
                         </div>
                     </div>
                 </div>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import BarChart from '../../components/charts/BarChart'
 import StatusCards from '../../components/statusCard/StatusCards'
 import { UserData } from '../dashboard/data'
@@ -6,7 +6,7 @@ import DoughnutChart from '../../components/charts/DoughnutChart';
 import Button from '../../components/button/Button';
 import { AntPieChart } from '../../components/charts/AntPieChart';
 import ThreeVdots from '../../assets/svg/ThreeVdots';
-
+import { useGetTrafficStatsQuery } from '../../features/stats/statsApis';
 
 export const barChartData = [
   {
@@ -21,6 +21,9 @@ export const barChartData = [
 
 const Traffic = () => {
 
+  const {data} = useGetTrafficStatsQuery()
+  console.log(data, "data data data")
+
   const [userData, setUserrData] = useState({
     labels: UserData.map((data) => data.day.toUpperCase()),
     datasets: [
@@ -28,49 +31,89 @@ const Traffic = () => {
         label: "Ads Watched",
         data: UserData.map((data) => data.adsWatched),
         backgroundColor: "#2a71d0",
-        // backgroundColor: [
-        //     "rgba(75,192,192,1)",
-        //     "#ecf0f1",
-        //     "#50AF95",
-        //     "#f3ba2f",
-        //     "#2a71d0",
-        // ],
         borderColor: "#2a71d0",
         borderWidth: 2,
+        borderRadius: 5,
       },
     ],
   })
 
+  const [dataSet, setDataSet] = useState(userData)
 
-  const options = {
-    responsive: true,
-    interaction: {
-      mode: 'index' as const,
-      intersect: false,
-    },
-    stacked: false,
-    plugins: {
-      title: {
-        display: true,
-        text: 'Chart.js Line Chart - Multi Axis',
-      },
-    },
-    scales: {
-      y: {
-        type: 'linear' as const,
-        display: true,
-        position: 'left' as const,
-      },
-      y1: {
-        type: 'linear' as const,
-        display: true,
-        position: 'right' as const,
-        grid: {
-          drawOnChartArea: false,
-        },
-      },
-    },
-  };
+
+
+  // const options = {
+  //   responsive: true,
+  //   interaction: {
+  //     mode: 'index' as const,
+  //     intersect: false,
+  //   },
+  //   stacked: false,
+  //   plugins: {
+  //     title: {
+  //       display: true,
+  //       text: 'Chart.js Line Chart - Multi Axis',
+  //     },
+  //   },
+  //   scales: {
+  //     y: {
+  //       type: 'linear' as const,
+  //       display: true,
+  //       position: 'left' as const,
+  //     },
+  //     y1: {
+  //       type: 'linear' as const,
+  //       display: true,
+  //       position: 'right' as const,
+  //       grid: {
+  //         drawOnChartArea: false,
+  //       },
+  //     },
+  //   },
+  // };
+
+//   useEffect(() => {
+//     if(data && data?.data) {
+//      const Internalmonths: string[] = [];
+//      const Externalmonths: string[] = [];
+//      const InternalMonthsValue: number[] = [];
+//      const ExternalMonthsValue: number[] = [];
+//      Object.entries(data?.data?.monthOfYearGraph?.internal).map(val => {
+//          Internalmonths.push(val[0]);
+//          //@ts-ignore
+//          InternalMonthsValue.push(val[1]);
+//      });
+//      Object.entries(data?.data?.monthOfYearGraph?.external).map(val => {
+//          Externalmonths.push(val[0]);
+//          //@ts-ignore
+//          ExternalMonthsValue.push(val[1]);
+//      });
+
+//      setDataSet({
+//          labels: Internalmonths.map(data => data.toUpperCase()),
+//          datasets: [
+//              {
+//                  label: "Internal Ads Watched",
+//                  data: InternalMonthsValue.map((data) => data),
+//                  backgroundColor: "#2a71d0",
+//                  borderColor: "#2a71d0",
+//                  borderWidth: 1,
+//                  borderRadius: 5,
+//              },
+//              {
+//                  label: "External Ads Watched",
+//                  data: ExternalMonthsValue.map((data) => data),
+//                  backgroundColor: "#A3B1FA",
+//                  borderColor: "#A3B1FA",
+//                  borderWidth: 1,
+//                  borderRadius: 5,
+//              }
+//          ]
+//      });
+
+//     }
+
+//  },[data]);
 
   return (
     <section className='mb-10'>
@@ -183,7 +226,7 @@ const Traffic = () => {
               <h6 className='text-[#171837] text-sm'>Active Daily Users</h6>
               <ThreeVdots />
             </div>
-            <BarChart chartData={userData} />
+            <BarChart chartData={dataSet} />
           </div>
         </div>
       </div>
