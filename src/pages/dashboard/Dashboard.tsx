@@ -12,7 +12,8 @@ const Dashboard = () => {
     const { data, isSuccess, isFetching, isLoading } = useGetDashboardStatsQuery()
 
     // console.log(data, "useGetDashboardStatsQuery")
-    // console.log(Object.keys(data).map((key, i) => <span key={i}>{key.endDate}</span>), " {Object.keys(data).map( (key, index) => {<div key={index}>{key?.endDate}</div>})}")
+    // console.log(Object.values(data).map((key: any, i) => <>{key?.endDate}</>), "Obect.values")
+    console.log(Object.values(data?.data), "Object.values(data?.data)")
 
 
     // Object.keys(data).map((key) => {
@@ -21,19 +22,13 @@ const Dashboard = () => {
     // })
 
     const [userData, setUserrData] = useState({
+        // labels: Object.values(data?.data).map((data) => data.month.toUpperCase()),
         labels: datasetDash.map((data) => data.month.toUpperCase()),
         datasets: [
             {
                 label: "Ads Watched",
                 data: datasetDash.map((data) => data.adsWatched),
                 backgroundColor: "#2a71d0",
-                // backgroundColor: [
-                //     "rgba(75,192,192,1)",
-                //     "#ecf0f1",
-                //     "#50AF95",
-                //     "#f3ba2f",
-                //     "#2a71d0",
-                // ],
                 borderColor: "#2a71d0",
                 borderWidth: 1,
             },
@@ -55,11 +50,14 @@ const Dashboard = () => {
     })
     return (
         <>
-                {/* {Object.keys(data).map( (key, index) => {
-                    <div key={index}>
-                            {key?.endDate}
-                    </div>
-                })} */}
+            {/* {Object.values(data).map((item: any, index) => {
+                <div key={index}>
+                    HELP
+                    <span>
+                        {item}
+                    </span>
+                </div>
+            })} */}
 
             <section className='mb-10'>
                 <StatusCards />
