@@ -10,7 +10,31 @@ import { useGetDashboardStatsQuery } from '../../features/stats/statsApis'
 import ThreeVdots from '../../assets/svg/ThreeVdots'
 
 const Dashboard = () => {
-    const [dataSet, setDataSet] = useState({})
+
+    const [userData, setUserrData] = useState({
+        // labels: Object.values(data?.data).map((data) => data.month.toUpperCase()),
+        labels: datasetDash.map((data) => data.month.toUpperCase()),
+        datasets: [
+            {
+                label: "internal Ads Watched",
+                data: datasetDash.map((data) => data.adsWatched),
+                backgroundColor: "#2a71d0",
+                borderColor: "#2a71d0",
+                borderWidth: 1,
+                borderRadius: 5,
+            },
+            {
+                label: "Ads Watched",
+                data: datasetDash.map((data) => data.adsWatched),
+                backgroundColor: "#A3B1FA",
+                borderColor: "#A3B1FA",
+                borderWidth: 1,
+                borderRadius: 5,
+            },
+        ],
+    })
+
+    const [dataSet, setDataSet] = useState(userData)
     const { data } = useGetDashboardStatsQuery()
 
 
@@ -53,38 +77,15 @@ const Dashboard = () => {
             ]
         });
 
-        console.log(dataSet, 'dataset')
        }
 
     },[data]);
 
-    // Object.keys(data).map((key) => {
-    //     console.log(key, "key")
-    //     console.log(data[key], "data[key]")
-    // })
 
-    const [userData, setUserrData] = useState({
-        // labels: Object.values(data?.data).map((data) => data.month.toUpperCase()),
-        labels: datasetDash.map((data) => data.month.toUpperCase()),
-        datasets: [
-            {
-                label: "internal Ads Watched",
-                // data: datasetDash.map((data) => data.adsWatched),
-                backgroundColor: "#2a71d0",
-                borderColor: "#2a71d0",
-                borderWidth: 1,
-                borderRadius: 5,
-            },
-            {
-                label: "Ads Watched",
-                data: datasetDash.map((data) => data.adsWatched),
-                backgroundColor: "#A3B1FA",
-                borderColor: "#A3B1FA",
-                borderWidth: 1,
-                borderRadius: 5,
-            },
-        ],
-    })
+
+
+
+
     return (
         <>
             {/* {Object.values(data).map((item: any, index) => {
