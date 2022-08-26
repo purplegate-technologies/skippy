@@ -1,13 +1,30 @@
 .tag {
-    text-align: center;
+  text-align: center;
 }
 
 .slick-slide img {
-    margin: auto;
-    width: 50%;
-    height: 50%;
-    background: red;
+  margin: auto;
+  width: 50%;
+  height: 50%;
+  background: red;
 }
 .slick-arrow .slick-prev {
-    background: #000;
+  background: #000;
+}
+
+/* :global {
+
+} */
+
+.slick-prev:before, .slick-next:before {
+display: none;
+}
+.slick-prev,
+.slick-next {
+  font-size: 15px !important;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  content: "" !important;
 }

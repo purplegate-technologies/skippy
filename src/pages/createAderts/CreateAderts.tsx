@@ -2,7 +2,10 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import CompanyLogo from '../../assets/svg/CompanyLogo';
 import Button from '../../components/button/Button';
+import FileUpload from '../../components/FileUpload/FileUpload';
+import Input from '../../components/input/Input';
 import TopNav from '../../components/topnav/TopNav';
+import CloudAddScene from './CloudAddScene';
 import DeleteAdsIcon from './DeleteAdsIcon';
 import EditAdsIcon from './EditAdsIcon';
 import SnapAdsIcon from './SnapAdsIcon';
@@ -10,6 +13,8 @@ import VideoSlider from './VideoSlider';
 
 const CreateAderts = () => {
   const [tabIndex, setTabIndex] = useState<string>("Scene")
+  const [roles, setRoles] = useState("Finances and billing")
+
   const navigate = useNavigate();
   return (
     <section className="bg-[#FCFCFF]">
@@ -27,8 +32,11 @@ const CreateAderts = () => {
 
       <div className="grid md:grid-cols-7 gap-10 m-5">
         <div className='md:basis-1/2 flex flex-col bg-white col-span-4'>
-          Create ads
           <VideoSlider />
+          <FileUpload />
+          <Button className="w-full border-[#516CF5] border border-dashed bg-white text-[#516CF5]">
+            {/* <CloudAddScene /> */}
+            &nbsp;&nbsp;Add&nbsp;a&nbsp;Scene</Button>
         </div>
         <div className='md:basis-1/2 flex flex-col bg-white col-span-3'>
           <div className="">
@@ -49,6 +57,76 @@ const CreateAderts = () => {
                     <EditAdsIcon className='cursor-pointer' />
                     <SnapAdsIcon className='cursor-pointer' />
                     <DeleteAdsIcon className='cursor-pointer' />
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex">
+                <h1 className="text-[#171837] font-bold text-lg">Text Setup</h1>
+                <Input placeholder='Enter text here' />
+
+                <div className="flex items-center">
+                  <div className="contactUs-form-lable">
+                    <label htmlFor="" className="text-xs text-[#516CF5]">
+                      {("ROLE")}
+                      <p className="text-[#EB0000] inline">{`*`}</p>
+                    </label>
+                    <select
+                      // style={selectSTyle}
+                      name=""
+                      id=""
+                      className="text-[#949AB1] border-[#949AB1] outline-none border-2 rounded p-2 mb-3 w-full"
+                      onChange={(e) => {
+                        const select = e.target as HTMLSelectElement
+                        setRoles(select.options.item(select.selectedIndex)?.innerText!)
+                      }}>
+                      <option value="super-admin">
+                        {("Super Admin")}
+                      </option>
+                      <option value="normal">
+                        {("Normal Admin")}
+                      </option>
+                      <option value="Manager">
+                        {("Regular Admin")}
+                      </option>
+                      <option value="account">
+                        {("Bad Admin")}
+                      </option>
+                      <option value="other">
+                        {("Other")}
+                      </option>
+                    </select>
+                  </div>
+                  <div className="contactUs-form-lable">
+                    <label htmlFor="" className="text-xs text-[#516CF5]">
+                      {("ROLE")}
+                      <p className="text-[#EB0000] inline">{`*`}</p>
+                    </label>
+                    <select
+                      // style={selectSTyle}
+                      name=""
+                      id=""
+                      className="text-[#949AB1] border-[#949AB1] outline-none border-2 rounded p-2 mb-3 w-full"
+                      onChange={(e) => {
+                        const select = e.target as HTMLSelectElement
+                        setRoles(select.options.item(select.selectedIndex)?.innerText!)
+                      }}>
+                      <option value="super-admin">
+                        {("Super Admin")}
+                      </option>
+                      <option value="normal">
+                        {("Normal Admin")}
+                      </option>
+                      <option value="Manager">
+                        {("Regular Admin")}
+                      </option>
+                      <option value="account">
+                        {("Bad Admin")}
+                      </option>
+                      <option value="other">
+                        {("Other")}
+                      </option>
+                    </select>
                   </div>
                 </div>
               </div>

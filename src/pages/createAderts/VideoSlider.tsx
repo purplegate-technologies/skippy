@@ -5,6 +5,8 @@ import "./styles.css"
 import images from "./images";
 import VideoPlayer from "../advertisements-details/video";
 import { useRef } from "react";
+import PrevArrowIcon from "./PrevArrowIcon";
+import NextArrowIcon from "./NextArrowIcon";
 
 
 
@@ -20,9 +22,11 @@ const NextArrow = ({ className, style, onClick }: any) => {
     return (
         <div
             className={className}
-            style={{ ...style, display: "block", background: "black" }}
+            style={{ ...style, display: "block", }}
             onClick={onClick}
-        />
+        >
+            <NextArrowIcon />
+        </div>
     );
 }
 
@@ -30,9 +34,11 @@ const PrevArrow = ({ className, style, onClick }: any) => {
     return (
         <div
             className={className}
-            style={{ ...style, display: "block", background: "black" }}
+            style={{ ...style, display: "block"}}
             onClick={onClick}
-        />
+        >
+            <PrevArrowIcon />
+        </div>
     );
 }
 
@@ -41,10 +47,13 @@ const VideoSlider = () => {
 
 
     const settings = {
-        infinite: true,
-        // dots: true,
-        slidesToShow: 3,
+        // infinite: true,
+        centerMode: true,
+        className: "center",
+        centerPadding: "60px",
+        slidesToShow: 4,
         slidesToScroll: 1,
+        // dots: true,
         // lazyLoad: true,
         // autoplay: true,
         autoplaySpeed: 5000,
@@ -53,30 +62,30 @@ const VideoSlider = () => {
         prevArrow: <PrevArrow />,
         responsive: [
             {
-              breakpoint: 1024,
-              settings: {
-                slidesToShow: 3,
-                slidesToScroll: 3,
-                infinite: true,
-                dots: true
-              }
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                    infinite: true,
+                    dots: true
+                }
             },
             {
-              breakpoint: 600,
-              settings: {
-                slidesToShow: 2,
-                slidesToScroll: 2,
-                initialSlide: 2
-              }
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
+                    initialSlide: 2
+                }
             },
             {
-              breakpoint: 480,
-              settings: {
-                slidesToShow: 1,
-                slidesToScroll: 1
-              }
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
             }
-          ]
+        ]
     };
     return (
         <>
@@ -93,7 +102,7 @@ const VideoSlider = () => {
                     ))}
                 </div>
             </div>
-            <div className="imgslider">
+            <div className="imgslider mx-5">
                 <Slider {...settings}>
                     {images.map((item) => (
                         <div key={item.id}>
