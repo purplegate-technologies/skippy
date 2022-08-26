@@ -50,16 +50,16 @@ const AdvertisementDetails = () => {
   };
 
   const videoJsOptions = {
-  autoplay: false,
-  playbackRates: [0.5, 1, 1.25, 1.5, 2],
-  width: 720,
-  height: 300,
-  controls: true,
-  sources: [
-    {
-      src: '//vjs.zencdn.net/v/oceans.mp4',
-      type: 'video/mp4',
-    },
+    autoplay: false,
+    playbackRates: [0.5, 1, 1.25, 1.5, 2],
+    width: 720,
+    height: 300,
+    controls: true,
+    sources: [
+      {
+        src: '//vjs.zencdn.net/v/oceans.mp4',
+        type: 'video/mp4',
+      },
 
       {
         src: "https://www.youtube.com/watch?v=K9GymlBfrXg",
@@ -95,16 +95,16 @@ const AdvertisementDetails = () => {
           {/*  */}
           <div className="flex float-right place-self-end gap-x-3 lg:mt-auto mt-10">
             <Link to="/create-adverts">
-            <div onClick={() => {}} className="flex flex-col cursor-pointer items-center p-1">
-              <EditIcon />
-              <span className='text-[#949AB1] text-xs'>Edit</span>
-            </div>
+              <div onClick={() => { }} className="flex flex-col cursor-pointer items-center p-1">
+                <EditIcon />
+                <span className='text-[#949AB1] text-xs'>Edit</span>
+              </div>
             </Link>
-            <div onClick={() => {}} className="flex flex-col cursor-pointer items-center p-1">
+            <div onClick={() => { }} className="flex flex-col cursor-pointer items-center p-1">
               <DeactiviteIcon />
               <span className='text-[#949AB1] text-xs'>Deactivite</span>
             </div>
-            <div onClick={() => {}} className="flex flex-col cursor-pointer items-center p-1">
+            <div onClick={() => { }} className="flex flex-col cursor-pointer items-center p-1">
               <ExportIcon />
               <span className='text-[#949AB1] text-xs'>Export</span>
             </div>
@@ -115,11 +115,15 @@ const AdvertisementDetails = () => {
       <div className="grid md:grid-cols-2  gap-10">
         <div className="md:basis-1/2 flex flex-col bg-white">
 
-          <VideoPlayer
+          {/* <VideoPlayer
             options={videoJsOptions}
             className="video-js"
             onReady={handlePlayerReady}
-          />
+          /> */}
+          <video className="w-full h-full" controls>
+            <source src="https://www.youtube.com/embed/vlDzYIIOYmM?enablejsapi=2&amp;origin=https%3A%2F%2Fmdbootstrap.com" type="video/mp4" />
+              Your browser does not support the video tag.
+          </video>
         </div>
 
         <div className="md:basis-[45%] flex flex-col bg-white mb-10">

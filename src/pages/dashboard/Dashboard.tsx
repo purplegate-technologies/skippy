@@ -1,6 +1,7 @@
+/* eslint-disable no-labels */
 import './dashboard.css'
 import LinearGradientChart from '../../components/charts/LinearGradientChart'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { UserData, datasetDash } from './data'
 import StatusCards from '../../components/statusCard/StatusCards'
 import BarChart from '../../components/charts/BarChart'
@@ -9,13 +10,53 @@ import { useGetDashboardStatsQuery } from '../../features/stats/statsApis'
 import ThreeVdots from '../../assets/svg/ThreeVdots'
 
 const Dashboard = () => {
-    const { data, isSuccess, isFetching, isLoading } = useGetDashboardStatsQuery()
+    const [dataSet, setDataSet] = useState({})
+    const { data } = useGetDashboardStatsQuery()
 
-    // console.log(data, "useGetDashboardStatsQuery")
-    // console.log(Object.values(data).map((key: any, i) => <>{key?.endDate}</>), "Obect.values")
-    console.log((data?.data), "data)")
-    console.log(Object.values(data?.data).map(data => data), "Object.values(data?.data)")
 
+    useEffect(() => {
+       if(data && data?.data) {
+        const Internalmonths: string[] = [];
+        const Externalmonths: string[] = [];
+        const InternalMonthsValue: number[] = [];
+        const ExternalMonthsValue: number[] = [];
+        Object.entries(data?.data?.monthOfYearGraph?.internal).map(val => {
+            Internalmonths.push(val[0]);
+            //@ts-ignore
+            InternalMonthsValue.push(val[1]);
+        });
+        Object.entries(data?.data?.monthOfYearGraph?.external).map(val => {
+            Externalmonths.push(val[0]);
+            //@ts-ignore
+            ExternalMonthsValue.push(val[1]);
+        });
+
+        setDataSet({
+            labels: Internalmonths.map(data => data.toUpperCase()),
+            datasets: [
+                {
+                    label: "Internal Ads Watched",
+                    data: InternalMonthsValue.map((data) => data),
+                    backgroundColor: "#2a71d0",
+                    borderColor: "#2a71d0",
+                    borderWidth: 1,
+                    borderRadius: 5,
+                },
+                {
+                    label: "External Ads Watched",
+                    data: ExternalMonthsValue.map((data) => data),
+                    backgroundColor: "#2a71d0",
+                    borderColor: "#2a71d0",
+                    borderWidth: 1,
+                    borderRadius: 5,
+                }
+            ]
+        });
+
+        console.log(dataSet, 'dataset')
+       }
+
+    },[data]);
 
     // Object.keys(data).map((key) => {
     //     console.log(key, "key")
@@ -27,11 +68,12 @@ const Dashboard = () => {
         labels: datasetDash.map((data) => data.month.toUpperCase()),
         datasets: [
             {
-                label: "Ads Watched",
-                data: datasetDash.map((data) => data.adsWatched),
+                label: "internal Ads Watched",
+                // data: datasetDash.map((data) => data.adsWatched),
                 backgroundColor: "#2a71d0",
                 borderColor: "#2a71d0",
                 borderWidth: 1,
+                borderRadius: 5,
             },
             {
                 label: "Ads Watched",
@@ -39,6 +81,7 @@ const Dashboard = () => {
                 backgroundColor: "#A3B1FA",
                 borderColor: "#A3B1FA",
                 borderWidth: 1,
+                borderRadius: 5,
             },
         ],
     })
@@ -56,7 +99,6 @@ const Dashboard = () => {
             <section className='mb-10'>
                 <StatusCards />
                 <h4 className='dashheade'>Ads  Statistics</h4>
-
 
                 {/* <div className='row justify-center'> */}
                 <div className='grid lg:grid-cols-3'>
@@ -87,7 +129,7 @@ const Dashboard = () => {
                     </div>
                     <div className="lg:col-span-2">
                         <div className='mx-4'>
-                            <BarChart chartData={userData} />
+                            <BarChart chartData={dataSet} />
                         </div>
                     </div>
                 </div>

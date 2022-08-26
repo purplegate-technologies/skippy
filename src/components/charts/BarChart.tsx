@@ -53,7 +53,7 @@ export const options = {
     },
 };
 
-const labels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", 'July'];
+// const labels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", 'July'];
 
 
 const BarChart = ({ chartData, }: any) => {
