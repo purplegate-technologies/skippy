@@ -2,7 +2,7 @@
 import './dashboard.css'
 import LinearGradientChart from '../../components/charts/LinearGradientChart'
 import { useEffect, useState } from 'react'
-import { UserData, datasetDash } from './data'
+import { UserData, datasetDash } from '../../assets/data/data'
 import StatusCards from '../../components/statusCard/StatusCards'
 import BarChart from '../../components/charts/BarChart'
 import SearchBar from '../../components/support/SearchBar'
@@ -10,6 +10,7 @@ import { useGetDashboardStatsQuery } from '../../features/stats/statsApis'
 import ThreeVdots from '../../assets/svg/ThreeVdots'
 
 const Dashboard = () => {
+    const { data } = useGetDashboardStatsQuery()
 
     const [lineData] = useState({
         // labels: Object.values(data?.data).map((data) => data.month.toUpperCase()),
@@ -53,11 +54,10 @@ const Dashboard = () => {
     const [dataWeek, setDataWeek] = useState(userData)
 
     const [totalAdvertTrend, setAdvertTrend] = useState(userData)
-    const [totalPayoutTrend, setPayoutTrend] = useState(userData)
+    const [totalPayoutTrend, setPayoutTrend] = useState(lineData)
 
     const [chartDate, setChartDate] = useState('year')
 
-    const { data } = useGetDashboardStatsQuery()
 
 
     useEffect(() => {
@@ -249,8 +249,8 @@ const Dashboard = () => {
                  {
                      label: "Ads Watched",
                      data: totalVoucherUsageGraphValue.map((data) => data),
-                     backgroundColor: "#2a71d0",
-                     borderColor: "#2a71d0",
+                     backgroundColor: "#B150F9",
+                     borderColor: "#B150F9",
                      borderWidth: 1,
                      borderRadius: 5,
                  },

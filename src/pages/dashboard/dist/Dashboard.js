@@ -4,12 +4,13 @@ exports.__esModule = true;
 require("./dashboard.css");
 var LinearGradientChart_1 = require("../../components/charts/LinearGradientChart");
 var react_1 = require("react");
-var data_1 = require("./data");
+var data_1 = require("../../assets/data/data");
 var StatusCards_1 = require("../../components/statusCard/StatusCards");
 var BarChart_1 = require("../../components/charts/BarChart");
 var statsApis_1 = require("../../features/stats/statsApis");
 var ThreeVdots_1 = require("../../assets/svg/ThreeVdots");
 var Dashboard = function () {
+    var data = statsApis_1.useGetDashboardStatsQuery().data;
     var lineData = react_1.useState({
         // labels: Object.values(data?.data).map((data) => data.month.toUpperCase()),
         labels: data_1.datasetDash.map(function (data) { return data.month.toUpperCase(); }),
@@ -50,9 +51,8 @@ var Dashboard = function () {
     var _c = react_1.useState(userData), dataMonth = _c[0], setDataMonth = _c[1];
     var _d = react_1.useState(userData), dataWeek = _d[0], setDataWeek = _d[1];
     var _e = react_1.useState(userData), totalAdvertTrend = _e[0], setAdvertTrend = _e[1];
-    var _f = react_1.useState(userData), totalPayoutTrend = _f[0], setPayoutTrend = _f[1];
+    var _f = react_1.useState(lineData), totalPayoutTrend = _f[0], setPayoutTrend = _f[1];
     var _g = react_1.useState('year'), chartDate = _g[0], setChartDate = _g[1];
-    var data = statsApis_1.useGetDashboardStatsQuery().data;
     react_1.useEffect(function () {
         var _a, _b, _c, _d;
         if (data && (data === null || data === void 0 ? void 0 : data.data)) {
@@ -222,8 +222,8 @@ var Dashboard = function () {
                     {
                         label: "Ads Watched",
                         data: totalVoucherUsageGraphValue_2.map(function (data) { return data; }),
-                        backgroundColor: "#2a71d0",
-                        borderColor: "#2a71d0",
+                        backgroundColor: "#B150F9",
+                        borderColor: "#B150F9",
                         borderWidth: 1,
                         borderRadius: 5
                     },

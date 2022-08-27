@@ -54,7 +54,6 @@ const iconArr = [
 
 const Sidebar = () => {
     const location = useLocation()
-    // const activePath = window.location.pathname;
 
     const { user } = useAppSelector(selectAuth)
     const navigate = useNavigate()

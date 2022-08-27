@@ -52,10 +52,9 @@ const renderUserToggle = (user: any) => (
 
 const TopNav = () => {
     const location = useLocation()
-    const activePath = location.pathname
+    const activepath = location.pathname
 
     const [query, setQuery] = useState<string>('')
-    // activePath === "/settings" ? "topnav__item topnav__item--active" : "topnav__item"
 
     return (
         <>
@@ -84,8 +83,8 @@ const TopNav = () => {
                         </Dropdown>
                     </Link>
 
-                    <Link to="/settings" className={`topnav__right-item ${activePath === "/settings" && "bg-[#516CF5]"}`}>
-                        <SettingIcon  {...{ activePath }} />
+                    <Link to="/settings" className={`topnav__right-item ${activepath === "/settings" && "bg-[#516CF5]"}`}>
+                        <SettingIcon  {...{ activepath }} />
                     </Link>
 
                     <Link to="/user-details" className={`topnav__right-item `}>

@@ -3,8 +3,8 @@ import StatusCards from '../../components/statusCard/StatusCards'
 import Table from '../../components/Table/Table'
 import advertlist from "../../assets/jsonData/advert-list.json"
 import LinearGradientChart from '../../components/charts/LinearGradientChart'
-import { useState } from 'react'
-import { UserData } from '../dashboard/data'
+import { useEffect, useState } from 'react'
+import { UserData } from '../../assets/data/data'
 import SearchBar from '../../components/support/SearchBar'
 import { useNavigate } from 'react-router-dom'
 import CategoryFilter from '../../components/CategoryFilter/CategoryFilter'
@@ -12,10 +12,58 @@ import { useGetAdvertStatsQuery } from '../../features/stats/statsApis'
 import ThreeVdots from '../../assets/svg/ThreeVdots'
 
 const Advertisements = () => {
-  const { data: advertData } = useGetAdvertStatsQuery()
 
-  console.log(advertData, "useGetAdvertStatsQuery")
+  const [userData] = useState({
+    labels: UserData.map((data) => data.day.toUpperCase()),
+    datasets: [
+      {
+        label: "Ads Watched",
+        data: UserData.map((data) => data.adsWatched),
+        backgroundColor: "#2a71d0",
+        borderColor: "#2a71d0",
+        borderWidth: 2,
+      },
+    ],
+  })
+
+  const [externalGraph, setExternalGraph] = useState(userData)
+  const { data } = useGetAdvertStatsQuery()
+
+
+  console.log(data, "useGetAdvertStatsQuery")
   const navigate = useNavigate()
+
+
+//   useEffect(() => {
+//     // weekly stats
+//     if(data && data?.data) {
+//      const externalAdsStats: string[] = [];
+//      const externalAdsStatsValue: number[] = [];
+
+//      Object.entries(data?.data?.externalAdsStats).map(val => {
+//          externalAdsStats.push(val[0]);
+//          //@ts-ignore
+//          externalAdsStatsValue.push(val[1]);
+//      });
+
+
+//      setExternalGraph({
+//          labels: externalAdsStats.map(data => data.toUpperCase()),
+//          datasets: [
+//              {
+//                  label: "Ads Watched",
+//                  data: externalAdsStatsValue.map((data) => data),
+//                  backgroundColor: "#2a71d0",
+//                  borderColor: "#2a71d0",
+//                  borderWidth: 1,
+//                  borderRadius: 5,
+//              },
+//          ]
+//      });
+
+//     }
+
+//  },[data]);
 
   const customerTableHead: Array<string> = [
     '',
@@ -41,26 +89,6 @@ const Advertisements = () => {
     </tr>
   )
 
-  const [userData] = useState({
-    labels: UserData.map((data) => data.day.toUpperCase()),
-    datasets: [
-      {
-        label: "Ads Watched",
-        data: UserData.map((data) => data.adsWatched),
-        backgroundColor: "#2a71d0",
-        // backgroundColor: [
-        //     "rgba(75,192,192,1)",
-        //     "#ecf0f1",
-        //     "#50AF95",
-        //     "#f3ba2f",
-        //     "#2a71d0",
-        // ],
-        borderColor: "#2a71d0",
-        borderWidth: 2,
-      },
-    ],
-  })
-
   return (
     <div>
       <StatusCards />
@@ -75,7 +103,7 @@ const Advertisements = () => {
               <h6 className='text-[#171837] text-sm'>nternal Ads Watch Trend</h6>
               <ThreeVdots />
             </div>
-            <LinearGradientChart chartData={userData} />
+            <LinearGradientChart chartData={externalGraph} />
           </div>
         </div>
         <div className='col-6 card'>

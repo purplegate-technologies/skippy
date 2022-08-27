@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import BarChart from '../../components/charts/BarChart'
 import StatusCards from '../../components/statusCard/StatusCards'
-import { UserData } from '../dashboard/data'
 import DoughnutChart from '../../components/charts/DoughnutChart';
+import { UserData } from '../../assets/data/data'
 import Button from '../../components/button/Button';
 import { AntPieChart } from '../../components/charts/AntPieChart';
 import ThreeVdots from '../../assets/svg/ThreeVdots';
