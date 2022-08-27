@@ -1,9 +1,20 @@
 import {useState} from 'react'
 import './table.css'
 
-const Table = (props) => {
+interface Props<T = any> {
+    limit?: string
+    headData?: string[]
+	// bodyData?: T[];
+	bodyData?: any;
+	// type?: ETableType;
+	// column?: TColumnType[];
+    renderBody?:   (n: any, b: number) => JSX.Element
+    renderHead?: (n: any, b: number) => JSX.Element
+}
 
-    const initDataShow = props.limit && props.bodyData ? props.bodyData.slice(0, Number(props.limit)) : props.bodyData
+const Table = ({limit, renderHead, bodyData, headData, renderBody}: Props) => {
+
+    const initDataShow = limit && bodyData ? bodyData.slice(0, Number(limit)) : bodyData
 
     const [dataShow, setDataShow] = useState(initDataShow)
     const [currPage, setCurrPage] = useState(0)
@@ -13,22 +24,23 @@ const Table = (props) => {
     const [maxPageNumberLimit, setmaxPageNumberLimit] = useState(5);
     const [minPageNumberLimit, setminPageNumberLimit] = useState(0);
     // let pages = 1
-    let pages = 1
+    let pages: number | number[] | any = 1
 
-    let range = []
+    let range: number[] = []
 
-    if (props.limit !== undefined) {
-        let page = Math.floor(props.bodyData.length / Number(props.limit))
-        pages = props.bodyData.length % Number(props.limit) === 0 ? page : page + 1
-        range = [...Array(pages).keys()]
+    if (limit !== undefined) {
+        let page = Math.floor(bodyData.length / Number(limit))
+        pages = bodyData.length % Number(limit) === 0 ? page : page + 1
+        // range = [...Array(pages).keys()]
+        range = [...Array(pages)]
     }
 
 
-    const selectPage = (page) => {
-        const start = Number(props.limit) * page
-        const end = start + Number(props.limit)
+    const selectPage = (page: number) => {
+        const start = Number(limit) * page
+        const end = start + Number(limit)
 
-        setDataShow(props.bodyData.slice(start, end))
+        setDataShow(bodyData.slice(start, end))
 
         setCurrPage(page)
     }
@@ -74,21 +86,21 @@ const Table = (props) => {
             <div className="table-wrapper">
                 <table>
                     {
-                        props.headData && props.renderHead ? (
+                        headData && renderHead ? (
                             <thead>
                                 <tr>
                                     {
-                                        props.headData.map((item, index) => props.renderHead(item, index))
+                                        headData.map((item: any, index: number) => renderHead(item, index))
                                     }
                                 </tr>
                             </thead>
                         ) : null
                     }
                     {
-                        props.bodyData && props.renderBody ? (
+                        bodyData && renderBody ? (
                             <tbody>
                                 {
-                                    dataShow.map((item, index) => props.renderBody(item, index))
+                                    dataShow.map((item: any, index: number) => renderBody(item, index))
                                 }
                             </tbody>
                         ) : (
@@ -118,7 +130,7 @@ const Table = (props) => {
                 {pages > 1 ? (
                         <div className="table__pagination">
                             <button onClick={handlePrevbtn} disabled={currPage === pages[0] ? true : false}>Prev</button>
-                               {range.map((item, index) => {
+                               {range.map((item: any, index: number) => {
                                     if (item < maxPageNumberLimit + 1 && item > minPageNumberLimit) {
                                     return <div key={index} className={`table__pagination-item ${currPage === index && 'active'}`} onClick={() => selectPage(index)}>
                                         {item}
