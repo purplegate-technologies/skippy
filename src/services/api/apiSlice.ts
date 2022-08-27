@@ -35,11 +35,11 @@ const baseQueryWithReauth = async (args: any, api: any, extraOptions: any) => {
             // retry the original query with new access token
             result = await baseQuery(args, api, extraOptions)
         } else {
+            // api.dispatch(logout())
             toast.error("Something went wrong, Please login again!")
-            api.dispatch(logout())
-            // setTimeout(() => {
-            //     api.dispatch(logout());
-            // }, 1000);
+            setTimeout(() => {
+                api.dispatch(logout());
+            }, 1000);
         }
     }
 

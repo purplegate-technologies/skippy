@@ -46,23 +46,17 @@ const LogIn = () => {
       data: loginData,
       isSuccess: isLoginSuccess,
       isError: isLoginError,
-      error: loginError,
-      isLoading,
-      reset,
-      status,
+      // error: loginError,
+      // isLoading,
+      // reset,
+      // status,
     }] = useLoginMutation()
   const handleChange = (e: any) => setFormValue({ ...formValue, [e.target.name]: e.target.value })
-
-  // useEffect(() => {
-  // userRef.current.focus()
-  // }, [email, password])
 
 
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
-
-    console.log(loginData, "loginData loginData loginData loginData ")
 
     try {
       if (email && password) {

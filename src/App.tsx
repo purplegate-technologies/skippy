@@ -18,7 +18,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import UserDetails from "./pages/Userdetails/UserDetails";
 import Settings from "./pages/Settings/Settings";
 import CreateAderts from "./pages/createAderts/CreateAderts";
-import { selectCurrentToken } from "./features/auth/authSlice";
 import CreateVoucher from "./pages/create-voucher/CreateVoucher";
 import FinanceDetails from "./pages/finance-details/FinanceDetails";
 import AdvertisementDetails from "./pages/advertisements-details/AdvertisementDetails";

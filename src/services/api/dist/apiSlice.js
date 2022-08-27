@@ -93,8 +93,11 @@ var baseQueryWithReauth = function (args, api, extraOptions) { return __awaiter(
                 result = _b.sent();
                 return [3 /*break*/, 5];
             case 4:
+                // api.dispatch(logout())
                 react_toastify_1.toast.error("Something went wrong, Please login again!");
-                api.dispatch(authSlice_1.logout());
+                setTimeout(function () {
+                    api.dispatch(authSlice_1.logout());
+                }, 1000);
                 _b.label = 5;
             case 5: return [2 /*return*/, result];
         }
