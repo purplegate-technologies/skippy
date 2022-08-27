@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { logout, setCredentials } from '../../features/auth/authSlice'
 import { RootState } from '../../app/store'
-import { AdvertsApiSlice, AuthType } from '../apiTyoe'
+// import { AdvertsApiSlice, AuthType } from '../apiTyoe'
 import { toast } from 'react-toastify'
 
 const baseQuery = fetchBaseQuery({

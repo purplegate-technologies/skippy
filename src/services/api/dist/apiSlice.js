@@ -50,6 +50,7 @@ exports.__esModule = true;
 exports.apiSlice = void 0;
 var react_1 = require("@reduxjs/toolkit/query/react");
 var authSlice_1 = require("../../features/auth/authSlice");
+// import { AdvertsApiSlice, AuthType } from '../apiTyoe'
 var react_toastify_1 = require("react-toastify");
 var baseQuery = react_1.fetchBaseQuery({
     baseUrl: process.env.REACT_APP_API_KEY,

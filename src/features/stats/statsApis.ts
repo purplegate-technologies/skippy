@@ -55,7 +55,7 @@ interface getDashbbordStatsTypes {
 
 export const statsApiSlice = apiSlice.injectEndpoints({
     endpoints: builder => ({
-        getFinanceStats: builder.query<{}, void>({ // get Finance stats
+        getFinanceStats: builder.query<{} | undefined | any, void>({ // get Finance stats
             query: () => `stats/finance?startDate=&endDate=`,
             // transformResponse: (response: { data: getDashbbordStatsTypes }, meta, arg) => response.data,
             providesTags: ['Stats'],
@@ -66,17 +66,17 @@ export const statsApiSlice = apiSlice.injectEndpoints({
             // transformResponse: (response: { data: {} }, meta, arg) => response.data,
             providesTags: ['Stats'],
         }),
-        getAdvertStats: builder.query<{}, void>({ // get advert stats
+        getAdvertStats: builder.query<{} | undefined | any, void>({ // get advert stats
             query: () => `stats/adverts`,
-            // transformResponse: (response: { data: {} }, meta, arg) => response.data,
+            transformResponse: (response: { data: {} }, meta, arg) => response.data,
             providesTags: ['Stats'],
         }),
-        getTrafficStats: builder.query<{}, void>({ // get traffic stats
+        getTrafficStats: builder.query<{} | undefined | any, void>({ // get traffic stats
             query: () => `stats/traffic?startDate=2022-07-30&endDate=2022-08-01`,
             // transformResponse: (response: { data: {} }, meta, arg) => response.data,
             providesTags: ['Stats'],
         }),
-        getUserStats: builder.query<{}, void>({ // get traffic stats
+        getUserStats: builder.query<getDashbbordStatsTypes, void>({ // get traffic stats
             query: () => `stats/user`,
             // transformResponse: (response: { data: {} }, meta, arg) => response.data,
             providesTags: ['Stats'],

@@ -26,34 +26,62 @@ var Advertisements = function () {
         ]
     })[0];
     var _a = react_1.useState(userData), externalGraph = _a[0], setExternalGraph = _a[1];
+    var _b = react_1.useState(userData), internalGraph = _b[0], setInternalGraph = _b[1];
     var data = statsApis_1.useGetAdvertStatsQuery().data;
-    console.log(data, "useGetAdvertStatsQuery");
+    console.log(data === null || data === void 0 ? void 0 : data.graphStats, "useGetAdvertStatsQuery");
     var navigate = react_router_dom_1.useNavigate();
-    //   useEffect(() => {
-    //     // weekly stats
-    //     if(data && data?.data) {
-    //      const externalAdsStats: string[] = [];
-    //      const externalAdsStatsValue: number[] = [];
-    //      Object.entries(data?.data?.externalAdsStats).map(val => {
-    //          externalAdsStats.push(val[0]);
-    //          //@ts-ignore
-    //          externalAdsStatsValue.push(val[1]);
-    //      });
-    //      setExternalGraph({
-    //          labels: externalAdsStats.map(data => data.toUpperCase()),
-    //          datasets: [
-    //              {
-    //                  label: "Ads Watched",
-    //                  data: externalAdsStatsValue.map((data) => data),
-    //                  backgroundColor: "#2a71d0",
-    //                  borderColor: "#2a71d0",
-    //                  borderWidth: 1,
-    //                  borderRadius: 5,
-    //              },
-    //          ]
-    //      });
-    //     }
-    //  },[data]);
+    // InternalGraph
+    react_1.useEffect(function () {
+        var _a;
+        // weekly stats
+        if (data && (data === null || data === void 0 ? void 0 : data.graphStats)) {
+            var internalAdsStats_1 = [];
+            var internalAdsStatsValue_1 = [];
+            Object.entries((_a = data === null || data === void 0 ? void 0 : data.graphStats) === null || _a === void 0 ? void 0 : _a.internalAdsStats).map(function (val) {
+                internalAdsStats_1.push(val[0]);
+                //@ts-ignore
+                internalAdsStatsValue_1.push(val[1]);
+            });
+            setInternalGraph({
+                labels: internalAdsStats_1.map(function (data) { return data.toUpperCase(); }),
+                datasets: [
+                    {
+                        label: "Ads Watched",
+                        data: internalAdsStatsValue_1.map(function (data) { return data; }),
+                        backgroundColor: "#2a71d0",
+                        borderColor: "#2a71d0",
+                        borderWidth: 1
+                    },
+                ]
+            });
+        }
+    }, [data]);
+    //  ExternalGraph
+    react_1.useEffect(function () {
+        var _a;
+        // weekly stats
+        if (data && (data === null || data === void 0 ? void 0 : data.graphStats)) {
+            var externalAdsStats_1 = [];
+            var externalAdsStatsValue_1 = [];
+            Object.entries((_a = data === null || data === void 0 ? void 0 : data.graphStats) === null || _a === void 0 ? void 0 : _a.externalAdsStats).map(function (val) {
+                externalAdsStats_1.push(val[0]);
+                //@ts-ignore
+                externalAdsStatsValue_1.push(val[1]);
+            });
+            setExternalGraph({
+                labels: externalAdsStats_1.map(function (data) { return data.toUpperCase(); }),
+                datasets: [
+                    {
+                        label: "Ads Watched",
+                        data: externalAdsStatsValue_1.map(function (data) { return data; }),
+                        backgroundColor: "#2a71d0",
+                        borderColor: "#2a71d0",
+                        borderWidth: 1
+                    },
+                ]
+            });
+        }
+    }, [data]);
     var customerTableHead = [
         '',
         'name',
@@ -78,15 +106,15 @@ var Advertisements = function () {
             React.createElement("div", { className: 'col-6 card' },
                 React.createElement("div", { className: 'basis-1/2' },
                     React.createElement("div", { className: "flex items-center justify-between" },
-                        React.createElement("h6", { className: 'text-[#171837] text-sm' }, "nternal Ads Watch Trend"),
+                        React.createElement("h6", { className: 'text-[#171837] text-sm' }, "Internal Ads Watch Trend"),
                         React.createElement(ThreeVdots_1["default"], null)),
-                    React.createElement(LinearGradientChart_1["default"], { chartData: externalGraph }))),
+                    React.createElement(LinearGradientChart_1["default"], { chartData: internalGraph }))),
             React.createElement("div", { className: 'col-6 card' },
                 React.createElement("div", { className: 'basis-1/2' },
                     React.createElement("div", { className: "flex items-center justify-between" },
                         React.createElement("h6", { className: 'text-[#171837] text-sm' }, "External Ads Watch Trend"),
                         React.createElement(ThreeVdots_1["default"], null)),
-                    React.createElement(LinearGradientChart_1["default"], { chartData: userData })))),
+                    React.createElement(LinearGradientChart_1["default"], { chartData: externalGraph })))),
         React.createElement("div", { className: 'my-5' }),
         React.createElement("div", { className: "card" },
             React.createElement(SearchBar_1["default"], { HeaderTitle: 'All Adverts', placeholder: 'Enter Brand/Ad Name', text: 'Create Advert', onClick: function () { return navigate('/advertisements-details'); } }),
