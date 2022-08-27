@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import { useAppSelector } from '../../app/hooks'
 import Breadcrubs from '../../components/breadcrubs/Breadcrubs'
 import { selectCurrentUser } from '../../features/auth/authSlice'
@@ -11,24 +11,24 @@ export interface BreadcrumbsProps {
     url?: string
     name?: string
     lenght?: number
-  }
-  export interface BreadcrumsbItemsProps {
+}
+export interface BreadcrumsbItemsProps {
     bread?: BreadcrumbsProps[]
-  }
-  const bread: BreadcrumbsProps[] = [
+}
+const bread: BreadcrumbsProps[] = [
     {
-      name: 'Dashboard',
-      url: ''
+        name: 'Dashboard',
+        url: ''
     },
     {
-      name: 'Manage Users',
-      url: "manage-users"
+        name: 'Manage Users',
+        url: "manage-users"
     },
     {
-      name: 'User Detail',
-      url: "user-detail"
+        name: 'User Detail',
+        url: "user-detail"
     }
-  ]
+]
 
 const ActivityOverview = () => {
     const [tabIndex, setTabIndex] = useState<string>("Earning History")
@@ -36,7 +36,7 @@ const ActivityOverview = () => {
 
     return (
         <div>
-            <Breadcrubs {...{bread}} />
+            <Breadcrubs {...{ bread }} />
             <div className="userdetails my-5 border rounded-xl shadow-sm p-4">
 
                 <div className="grid lg:grid-flow-col">
@@ -55,16 +55,16 @@ const ActivityOverview = () => {
                     {/*  */}
                     <div className="flex items-center justify-between border flex-1 lg:mt-auto mt-10">
                         <div className="flex flex-col items-center border w-full p-2">
-                            <p className='text-[#171837] text-[28px]'>30</p>
-                            <span className='text-[#949AB1] text-xs'>Created Adverts</span>
+                            <p className='text-[#171837] text-[28px]'>3,000</p>
+                            <span className='text-[#949AB1] text-xs'> Points Earned</span>
                         </div>
                         <div className="flex flex-col items-center border w-full p-2">
-                            <p className='text-[#171837] text-[28px]'>30</p>
-                            <span className='text-[#949AB1] text-xs'>Created Adverts</span>
+                            <p className='text-[#171837] text-[28px]'>2,500</p>
+                            <span className='text-[#949AB1] text-xs'> Points Redeemed</span>
                         </div>
                         <div className="flex flex-col items-center border w-full p-2">
-                            <p className='text-[#171837] text-[28px]'>30</p>
-                            <span className='text-[#949AB1] text-xs'>Created Adverts</span>
+                            <p className='text-[#171837] text-[28px]'>N1,500</p>
+                            <span className='text-[#949AB1] text-xs'>Valid Voucher Value</span>
                         </div>
                     </div>
                 </div>

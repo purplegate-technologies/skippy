@@ -40,8 +40,8 @@ const ActivityLog = () => {
         <SearchBar HeaderTitle='Activity Log' placeholder='Search Activity' text="Invite User" onClick={() => navigate('/invite-users')} />
 
         {/* Table */}
-        <div className="row">
-          <div className="col-12">
+        <div className="">
+          <div className="">
             <div className="">
               <div className="card__body">
                 <Table

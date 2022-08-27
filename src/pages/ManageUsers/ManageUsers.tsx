@@ -63,7 +63,7 @@ const ManageUsers = () => {
           <div className="card">
             <SearchBar HeaderTitle='App Users' text="Invite User" onClick={() => navigate('/invite-users')} />
             <CategoryFilter />
-                    <Link to="activity-overview" className="bg-red-600">
+                    <Link to="/activity-overview" className="bg-red-600">
                     ActivityOverview
                     </Link>
             {/* tab end */}
