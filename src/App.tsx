@@ -25,6 +25,7 @@ import AdvertisementDetails from "./pages/advertisements-details/AdvertisementDe
 import InviteUser from "./pages/InviteUser/InviteUser";
 import VoucherDetails from "./pages/VoucherDetails/VoucherDetails";
 import ResetPassword from "./pages/login/ResetPassword";
+import ActivityOverview from "./pages/ActivityOverview/ActivityOverview";
 
 function App() {
   // const  token  = useAppSelector(selectCurrentToken)
@@ -55,6 +56,7 @@ function App() {
             <Route path="invite-users" element={<InviteUser />} />
             <Route path="activity-log" element={<ActivityLog />} />
             <Route path="user-details" element={<UserDetails />} />
+            <Route path="activity-overview" element={<ActivityOverview />} />
             <Route path="settings" element={<Settings />} />
           </Route>
         </Route>

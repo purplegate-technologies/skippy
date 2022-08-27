@@ -1,15 +1,17 @@
 import './advertisements.css'
-import StatusCards from '../../components/statusCard/StatusCards'
-import Table from '../../components/Table/Table'
-import advertlist from "../../assets/jsonData/advert-list.json"
-import LinearGradientChart from '../../components/charts/LinearGradientChart'
 import { useEffect, useState } from 'react'
-import { UserData } from '../../assets/data/data'
-import SearchBar from '../../components/support/SearchBar'
 import { useNavigate } from 'react-router-dom'
-import CategoryFilter from '../../components/CategoryFilter/CategoryFilter'
-import { useGetAdvertStatsQuery } from '../../features/stats/statsApis'
+import Table from '../../components/Table/Table'
+import { UserData } from '../../assets/data/data'
 import ThreeVdots from '../../assets/svg/ThreeVdots'
+import SearchBar from '../../components/support/SearchBar'
+import advertlist from "../../assets/jsonData/advert-list.json"
+import StatusCards from '../../components/statusCard/StatusCards'
+import { useGetAdvertStatsQuery } from '../../features/stats/statsApis'
+import { useGetAdvertQuery } from '../../features/adverts/AdvertsApiSlice'
+import CategoryFilter from '../../components/CategoryFilter/CategoryFilter'
+import LinearGradientChart from '../../components/charts/LinearGradientChart'
+
 
 const Advertisements = () => {
 
@@ -29,9 +31,11 @@ const Advertisements = () => {
   const [externalGraph, setExternalGraph] = useState(userData)
   const [internalGraph, setInternalGraph] = useState(userData)
   const { data } = useGetAdvertStatsQuery()
+  const { data: gerAds } = useGetAdvertQuery(1)
 
 
-  console.log(data?.graphStats, "useGetAdvertStatsQuery")
+  // console.log(data, "useGetAdvertStatsQuery")
+  console.log(gerAds, "gerAds")
   const navigate = useNavigate()
 
 
@@ -58,7 +62,6 @@ const Advertisements = () => {
                  backgroundColor: "#2a71d0",
                  borderColor: "#2a71d0",
                  borderWidth: 1,
-                //  borderRadius: 5,
              },
          ]
      });
@@ -101,13 +104,15 @@ const Advertisements = () => {
  },[data]);
 
   const customerTableHead: Array<string> = [
-    '',
-    'name',
-    'email',
-    'phone',
-    'total orders',
-    'total spend',
-    'location'
+    'Brand Name/ Ad Title',
+    'Streams',
+    'Category',
+    'Cost',
+    'Duration',
+    'Date Posted',
+    'Posted By',
+    'Status',
+    'Action',
   ]
 
   const renderHead = (item: any, index: number) => <th key={index}>{item}</th>
@@ -120,6 +125,8 @@ const Advertisements = () => {
       <td>{item.phone}</td>
       <td>{item.total_orders}</td>
       <td>{item.total_spend}</td>
+      <td>{item.location}</td>
+      <td>{item.location}</td>
       <td>{item.location}</td>
     </tr>
   )

@@ -8,6 +8,8 @@ import "./styles.css"
 import { useNavigate } from 'react-router-dom'
 import CategoryFilter from '../../components/CategoryFilter/CategoryFilter'
 
+import {Link} from "react-router-dom"
+
 
 const ManageUsers = () => {
   const navigate = useNavigate()
@@ -61,6 +63,9 @@ const ManageUsers = () => {
           <div className="card">
             <SearchBar HeaderTitle='App Users' text="Invite User" onClick={() => navigate('/invite-users')} />
             <CategoryFilter />
+                    <Link to="activity-overview" className="bg-red-600">
+                    ActivityOverview
+                    </Link>
             {/* tab end */}
             <div className="row">
               <div className="col-12">

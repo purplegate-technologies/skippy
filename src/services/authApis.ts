@@ -6,7 +6,7 @@ export const authApi = createApi({
     reducerPath: 'authApi',
     baseQuery: fetchBaseQuery({
         // baseUrl: `https://testtourapp.herokuapp.com/`
-        baseUrl: process.env.REACT_APP_API_KEY,  
+        baseUrl: process.env.REACT_APP_API_KEY,
         credentials: 'include',
         prepareHeaders: (headers, { getState }: { getState: any }) => {
             const token = (getState() as RootState).auth.token
@@ -22,28 +22,30 @@ export const authApi = createApi({
     }),
     tagTypes: ['Auth'],
     endpoints: (builder) => ({
-        loginUser: builder.mutation<{}, AuthType>({
-            query: (body) => ({
-                url: `/auth/login`,
-                method: `POST`,
-                body
-            }),
-            transformResponse: (response: { data: AuthType }, meta, arg) => response.data,
-            invalidatesTags: ['Auth'],
-        }),
-        registerUser: builder.mutation<{}, AuthType>({
-            query: (body) => ({
-                url: `/auth/signup`,
-                method: `POST`,
-                body
-            }),
-            transformResponse: (response: { data: AuthType }, meta, arg) => response.data,
-            invalidatesTags: ['Auth'],
-        }),
+        // loginUser: builder.mutation<{}, AuthType>({
+        //     query: (body) => ({
+        //         url: `/auth/login`,
+        //         method: `POST`,
+        //         body
+        //     }),
+        //     transformResponse: (response: { data: AuthType }, meta, arg) => response.data,
+        //     invalidatesTags: ['Auth'],
+        // }),
+        // registerUser: builder.mutation<{}, AuthType>({
+        //     query: (body) => ({
+        //         url: `/auth/signup`,
+        //         method: `POST`,
+        //         body
+        //     }),
+        //     transformResponse: (response: { data: AuthType }, meta, arg) => response.data,
+        //     invalidatesTags: ['Auth'],
+        // }),
     })
 })
 
-export const { useLoginUserMutation, useRegisterUserMutation } = authApi
+export const {
+    // useLoginUserMutation, useRegisterUserMutation
+} = authApi
 
 // create an apiSlice
 // const baseQueryWithReauth = async (args ,api,extraOptions) => {

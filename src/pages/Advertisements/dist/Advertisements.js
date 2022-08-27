@@ -1,17 +1,18 @@
 "use strict";
 exports.__esModule = true;
 require("./advertisements.css");
-var StatusCards_1 = require("../../components/statusCard/StatusCards");
-var Table_1 = require("../../components/Table/Table");
-var advert_list_json_1 = require("../../assets/jsonData/advert-list.json");
-var LinearGradientChart_1 = require("../../components/charts/LinearGradientChart");
 var react_1 = require("react");
-var data_1 = require("../../assets/data/data");
-var SearchBar_1 = require("../../components/support/SearchBar");
 var react_router_dom_1 = require("react-router-dom");
-var CategoryFilter_1 = require("../../components/CategoryFilter/CategoryFilter");
-var statsApis_1 = require("../../features/stats/statsApis");
+var Table_1 = require("../../components/Table/Table");
+var data_1 = require("../../assets/data/data");
 var ThreeVdots_1 = require("../../assets/svg/ThreeVdots");
+var SearchBar_1 = require("../../components/support/SearchBar");
+var advert_list_json_1 = require("../../assets/jsonData/advert-list.json");
+var StatusCards_1 = require("../../components/statusCard/StatusCards");
+var statsApis_1 = require("../../features/stats/statsApis");
+var AdvertsApiSlice_1 = require("../../features/adverts/AdvertsApiSlice");
+var CategoryFilter_1 = require("../../components/CategoryFilter/CategoryFilter");
+var LinearGradientChart_1 = require("../../components/charts/LinearGradientChart");
 var Advertisements = function () {
     var userData = react_1.useState({
         labels: data_1.UserData.map(function (data) { return data.day.toUpperCase(); }),
@@ -28,7 +29,9 @@ var Advertisements = function () {
     var _a = react_1.useState(userData), externalGraph = _a[0], setExternalGraph = _a[1];
     var _b = react_1.useState(userData), internalGraph = _b[0], setInternalGraph = _b[1];
     var data = statsApis_1.useGetAdvertStatsQuery().data;
-    console.log(data === null || data === void 0 ? void 0 : data.graphStats, "useGetAdvertStatsQuery");
+    var gerAds = AdvertsApiSlice_1.useGetAdvertQuery(1).data;
+    // console.log(data, "useGetAdvertStatsQuery")
+    console.log(gerAds, "gerAds");
     var navigate = react_router_dom_1.useNavigate();
     // InternalGraph
     react_1.useEffect(function () {
@@ -83,13 +86,15 @@ var Advertisements = function () {
         }
     }, [data]);
     var customerTableHead = [
-        '',
-        'name',
-        'email',
-        'phone',
-        'total orders',
-        'total spend',
-        'location'
+        'Brand Name/ Ad Title',
+        'Streams',
+        'Category',
+        'Cost',
+        'Duration',
+        'Date Posted',
+        'Posted By',
+        'Status',
+        'Action',
     ];
     var renderHead = function (item, index) { return React.createElement("th", { key: index }, item); };
     var renderBody = function (item, index) { return (React.createElement("tr", { key: index },
@@ -99,6 +104,8 @@ var Advertisements = function () {
         React.createElement("td", null, item.phone),
         React.createElement("td", null, item.total_orders),
         React.createElement("td", null, item.total_spend),
+        React.createElement("td", null, item.location),
+        React.createElement("td", null, item.location),
         React.createElement("td", null, item.location))); };
     return (React.createElement("div", null,
         React.createElement(StatusCards_1["default"], null),

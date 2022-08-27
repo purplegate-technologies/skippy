@@ -27,13 +27,13 @@ export const advertsApiSlice = apiSlice.injectEndpoints({
             providesTags: ["Advert"]
         }),
         getAdvertUser: builder.query({ // get advert user
-            query: body => `adverts/user`,
+            query: () => `adverts/user`,
             transformResponse: (response: { data: AdvertsApiSlice }, meta, arg) => response.data,
             providesTags: ['Advert']
         }),
-        getAdvert: builder.query({ // get advert by id
+        getAdvert: builder.query({ // get advert for tables
             query: ({ id }) => `adverts/${id}`,
-            transformResponse: (response: { data: AdvertsApiSlice }, meta, arg) => response.data,
+            transformResponse: (response: { data: {} | undefined | any }, meta, arg) => response.data,
             providesTags: ['Advert'],
         }),
         updateAdvert: builder.mutation({ // get advert by id
