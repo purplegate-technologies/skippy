@@ -111,7 +111,7 @@ const MyDetails = () => {
                     />
 
                 </div>
-                <Button className="mt-[2.5rem] mb-[2.36rem] capitalize" text="Save Changes" type="submit" />
+                <Button className="mt-[2.5rem] mb-[2.36rem] capitalize bg-[#516CF5] " text="Save Changes" type="submit" />
             </form>
         </div>
     )

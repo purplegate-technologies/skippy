@@ -64,7 +64,8 @@ function DropDownInout(_a) {
         React.createElement(InputN_1["default"], __assign({}, rest, (disabled && { disabled: disabled }), { label: label, value: value, 
             // ref={innerRef}
             onChange: onChange, onClick: function () { return setOpen(!open); }, className: "pointer-events-[initial] ", TrailingIcon: function () { return (React.createElement("span", { className: "cursor-pointer rotate-180", onClick: function () { return !disabled && setOpen(!open); } },
-                React.createElement("span", null, ">"))); } })),
+                React.createElement("span", null),
+                React.createElement("span", { className: "rotate-180 scale-75" }, ">"))); } })),
         open && (React.createElement("div", { className: 'shadow-[0_1px_4px_rgba(0,0,0,0.16)] absolute z-10 bg-white my-2 w-full rounded-2xl p-4' },
             React.createElement("div", { className: "relative " + (searchable ? 'h-72' : 'h-auto') },
                 searchable && (React.createElement("input", { className: "top-0 h-10 text-base mb-3 w-full px-4 bg-transparent outline-none text-black-jungle border border-grey-platinum rounded-sm", onChange: search, placeholder: "Search" })),
@@ -79,7 +80,7 @@ function DropDownInout(_a) {
                                 setValue(e.value);
                             }
                             setOpen(false);
-                        }, className: "hover:bg-grey-cultured active:bg-green active:text-white rounded-lg px-2 py-3 text-black" }, e.label ? e.label : e.value)); })
+                        }, className: "hover:bg-grey-cultured active:bg-green active:text-white rounded-lg px-2 py-2 text-black" }, e.label ? e.label : e.value)); })
                     : 'No results found'))))))));
 }
 exports["default"] = DropDownInout;

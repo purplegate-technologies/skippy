@@ -21,21 +21,21 @@ var Settings = function () {
     var _c = react_1.useState(""), email = _c[0], setEmail = _c[1];
     var _d = react_1.useState(""), mobile = _d[0], setMobile = _d[1];
     var _e = react_1.useState("Finances and billing"), roles = _e[0], setRoles = _e[1];
-    var selectSTyle = {
-        display: "block",
-        width: "100%",
-        borderRadius: "0.25rem",
-        borderWidth: "2px",
-        borderOpacity: 1,
-        borderColor: "#949AB1",
-        // --tw-bg-opacity: 1,
-        backgroundColor: "white",
-        padding: "0.5rem",
-        outlineOffset: "2px",
-        outlineWidth: 1,
-        outlineColor: "transparent",
-        outlineStyle: "solid"
-    };
+    // const selectSTyle = {
+    //     display: "block",
+    //     width: "100%",
+    //     borderRadius: "0.25rem",
+    //     borderWidth: "2px",
+    //     borderOpacity: 1,
+    //     borderColor: "#949AB1",
+    //     // --tw-bg-opacity: 1,
+    //     backgroundColor: "white",
+    //     padding: "0.5rem",
+    //     outlineOffset: "2px",
+    //     outlineWidth: 1,
+    //     outlineColor: "transparent",
+    //     outlineStyle: "solid",
+    // }
     var navigate = react_router_dom_1.useNavigate();
     var HandleSubmit = function (e) {
         e.preventDefault();
@@ -79,6 +79,6 @@ var Settings = function () {
                             // divStyel="w-[19rem]contactUs-form-lable"
                             divStyel: "contactUs-form-lable", className: "border-[#949AB1] border-1 rounded p-2 my-3 w-full", label: ("MOBILE NUMBER"), name: "mobile", placeholder: ("09039278115"), type: "tel", value: mobile, onChange: function (e) { return setMobile(e.target.value); } }),
                         React.createElement(Switch_1["default"], { label: "Activate Account" }),
-                        React.createElement(Button_1["default"], { className: "mt-[2.5rem] mb-[2.36rem] capitalize", text: "Save Changes", type: "submit" })))))));
+                        React.createElement(Button_1["default"], { className: "mt-[2.5rem] mb-[2.36rem] capitalize bg-[#516CF5] ", text: "Save Changes", type: "submit" })))))));
 };
 exports["default"] = Settings;

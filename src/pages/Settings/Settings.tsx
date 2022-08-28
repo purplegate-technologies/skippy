@@ -26,22 +26,22 @@ const Settings = () => {
     const [mobile, setMobile] = useState("")
     const [roles, setRoles] = useState("Finances and billing")
 
-    const selectSTyle = {
-        display: "block",
-        width: "100%",
-        borderRadius: "0.25rem",
-        borderWidth: "2px",
-        borderOpacity: 1,
-        borderColor: "#949AB1",
-        // --tw-bg-opacity: 1,
-        backgroundColor: "white",
-        padding: "0.5rem",
-        outlineOffset: "2px",
-        outlineWidth: 1,
-        outlineColor: "transparent",
-        outlineStyle: "solid",
+    // const selectSTyle = {
+    //     display: "block",
+    //     width: "100%",
+    //     borderRadius: "0.25rem",
+    //     borderWidth: "2px",
+    //     borderOpacity: 1,
+    //     borderColor: "#949AB1",
+    //     // --tw-bg-opacity: 1,
+    //     backgroundColor: "white",
+    //     padding: "0.5rem",
+    //     outlineOffset: "2px",
+    //     outlineWidth: 1,
+    //     outlineColor: "transparent",
+    //     outlineStyle: "solid",
 
-    }
+    // }
 
     const navigate = useNavigate();
 
@@ -181,7 +181,7 @@ const Settings = () => {
                             />
 
                             <Switch label="Activate Account"  />
-                            <Button className="mt-[2.5rem] mb-[2.36rem] capitalize" text="Save Changes" type="submit" />
+                            <Button className="mt-[2.5rem] mb-[2.36rem] capitalize bg-[#516CF5] " text="Save Changes" type="submit" />
                         </div>
                     </div>
                 </div>

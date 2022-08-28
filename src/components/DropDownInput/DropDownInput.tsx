@@ -97,8 +97,13 @@ export default function DropDownInout({
 						{/* <AIarrowdown1Outlin /> */}
                     {/* {">"} */}
                     <span>
-                    &#62;
+
                     </span>
+                    <span className="rotate-180 scale-75">
+                        {/* &#8896; */}
+
+                        &#62;
+                        </span>
 					</span>
 				)}
 			/>
@@ -135,7 +140,7 @@ export default function DropDownInout({
 														}
 														setOpen(false);
 													}}
-													className="hover:bg-grey-cultured active:bg-green active:text-white rounded-lg px-2 py-3 text-black"
+													className="hover:bg-grey-cultured active:bg-green active:text-white rounded-lg px-2 py-2 text-black"
 												>
 													{e.label ? e.label : e.value}
 												</li>

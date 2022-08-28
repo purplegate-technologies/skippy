@@ -37,7 +37,7 @@ const SearchBar = ({ className = "", placeholder = "Search", HeaderTitle, text, 
                     />
                 </div>
 
-                <Button to={to} text={text} {...{ children }} className="ml-auto px-10" {...{onClick}} />
+                <Button to={to} text={text} {...{ children }} className="ml-auto px-10 bg-[#516CF5] " {...{onClick}} />
             </form>
         </div>
     )
