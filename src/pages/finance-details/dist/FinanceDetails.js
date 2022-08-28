@@ -70,7 +70,7 @@ var FinanceDetails = function () {
                     react_1["default"].createElement("div", { className: "py-5" },
                         react_1["default"].createElement("h1", { className: 'font-semibold text-[20px]' }, "Voucher Preview")),
                     react_1["default"].createElement("div", { className: "bg-white" },
-                        react_1["default"].createElement("div", { className: 'flex items-center border border-1 p-5' },
+                        react_1["default"].createElement("div", { className: 'flex items-center border border-1 px-5 py-10' },
                             react_1["default"].createElement(DollarVoucher_1["default"], null),
                             react_1["default"].createElement("span", { className: "text-xl font-bold ml-3" }, "N1500.00 Voucher")),
                         react_1["default"].createElement("div", null,

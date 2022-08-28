@@ -59,7 +59,7 @@ const EarningHistory = () => {
                         </div>
 
                         {/* <DoughnutChart className='flex items-center justify-center' /> */}
-                        <CircularProgressbar value={100} text="70%" strokeWidth={10} className="w-[100px] h-[100px] justify-self-center flex-1"
+                        <CircularProgressbar value={100} text="90%" strokeWidth={10} className="w-[100px] h-[100px] justify-self-center flex-1"
                             styles={{
                                 path: {
                                     // transform: "rotate(180deg)",

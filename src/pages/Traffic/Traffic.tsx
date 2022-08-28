@@ -244,7 +244,7 @@ const Traffic = () => {
 
 
 
-                <CircularProgressbar value={100} text="70%" strokeWidth={3} className="w-[100px] h-[100px] justify-self-center flex-1"
+                <CircularProgressbar value={100} text="70%" strokeWidth={10} className="w-[150px] h-[150px] mb-5 justify-self-center flex-1"
                   styles={{
                     path: {
                       transform: "rotate(180deg)",
@@ -322,7 +322,7 @@ const Traffic = () => {
                 </div>
 
                 {/* <DoughnutChart className='flex items-center justify-center' /> */}
-                <CircularProgressbar value={100} text="70%" strokeWidth={3} className="w-[100px] h-[100px] justify-self-center flex-1"
+                <CircularProgressbar value={100} text="70%" strokeWidth={10} className="w-[150px] h-[150px] mb-5 justify-self-center flex-1"
                   styles={{
                     path: {
                       transform: "rotate(180deg)",

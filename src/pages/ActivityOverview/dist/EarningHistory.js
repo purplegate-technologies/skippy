@@ -39,7 +39,7 @@ var EarningHistory = function () {
                             react_1["default"].createElement("div", { className: 'p-1 rounded w-3 bg-[]' }),
                             react_1["default"].createElement("p", { className: 'text-[#949AB1] text-xs my-1' }, "Cancelled Streams"),
                             react_1["default"].createElement("p", { className: 'text-lg text-[#171837]' }, "3"))),
-                    react_1["default"].createElement(react_circular_progressbar_1.CircularProgressbar, { value: 100, text: "70%", strokeWidth: 10, className: "w-[100px] h-[100px] justify-self-center flex-1", styles: {
+                    react_1["default"].createElement(react_circular_progressbar_1.CircularProgressbar, { value: 100, text: "90%", strokeWidth: 10, className: "w-[100px] h-[100px] justify-self-center flex-1", styles: {
                             path: {
                                 // transform: "rotate(180deg)",
                                 transformOrigin: "center center",

@@ -181,7 +181,7 @@ var Traffic = function () {
                                     react_1["default"].createElement("div", { className: 'p-[2px] rounded-full w-5  bg-[#A3B1FA]' }),
                                     react_1["default"].createElement("p", { className: 'text-[#949AB1] text-xs my-1' }, "Internal Ads"),
                                     react_1["default"].createElement("p", { className: 'text-lg text-[#171837]' }, "75,000"))),
-                            react_1["default"].createElement(react_circular_progressbar_1.CircularProgressbar, { value: 100, text: "70%", strokeWidth: 3, className: "w-[100px] h-[100px] justify-self-center flex-1", styles: {
+                            react_1["default"].createElement(react_circular_progressbar_1.CircularProgressbar, { value: 100, text: "70%", strokeWidth: 10, className: "w-[150px] h-[150px] mb-5 justify-self-center flex-1", styles: {
                                     path: {
                                         transform: "rotate(180deg)",
                                         transformOrigin: "center center",
@@ -229,7 +229,7 @@ var Traffic = function () {
                                     react_1["default"].createElement("div", { className: 'p-[2px] rounded-full w-5  bg-[#A3B1FA]' }),
                                     react_1["default"].createElement("p", { className: 'text-[#949AB1] text-xs my-1' }, "Internal Ads"),
                                     react_1["default"].createElement("p", { className: 'text-lg text-[#171837]' }, "75,000"))),
-                            react_1["default"].createElement(react_circular_progressbar_1.CircularProgressbar, { value: 100, text: "70%", strokeWidth: 3, className: "w-[100px] h-[100px] justify-self-center flex-1", styles: {
+                            react_1["default"].createElement(react_circular_progressbar_1.CircularProgressbar, { value: 100, text: "70%", strokeWidth: 10, className: "w-[150px] h-[150px] mb-5 justify-self-center flex-1", styles: {
                                     path: {
                                         transform: "rotate(180deg)",
                                         transformOrigin: "center center",
