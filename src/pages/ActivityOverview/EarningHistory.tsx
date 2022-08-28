@@ -3,13 +3,9 @@ import DoughnutChart from '../../components/charts/DoughnutChart'
 import Table from '../../components/Table/Table'
 
 const customerTableHead = [
-    '',
-    'name',
-    'email',
-    'phone',
-    'total orders',
-    'total spend',
-    'location'
+    'Advert',
+    'Date',
+    'Points',
 ]
 
 const renderHead = (item: any, index: number) => <th key={index}>{item}</th>

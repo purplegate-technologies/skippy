@@ -5,31 +5,31 @@ import { StatusCardProps } from './StatusTypes'
 const statusData = [
     {
         "icon": "bx bx-shopping-bag",
-        "count": "10,000",
+        "count": "-",
         "title": "overall users",
-        "percent": "12% ↑",
+        "percent": "-% ↑",
         "from": "from 880"
     },
     {
         "icon": "bx bx-cart",
-        "count": "2,001",
+        "count": "-",
         "title": "overllads",
-        "percent": "12% ↑",
-        "from": "from 880"
+        "percent": "-% ↑",
+        "from": "from -"
     },
     {
         "icon": "bx bx-dollar-circle",
-        "count": "$2,632",
+        "count": "-",
         "title": "total payout",
-        "percent": "12% ↑",
-        "from": "from 880"
+        "percent": "-% ↑",
+        "from": "from -"
     },
     {
         "icon": "bx bx-receipt",
-        "count": "1,711",
+        "count": "-",
         "title": "Vouchers redeemed",
-        "percent": "12% ↑",
-        "from": "from 880"
+        "percent": "-% ↑",
+        "from": "from -"
     }
 ]
 

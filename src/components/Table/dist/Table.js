@@ -79,7 +79,7 @@ var Table = function (_a) {
                     React.createElement("option", null, "100")),
                 " ",
                 React.createElement("span", { style: { marginLeft: '10px' } }, "Items per page")),
-            pages > 1 ? (React.createElement("div", { className: "table__pagination" },
+            pages > 0 ? (React.createElement("div", { className: "table__pagination" },
                 React.createElement("button", { onClick: handlePrevbtn, disabled: currPage === pages[0] ? true : false }, "Prev"),
                 range.map(function (item, index) {
                     if (item < maxPageNumberLimit + 1 && item > minPageNumberLimit) {

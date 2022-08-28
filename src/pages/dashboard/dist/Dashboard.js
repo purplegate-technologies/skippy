@@ -9,8 +9,12 @@ var StatusCards_1 = require("../../components/statusCard/StatusCards");
 var BarChart_1 = require("../../components/charts/BarChart");
 var statsApis_1 = require("../../features/stats/statsApis");
 var ThreeVdots_1 = require("../../assets/svg/ThreeVdots");
+var StatusCardIcon_1 = require("../../assets/svg/StatusCardIcon");
 var Dashboard = function () {
+    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p;
     var data = statsApis_1.useGetDashboardStatsQuery().data;
+    var _q = react_1.useState(""), iconState = _q[0], setIconState = _q[1];
+    console.log(data, "data dashboard");
     var lineData = react_1.useState({
         // labels: Object.values(data?.data).map((data) => data.month.toUpperCase()),
         labels: data_1.datasetDash.map(function (data) { return data.month.toUpperCase(); }),
@@ -25,7 +29,7 @@ var Dashboard = function () {
             },
         ]
     })[0];
-    var _a = react_1.useState({
+    var userData = react_1.useState({
         // labels: Object.values(data?.data).map((data) => data.month.toUpperCase()),
         labels: data_1.datasetDash.map(function (data) { return data.month.toUpperCase(); }),
         datasets: [
@@ -38,7 +42,7 @@ var Dashboard = function () {
                 borderRadius: 5
             },
             {
-                label: "Ads Watched",
+                label: "External Ads Watched",
                 data: data_1.datasetDash.map(function (data) { return data.adsWatched; }),
                 backgroundColor: "#A3B1FA",
                 borderColor: "#A3B1FA",
@@ -46,13 +50,14 @@ var Dashboard = function () {
                 borderRadius: 5
             },
         ]
-    }), userData = _a[0], setUserrData = _a[1];
-    var _b = react_1.useState(userData), dataSet = _b[0], setDataSet = _b[1];
-    var _c = react_1.useState(userData), dataMonth = _c[0], setDataMonth = _c[1];
-    var _d = react_1.useState(userData), dataWeek = _d[0], setDataWeek = _d[1];
-    var _e = react_1.useState(userData), totalAdvertTrend = _e[0], setAdvertTrend = _e[1];
-    var _f = react_1.useState(lineData), totalPayoutTrend = _f[0], setPayoutTrend = _f[1];
-    var _g = react_1.useState('year'), chartDate = _g[0], setChartDate = _g[1];
+    })[0];
+    var _r = react_1.useState(userData), dataSet = _r[0], setDataSet = _r[1];
+    var _s = react_1.useState(userData), dataMonth = _s[0], setDataMonth = _s[1];
+    var _t = react_1.useState(userData), dataWeek = _t[0], setDataWeek = _t[1];
+    var _u = react_1.useState(userData), totalAdvertTrend = _u[0], setAdvertTrend = _u[1];
+    var _v = react_1.useState(lineData), totalPayoutTrend = _v[0], setPayoutTrend = _v[1];
+    var _w = react_1.useState('year'), chartDate = _w[0], setChartDate = _w[1];
+    //  Month
     react_1.useEffect(function () {
         var _a, _b, _c, _d;
         if (data && (data === null || data === void 0 ? void 0 : data.data)) {
@@ -94,6 +99,7 @@ var Dashboard = function () {
         }
     }, [data]);
     // Bar Chart js
+    //  Year
     react_1.useEffect(function () {
         var _a, _b, _c, _d;
         if (data && (data === null || data === void 0 ? void 0 : data.data)) {
@@ -233,30 +239,79 @@ var Dashboard = function () {
     }, [data]);
     return (React.createElement(React.Fragment, null,
         React.createElement("section", { className: 'mb-10' },
-            React.createElement(StatusCards_1["default"], null),
+            React.createElement("h4", { className: 'cardHead font-semibold' }, "Overview"),
+            (data && (data === null || data === void 0 ? void 0 : data.data)) ?
+                React.createElement("div", null,
+                    !((_b = (_a = data === null || data === void 0 ? void 0 : data.data) === null || _a === void 0 ? void 0 : _a.endDate) === null || _b === void 0 ? void 0 : _b.totalAdverts),
+                    React.createElement("div", { className: "row" },
+                        React.createElement("div", { className: "col-3" },
+                            React.createElement("div", { className: "status-card", onMouseEnter: function () { return setIconState("store"); }, onMouseLeave: function () { return setIconState(""); } },
+                                React.createElement("div", { className: "status-card__info" },
+                                    React.createElement("span", null, (_c = ("Overall Users")) === null || _c === void 0 ? void 0 : _c.toString().toUpperCase()),
+                                    React.createElement("h4", null, ((_e = (_d = data === null || data === void 0 ? void 0 : data.data) === null || _d === void 0 ? void 0 : _d.endDate) === null || _e === void 0 ? void 0 : _e.totalUsers)),
+                                    React.createElement("div", { className: "status-card__info__percent" },
+                                        React.createElement("span", { className: 'percentUp' }, "-% ↑"),
+                                        " ",
+                                        React.createElement("span", null, "from -"))),
+                                React.createElement("div", { className: "status-card__icon" },
+                                    React.createElement(StatusCardIcon_1["default"], { hovering: iconState === "store" })))),
+                        React.createElement("div", { className: "col-3" },
+                            React.createElement("div", { className: "status-card", onMouseEnter: function () { return setIconState("store"); }, onMouseLeave: function () { return setIconState(""); } },
+                                React.createElement("div", { className: "status-card__info" },
+                                    React.createElement("span", null, (_f = ("Overall Ads")) === null || _f === void 0 ? void 0 : _f.toString().toUpperCase()),
+                                    React.createElement("h4", null, ((_h = (_g = data === null || data === void 0 ? void 0 : data.data) === null || _g === void 0 ? void 0 : _g.endDate) === null || _h === void 0 ? void 0 : _h.totalAdverts)),
+                                    React.createElement("div", { className: "status-card__info__percent" },
+                                        React.createElement("span", { className: 'percentUp' }, "-% ↑"),
+                                        " ",
+                                        React.createElement("span", null, "from -"))),
+                                React.createElement("div", { className: "status-card__icon" },
+                                    React.createElement(StatusCardIcon_1["default"], { hovering: iconState === "store" })))),
+                        React.createElement("div", { className: "col-3" },
+                            React.createElement("div", { className: "status-card", onMouseEnter: function () { return setIconState("store"); }, onMouseLeave: function () { return setIconState(""); } },
+                                React.createElement("div", { className: "status-card__info" },
+                                    React.createElement("span", null, (_j = ("Total Payout")) === null || _j === void 0 ? void 0 : _j.toString().toUpperCase()),
+                                    React.createElement("h4", null, ((_l = (_k = data === null || data === void 0 ? void 0 : data.data) === null || _k === void 0 ? void 0 : _k.endDate) === null || _l === void 0 ? void 0 : _l.totalPayout)),
+                                    React.createElement("div", { className: "status-card__info__percent" },
+                                        React.createElement("span", { className: 'percentUp' }, "-% ↑"),
+                                        " ",
+                                        React.createElement("span", null, "from -"))),
+                                React.createElement("div", { className: "status-card__icon" },
+                                    React.createElement(StatusCardIcon_1["default"], { hovering: iconState === "store" })))),
+                        React.createElement("div", { className: "col-3" },
+                            React.createElement("div", { className: "status-card", onMouseEnter: function () { return setIconState("store"); }, onMouseLeave: function () { return setIconState(""); } },
+                                React.createElement("div", { className: "status-card__info" },
+                                    React.createElement("span", null, (_m = ("Vouchers Redeemed")) === null || _m === void 0 ? void 0 : _m.toString().toUpperCase()),
+                                    React.createElement("h4", null, ((_p = (_o = data === null || data === void 0 ? void 0 : data.data) === null || _o === void 0 ? void 0 : _o.endDate) === null || _p === void 0 ? void 0 : _p.voucherUsage)),
+                                    React.createElement("div", { className: "status-card__info__percent" },
+                                        React.createElement("span", { className: 'percentUp' }, "-% ↑"),
+                                        " ",
+                                        React.createElement("span", null, "from -"))),
+                                React.createElement("div", { className: "status-card__icon" },
+                                    React.createElement(StatusCardIcon_1["default"], { hovering: iconState === "store" }))))))
+                :
+                    React.createElement(StatusCards_1["default"], null),
             React.createElement("h4", { className: 'dashheade' }, "Ads  Statistics"),
-            React.createElement("div", { className: 'grid lg:grid-cols-3' },
-                React.createElement("div", { className: "col-span-1  self-center" },
-                    React.createElement("div", { className: 'mx-4 flex flex-col justify-between' },
-                        React.createElement("div", null,
-                            React.createElement("p", { className: 'text-[#949AB1 text-xs' }, "Active Daily Players"),
-                            React.createElement("h1", { className: "font-bold" }, "980")),
-                        React.createElement("div", { className: "my-3" },
-                            React.createElement("div", { className: "bg-[#516CF5] w-5 h-2 my-2 rounded-full" },
-                                React.createElement("div", { className: "h-2" })),
-                            React.createElement("p", { className: 'text-[#949AB1 text-xs' }, "Total Internal Ad\u2019s"),
-                            React.createElement("h1", { className: "font-bold" }, "800")),
-                        React.createElement("div", { className: "my-3" },
-                            React.createElement("div", { className: "bg-[#A3B1FA] w-5 h-2 my-2 rounded-full" },
-                                React.createElement("div", { className: "h-2" })),
-                            React.createElement("p", { className: 'text-[#949AB1 text-xs' }, "Total Internal Ad\u2019s"),
-                            React.createElement("h1", { className: "font-bold" }, "980")))),
-                React.createElement("div", { className: "lg:col-span-2 text-[#949AB1]" },
+            React.createElement("div", { className: 'grid lg:grid-cols-7' },
+                React.createElement("div", { className: "lg:col-span-2 flex flex-1 flex-col justify-evenly py-10" },
+                    React.createElement("div", null,
+                        React.createElement("p", { className: 'text-[#949AB1 text-xs' }, "Active Daily Players"),
+                        React.createElement("h1", { className: "font-bold text-[#171837] text-2xl" }, "980")),
+                    React.createElement("div", { className: "my-3" },
+                        React.createElement("div", { className: "bg-[#516CF5] w-5 h-2 my-2 rounded-full" },
+                            React.createElement("div", { className: "h-2" })),
+                        React.createElement("p", { className: 'text-[#949AB1 text-xs' }, "Total Internal Ad\u2019s"),
+                        React.createElement("h1", { className: "font-bold text-[#171837] text-md" }, "800")),
+                    React.createElement("div", { className: "my-3" },
+                        React.createElement("div", { className: "bg-[#A3B1FA] w-5 h-2 my-2 rounded-full" },
+                            React.createElement("div", { className: "h-2" })),
+                        React.createElement("p", { className: 'text-[#949AB1 text-xs' }, "Total Internal Ad's"),
+                        React.createElement("h1", { className: "font-bold text-[#171837] text-2xl" }, "980"))),
+                React.createElement("div", { className: "lg:col-span-5 text-[#949AB1] text-sm" },
                     React.createElement("div", { className: 'mx-4' },
                         React.createElement("div", { className: "gap-10 flex- items-center" },
-                            React.createElement("span", { className: "cursor-pointer mr-2 " + (chartDate === "year" && 'text-[#516CF5]'), onClick: function () { return setChartDate('year'); } }, "Year"),
-                            React.createElement("span", { className: "cursor-pointer mr-2 " + (chartDate === "month" && 'text-[#516CF5]'), onClick: function () { return setChartDate('month'); } }, "Month"),
-                            React.createElement("span", { className: "cursor-pointer mr-2 " + (chartDate === "week" && 'text-[#516CF5]'), onClick: function () { return setChartDate('week'); } }, "Week")),
+                            React.createElement("span", { className: "cursor-pointer mr-2 " + (chartDate === "year" && 'text-[#516CF5] font-bold'), onClick: function () { return setChartDate('year'); } }, "YEAR"),
+                            React.createElement("span", { className: "cursor-pointer mr-2 " + (chartDate === "month" && 'text-[#516CF5] font-bold'), onClick: function () { return setChartDate('month'); } }, "MONTH"),
+                            React.createElement("span", { className: "cursor-pointer mr-2 " + (chartDate === "week" && 'text-[#516CF5] font-bold'), onClick: function () { return setChartDate('week'); } }, "WEEK")),
                         React.createElement(BarChart_1["default"], { chartData: (chartDate === 'year' && dataSet) || (chartDate === 'month' && dataMonth) || (chartDate === 'week' && dataWeek) })))),
             React.createElement("div", { className: 'row justify-center my-10 gap-x-3' },
                 React.createElement("div", { className: 'col-6 card' },

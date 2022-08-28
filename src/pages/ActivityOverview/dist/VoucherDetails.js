@@ -4,13 +4,10 @@ var react_1 = require("react");
 var Table_1 = require("../../components/Table/Table");
 var ValidVoucherIcon_1 = require("./ValidVoucherIcon");
 var customerTableHead = [
-    '',
-    'name',
-    'email',
-    'phone',
-    'total orders',
-    'total spend',
-    'location'
+    'Voucher Brand',
+    'GENERATED ON',
+    'EXPIRY DATE',
+    'Status',
 ];
 var renderHead = function (item, index) { return react_1["default"].createElement("th", { key: index }, item); };
 var renderBody = function (item, index) { return (react_1["default"].createElement("tr", { key: index },

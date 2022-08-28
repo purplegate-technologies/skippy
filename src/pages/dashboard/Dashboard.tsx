@@ -2,15 +2,20 @@
 import './dashboard.css'
 import LinearGradientChart from '../../components/charts/LinearGradientChart'
 import { useEffect, useState } from 'react'
-import { UserData, datasetDash } from '../../assets/data/data'
+import { datasetDash } from '../../assets/data/data'
 import StatusCards from '../../components/statusCard/StatusCards'
 import BarChart from '../../components/charts/BarChart'
-import SearchBar from '../../components/support/SearchBar'
 import { useGetDashboardStatsQuery } from '../../features/stats/statsApis'
 import ThreeVdots from '../../assets/svg/ThreeVdots'
+import StatusCardIcon from '../../assets/svg/StatusCardIcon'
 
 const Dashboard = () => {
     const { data } = useGetDashboardStatsQuery()
+    const [iconState, setIconState] = useState<string>("")
+
+
+    console.log(data, "data dashboard")
+
 
     const [lineData] = useState({
         // labels: Object.values(data?.data).map((data) => data.month.toUpperCase()),
@@ -26,7 +31,7 @@ const Dashboard = () => {
             },
         ],
     })
-    const [userData, setUserrData] = useState({
+    const [userData] = useState({
         // labels: Object.values(data?.data).map((data) => data.month.toUpperCase()),
         labels: datasetDash.map((data) => data.month.toUpperCase()),
         datasets: [
@@ -39,7 +44,7 @@ const Dashboard = () => {
                 borderRadius: 5,
             },
             {
-                label: "Ads Watched",
+                label: "External Ads Watched",
                 data: datasetDash.map((data) => data.adsWatched),
                 backgroundColor: "#A3B1FA",
                 borderColor: "#A3B1FA",
@@ -59,138 +64,138 @@ const Dashboard = () => {
     const [chartDate, setChartDate] = useState('year')
 
 
-
+    //  Month
     useEffect(() => {
-       if(data && data?.data) {
-        const Internalmonths: string[] = [];
-        const Externalmonths: string[] = [];
-        const InternalMonthsValue: number[] = [];
-        const ExternalMonthsValue: number[] = [];
-        Object.entries(data?.data?.dayOfMonthGraph?.internal).map(val => {
-            Internalmonths.push(val[0]);
-            //@ts-ignore
-            InternalMonthsValue.push(val[1]);
-        });
-        Object.entries(data?.data?.dayOfMonthGraph?.external).map(val => {
-            Externalmonths.push(val[0]);
-            //@ts-ignore
-            ExternalMonthsValue.push(val[1]);
-        });
+        if (data && data?.data) {
+            const Internalmonths: string[] = [];
+            const Externalmonths: string[] = [];
+            const InternalMonthsValue: number[] = [];
+            const ExternalMonthsValue: number[] = [];
+            Object.entries(data?.data?.dayOfMonthGraph?.internal).map(val => {
+                Internalmonths.push(val[0]);
+                //@ts-ignore
+                InternalMonthsValue.push(val[1]);
+            });
+            Object.entries(data?.data?.dayOfMonthGraph?.external).map(val => {
+                Externalmonths.push(val[0]);
+                //@ts-ignore
+                ExternalMonthsValue.push(val[1]);
+            });
 
-        setDataMonth({
-            labels: Internalmonths.map(data => data.toUpperCase()),
-            datasets: [
-                {
-                    label: "Internal Ads Watched",
-                    data: InternalMonthsValue.map((data) => data),
-                    backgroundColor: "#2a71d0",
-                    borderColor: "#2a71d0",
-                    borderWidth: 1,
-                    borderRadius: 5,
-                },
-                {
-                    label: "External Ads Watched",
-                    data: ExternalMonthsValue.map((data) => data),
-                    backgroundColor: "#A3B1FA",
-                    borderColor: "#A3B1FA",
-                    borderWidth: 1,
-                    borderRadius: 5,
-                }
-            ]
-        });
+            setDataMonth({
+                labels: Internalmonths.map(data => data.toUpperCase()),
+                datasets: [
+                    {
+                        label: "Internal Ads Watched",
+                        data: InternalMonthsValue.map((data) => data),
+                        backgroundColor: "#2a71d0",
+                        borderColor: "#2a71d0",
+                        borderWidth: 1,
+                        borderRadius: 5,
+                    },
+                    {
+                        label: "External Ads Watched",
+                        data: ExternalMonthsValue.map((data) => data),
+                        backgroundColor: "#A3B1FA",
+                        borderColor: "#A3B1FA",
+                        borderWidth: 1,
+                        borderRadius: 5,
+                    }
+                ]
+            });
 
-       }
+        }
 
-    },[data]);
+    }, [data]);
 
     // Bar Chart js
+    //  Year
+    useEffect(() => {
+        if (data && data?.data) {
+            const Internalmonths: string[] = [];
+            const Externalmonths: string[] = [];
+            const InternalMonthsValue: number[] = [];
+            const ExternalMonthsValue: number[] = [];
+            Object.entries(data?.data?.monthOfYearGraph?.internal).map(val => {
+                Internalmonths.push(val[0]);
+                //@ts-ignore
+                InternalMonthsValue.push(val[1]);
+            });
+            Object.entries(data?.data?.monthOfYearGraph?.external).map(val => {
+                Externalmonths.push(val[0]);
+                //@ts-ignore
+                ExternalMonthsValue.push(val[1]);
+            });
+
+            setDataSet({
+                labels: Internalmonths.map(data => data.toUpperCase()),
+                datasets: [
+                    {
+                        label: "Internal Ads Watched",
+                        data: InternalMonthsValue.map((data) => data),
+                        backgroundColor: "#2a71d0",
+                        borderColor: "#2a71d0",
+                        borderWidth: 1,
+                        borderRadius: 5,
+                    },
+                    {
+                        label: "External Ads Watched",
+                        data: ExternalMonthsValue.map((data) => data),
+                        backgroundColor: "#A3B1FA",
+                        borderColor: "#A3B1FA",
+                        borderWidth: 1,
+                        borderRadius: 5,
+                    }
+                ]
+            });
+
+        }
+
+    }, [data]);
 
     useEffect(() => {
-        if(data && data?.data) {
-         const Internalmonths: string[] = [];
-         const Externalmonths: string[] = [];
-         const InternalMonthsValue: number[] = [];
-         const ExternalMonthsValue: number[] = [];
-         Object.entries(data?.data?.monthOfYearGraph?.internal).map(val => {
-             Internalmonths.push(val[0]);
-             //@ts-ignore
-             InternalMonthsValue.push(val[1]);
-         });
-         Object.entries(data?.data?.monthOfYearGraph?.external).map(val => {
-             Externalmonths.push(val[0]);
-             //@ts-ignore
-             ExternalMonthsValue.push(val[1]);
-         });
-
-         setDataSet({
-             labels: Internalmonths.map(data => data.toUpperCase()),
-             datasets: [
-                 {
-                     label: "Internal Ads Watched",
-                     data: InternalMonthsValue.map((data) => data),
-                     backgroundColor: "#2a71d0",
-                     borderColor: "#2a71d0",
-                     borderWidth: 1,
-                     borderRadius: 5,
-                 },
-                 {
-                     label: "External Ads Watched",
-                     data: ExternalMonthsValue.map((data) => data),
-                     backgroundColor: "#A3B1FA",
-                     borderColor: "#A3B1FA",
-                     borderWidth: 1,
-                     borderRadius: 5,
-                 }
-             ]
-         });
-
-        }
-
-     },[data]);
-
-     useEffect(() => {
         // weekly stats
-        if(data && data?.data) {
-         const Internalmonths: string[] = [];
-         const Externalmonths: string[] = [];
-         const InternalMonthsValue: number[] = [];
-         const ExternalMonthsValue: number[] = [];
-         Object.entries(data?.data?.dayOfWeekGraph?.internal).map(val => {
-             Internalmonths.push(val[0]);
-             //@ts-ignore
-             InternalMonthsValue.push(val[1]);
-         });
-         Object.entries(data?.data?.dayOfWeekGraph?.external).map(val => {
-             Externalmonths.push(val[0]);
-             //@ts-ignore
-             ExternalMonthsValue.push(val[1]);
-         });
+        if (data && data?.data) {
+            const Internalmonths: string[] = [];
+            const Externalmonths: string[] = [];
+            const InternalMonthsValue: number[] = [];
+            const ExternalMonthsValue: number[] = [];
+            Object.entries(data?.data?.dayOfWeekGraph?.internal).map(val => {
+                Internalmonths.push(val[0]);
+                //@ts-ignore
+                InternalMonthsValue.push(val[1]);
+            });
+            Object.entries(data?.data?.dayOfWeekGraph?.external).map(val => {
+                Externalmonths.push(val[0]);
+                //@ts-ignore
+                ExternalMonthsValue.push(val[1]);
+            });
 
-         setDataWeek({
-             labels: Internalmonths.map(data => data.toUpperCase()),
-             datasets: [
-                 {
-                     label: "Internal Ads Watched",
-                     data: InternalMonthsValue.map((data) => data),
-                     backgroundColor: "#2a71d0",
-                     borderColor: "#2a71d0",
-                     borderWidth: 1,
-                     borderRadius: 5,
-                 },
-                 {
-                     label: "External Ads Watched",
-                     data: ExternalMonthsValue.map((data) => data),
-                     backgroundColor: "#A3B1FA",
-                     borderColor: "#A3B1FA",
-                     borderWidth: 1,
-                     borderRadius: 5,
-                 }
-             ]
-         });
+            setDataWeek({
+                labels: Internalmonths.map(data => data.toUpperCase()),
+                datasets: [
+                    {
+                        label: "Internal Ads Watched",
+                        data: InternalMonthsValue.map((data) => data),
+                        backgroundColor: "#2a71d0",
+                        borderColor: "#2a71d0",
+                        borderWidth: 1,
+                        borderRadius: 5,
+                    },
+                    {
+                        label: "External Ads Watched",
+                        data: ExternalMonthsValue.map((data) => data),
+                        backgroundColor: "#A3B1FA",
+                        borderColor: "#A3B1FA",
+                        borderWidth: 1,
+                        borderRadius: 5,
+                    }
+                ]
+            });
 
         }
 
-     },[data]);
+    }, [data]);
 
     // end of bar chart
 
@@ -200,108 +205,190 @@ const Dashboard = () => {
 
     useEffect(() => {
         // weekly stats
-        if(data && data?.data) {
-         const totalAdsGraph: string[] = [];
-         const totalVoucherUsageGraphValue: number[] = [];
+        if (data && data?.data) {
+            const totalAdsGraph: string[] = [];
+            const totalVoucherUsageGraphValue: number[] = [];
 
-         Object.entries(data?.data?.totalAdsGraph).map(val => {
-             totalAdsGraph.push(val[0]);
-             //@ts-ignore
-             totalVoucherUsageGraphValue.push(val[1]);
-         });
+            Object.entries(data?.data?.totalAdsGraph).map(val => {
+                totalAdsGraph.push(val[0]);
+                //@ts-ignore
+                totalVoucherUsageGraphValue.push(val[1]);
+            });
 
 
-         setAdvertTrend({
-             labels: totalAdsGraph.map(data => data.toUpperCase()),
-             datasets: [
-                 {
-                     label: "Ads Watched",
-                     data: totalVoucherUsageGraphValue.map((data) => data),
-                     backgroundColor: "#2a71d0",
-                     borderColor: "#2a71d0",
-                     borderWidth: 1,
-                     borderRadius: 5,
-                 },
-             ]
-         });
+            setAdvertTrend({
+                labels: totalAdsGraph.map(data => data.toUpperCase()),
+                datasets: [
+                    {
+                        label: "Ads Watched",
+                        data: totalVoucherUsageGraphValue.map((data) => data),
+                        backgroundColor: "#2a71d0",
+                        borderColor: "#2a71d0",
+                        borderWidth: 1,
+                        borderRadius: 5,
+                    },
+                ]
+            });
 
         }
 
-     },[data]);
+    }, [data]);
 
     //  Total Payout Trend
     useEffect(() => {
         // weekly stats
-        if(data && data?.data) {
-         const totalVoucherUsageGraph: string[] = [];
-         const totalVoucherUsageGraphValue: number[] = [];
+        if (data && data?.data) {
+            const totalVoucherUsageGraph: string[] = [];
+            const totalVoucherUsageGraphValue: number[] = [];
 
-         Object.entries(data?.data?.totalVoucherUsageGraph).map(val => {
-             totalVoucherUsageGraph.push(val[0]);
-             //@ts-ignore
-             totalVoucherUsageGraphValue.push(val[1]);
-         });
+            Object.entries(data?.data?.totalVoucherUsageGraph).map(val => {
+                totalVoucherUsageGraph.push(val[0]);
+                //@ts-ignore
+                totalVoucherUsageGraphValue.push(val[1]);
+            });
 
 
-         setPayoutTrend({
-             labels: totalVoucherUsageGraph.map(data => data.toUpperCase()),
-             datasets: [
-                 {
-                     label: "Ads Watched",
-                     data: totalVoucherUsageGraphValue.map((data) => data),
-                     backgroundColor: "#B150F9",
-                     borderColor: "#B150F9",
-                     borderWidth: 1,
-                     borderRadius: 5,
-                 },
-             ]
-         });
+            setPayoutTrend({
+                labels: totalVoucherUsageGraph.map(data => data.toUpperCase()),
+                datasets: [
+                    {
+                        label: "Ads Watched",
+                        data: totalVoucherUsageGraphValue.map((data) => data),
+                        backgroundColor: "#B150F9",
+                        borderColor: "#B150F9",
+                        borderWidth: 1,
+                        borderRadius: 5,
+                    },
+                ]
+            });
 
         }
 
-     },[data]);
+    }, [data]);
 
 
 
     return (
         <>
             <section className='mb-10'>
-                <StatusCards />
-                <h4 className='dashheade'>Ads  Statistics</h4>
+            <h4 className='cardHead font-semibold'>Overview</h4>
+                {(data && data?.data) ?
+                    <div>
+                        {!data?.data?.endDate?.totalAdverts}
+                        <div className="row">
+                            {/* card one */}
+                            <div className="col-3">
+                                <div className="status-card"
+                                    onMouseEnter={() => setIconState("store")}
+                                    onMouseLeave={() => setIconState("")}>
+                                    <div className="status-card__info">
+                                        <span>{("Overall Users")?.toString().toUpperCase()}</span>
+                                        <h4>{(data?.data?.endDate?.totalUsers)}</h4>
+                                        <div className="status-card__info__percent">
+                                            <span className='percentUp'>{"-% ↑"}</span>{" "}
+                                            <span>{"from -"}</span>
+                                        </div>
+                                    </div>
 
-                {/* <div className='row justify-center'> */}
-                <div className='grid lg:grid-cols-3'>
-                    {/* <div className="col-6"> */}
-                    <div className="col-span-1  self-center">
-                        {/* <div className='basis-1/2 mx-4'> */}
-                        <div className='mx-4 flex flex-col justify-between'>
-                            {/* <BarChart chartData={userData} /> */}
-                            <div>
-                                <p className='text-[#949AB1 text-xs'>Active Daily Players</p>
-                                <h1 className="font-bold">980</h1>
-                            </div>
-                            <div className="my-3">
-                                <div className="bg-[#516CF5] w-5 h-2 my-2 rounded-full">
-                                    <div className="h-2"></div>
+                                    <div className="status-card__icon">
+                                        <StatusCardIcon hovering={iconState === "store"} />
+                                    </div>
                                 </div>
-                                <p className='text-[#949AB1 text-xs'>Total Internal Ad’s</p>
-                                <h1 className="font-bold">800</h1>
                             </div>
-                            <div className="my-3">
-                                <div className="bg-[#A3B1FA] w-5 h-2 my-2 rounded-full">
-                                    <div className="h-2"></div>
+                            {/* CARD TWO */}
+                            <div className="col-3">
+                                <div className="status-card"
+                                    onMouseEnter={() => setIconState("store")}
+                                    onMouseLeave={() => setIconState("")}>
+                                    <div className="status-card__info">
+                                        <span>{("Overall Ads")?.toString().toUpperCase()}</span>
+                                        <h4>{(data?.data?.endDate?.totalAdverts)}</h4>
+                                        <div className="status-card__info__percent">
+                                            <span className='percentUp'>{"-% ↑"}</span>{" "}
+                                            <span>{"from -"}</span>
+                                        </div>
+                                    </div>
+
+                                    <div className="status-card__icon">
+                                        <StatusCardIcon hovering={iconState === "store"} />
+                                    </div>
                                 </div>
-                                <p className='text-[#949AB1 text-xs'>Total Internal Ad’s</p>
-                                <h1 className="font-bold">980</h1>
                             </div>
+                            {/* CARD three */}
+                            <div className="col-3">
+                                <div className="status-card"
+                                    onMouseEnter={() => setIconState("store")}
+                                    onMouseLeave={() => setIconState("")}>
+                                    <div className="status-card__info">
+                                        <span>{("Total Payout")?.toString().toUpperCase()}</span>
+                                        <h4>{(data?.data?.endDate?.totalPayout)}</h4>
+                                        <div className="status-card__info__percent">
+                                            <span className='percentUp'>{"-% ↑"}</span>{" "}
+                                            <span>{"from -"}</span>
+                                        </div>
+                                    </div>
+
+                                    <div className="status-card__icon">
+                                        <StatusCardIcon hovering={iconState === "store"} />
+                                    </div>
+                                </div>
+                            </div>
+                            {/* card four */}
+                            <div className="col-3">
+                                <div className="status-card"
+                                    onMouseEnter={() => setIconState("store")}
+                                    onMouseLeave={() => setIconState("")}>
+                                    <div className="status-card__info">
+                                        <span>{("Vouchers Redeemed")?.toString().toUpperCase()}</span>
+                                        <h4>{(data?.data?.endDate?.voucherUsage)}</h4>
+                                        <div className="status-card__info__percent">
+                                            <span className='percentUp'>{"-% ↑"}</span>{" "}
+                                            <span>{"from -"}</span>
+                                        </div>
+                                    </div>
+
+                                    <div className="status-card__icon">
+                                        <StatusCardIcon hovering={iconState === "store"} />
+                                    </div>
+                                </div>
+                            </div>
+                            {/* End of all card */}
                         </div>
                     </div>
-                    <div className="lg:col-span-2 text-[#949AB1]">
+                    :
+                    <StatusCards />
+                }
+                <h4 className='dashheade'>Ads  Statistics</h4>
+
+                <div className='grid lg:grid-cols-7'>
+                    <div className="lg:col-span-2 flex flex-1 flex-col justify-evenly py-10">
+
+                        <div>
+                            <p className='text-[#949AB1 text-xs'>Active Daily Players</p>
+                            <h1 className="font-bold text-[#171837] text-2xl">980</h1>
+                        </div>
+                        <div className="my-3">
+                            <div className="bg-[#516CF5] w-5 h-2 my-2 rounded-full">
+                                <div className="h-2"></div>
+                            </div>
+                            <p className='text-[#949AB1 text-xs'>Total Internal Ad’s</p>
+                            <h1 className="font-bold text-[#171837] text-md">800</h1>
+                        </div>
+                        <div className="my-3">
+                            <div className="bg-[#A3B1FA] w-5 h-2 my-2 rounded-full">
+                                <div className="h-2"></div>
+                            </div>
+                            <p className='text-[#949AB1 text-xs'>Total Internal Ad&apos;s</p>
+                            <h1 className="font-bold text-[#171837] text-2xl">980</h1>
+                        </div>
+
+                    </div>
+                    <div className="lg:col-span-5 text-[#949AB1] text-sm">
                         <div className='mx-4'>
                             <div className="gap-10 flex- items-center">
-                                <span className={`cursor-pointer mr-2 ${chartDate === "year" && 'text-[#516CF5]'}`} onClick={() => setChartDate('year')}>Year</span>
-                                <span className={`cursor-pointer mr-2 ${chartDate === "month" && 'text-[#516CF5]'}`} onClick={() => setChartDate('month')}>Month</span>
-                                <span className={`cursor-pointer mr-2 ${chartDate === "week" && 'text-[#516CF5]'}`} onClick={() => setChartDate('week')}>Week</span>
+                                <span className={`cursor-pointer mr-2 ${chartDate === "year" && 'text-[#516CF5] font-bold'}`} onClick={() => setChartDate('year')}>YEAR</span>
+                                <span className={`cursor-pointer mr-2 ${chartDate === "month" && 'text-[#516CF5] font-bold'}`} onClick={() => setChartDate('month')}>MONTH</span>
+                                <span className={`cursor-pointer mr-2 ${chartDate === "week" && 'text-[#516CF5] font-bold'}`} onClick={() => setChartDate('week')}>WEEK</span>
                             </div>
                             <BarChart chartData={(chartDate === 'year' && dataSet) || (chartDate === 'month' && dataMonth) || (chartDate === 'week' && dataWeek)} />
                         </div>

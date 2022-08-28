@@ -127,7 +127,7 @@ const Table = ({limit, renderHead, bodyData, headData, renderBody}: Props) => {
                     {" "}
                     <span style={{marginLeft:'10px'}}>Items per page</span>
                 </div>
-                {pages > 1 ? (
+                {pages > 0 ? (
                         <div className="table__pagination">
                             <button onClick={handlePrevbtn} disabled={currPage === pages[0] ? true : false}>Prev</button>
                                {range.map((item: any, index: number) => {

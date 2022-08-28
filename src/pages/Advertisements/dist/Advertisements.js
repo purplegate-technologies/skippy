@@ -13,7 +13,10 @@ var statsApis_1 = require("../../features/stats/statsApis");
 var AdvertsApiSlice_1 = require("../../features/adverts/AdvertsApiSlice");
 var CategoryFilter_1 = require("../../components/CategoryFilter/CategoryFilter");
 var LinearGradientChart_1 = require("../../components/charts/LinearGradientChart");
+var StatusCardIcon_1 = require("../../assets/svg/StatusCardIcon");
 var Advertisements = function () {
+    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m;
+    var _o = react_1.useState(""), iconState = _o[0], setIconState = _o[1];
     var userData = react_1.useState({
         labels: data_1.UserData.map(function (data) { return data.day.toUpperCase(); }),
         datasets: [
@@ -26,12 +29,12 @@ var Advertisements = function () {
             },
         ]
     })[0];
-    var _a = react_1.useState(userData), externalGraph = _a[0], setExternalGraph = _a[1];
-    var _b = react_1.useState(userData), internalGraph = _b[0], setInternalGraph = _b[1];
+    var _p = react_1.useState(userData), externalGraph = _p[0], setExternalGraph = _p[1];
+    var _q = react_1.useState(userData), internalGraph = _q[0], setInternalGraph = _q[1];
     var data = statsApis_1.useGetAdvertStatsQuery().data;
     var gerAds = AdvertsApiSlice_1.useGetAdvertQuery(1).data;
-    // console.log(data, "useGetAdvertStatsQuery")
-    console.log(gerAds, "gerAds");
+    console.log(data, "useGetAdvertStatsQuery");
+    // console.log(gerAds, "gerAds")
     var navigate = react_router_dom_1.useNavigate();
     // InternalGraph
     react_1.useEffect(function () {
@@ -108,7 +111,59 @@ var Advertisements = function () {
         React.createElement("td", null, item.location),
         React.createElement("td", null, item.location))); };
     return (React.createElement("div", null,
-        React.createElement(StatusCards_1["default"], null),
+        React.createElement("h4", { className: 'cardHead font-semibold' }, "Overview"),
+        (data) ?
+            React.createElement("div", null,
+                !((_b = (_a = data === null || data === void 0 ? void 0 : data.data) === null || _a === void 0 ? void 0 : _a.endDate) === null || _b === void 0 ? void 0 : _b.totalAdverts),
+                React.createElement("div", { className: "row" },
+                    React.createElement("div", { className: "col-3" },
+                        React.createElement("div", { className: "status-card", onMouseEnter: function () { return setIconState("store"); }, onMouseLeave: function () { return setIconState(""); } },
+                            React.createElement("div", { className: "status-card__info" },
+                                React.createElement("span", null, (_c = ("Overall Internal ads")) === null || _c === void 0 ? void 0 : _c.toString().toUpperCase()),
+                                React.createElement("h4", null, ((_d = data === null || data === void 0 ? void 0 : data.endDate) === null || _d === void 0 ? void 0 : _d.totalInternalAdverts)),
+                                React.createElement("div", { className: "status-card__info__percent" },
+                                    React.createElement("span", { className: 'percentUp' }, "-% ↑"),
+                                    " ",
+                                    React.createElement("span", null, "from -"))),
+                            React.createElement("div", { className: "status-card__icon" },
+                                React.createElement(StatusCardIcon_1["default"], { hovering: iconState === "store" })))),
+                    React.createElement("div", { className: "col-3" },
+                        React.createElement("div", { className: "status-card", onMouseEnter: function () { return setIconState("store"); }, onMouseLeave: function () { return setIconState(""); } },
+                            React.createElement("div", { className: "status-card__info" },
+                                React.createElement("span", null, (_e = ("Overall External Ads")) === null || _e === void 0 ? void 0 : _e.toString().toUpperCase()),
+                                React.createElement("h4", null, ((_f = data === null || data === void 0 ? void 0 : data.endDate) === null || _f === void 0 ? void 0 : _f.totalExternalAdverts)),
+                                React.createElement("div", { className: "status-card__info__percent" },
+                                    React.createElement("span", { className: 'percentUp' }, "-% ↑"),
+                                    " ",
+                                    React.createElement("span", null, "from -"))),
+                            React.createElement("div", { className: "status-card__icon" },
+                                React.createElement(StatusCardIcon_1["default"], { hovering: iconState === "store" })))),
+                    React.createElement("div", { className: "col-3" },
+                        React.createElement("div", { className: "status-card", onMouseEnter: function () { return setIconState("store"); }, onMouseLeave: function () { return setIconState(""); } },
+                            React.createElement("div", { className: "status-card__info" },
+                                React.createElement("span", null, (_g = ("completed Sessions")) === null || _g === void 0 ? void 0 : _g.toString().toUpperCase()),
+                                React.createElement("h4", null, (_j = (_h = (data === null || data === void 0 ? void 0 : data.)) === null || _h === void 0 ? void 0 : _h.endDate) === null || _j === void 0 ? void 0 :
+                                    _j.totalStreams,
+                                    ")}"),
+                                React.createElement("div", { className: "status-card__info__percent" },
+                                    React.createElement("span", { className: 'percentUp' }, "-% ↑"),
+                                    " ",
+                                    React.createElement("span", null, "from -"))),
+                            React.createElement("div", { className: "status-card__icon" },
+                                React.createElement(StatusCardIcon_1["default"], { hovering: iconState === "store" })))),
+                    React.createElement("div", { className: "col-3" },
+                        React.createElement("div", { className: "status-card", onMouseEnter: function () { return setIconState("store"); }, onMouseLeave: function () { return setIconState(""); } },
+                            React.createElement("div", { className: "status-card__info" },
+                                React.createElement("span", null, (_k = ("Avg. INTERACTION Rate")) === null || _k === void 0 ? void 0 : _k.toString().toUpperCase()),
+                                React.createElement("h4", null, ((_m = (_l = data === null || data === void 0 ? void 0 : data.data) === null || _l === void 0 ? void 0 : _l.endDate) === null || _m === void 0 ? void 0 : _m.totalCompletedStreams)),
+                                React.createElement("div", { className: "status-card__info__percent" },
+                                    React.createElement("span", { className: 'percentUp' }, "-% ↑"),
+                                    " ",
+                                    React.createElement("span", null, "from -"))),
+                            React.createElement("div", { className: "status-card__icon" },
+                                React.createElement(StatusCardIcon_1["default"], { hovering: iconState === "store" }))))))
+            :
+                React.createElement(StatusCards_1["default"], null),
         React.createElement("div", { className: 'row items-center my-10 gap-x-3' },
             React.createElement("div", { className: 'col-6 card' },
                 React.createElement("div", { className: 'basis-1/2' },

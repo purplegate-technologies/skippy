@@ -5,13 +5,11 @@ import ValidVoucherIcon from './ValidVoucherIcon'
 
 
 const customerTableHead = [
-    '',
-    'name',
-    'email',
-    'phone',
-    'total orders',
-    'total spend',
-    'location'
+    'Voucher Brand',
+    'GENERATED ON',
+    'EXPIRY DATE',
+    'Status',
+
 ]
 
 const renderHead = (item: any, index: number) => <th key={index}>{item}</th>

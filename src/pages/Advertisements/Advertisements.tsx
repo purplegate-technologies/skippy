@@ -11,9 +11,12 @@ import { useGetAdvertStatsQuery } from '../../features/stats/statsApis'
 import { useGetAdvertQuery } from '../../features/adverts/AdvertsApiSlice'
 import CategoryFilter from '../../components/CategoryFilter/CategoryFilter'
 import LinearGradientChart from '../../components/charts/LinearGradientChart'
+import StatusCardIcon from '../../assets/svg/StatusCardIcon'
+
 
 
 const Advertisements = () => {
+  const [iconState, setIconState] = useState<string>("")
 
   const [userData] = useState({
     labels: UserData.map((data) => data.day.toUpperCase()),
@@ -34,8 +37,8 @@ const Advertisements = () => {
   const { data: gerAds } = useGetAdvertQuery(1)
 
 
-  // console.log(data, "useGetAdvertStatsQuery")
-  console.log(gerAds, "gerAds")
+  console.log(data, "useGetAdvertStatsQuery")
+  // console.log(gerAds, "gerAds")
   const navigate = useNavigate()
 
 
@@ -133,7 +136,93 @@ const Advertisements = () => {
 
   return (
     <div>
-      <StatusCards />
+      <h4 className='cardHead font-semibold'>Overview</h4>
+                {(data) ?
+                    <div>
+                        {!data?.data?.endDate?.totalAdverts}
+                        <div className="row">
+                            {/* card one */}
+                            <div className="col-3">
+                                <div className="status-card"
+                                    onMouseEnter={() => setIconState("store")}
+                                    onMouseLeave={() => setIconState("")}>
+                                    <div className="status-card__info">
+                                        <span>{("Overall Internal ads")?.toString().toUpperCase()}</span>
+                                        <h4>{(data?.endDate?.totalInternalAdverts)}</h4>
+                                        <div className="status-card__info__percent">
+                                            <span className='percentUp'>{"-% ↑"}</span>{" "}
+                                            <span>{"from -"}</span>
+                                        </div>
+                                    </div>
+
+                                    <div className="status-card__icon">
+                                        <StatusCardIcon hovering={iconState === "store"} />
+                                    </div>
+                                </div>
+                            </div>
+                            {/* CARD TWO */}
+                            <div className="col-3">
+                                <div className="status-card"
+                                    onMouseEnter={() => setIconState("store")}
+                                    onMouseLeave={() => setIconState("")}>
+                                    <div className="status-card__info">
+                                        <span>{("Overall External Ads")?.toString().toUpperCase()}</span>
+                                        <h4>{(data?.endDate?.totalExternalAdverts)}</h4>
+                                        <div className="status-card__info__percent">
+                                            <span className='percentUp'>{"-% ↑"}</span>{" "}
+                                            <span>{"from -"}</span>
+                                        </div>
+                                    </div>
+
+                                    <div className="status-card__icon">
+                                        <StatusCardIcon hovering={iconState === "store"} />
+                                    </div>
+                                </div>
+                            </div>
+                            {/* CARD Three */}
+                            <div className="col-3">
+                                <div className="status-card"
+                                    onMouseEnter={() => setIconState("store")}
+                                    onMouseLeave={() => setIconState("")}>
+                                    <div className="status-card__info">
+                                        <span>{("completed Sessions")?.toString().toUpperCase()}</span>
+                                        <h4>{(data?.endDate?.totalStreams)}</h4>
+                                        <div className="status-card__info__percent">
+                                            <span className='percentUp'>{"-% ↑"}</span>{" "}
+                                            <span>{"from -"}</span>
+                                        </div>
+                                    </div>
+
+                                    <div className="status-card__icon">
+                                        <StatusCardIcon hovering={iconState === "store"} />
+                                    </div>
+                                </div>
+                            </div>
+                            {/* card four */}
+                            <div className="col-3">
+                                <div className="status-card"
+                                    onMouseEnter={() => setIconState("store")}
+                                    onMouseLeave={() => setIconState("")}>
+                                    <div className="status-card__info">
+                                        <span>{("Avg. INTERACTION Rate")?.toString().toUpperCase()}</span>
+                                        <h4>{(data?.endDate?.totalCompletedStreams)}</h4>
+                                        <div className="status-card__info__percent">
+                                            <span className='percentUp'>{"-% ↑"}</span>{" "}
+                                            <span>{"from -"}</span>
+                                        </div>
+                                    </div>
+
+                                    <div className="status-card__icon">
+                                        <StatusCardIcon hovering={iconState === "store"} />
+                                    </div>
+                                </div>
+                            </div>
+                            {/* End of all card */}
+                        </div>
+                    </div>
+                    :
+                    <StatusCards />
+                }
       {/* Support Search */}
 
 
