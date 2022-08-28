@@ -15,7 +15,7 @@ interface InputIconProps {
 
 
 interface Iprops {
-    type?: "text" | "email" | "password" | "date" | "radio" | "tel" | "number"
+    type?: "text" | "email" | "password" | "date" | "radio" | "tel" | "number" | "search"
     label?: string
     value?: string
     placeholder?: string

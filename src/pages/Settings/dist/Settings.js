@@ -3,9 +3,17 @@ exports.__esModule = true;
 var react_1 = require("react");
 var react_router_dom_1 = require("react-router-dom");
 var Button_1 = require("../../components/button/Button");
+var DropDownInput_1 = require("../../components/DropDownInput/DropDownInput");
 var Input_1 = require("../../components/input/Input");
 var Switch_1 = require("../../components/switch/Switch");
 require("./settings.css");
+var options = [
+    { value: '', text: 'Select Role', disabled: true },
+    { value: 'admin', text: 'Super Admin 🍏' },
+    { value: 'regular', text: 'Regular 🍌' },
+    { value: 'normal', text: 'Normal Admin 🥝' },
+    { value: 'others', text: 'Others 🥝' },
+];
 var Settings = function () {
     // const {data} = useCreateAdminMutation()
     var _a = react_1.useState(""), firstName = _a[0], setFirstName = _a[1];
@@ -19,9 +27,9 @@ var Settings = function () {
         borderRadius: "0.25rem",
         borderWidth: "2px",
         borderOpacity: 1,
-        borderColor: "rgba(229, 231, 235, 1)",
+        borderColor: "#949AB1",
         // --tw-bg-opacity: 1,
-        backgroundColor: "rgba(243, 244, 246, 1)",
+        backgroundColor: "white",
         padding: "0.5rem",
         outlineOffset: "2px",
         outlineWidth: 1,
@@ -41,21 +49,13 @@ var Settings = function () {
                     React.createElement(react_router_dom_1.Link, { to: "", onClick: function () { return navigate(-1); }, className: "text-[#516CF5]" }, "< < Back")),
                 React.createElement("div", { className: "card-settings" },
                     React.createElement("div", { className: "contactUs-form-lable" },
-                        React.createElement("label", { htmlFor: "", className: "text-xs text-[#516CF5]" },
-                            ("ROLE"),
-                            React.createElement("p", { className: "text-[#EB0000] inline" }, "*")),
-                        React.createElement("select", { 
-                            // style={selectSTyle}
-                            name: "", id: "", className: "bg-white text-[#949AB1] border-[#949AB1] outline-none border-2 rounded p-2 mb-3 w-full", onChange: function (e) {
-                                var _a;
-                                var select = e.target;
-                                setRoles((_a = select.options.item(select.selectedIndex)) === null || _a === void 0 ? void 0 : _a.innerText);
-                            } },
-                            React.createElement("option", { value: "super-admin" }, ("Super Admin")),
-                            React.createElement("option", { value: "normal" }, ("Normal Admin")),
-                            React.createElement("option", { value: "Manager" }, ("Regular Admin")),
-                            React.createElement("option", { value: "account" }, ("Bad Admin")),
-                            React.createElement("option", { value: "other" }, ("Other")))),
+                        React.createElement("label", { htmlFor: "", className: "text-xs text-[#516CF5]" }, ("ROLE")),
+                        React.createElement(DropDownInput_1["default"], { className: "my-3", placeholder: "Select Role", data: [
+                                { label: 'admin', value: 'Super Admin 🍏' },
+                                { label: 'regular', value: 'Regular 🍌' },
+                                { label: 'normal', value: 'Normal Admin 🥝' },
+                                { label: 'others', value: 'Others 🥝' },
+                            ], getValue: function (v) { return v.value.toString(); } })),
                     React.createElement("div", { className: "grid md:grid-cols-2 gap-x-4 " },
                         React.createElement(Input_1["default"]
                         // divStyel="w-[19rem]contactUs-form-lable"

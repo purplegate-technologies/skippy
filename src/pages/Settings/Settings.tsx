@@ -1,10 +1,20 @@
 import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import Button from "../../components/button/Button"
+import DropDownInout from "../../components/DropDownInput/DropDownInput"
 import Input from "../../components/input/Input"
 import Switch from "../../components/switch/Switch"
 import { useCreateAdminMutation } from "../../features/UserManagement/User ManagementApiSlcie"
 import "./settings.css"
+
+const options = [
+    {value: '', text: 'Select Role', disabled: true},
+    {value: 'admin', text: 'Super Admin 🍏'},
+    {value: 'regular', text: 'Regular 🍌'},
+    {value: 'normal', text: 'Normal Admin 🥝'},
+    {value: 'others', text: 'Others 🥝'},
+  ];
+
 
 const Settings = () => {
 
@@ -22,14 +32,15 @@ const Settings = () => {
         borderRadius: "0.25rem",
         borderWidth: "2px",
         borderOpacity: 1,
-        borderColor: "rgba(229, 231, 235, 1)",
+        borderColor: "#949AB1",
         // --tw-bg-opacity: 1,
-        backgroundColor: "rgba(243, 244, 246, 1)",
+        backgroundColor: "white",
         padding: "0.5rem",
         outlineOffset: "2px",
         outlineWidth: 1,
         outlineColor: "transparent",
         outlineStyle: "solid",
+
     }
 
     const navigate = useNavigate();
@@ -51,28 +62,62 @@ const Settings = () => {
                     </div>
 
                     <div className="card-settings">
-                        {/* Select Rol */}
+                        {/* Select Roles */}
                         <div className="contactUs-form-lable">
                             <label htmlFor="" className="text-xs text-[#516CF5]">
                                 {("ROLE")}
-                                <p className="text-[#EB0000] inline">{`*`}</p>
                             </label>
-                            <select
-                                // style={selectSTyle}
-                                name=""
+                            <DropDownInout
+                           className="my-3"
+                            placeholder="Select Role"
+                            data={[
+                                {label: 'admin', value: 'Super Admin 🍏'},
+                                {label: 'regular', value: 'Regular 🍌'},
+                                {label: 'normal', value: 'Normal Admin 🥝'},
+                                {label: 'others', value: 'Others 🥝'},
+                              ]}
+                            getValue={v => v.value.toString()}
+                            />
+
+                            {/* <select
+                            placeholder="Select Role"
+                            style={selectSTyle}
+                            name={roles}
+                            onChange={(e) => {
+                                const select = e.target as HTMLSelectElement
+                                setRoles(select.options.item(select.selectedIndex)?.innerText!)
+                            }}
+                            >
+                            {options.map(option => (
+                                <option
+                                    disabled={option.disabled}
+                                    key={option.value}
+                                    value={option.value}
+                                >
+                                    {option.text}
+                                </option>
+                                ))}
+                            </select> */}
+                            {/* <select
+                                placeholder="Select Role"
+                                style={selectSTyle}
+                                name={roles}
                                 id=""
-                                className="bg-white text-[#949AB1] border-[#949AB1] outline-none border-2 rounded p-2 mb-3 w-full"
+                                // className="bg-white text-[#949AB1] border-[#949AB1] outline-none border-2 rounded p-2 mb-3 w-full"
                                 onChange={(e) => {
                                     const select = e.target as HTMLSelectElement
                                     setRoles(select.options.item(select.selectedIndex)?.innerText!)
                                 }}>
-                                <option value="super-admin">
+                                <option disabled className="text-[#949AB1]">
+                                    {("Select Role")}
+                                </option>
+                                <option value="admin">
                                     {("Super Admin")}
                                 </option>
                                 <option value="normal">
                                     {("Normal Admin")}
                                 </option>
-                                <option value="Manager">
+                                <option value="regular">
                                     {("Regular Admin")}
                                 </option>
                                 <option value="account">
@@ -81,7 +126,7 @@ const Settings = () => {
                                 <option value="other">
                                     {("Other")}
                                 </option>
-                            </select>
+                            </select> */}
                         </div>
 
 
