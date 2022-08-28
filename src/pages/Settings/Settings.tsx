@@ -3,9 +3,13 @@ import { Link, useNavigate } from "react-router-dom"
 import Button from "../../components/button/Button"
 import Input from "../../components/input/Input"
 import Switch from "../../components/switch/Switch"
+import { useCreateAdminMutation } from "../../features/UserManagement/User ManagementApiSlcie"
 import "./settings.css"
 
 const Settings = () => {
+
+    // const {data} = useCreateAdminMutation()
+
     const [firstName, setFirstName] = useState("")
     const [lastName, setLastName] = useState("")
     const [email, setEmail] = useState("")
@@ -13,7 +17,6 @@ const Settings = () => {
     const [roles, setRoles] = useState("Finances and billing")
 
     const selectSTyle = {
-
         display: "block",
         width: "100%",
         borderRadius: "0.25rem",
@@ -28,6 +31,7 @@ const Settings = () => {
         outlineColor: "transparent",
         outlineStyle: "solid",
     }
+
     const navigate = useNavigate();
 
     const HandleSubmit = (e: React.FormEvent<HTMLFormElement>) => {

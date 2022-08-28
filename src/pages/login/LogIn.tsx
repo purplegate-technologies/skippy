@@ -29,7 +29,7 @@ const initialState = {
 
 const LogIn = () => {
   const [formValue, setFormValue] = useState<initialStateType>(initialState)
-  const { firstName, lastName, email, password, confirmPassword } = formValue
+  const { email, password, } = formValue
 
   const userRef = useRef<any>()
   const errRef = useRef<any>()
@@ -53,7 +53,6 @@ const LogIn = () => {
     }] = useLoginMutation()
   const handleChange = (e: any) => setFormValue({ ...formValue, [e.target.name]: e.target.value })
 
-
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
@@ -67,19 +66,18 @@ const LogIn = () => {
         const response: any = await loginUser({ email, password }).unwrap();
         console.log(response, "response response response")
 
-        const { token, admin }: any = loginData
+        const {  admin, token }: any = await loginData
         // set user data and token in redux store
-        dispatch(setUserDetails({ user: admin.firstName }));
-        dispatch(setUserToken({ token }));
-        dispatch(setUser({ user: admin.firstName, token }))
-        console.log('login now')
-        toast.success("Login successful");
+        // dispatch(setUser({ user: admin.firstName, token }))
+        dispatch(setUser({ user: admin, token }))
         setFormValue({email: '', password:''})
-        tokenForUser && navigate('/', { replace: true })
+        toast.success("Login successful");
+        navigate('/', { replace: true })
+        // tokenForUser && navigate('/', { replace: true })
       } else {
         toast.error("Please fill all Input field")
       }
-    } catch (err: any) {
+    } catch (err:  any) {
       console.log(err.data, "err err err")
       if (!err?.response) {
         toast.error(!err?.response_message);
@@ -94,19 +92,19 @@ const LogIn = () => {
       } else {
         setErrMsg("Login Failed")
       }
-      // errRef.current.focus()
+      errRef.current.focus()
     }
   }
 
 
-  useEffect(() => {
-    if (isLoginSuccess) {
-      const { token, admin }: any = loginData
-      dispatch(setUser({ user: admin, token}))
-      tokenForUser && navigate('/', { replace: true })
-      toast.success("User Login Successfully")
-    }
-  }, [isLoginSuccess, navigate, tokenForUser, dispatch, loginData])
+  // useEffect(() => {
+  //   if (isLoginSuccess) {
+  //     const { token, admin }: any = loginData
+  //     dispatch(setUser({ user: admin, token}))
+  //     tokenForUser && navigate('/', { replace: true })
+  //     toast.success("User Login Successfully")
+  //   }
+  // }, [isLoginSuccess, navigate, tokenForUser, dispatch, loginData])
 
 
   return (

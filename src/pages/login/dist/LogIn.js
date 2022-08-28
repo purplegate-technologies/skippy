@@ -68,7 +68,7 @@ var initialState = {
 };
 var LogIn = function () {
     var _a = react_1.useState(initialState), formValue = _a[0], setFormValue = _a[1];
-    var firstName = formValue.firstName, lastName = formValue.lastName, email = formValue.email, password = formValue.password, confirmPassword = formValue.confirmPassword;
+    var email = formValue.email, password = formValue.password;
     var userRef = react_1.useRef();
     var errRef = react_1.useRef();
     var _b = react_1.useState(""), errMsg = _b[0], setErrMsg = _b[1];
@@ -81,66 +81,70 @@ var LogIn = function () {
         return setFormValue(__assign(__assign({}, formValue), (_a = {}, _a[e.target.name] = e.target.value, _a)));
     };
     var handleLogin = function (e) { return __awaiter(void 0, void 0, void 0, function () {
-        var response, token, admin, err_1;
-        var _a, _b, _c, _d;
-        return __generator(this, function (_e) {
-            switch (_e.label) {
+        var response, _a, admin, token, err_1;
+        var _b, _c, _d, _e;
+        return __generator(this, function (_f) {
+            switch (_f.label) {
                 case 0:
                     e.preventDefault();
-                    _e.label = 1;
+                    _f.label = 1;
                 case 1:
-                    _e.trys.push([1, 5, , 6]);
-                    if (!(email && password)) return [3 /*break*/, 3];
+                    _f.trys.push([1, 6, , 7]);
+                    if (!(email && password)) return [3 /*break*/, 4];
                     return [4 /*yield*/, loginUser({ email: email, password: password }).unwrap()];
                 case 2:
-                    response = _e.sent();
+                    response = _f.sent();
                     console.log(response, "response response response");
-                    token = loginData.token, admin = loginData.admin;
-                    // set user data and token in redux store
-                    dispatch(authSlice_1.setUserDetails({ user: admin.firstName }));
-                    dispatch(authSlice_1.setUserToken({ token: token }));
-                    dispatch(authSlice_1.setUser({ user: admin.firstName, token: token }));
-                    console.log('login now');
-                    react_toastify_1.toast.success("Login successful");
-                    setFormValue({ email: '', password: '' });
-                    tokenForUser && navigate('/', { replace: true });
-                    return [3 /*break*/, 4];
+                    return [4 /*yield*/, loginData
+                        // set user data and token in redux store
+                        // dispatch(setUser({ user: admin.firstName, token }))
+                    ];
                 case 3:
+                    _a = _f.sent(), admin = _a.admin, token = _a.token;
+                    // set user data and token in redux store
+                    // dispatch(setUser({ user: admin.firstName, token }))
+                    dispatch(authSlice_1.setUser({ user: admin, token: token }));
+                    setFormValue({ email: '', password: '' });
+                    react_toastify_1.toast.success("Login successful");
+                    navigate('/', { replace: true });
+                    return [3 /*break*/, 5];
+                case 4:
                     react_toastify_1.toast.error("Please fill all Input field");
-                    _e.label = 4;
-                case 4: return [3 /*break*/, 6];
-                case 5:
-                    err_1 = _e.sent();
+                    _f.label = 5;
+                case 5: return [3 /*break*/, 7];
+                case 6:
+                    err_1 = _f.sent();
                     console.log(err_1.data, "err err err");
                     if (!(err_1 === null || err_1 === void 0 ? void 0 : err_1.response)) {
                         react_toastify_1.toast.error(!(err_1 === null || err_1 === void 0 ? void 0 : err_1.response_message));
                         setErrMsg("No Server Response");
                     }
-                    else if (((_a = err_1.response) === null || _a === void 0 ? void 0 : _a.status) === 400) {
-                        react_toastify_1.toast.error((_b = err_1.response) === null || _b === void 0 ? void 0 : _b.status);
+                    else if (((_b = err_1.response) === null || _b === void 0 ? void 0 : _b.status) === 400) {
+                        react_toastify_1.toast.error((_c = err_1.response) === null || _c === void 0 ? void 0 : _c.status);
                         setErrMsg("Missing Email or Password");
                     }
-                    else if (((_c = err_1 === null || err_1 === void 0 ? void 0 : err_1.response) === null || _c === void 0 ? void 0 : _c.status) === 401) {
-                        react_toastify_1.toast.error((_d = err_1 === null || err_1 === void 0 ? void 0 : err_1.response) === null || _d === void 0 ? void 0 : _d.message);
+                    else if (((_d = err_1 === null || err_1 === void 0 ? void 0 : err_1.response) === null || _d === void 0 ? void 0 : _d.status) === 401) {
+                        react_toastify_1.toast.error((_e = err_1 === null || err_1 === void 0 ? void 0 : err_1.response) === null || _e === void 0 ? void 0 : _e.message);
                         // toast.error(err.data._meta.error.message);
                         setErrMsg("Unauthorized");
                     }
                     else {
                         setErrMsg("Login Failed");
                     }
-                    return [3 /*break*/, 6];
-                case 6: return [2 /*return*/];
+                    errRef.current.focus();
+                    return [3 /*break*/, 7];
+                case 7: return [2 /*return*/];
             }
         });
     }); };
-    react_1.useEffect(function () {
-        if (isLoginSuccess) {
-            var token = loginData.token, admin = loginData.admin;
-            dispatch(authSlice_1.setUser({ user: admin, token: token }));
-            tokenForUser && navigate('/', { replace: true });
-            react_toastify_1.toast.success("User Login Successfully");
-        }
-    }, [isLoginSuccess, navigate, tokenForUser, dispatch, loginData]);
+    // useEffect(() => {
+    //   if (isLoginSuccess) {
+    //     const { token, admin }: any = loginData
+    //     dispatch(setUser({ user: admin, token}))
+    //     tokenForUser && navigate('/', { replace: true })
+    //     toast.success("User Login Successfully")
+    //   }
+    // }, [isLoginSuccess, navigate, tokenForUser, dispatch, loginData])
     return (react_1["default"].createElement("div", { className: "h-screen" },
         react_1["default"].createElement("div", { className: "absolute scale-75 top-[-98px] left-[-40px]" },
             react_1["default"].createElement(LoginBackGIcons_1["default"], null)),

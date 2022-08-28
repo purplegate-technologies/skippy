@@ -38,7 +38,7 @@ const EarningHistory = () => {
                     />
                 </div>
 
-                <div className="md:col-span-2 gap-8">
+                <div className="md:col-span-2 ">
                     <div className="card flex items-center justify-between gap-8">
                         <div>
                             <div className=''>

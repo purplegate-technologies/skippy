@@ -242,7 +242,6 @@ const Traffic = () => {
                 {/* <DoughnutChart className='flex items-center justify-center' /> */}
                 {/* <div className="h-36 flex items-start justify-center"> */}
 
-                {/* <AntPieChart data={barChartData} color={["#9E44F8", "#9E44F8"]}  /> */}
 
 
                 <CircularProgressbar value={100} text="70%" strokeWidth={3} className="w-[100px] h-[100px] justify-self-center flex-1"
@@ -301,7 +300,6 @@ const Traffic = () => {
           {/* card chart */}
 
           <div className="py-6 card">
-            {/* <div className="grid md:grid-cols-2 gap-8"> */}
             <div className="min-w-[355]">
               <p className='text-sm my-3'>Overall Engagements</p>
               <p className="text-[#171837] text-2xl">150,000</p>
