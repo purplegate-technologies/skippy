@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import BarChart from '../../components/charts/BarChart'
 import StatusCards from '../../components/statusCard/StatusCards'
-import DoughnutChart from '../../components/charts/DoughnutChart';
 import { UserData } from '../../assets/data/data'
 import Button from '../../components/button/Button';
-import { AntPieChart } from '../../components/charts/AntPieChart';
+// import DoughnutChart from '../../components/charts/DoughnutChart';
+// import { AntPieChart } from '../../components/charts/AntPieChart';
 import ThreeVdots from '../../assets/svg/ThreeVdots';
 import { useGetTrafficStatsQuery } from '../../features/stats/statsApis';
+import StatusCardIcon from '../../assets/svg/StatusCardIcon'
+import { CircularProgressbar } from "react-circular-progressbar"
+import 'react-circular-progressbar/dist/styles.css';
+
+
 
 export const barChartData = [
   {
@@ -20,9 +25,10 @@ export const barChartData = [
 ];
 
 const Traffic = () => {
+  const [iconState, setIconState] = useState<string>("")
 
-  const {data} = useGetTrafficStatsQuery()
-  console.log(data, "data data data")
+  const { data } = useGetTrafficStatsQuery()
+  console.log(data?.data, "data data data")
 
   const [userData, setUserrData] = useState({
     labels: UserData.map((data) => data.day.toUpperCase()),
@@ -72,52 +78,136 @@ const Traffic = () => {
   //   },
   // };
 
-//   useEffect(() => {
-//     if(data && data?.data) {
-//      const Internalmonths: string[] = [];
-//      const Externalmonths: string[] = [];
-//      const InternalMonthsValue: number[] = [];
-//      const ExternalMonthsValue: number[] = [];
-//      Object.entries(data?.data?.monthOfYearGraph?.internal).map(val => {
-//          Internalmonths.push(val[0]);
-//          //@ts-ignore
-//          InternalMonthsValue.push(val[1]);
-//      });
-//      Object.entries(data?.data?.monthOfYearGraph?.external).map(val => {
-//          Externalmonths.push(val[0]);
-//          //@ts-ignore
-//          ExternalMonthsValue.push(val[1]);
-//      });
+  //   useEffect(() => {
+  //     if(data && data?.data) {
+  //      const Internalmonths: string[] = [];
+  //      const Externalmonths: string[] = [];
+  //      const InternalMonthsValue: number[] = [];
+  //      const ExternalMonthsValue: number[] = [];
+  //      Object.entries(data?.data?.monthOfYearGraph?.internal).map(val => {
+  //          Internalmonths.push(val[0]);
+  //          //@ts-ignore
+  //          InternalMonthsValue.push(val[1]);
+  //      });
+  //      Object.entries(data?.data?.monthOfYearGraph?.external).map(val => {
+  //          Externalmonths.push(val[0]);
+  //          //@ts-ignore
+  //          ExternalMonthsValue.push(val[1]);
+  //      });
 
-//      setDataSet({
-//          labels: Internalmonths.map(data => data.toUpperCase()),
-//          datasets: [
-//              {
-//                  label: "Internal Ads Watched",
-//                  data: InternalMonthsValue.map((data) => data),
-//                  backgroundColor: "#2a71d0",
-//                  borderColor: "#2a71d0",
-//                  borderWidth: 1,
-//                  borderRadius: 5,
-//              },
-//              {
-//                  label: "External Ads Watched",
-//                  data: ExternalMonthsValue.map((data) => data),
-//                  backgroundColor: "#A3B1FA",
-//                  borderColor: "#A3B1FA",
-//                  borderWidth: 1,
-//                  borderRadius: 5,
-//              }
-//          ]
-//      });
+  //      setDataSet({
+  //          labels: Internalmonths.map(data => data.toUpperCase()),
+  //          datasets: [
+  //              {
+  //                  label: "Internal Ads Watched",
+  //                  data: InternalMonthsValue.map((data) => data),
+  //                  backgroundColor: "#2a71d0",
+  //                  borderColor: "#2a71d0",
+  //                  borderWidth: 1,
+  //                  borderRadius: 5,
+  //              },
+  //              {
+  //                  label: "External Ads Watched",
+  //                  data: ExternalMonthsValue.map((data) => data),
+  //                  backgroundColor: "#A3B1FA",
+  //                  borderColor: "#A3B1FA",
+  //                  borderWidth: 1,
+  //                  borderRadius: 5,
+  //              }
+  //          ]
+  //      });
 
-//     }
+  //     }
 
-//  },[data]);
+  //  },[data]);
 
   return (
     <section className='mb-10'>
-      <StatusCards />
+      {(data && data?.data) ?
+        <div>
+          <div className="row">
+            {/* card one */}
+            <div className="col-3">
+              <div className="status-card"
+                onMouseEnter={() => setIconState("store")}
+                onMouseLeave={() => setIconState("")}>
+                <div className="status-card__info">
+                  <span>{("total Active users")?.toString().toUpperCase()}</span>
+                  <h4>{(data?.data?.endDate?.totalActiveUsers)}</h4>
+                  <div className="status-card__info__percent">
+                    <span className='percentUp'>{"-% ↑"}</span>{" "}
+                    <span>{"from -"}</span>
+                  </div>
+                </div>
+
+                <div className="status-card__icon">
+                  <StatusCardIcon hovering={iconState === "store"} />
+                </div>
+              </div>
+            </div>
+            {/* CARD TWO */}
+            <div className="col-3">
+              <div className="status-card"
+                onMouseEnter={() => setIconState("store")}
+                onMouseLeave={() => setIconState("")}>
+                <div className="status-card__info">
+                  <span>{("Completed streams")?.toString().toUpperCase()}</span>
+                  <h4>{(data?.data?.endDate?.totalCompletedStreams)}</h4>
+                  <div className="status-card__info__percent">
+                    <span className='percentUp'>{"-% ↑"}</span>{" "}
+                    <span>{"from -"}</span>
+                  </div>
+                </div>
+
+                <div className="status-card__icon">
+                  <StatusCardIcon hovering={iconState === "store"} />
+                </div>
+              </div>
+            </div>
+            {/* CARD Three */}
+            <div className="col-3">
+              <div className="status-card"
+                onMouseEnter={() => setIconState("store")}
+                onMouseLeave={() => setIconState("")}>
+                <div className="status-card__info">
+                  <span>{("Overall impressions")?.toString().toUpperCase()}</span>
+                  <h4>{(data?.data?.endDate?.totalStreams)}</h4>
+                  <div className="status-card__info__percent">
+                    <span className='percentUp'>{"-% ↑"}</span>{" "}
+                    <span>{"from -"}</span>
+                  </div>
+                </div>
+
+                <div className="status-card__icon">
+                  <StatusCardIcon hovering={iconState === "store"} />
+                </div>
+              </div>
+            </div>
+            {/* card four */}
+            <div className="col-3">
+              <div className="status-card"
+                onMouseEnter={() => setIconState("store")}
+                onMouseLeave={() => setIconState("")}>
+                <div className="status-card__info">
+                  <span>{("Overall Engagements")?.toString().toUpperCase()}</span>
+                  <h4>{(data?.data?.endDate?.totalCompletedStreams)}</h4>
+                  <div className="status-card__info__percent">
+                    <span className='percentUp'>{"-% ↑"}</span>{" "}
+                    <span>{"from -"}</span>
+                  </div>
+                </div>
+
+                <div className="status-card__icon">
+                  <StatusCardIcon hovering={iconState === "store"} />
+                </div>
+              </div>
+            </div>
+            {/* End of all card */}
+          </div>
+        </div>
+        :
+        <StatusCards />
+      }
 
       <div className='traffic-flex'>
 
@@ -135,25 +225,47 @@ const Traffic = () => {
                 <span className='text-xs text-[#516CF5]'>12% ↑</span> <p className='text-black'>from 80,000</p>
               </div>
 
-              <div className="flex items-center justify-between gap-8">
+              <div className="flex items-center justify-between gap-8 mt-4">
                 <div>
-                  <div className=''>
-                    <div className='p-1 rounded w-1'></div>
+                  <div className='my-3'>
+                    <div className='p-[2px] rounded-full w-5 bg-[#516CF5]'></div>
                     <p className='text-[#949AB1] text-xs my-1'>Internal Ads</p>
                     <p className='text-lg text-[#171837]'>75,000</p>
                   </div>
-                  <div className=''>
-                    <div className='p-1 rounded w-3 bg-[]'></div>
+                  <div className='mt-2'>
+                    <div className='p-[2px] rounded-full w-5  bg-[#A3B1FA]'></div>
                     <p className='text-[#949AB1] text-xs my-1'>Internal Ads</p>
                     <p className='text-lg text-[#171837]'>75,000</p>
                   </div>
                 </div>
 
                 {/* <DoughnutChart className='flex items-center justify-center' /> */}
-                <div className="h-36 flex items-start justify-center">
+                {/* <div className="h-36 flex items-start justify-center"> */}
 
-                <AntPieChart data={barChartData} color={["#9E44F8", "#9E44F8"]}  />
-                </div>
+                {/* <AntPieChart data={barChartData} color={["#9E44F8", "#9E44F8"]}  /> */}
+
+
+                <CircularProgressbar value={100} text="70%" strokeWidth={3} className="w-[100px] h-[100px] justify-self-center flex-1"
+                  styles={{
+                    path: {
+                      transform: "rotate(180deg)",
+                      transformOrigin: "center center",
+                      strokeLinecap: "butt",
+                      stroke: "#9E44F8"
+                    },
+                    trail: {
+                      // strokeWidth: 0
+                    },
+                    text: {
+                      fontSize: 22,
+                      fontWeight: 800,
+                      animation: "fadein 2s",
+                      fill: "#9E44F8"
+                    }
+                  }}
+                />
+
+                {/* </div> */}
               </div>
 
             </div>
@@ -197,21 +309,40 @@ const Traffic = () => {
                 <span className='text-xs text-[#516CF5]'>12% ↑</span> <p className='text-black'>from 80,000</p>
               </div>
 
-              <div className="flex items-center justify-between gap-8">
+              <div className="flex items-center justify-between  gap-8 mt-4">
                 <div>
-                  <div className=''>
-                    <div className='p-1 rounded w-1'></div>
+                  <div className='my-3'>
+                    <div className='p-[2px] rounded-full w-5 bg-[#516CF5]'></div>
                     <p className='text-[#949AB1] text-xs my-1'>Internal Ads</p>
                     <p className='text-lg text-[#171837]'>75,000</p>
                   </div>
-                  <div className=''>
-                    <div className='p-1 rounded w-3 bg-[]'></div>
+                  <div className='mt-2'>
+                    <div className='p-[2px] rounded-full w-5  bg-[#A3B1FA]'></div>
                     <p className='text-[#949AB1] text-xs my-1'>Internal Ads</p>
                     <p className='text-lg text-[#171837]'>75,000</p>
                   </div>
                 </div>
 
-                <DoughnutChart className='flex items-center justify-center' />
+                {/* <DoughnutChart className='flex items-center justify-center' /> */}
+                <CircularProgressbar value={100} text="70%" strokeWidth={3} className="w-[100px] h-[100px] justify-self-center flex-1"
+                  styles={{
+                    path: {
+                      transform: "rotate(180deg)",
+                      transformOrigin: "center center",
+                      strokeLinecap: "butt",
+                      stroke: "#347BF4"
+                    },
+                    trail: {
+                      // strokeWidth: 0
+                    },
+                    text: {
+                      fontSize: 22,
+                      fontWeight: 800,
+                      animation: "fadein 2s",
+                      fill: "#347BF4"
+                    }
+                  }}
+                />
               </div>
             </div>
           </div>
@@ -222,7 +353,7 @@ const Traffic = () => {
 
         <div className="grid md:grid-cols-2">
           <div className="card">
-          <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between">
               <h6 className='text-[#171837] text-sm'>Active Daily Users</h6>
               <ThreeVdots />
             </div>

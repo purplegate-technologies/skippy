@@ -57,7 +57,7 @@ const Settings = () => {
                                 // style={selectSTyle}
                                 name=""
                                 id=""
-                                className="text-[#949AB1] border-[#949AB1] outline-none border-2 rounded p-2 mb-3 w-full"
+                                className="bg-white text-[#949AB1] border-[#949AB1] outline-none border-2 rounded p-2 mb-3 w-full"
                                 onChange={(e) => {
                                     const select = e.target as HTMLSelectElement
                                     setRoles(select.options.item(select.selectedIndex)?.innerText!)

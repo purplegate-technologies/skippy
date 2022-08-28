@@ -58,7 +58,7 @@ const Dropdown = ({ icon, badge, customToggle, contentData, renderItems, renderF
       </button>
       <div ref={dropdown_content_el} className="dropdown__content">
         {contentData && renderItems && contentData.map((item: any, index: number) => renderItems(item, index))}
-        {!contentData && "NO content"}
+        {!contentData && "No Content"}
         {renderFooter && <div className="dropdown__footer">
           {renderFooter()}
         </div>

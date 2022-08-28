@@ -14,7 +14,7 @@ const Dashboard = () => {
     const [iconState, setIconState] = useState<string>("")
 
 
-    console.log(data, "data dashboard")
+    // console.log(data, "data dashboard")
 
 
     const [lineData] = useState({
@@ -32,7 +32,6 @@ const Dashboard = () => {
         ],
     })
     const [userData] = useState({
-        // labels: Object.values(data?.data).map((data) => data.month.toUpperCase()),
         labels: datasetDash.map((data) => data.month.toUpperCase()),
         datasets: [
             {

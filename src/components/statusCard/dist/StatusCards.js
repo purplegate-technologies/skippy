@@ -8,7 +8,7 @@ var statusData = [
         "count": "-",
         "title": "overall users",
         "percent": "-% ↑",
-        "from": "from 880"
+        "from": "from -"
     },
     {
         "icon": "bx bx-cart",

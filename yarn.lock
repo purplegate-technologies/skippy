@@ -2175,6 +2175,13 @@
   resolved "https://registry.npmjs.org/@types/range-parser/-/range-parser-1.2.4.tgz"
   integrity sha512-EEhsLsD6UsDM1yFhAvy0Cjr6VwmpMWqFBCb9w07wVugF7w9nfajxLuVmngTIpgS6svCnm6Vaw+MZhoDCKnOfsw==
 
+"@types/react-circular-progressbar@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@types/react-circular-progressbar/-/react-circular-progressbar-1.1.0.tgz#7e257b96a5fba01528fd36499ca1db251a2e999d"
+  integrity sha512-2FXFaD8KHF6r80cgwv5giB9rAJa/dwV1DiM9Ha+TLjEk2QTo2fD2v4eRakUD/8eQaepXM+9M45MOyn8kZze43w==
+  dependencies:
+    react-circular-progressbar "*"
+
 "@types/react-date-range@^1.4.4":
   version "1.4.4"
   resolved "https://registry.yarnpkg.com/@types/react-date-range/-/react-date-range-1.4.4.tgz#235910d6c00d9be905fc5de037a8820616bb2a79"
@@ -7790,6 +7797,11 @@ react-chartjs-2@^4.3.1:
   version "4.3.1"
   resolved "https://registry.npmjs.org/react-chartjs-2/-/react-chartjs-2-4.3.1.tgz"
   integrity sha512-5i3mjP6tU7QSn0jvb8I4hudTzHJqS8l00ORJnVwI2sYu0ihpj83Lv2YzfxunfxTZkscKvZu2F2w9LkwNBhj6xA==
+
+react-circular-progressbar@*:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/react-circular-progressbar/-/react-circular-progressbar-2.1.0.tgz#99e5ae499c21de82223b498289e96f66adb8fa3a"
+  integrity sha512-xp4THTrod4aLpGy68FX/k1Q3nzrfHUjUe5v6FsdwXBl3YVMwgeXYQKDrku7n/D6qsJA9CuunarAboC2xCiKs1g==
 
 react-content-loader@^5.0.4:
   version "5.1.4"

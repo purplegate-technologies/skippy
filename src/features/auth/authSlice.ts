@@ -59,9 +59,9 @@ export const authSlice = createSlice({
             state.user = null
             state.token = null
             // learn later
-            let redirectTo = window.location.pathname;
+            // let redirectTo = window.location.pathname;
             window.localStorage.clear();
-            window.location.href = `/login?redirectTo=${redirectTo}`;
+            // window.location.href = `/login?redirectTo=${redirectTo}`;
         }
 
     }

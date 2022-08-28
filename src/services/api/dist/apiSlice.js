@@ -106,7 +106,7 @@ var baseQueryWithReauth = function (args, api, extraOptions) { return __awaiter(
 exports.apiSlice = react_1.createApi({
     baseQuery: baseQueryWithReauth,
     reducerPath: "authApi",
-    tagTypes: ['Auth', 'Advert', "UserAuth", "UserAuth", "Wallet", 'Stats', "Settings"],
+    tagTypes: ['Auth', 'Advert', "UserAuth", "UserAuth", "Wallet", 'Stats', "Settings", "UserManagerment"],
     endpoints: function (builder) { return ({}); }
 });
 // const {useCreateAdvertMutation, useGetAdvertAdminQuery} = apiSlice

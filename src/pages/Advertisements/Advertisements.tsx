@@ -37,7 +37,7 @@ const Advertisements = () => {
   const { data: gerAds } = useGetAdvertQuery(1)
 
 
-  console.log(data, "useGetAdvertStatsQuery")
+  // console.log(data, "useGetAdvertStatsQuery")
   // console.log(gerAds, "gerAds")
   const navigate = useNavigate()
 

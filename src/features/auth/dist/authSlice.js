@@ -57,9 +57,9 @@ exports.authSlice = toolkit_1.createSlice({
             state.user = null;
             state.token = null;
             // learn later
-            var redirectTo = window.location.pathname;
+            // let redirectTo = window.location.pathname;
             window.localStorage.clear();
-            window.location.href = "/login?redirectTo=" + redirectTo;
+            // window.location.href = `/login?redirectTo=${redirectTo}`;
         }
     }
 });

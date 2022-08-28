@@ -20,7 +20,7 @@ var SettingIcon_1 = require("../../assets/svg/SettingIcon");
 var Dropdown_1 = require("../dropdown/Dropdown");
 // import Input from '../input/Input'
 require("./topnav.css");
-var renderNotificationItem = function (item, index) { return (react_1["default"].createElement("div", { className: "notification-item", key: index },
+var renderNotificationItem = function (item, index) { return (react_1["default"].createElement("div", { className: "notification-item active", key: index },
     react_1["default"].createElement("i", { className: item.icon }),
     react_1["default"].createElement("span", null, item.heading),
     react_1["default"].createElement("span", null, item.content))); };
@@ -38,15 +38,6 @@ var notification = [
         content: "my name os lala and i notify you"
     },
 ];
-var current_user = {
-    display_name: "Gerald Kachi",
-    image: ""
-    // image: user_image
-};
-var renderUserToggle = function (user) { return (react_1["default"].createElement("div", { className: "topnav__right-user" },
-    react_1["default"].createElement("div", { className: "topnav__right-user__image" },
-        react_1["default"].createElement("img", { src: user.image, alt: "users" })),
-    react_1["default"].createElement("div", { className: "topnav__right-user__name" }, user.display_name))); };
 var TopNav = function () {
     var location = react_router_dom_1.useLocation();
     var activepath = location.pathname;

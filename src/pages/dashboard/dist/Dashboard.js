@@ -14,7 +14,7 @@ var Dashboard = function () {
     var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p;
     var data = statsApis_1.useGetDashboardStatsQuery().data;
     var _q = react_1.useState(""), iconState = _q[0], setIconState = _q[1];
-    console.log(data, "data dashboard");
+    // console.log(data, "data dashboard")
     var lineData = react_1.useState({
         // labels: Object.values(data?.data).map((data) => data.month.toUpperCase()),
         labels: data_1.datasetDash.map(function (data) { return data.month.toUpperCase(); }),
@@ -30,7 +30,6 @@ var Dashboard = function () {
         ]
     })[0];
     var userData = react_1.useState({
-        // labels: Object.values(data?.data).map((data) => data.month.toUpperCase()),
         labels: data_1.datasetDash.map(function (data) { return data.month.toUpperCase(); }),
         datasets: [
             {

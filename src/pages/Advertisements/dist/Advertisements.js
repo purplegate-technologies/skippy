@@ -15,8 +15,8 @@ var CategoryFilter_1 = require("../../components/CategoryFilter/CategoryFilter")
 var LinearGradientChart_1 = require("../../components/charts/LinearGradientChart");
 var StatusCardIcon_1 = require("../../assets/svg/StatusCardIcon");
 var Advertisements = function () {
-    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m;
-    var _o = react_1.useState(""), iconState = _o[0], setIconState = _o[1];
+    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k;
+    var _l = react_1.useState(""), iconState = _l[0], setIconState = _l[1];
     var userData = react_1.useState({
         labels: data_1.UserData.map(function (data) { return data.day.toUpperCase(); }),
         datasets: [
@@ -29,11 +29,11 @@ var Advertisements = function () {
             },
         ]
     })[0];
-    var _p = react_1.useState(userData), externalGraph = _p[0], setExternalGraph = _p[1];
-    var _q = react_1.useState(userData), internalGraph = _q[0], setInternalGraph = _q[1];
+    var _m = react_1.useState(userData), externalGraph = _m[0], setExternalGraph = _m[1];
+    var _o = react_1.useState(userData), internalGraph = _o[0], setInternalGraph = _o[1];
     var data = statsApis_1.useGetAdvertStatsQuery().data;
     var gerAds = AdvertsApiSlice_1.useGetAdvertQuery(1).data;
-    console.log(data, "useGetAdvertStatsQuery");
+    // console.log(data, "useGetAdvertStatsQuery")
     // console.log(gerAds, "gerAds")
     var navigate = react_router_dom_1.useNavigate();
     // InternalGraph
@@ -142,9 +142,7 @@ var Advertisements = function () {
                         React.createElement("div", { className: "status-card", onMouseEnter: function () { return setIconState("store"); }, onMouseLeave: function () { return setIconState(""); } },
                             React.createElement("div", { className: "status-card__info" },
                                 React.createElement("span", null, (_g = ("completed Sessions")) === null || _g === void 0 ? void 0 : _g.toString().toUpperCase()),
-                                React.createElement("h4", null, (_j = (_h = (data === null || data === void 0 ? void 0 : data.)) === null || _h === void 0 ? void 0 : _h.endDate) === null || _j === void 0 ? void 0 :
-                                    _j.totalStreams,
-                                    ")}"),
+                                React.createElement("h4", null, ((_h = data === null || data === void 0 ? void 0 : data.endDate) === null || _h === void 0 ? void 0 : _h.totalStreams)),
                                 React.createElement("div", { className: "status-card__info__percent" },
                                     React.createElement("span", { className: 'percentUp' }, "-% ↑"),
                                     " ",
@@ -154,8 +152,8 @@ var Advertisements = function () {
                     React.createElement("div", { className: "col-3" },
                         React.createElement("div", { className: "status-card", onMouseEnter: function () { return setIconState("store"); }, onMouseLeave: function () { return setIconState(""); } },
                             React.createElement("div", { className: "status-card__info" },
-                                React.createElement("span", null, (_k = ("Avg. INTERACTION Rate")) === null || _k === void 0 ? void 0 : _k.toString().toUpperCase()),
-                                React.createElement("h4", null, ((_m = (_l = data === null || data === void 0 ? void 0 : data.data) === null || _l === void 0 ? void 0 : _l.endDate) === null || _m === void 0 ? void 0 : _m.totalCompletedStreams)),
+                                React.createElement("span", null, (_j = ("Avg. INTERACTION Rate")) === null || _j === void 0 ? void 0 : _j.toString().toUpperCase()),
+                                React.createElement("h4", null, ((_k = data === null || data === void 0 ? void 0 : data.endDate) === null || _k === void 0 ? void 0 : _k.totalCompletedStreams)),
                                 React.createElement("div", { className: "status-card__info__percent" },
                                     React.createElement("span", { className: 'percentUp' }, "-% ↑"),
                                     " ",

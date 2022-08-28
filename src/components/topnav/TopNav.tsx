@@ -11,7 +11,7 @@ import './topnav.css'
 
 
 const renderNotificationItem = (item: any, index: number) => (
-    <div className="notification-item" key={index}>
+    <div className="notification-item active" key={index}>
         <i className={item.icon}></i>
         <span>{item.heading}</span>
         <span>{item.content}</span>
@@ -33,22 +33,6 @@ const notification = [
     },
 ]
 
-const current_user = {
-    display_name: "Gerald Kachi",
-    image: ""
-    // image: user_image
-}
-
-const renderUserToggle = (user: any) => (
-    <div className="topnav__right-user">
-        <div className="topnav__right-user__image">
-            <img src={user.image} alt="users" />
-        </div>
-        <div className="topnav__right-user__name">
-            {user.display_name}
-        </div>
-    </div>
-)
 
 const TopNav = () => {
     const location = useLocation()

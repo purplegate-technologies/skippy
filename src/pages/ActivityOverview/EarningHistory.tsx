@@ -1,6 +1,8 @@
 import React from 'react'
-import DoughnutChart from '../../components/charts/DoughnutChart'
+// import DoughnutChart from '../../components/charts/DoughnutChart'
 import Table from '../../components/Table/Table'
+import { CircularProgressbar } from "react-circular-progressbar"
+import 'react-circular-progressbar/dist/styles.css';
 
 const customerTableHead = [
     'Advert',
@@ -56,7 +58,26 @@ const EarningHistory = () => {
                             </div>
                         </div>
 
-                        <DoughnutChart className='flex items-center justify-center' />
+                        {/* <DoughnutChart className='flex items-center justify-center' /> */}
+                        <CircularProgressbar value={100} text="70%" strokeWidth={10} className="w-[100px] h-[100px] justify-self-center flex-1"
+                            styles={{
+                                path: {
+                                    // transform: "rotate(180deg)",
+                                    transformOrigin: "center center",
+                                    strokeLinecap: "butt",
+                                    stroke: "#347BF4"
+                                },
+                                trail: {
+                                    // strokeWidth: 0
+                                },
+                                text: {
+                                    fontSize: 22,
+                                    fontWeight: 800,
+                                    animation: "fadein 2s",
+                                    fill: "#347BF4"
+                                }
+                            }}
+                        />
                     </div>
                     <div className="card flex items-center justify-between gap-8">
                         <div>
@@ -77,7 +98,26 @@ const EarningHistory = () => {
                             </div>
                         </div>
 
-                        <DoughnutChart className='flex items-center justify-center' />
+                        {/* <DoughnutChart className='flex items-center justify-center' /> */}
+                        <CircularProgressbar value={100} text="70%" strokeWidth={10} className="w-[100px] h-[100px] flex-1 justify-self-center"
+                            styles={{
+                                path: {
+                                    // transform: "rotate(180deg)",
+                                    transformOrigin: "center center",
+                                    strokeLinecap: "butt",
+                                    stroke: "#347BF4"
+                                },
+                                trail: {
+                                    // strokeWidth: 0
+                                },
+                                text: {
+                                    fontSize: 22,
+                                    fontWeight: 800,
+                                    animation: "fadein 2s",
+                                    fill: "#347BF4"
+                                }
+                            }}
+                        />
                     </div>
                 </div>
 
