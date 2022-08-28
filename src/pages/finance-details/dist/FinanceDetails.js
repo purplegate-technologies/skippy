@@ -22,6 +22,7 @@ var Button_1 = require("../../components/button/Button");
 var react_circular_progressbar_1 = require("react-circular-progressbar");
 require("react-circular-progressbar/dist/styles.css");
 var DollarIcon_1 = require("./DollarIcon");
+var DollarVoucher_1 = require("./DollarVoucher");
 var bread = [
     {
         name: 'Dashboard',
@@ -67,8 +68,11 @@ var FinanceDetails = function () {
             react_1["default"].createElement("div", { className: "md:basis-1/2 flex flex-col" },
                 react_1["default"].createElement("div", { className: 'self-center' },
                     react_1["default"].createElement("div", { className: "py-5" },
-                        react_1["default"].createElement("h1", { className: 'font-semibold text-[23px]' }, "Voucher Preview")),
-                    react_1["default"].createElement("div", { className: "card" },
+                        react_1["default"].createElement("h1", { className: 'font-semibold text-[20px]' }, "Voucher Preview")),
+                    react_1["default"].createElement("div", { className: "bg-white" },
+                        react_1["default"].createElement("div", { className: 'flex items-center border border-1 p-5' },
+                            react_1["default"].createElement(DollarVoucher_1["default"], null),
+                            react_1["default"].createElement("span", { className: "text-xl font-bold ml-3" }, "N1500.00 Voucher")),
                         react_1["default"].createElement("div", null,
                             react_1["default"].createElement("p", { className: 'pb-5 text-[#404040] text-lg font-bold text-center' }, "This voucher holds a value of N1,500.00 only, and can be redeemed for cash"),
                             react_1["default"].createElement("p", { className: 'text-[#404040] text-lg' },

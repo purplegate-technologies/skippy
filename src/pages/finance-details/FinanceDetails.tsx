@@ -9,6 +9,7 @@ import Button from '../../components/button/Button'
 import { CircularProgressbar } from "react-circular-progressbar"
 import 'react-circular-progressbar/dist/styles.css';
 import DollarIcon from './DollarIcon'
+import DollarVoucher from './DollarVoucher'
 
 export interface BreadcrumbsProps {
     url?: string
@@ -45,9 +46,10 @@ const FinanceDetails = () => {
                 {/* <div className="grid lg:grid-flow-col"> */}
                 <div className="flex items-center flex-col md:flex-row justify-between">
                     <div className="flex items-center">
-                            <DollarIcon  className="rounded-full shadow-lg"  />
+                        <DollarIcon className="rounded-full shadow-lg" />
                         <div className='ml-3 text-[#949AB1]'>
                             <p className='text-md my-1'><span>Voucher</span> | <span className='text-[#00D48A]'>Available</span></p>
+
                             <span className='font-bold text-[#171837]'>N1500.00 Voucher</span>
                             <p className='text-xs my-1'>Expiry Date: 15/09/2022</p>
                         </div>
@@ -92,9 +94,13 @@ const FinanceDetails = () => {
                 <div className="md:basis-1/2 flex flex-col">
                     <div className='self-center'>
                         <div className="py-5">
-                            <h1 className='font-semibold text-[23px]'>Voucher Preview</h1>
+                            <h1 className='font-semibold text-[20px]'>Voucher Preview</h1>
                         </div>
-                        <div className="card">
+                        <div className="bg-white">
+                                <div className='flex items-center border border-1 px-5 py-10'>
+                                    <DollarVoucher />
+                                <span className="text-xl font-bold ml-3">N1500.00 Voucher</span>
+                                </div>
                             <div>
                                 <p className='pb-5 text-[#404040] text-lg font-bold text-center'>This voucher holds a value of N1,500.00 only, and can be redeemed for cash</p>
                                 <p className='text-[#404040] text-lg'>
@@ -184,23 +190,23 @@ const FinanceDetails = () => {
                                 <div className="mx-auto my-3">
                                     {/* <DoughnutChart className='flex items-center justify-center' /> */}
                                     <CircularProgressbar value={100} text="70%" strokeWidth={10} className="w-[150px] h-[150px] justify-self-center flex-1"
-                                    styles={{
-                                        path: {
-                                        transform: "rotate(180deg)",
-                                        transformOrigin: "center center",
-                                        strokeLinecap: "butt",
-                                        stroke: "#347BF4"
-                                        },
-                                        trail: {
-                                        // strokeWidth: 0
-                                        },
-                                        text: {
-                                        fontSize: 22,
-                                        fontWeight: 800,
-                                        animation: "fadein 2s",
-                                        fill: "#347BF4"
-                                        }
-                                    }}
+                                        styles={{
+                                            path: {
+                                                transform: "rotate(180deg)",
+                                                transformOrigin: "center center",
+                                                strokeLinecap: "butt",
+                                                stroke: "#347BF4"
+                                            },
+                                            trail: {
+                                                // strokeWidth: 0
+                                            },
+                                            text: {
+                                                fontSize: 22,
+                                                fontWeight: 800,
+                                                animation: "fadein 2s",
+                                                fill: "#347BF4"
+                                            }
+                                        }}
                                     />
                                 </div>
                                 <div className="grid grid-cols-2 place-items-center text-center">
