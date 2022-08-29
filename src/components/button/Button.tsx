@@ -50,8 +50,8 @@ const Button = ({
   //     }
   // }
 
-  // const computedClasses = ["Button rounded-lg bg-[#516CF5] text-white py-[10px] px-5 rounded-[3px]"]
-  const computedClasses = ["Button rounded-lg  text-white py-[10px] px-5 rounded-[3px]"]
+  const computedClasses = ["Button rounded-lg bg-[#516CF5] text-white py-[10px] px-5 rounded-[3px]"]
+  // const computedClasses = ["Button rounded-lg  text-white py-[10px] px-5 rounded-[3px]"]
 
   if (size === "full") {
       computedClasses.push("font-semibold h-10 lg:h-16 w-full px-10")

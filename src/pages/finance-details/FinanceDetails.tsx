@@ -56,12 +56,11 @@ const FinanceDetails = () => {
                     </div>
                     {/*  */}
                     <div className="flex items-center gap-3">
-                        <div className="flex flex-col items-center cursor-pointer w-1/2 p-1">
-                            <Link to="/create-voucher">
-                                <EditIcon />
-                                <span onClick={() => { }} className='text-[#949AB1] text-xs'>Edit</span>
-                            </Link>
-                        </div>
+                        <Link to="/create-voucher" className="flex flex-col items-center cursor-pointer w-1/2 p-1">
+                            <EditIcon />
+                            <span onClick={() => { }} className='text-[#949AB1] text-xs'>Edit</span>
+                        </Link>
+
                         <div className="flex flex-col items-center cursor-pointer w-1/2 p-1">
                             <DeactiviteIcon />
                             <span onClick={() => { }} className='text-[#949AB1] text-xs'>Deactivite</span>
@@ -91,16 +90,16 @@ const FinanceDetails = () => {
             {/* end of ... */}
 
             <div className="grid md:grid-cols-2 gap-10">
-                <div className="md:basis-1/2 flex flex-col">
-                    <div className='self-center'>
-                        <div className="py-5">
+                <div className="flex flex-col">
+                    <div className=''>
+                        <div className="pb-5">
                             <h1 className='font-semibold text-[20px]'>Voucher Preview</h1>
                         </div>
                         <div className="bg-white">
-                                <div className='flex items-center border border-1 px-5 py-10'>
-                                    <DollarVoucher />
+                            <div className='flex items-center border border-1 px-5 py-10'>
+                                <DollarVoucher />
                                 <span className="text-xl font-bold ml-3">N1500.00 Voucher</span>
-                                </div>
+                            </div>
                             <div>
                                 <p className='pb-5 text-[#404040] text-lg font-bold text-center'>This voucher holds a value of N1,500.00 only, and can be redeemed for cash</p>
                                 <p className='text-[#404040] text-lg'>
@@ -113,13 +112,13 @@ const FinanceDetails = () => {
 
                             <hr className='border-dashed  my-10 border-2' />
 
-                            <div className="flex items-center gap-10 justfy-between">
+                            <div className="flex items-center gap-x-10 justify-between">
                                 <div>
                                     <p>Valid till: 04 Jan, 2023 11:59pm</p>
                                     <p className='text-[#1C57AC]'>Terms & Conditions Apps</p>
                                 </div>
-                                <div className="flex justify-end"></div>
-                                <Button onClick={() => navigate('create-voucher')}>1500</Button>
+                                
+                                <Button className="border rounded-full" onClick={() => navigate('create-voucher')}>1500</Button>
                             </div>
                         </div>
                     </div>

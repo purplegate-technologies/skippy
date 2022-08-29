@@ -19,12 +19,12 @@ const CreateVoucher = () => {
         </div>
       </div>
 
-        <div className="grid md:grid-cols-2 gap-10 m-5">
-          <div className='md:basis-1/2 flex flex-col bg-white'>
-            Create ads
+        <div className="grid md:grid-cols-12 gap-10 m-5">
+          <div className='md:col-span-6 flex flex-col bg-white'>
+            Create adsx
           </div>
-          <div className='md:basis-1/2 flex flex-col bg-white'>
-          ddddddddddddd
+          <div className='md:col-span-4 flex flex-col bg-white'>
+          create Voucher
           </div>
         </div>
 

@@ -238,10 +238,10 @@ var Dashboard = function () {
     }, [data]);
     return (React.createElement(React.Fragment, null,
         React.createElement("section", { className: 'mb-10' },
-            React.createElement("h4", { className: 'cardHead font-semibold' }, "Overview"),
             (data && (data === null || data === void 0 ? void 0 : data.data)) ?
                 React.createElement("div", null,
                     !((_b = (_a = data === null || data === void 0 ? void 0 : data.data) === null || _a === void 0 ? void 0 : _a.endDate) === null || _b === void 0 ? void 0 : _b.totalAdverts),
+                    React.createElement("h4", { className: 'cardHead font-semibold' }, "Overview"),
                     React.createElement("div", { className: "row" },
                         React.createElement("div", { className: "col-3" },
                             React.createElement("div", { className: "status-card", onMouseEnter: function () { return setIconState("store"); }, onMouseLeave: function () { return setIconState(""); } },

@@ -93,13 +93,11 @@ const AdvertisementDetails = () => {
             </div>
           </div>
           {/*  */}
-          <div className="flex float-right place-self-end gap-x-3 lg:mt-auto mt-10">
-            <Link to="/create-adverts">
-              <div onClick={() => { }} className="flex flex-col cursor-pointer items-center p-1">
+          <div className="flex items-center place-items-cente md:plrace-self-end gap-x-3 lg:mt-auto mt-10">
+              <Link to="/create-adverts" onClick={() => { }} className="flex flex-col cursor-pointer items-center p-1">
                 <EditIcon />
                 <span className='text-[#949AB1] text-xs'>Edit</span>
-              </div>
-            </Link>
+              </Link>
             <div onClick={() => { }} className="flex flex-col cursor-pointer items-center p-1">
               <DeactiviteIcon />
               <span className='text-[#949AB1] text-xs'>Deactivite</span>

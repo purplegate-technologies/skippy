@@ -136,10 +136,10 @@ const Advertisements = () => {
 
   return (
     <div>
-      <h4 className='cardHead font-semibold'>Overview</h4>
                 {(data) ?
                     <div>
                         {!data?.data?.endDate?.totalAdverts}
+                      <h4 className='cardHead font-semibold'>Overview</h4>
                         <div className="row">
                             {/* card one */}
                             <div className="col-3">

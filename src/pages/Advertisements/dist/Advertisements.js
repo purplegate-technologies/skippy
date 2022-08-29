@@ -111,10 +111,10 @@ var Advertisements = function () {
         React.createElement("td", null, item.location),
         React.createElement("td", null, item.location))); };
     return (React.createElement("div", null,
-        React.createElement("h4", { className: 'cardHead font-semibold' }, "Overview"),
         (data) ?
             React.createElement("div", null,
                 !((_b = (_a = data === null || data === void 0 ? void 0 : data.data) === null || _a === void 0 ? void 0 : _a.endDate) === null || _b === void 0 ? void 0 : _b.totalAdverts),
+                React.createElement("h4", { className: 'cardHead font-semibold' }, "Overview"),
                 React.createElement("div", { className: "row" },
                     React.createElement("div", { className: "col-3" },
                         React.createElement("div", { className: "status-card", onMouseEnter: function () { return setIconState("store"); }, onMouseLeave: function () { return setIconState(""); } },
