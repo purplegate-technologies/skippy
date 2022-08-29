@@ -12,6 +12,7 @@ import { useGetAdvertAdminQuery } from '../../features/adverts/AdvertsApiSlice'
 import CategoryFilter from '../../components/CategoryFilter/CategoryFilter'
 import LinearGradientChart from '../../components/charts/LinearGradientChart'
 import StatusCardIcon from '../../assets/svg/StatusCardIcon'
+import CreateAdsPlus from '../../assets/svg/CreateAdsPlus'
 
 
 
@@ -250,7 +251,7 @@ const Advertisements = () => {
       <div className='my-5' />
 
       <div className="card">
-        <SearchBar HeaderTitle='All Adverts' placeholder='Enter Brand/Ad Name' text='Create Advert' onClick={() => navigate('/advertisements-details')} />
+        <SearchBar HeaderTitle='All Adverts' placeholder='Enter Brand/Ad Name' text='Create Advert' onClick={() => navigate('/advertisements-details')} prefixIcon={<CreateAdsPlus />}  />
         <CategoryFilter />
         {/* Table */}
         <div className="row ">

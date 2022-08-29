@@ -13,6 +13,7 @@ var statsApis_1 = require("../../features/stats/statsApis");
 var CategoryFilter_1 = require("../../components/CategoryFilter/CategoryFilter");
 var LinearGradientChart_1 = require("../../components/charts/LinearGradientChart");
 var StatusCardIcon_1 = require("../../assets/svg/StatusCardIcon");
+var CreateAdsPlus_1 = require("../../assets/svg/CreateAdsPlus");
 var Advertisements = function () {
     var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k;
     var _l = react_1.useState(""), iconState = _l[0], setIconState = _l[1];
@@ -176,7 +177,7 @@ var Advertisements = function () {
                     React.createElement(LinearGradientChart_1["default"], { chartData: externalGraph })))),
         React.createElement("div", { className: 'my-5' }),
         React.createElement("div", { className: "card" },
-            React.createElement(SearchBar_1["default"], { HeaderTitle: 'All Adverts', placeholder: 'Enter Brand/Ad Name', text: 'Create Advert', onClick: function () { return navigate('/advertisements-details'); } }),
+            React.createElement(SearchBar_1["default"], { HeaderTitle: 'All Adverts', placeholder: 'Enter Brand/Ad Name', text: 'Create Advert', onClick: function () { return navigate('/advertisements-details'); }, prefixIcon: React.createElement(CreateAdsPlus_1["default"], null) }),
             React.createElement(CategoryFilter_1["default"], null),
             React.createElement("div", { className: "row " },
                 React.createElement("div", { className: "col-12" },

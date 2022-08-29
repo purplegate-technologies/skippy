@@ -13,11 +13,12 @@ interface IProps {
     children?: React.ReactNode;
     to?: string | any
     onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+    prefixIcon?: React.ReactNode
 }
 
 
 
-const SearchBar = ({ className = "", placeholder = "Search", HeaderTitle, text, children = null, to = "", onClick }: IProps) => {
+const SearchBar = ({ className = "", placeholder = "Search", HeaderTitle, text, children = null, to = "", onClick, prefixIcon=null }: IProps) => {
     return (
         <div className='mb-5'>
             <div className='flex flex-1 items-center justify-between mb-7 ml-3 mr-5'>
@@ -30,14 +31,14 @@ const SearchBar = ({ className = "", placeholder = "Search", HeaderTitle, text, 
             <form className={`flex items-center gap-4 justify-between ${className}`}>
                 <div className='h-[45px] flex w-full items-center bg-[#f1f3fb] rounded-[10px]'>
                     <SearchIconSupport className="ml-[.9rem] lg:ml-[1.3125rem] lg:mr-4 mr-3" />
-                    <Input
-                        className={`flex-1 text-xs w-full lg:text-lg md:text-sm`}
-                        type="text" value=''
+                    <input
+                        className={`flex-1 flex text-xs w-full lg:text-lg md:text-sm`}
+                        type="text"
                         placeholder={placeholder}
                     />
                 </div>
 
-                <Button to={to} text={text} {...{ children }} className="ml-auto px-10 bg-[#516CF5] " {...{onClick}} />
+                <Button to={to} text={text} {...{ children }} {...{prefixIcon}} className="ml-auto px-16 bg-[#516CF5] inline-flex " {...{onClick}} />
             </form>
         </div>
     )
