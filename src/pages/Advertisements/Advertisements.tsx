@@ -8,7 +8,7 @@ import SearchBar from '../../components/support/SearchBar'
 import advertlist from "../../assets/jsonData/advert-list.json"
 import StatusCards from '../../components/statusCard/StatusCards'
 import { useGetAdvertStatsQuery } from '../../features/stats/statsApis'
-import { useGetAdvertQuery } from '../../features/adverts/AdvertsApiSlice'
+import { useGetAdvertAdminQuery } from '../../features/adverts/AdvertsApiSlice'
 import CategoryFilter from '../../components/CategoryFilter/CategoryFilter'
 import LinearGradientChart from '../../components/charts/LinearGradientChart'
 import StatusCardIcon from '../../assets/svg/StatusCardIcon'
@@ -34,11 +34,11 @@ const Advertisements = () => {
   const [externalGraph, setExternalGraph] = useState(userData)
   const [internalGraph, setInternalGraph] = useState(userData)
   const { data } = useGetAdvertStatsQuery()
-  const { data: gerAds } = useGetAdvertQuery(1)
+  // const { data: getAds } = useGetAdvertAdminQuery()
 
 
   // console.log(data, "useGetAdvertStatsQuery")
-  // console.log(gerAds, "gerAds")
+  // console.log(getAds, "gerAds")
   const navigate = useNavigate()
 
 

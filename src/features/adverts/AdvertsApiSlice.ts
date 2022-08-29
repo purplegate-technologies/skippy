@@ -18,21 +18,25 @@ export const advertsApiSlice = apiSlice.injectEndpoints({
                 method: 'POST',
                 body
             }),
+            // Pick out data and prevent nested properties in a hook or selector
             transformResponse: (response: { data: AdvertsApiSlice }, meta, arg) => response.data,
             invalidatesTags: ['Advert'],
         }),
-        getAdvertAdmin: builder.query({ // get advert admin
+        getAdvertAdmin: builder.query({ // get advert admin for table
             query: () => `adverts`,
-            transformResponse: (response: { data: AdvertsApiSlice }, meta, arg) => response.data,
+            // Pick out data and prevent nested properties in a hook or selector
+            // transformResponse: (response: { data: {} | undefined | any }, meta, arg) => response.data,
             providesTags: ["Advert"]
         }),
         getAdvertUser: builder.query({ // get advert user
             query: () => `adverts/user`,
+            // Pick out data and prevent nested properties in a hook or selector
             transformResponse: (response: { data: AdvertsApiSlice }, meta, arg) => response.data,
             providesTags: ['Advert']
         }),
         getAdvert: builder.query({ // get advert for tables
             query: ({ id }) => `adverts/${id}`,
+            // Pick out data and prevent nested properties in a hook or selector
             transformResponse: (response: { data: {} | undefined | any }, meta, arg) => response.data,
             providesTags: ['Advert'],
         }),
@@ -42,6 +46,7 @@ export const advertsApiSlice = apiSlice.injectEndpoints({
                 method: 'PUT',
                 body
             }),
+            // Pick out data and prevent nested properties in a hook or selector
             transformResponse: (response: { data: AdvertsApiSlice }, meta, arg) => response.data,
             invalidatesTags: ['Advert'],
         }),
@@ -51,6 +56,7 @@ export const advertsApiSlice = apiSlice.injectEndpoints({
                 method: 'DELETE',
                 body
             }),
+            // Pick out data and prevent nested properties in a hook or selector
             transformResponse: (response: { data: AdvertsApiSlice }, meta, arg) => response.data,
             invalidatesTags: ['Advert'],
         }),
@@ -62,6 +68,7 @@ export const advertsApiSlice = apiSlice.injectEndpoints({
                 method: 'POST',
                 body
             }),
+            // Pick out data and prevent nested properties in a hook or selector
             transformResponse: (response: { data: AdvertsApiSlice }, meta, arg) => response.data,
             invalidatesTags: ['Advert'],
         }),
@@ -71,16 +78,19 @@ export const advertsApiSlice = apiSlice.injectEndpoints({
                 method: 'POST',
                 body
             }),
+            // Pick out data and prevent nested properties in a hook or selector
             transformResponse: (response: { data: AdvertsApiSlice }, meta, arg) => response.data,
             invalidatesTags: ['Advert'],
         }),
         getStreamAdmin: builder.query({ // get advert admin
             query: () => `adverts/streams`,
+            // Pick out data and prevent nested properties in a hook or selector
             transformResponse: (response: { data: AdvertsApiSlice }, meta, arg) => response.data,
             providesTags: ["Advert"]
         }),
         getStreamUser: builder.query({ // get advert admin
             query: () => `adverts/streams/user`,
+            // Pick out data and prevent nested properties in a hook or selector
             transformResponse: (response: { data: AdvertsApiSlice }, meta, arg) => response.data,
             providesTags: ["Advert"]
         }),

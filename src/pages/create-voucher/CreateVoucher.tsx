@@ -1,6 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom'
 import CompanyLogo from '../../assets/svg/CompanyLogo'
 import Button from '../../components/button/Button'
+import Input from '../../components/input/Input'
 import TopNav from '../../components/topnav/TopNav'
 
 const CreateVoucher = () => {
@@ -20,10 +21,19 @@ const CreateVoucher = () => {
       </div>
 
         <div className="grid md:grid-cols-12 gap-10 m-5">
-          <div className='md:col-span-6 flex flex-col bg-white'>
-            Create adsx
+          <div className='md:col-span-7 flex flex-col bg-white'>
+            <div className="p-2 items-center flex justify-between"> <span>Voucher  Details </span> <span className="text-[#949AB1]">e.g. 30% off / Buy 1 get 1 free</span></div>
+
+            <Input type='text' placeholder='N1500.00 Voucher'  />
+
+
+            <div className="flex items-center gap-x-5 justify-between">
+              <Input type='date' className='flex-1 w-full flex border border-[black] p-2' label='Start Date' labelStyle='text-sm' />
+              <Input type='date' className='flex-1 w-full flex border border-[black] p-2' label='Expiry Date' labelStyle='text-sm' />
+            </div>
+
           </div>
-          <div className='md:col-span-4 flex flex-col bg-white'>
+          <div className='md:col-span-5 flex flex-col bg-white'>
           create Voucher
           </div>
         </div>

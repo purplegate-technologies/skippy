@@ -58,7 +58,7 @@ const CategoryFilter = () => {
                 )}
             </div>
             <Button className='border-[#949AB1] bg-[#949AB1] text-white'>Apply Filter</Button>
-            <Button className='border-[#949AB1] text-[#949AB1] bg-white'>Clear Filter</Button>
+            <Button className='border-[#949AB1] text-[#949AB1] bg-[#ffffff]'>Clear Filter</Button>
         </div>
     )
 }
