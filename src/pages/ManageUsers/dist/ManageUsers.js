@@ -10,6 +10,7 @@ require("./styles.css");
 var react_router_dom_1 = require("react-router-dom");
 var CategoryFilter_1 = require("../../components/CategoryFilter/CategoryFilter");
 var react_router_dom_2 = require("react-router-dom");
+var CreateAdsPlus_1 = require("../../assets/svg/CreateAdsPlus");
 var ManageUsers = function () {
     var navigate = react_router_dom_1.useNavigate();
     var _a = react_1.useState("Administrators"), tabIndex = _a[0], setTabIndex = _a[1];
@@ -41,7 +42,7 @@ var ManageUsers = function () {
                 React.createElement("p", { className: "tabIndex py-3 hover:border-b-2 hover:border-[#516CF5] cursor-pointer hover:text-[#516CF5]" + (tabIndex === "App Users" && " text-[#516CF5] border-b-2 border-b-[#516CF5]"), onClick: function () { return setTabIndex("App Users"); } }, "App Users")),
             tabIndex !== "Administrators" && (React.createElement(React.Fragment, null,
                 React.createElement("div", { className: "card" },
-                    React.createElement(SearchBar_1["default"], { HeaderTitle: 'App Users', text: "Invite User", onClick: function () { return navigate('/invite-users'); } }),
+                    React.createElement(SearchBar_1["default"], { HeaderTitle: 'App Users', text: "Invite User", onClick: function () { return navigate('/invite-users'); }, prefixIcon: React.createElement(CreateAdsPlus_1["default"], null) }),
                     React.createElement(CategoryFilter_1["default"], null),
                     React.createElement(react_router_dom_2.Link, { to: "/activity-overview", className: "bg-red-600" }, "ActivityOverview"),
                     React.createElement("div", { className: "row" },
@@ -51,7 +52,7 @@ var ManageUsers = function () {
                                     React.createElement(Table_1["default"], { limit: '10', headData: customerTableHead, renderHead: function (item, index) { return renderHead(item, index); }, bodyData: advert_list_json_1["default"], renderBody: function (item, index) { return renderBody(item, index); } })))))))),
             tabIndex === "Administrators" && (React.createElement(React.Fragment, null,
                 React.createElement("div", { className: "card" },
-                    React.createElement(SearchBar_1["default"], { HeaderTitle: 'Administrators', text: "Create Admin", onClick: function () { return navigate('/settings'); } }),
+                    React.createElement(SearchBar_1["default"], { HeaderTitle: 'Administrators', text: "Create Admin", onClick: function () { return navigate('/settings'); }, prefixIcon: React.createElement(CreateAdsPlus_1["default"], null) }),
                     React.createElement("div", { className: "row" },
                         React.createElement("div", { className: "col-12" },
                             React.createElement("div", { className: "" },

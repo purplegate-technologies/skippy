@@ -18,6 +18,7 @@ var EditIcon_1 = require("../../assets/svg/EditIcon");
 var ExportIcon_1 = require("../../assets/svg/ExportIcon");
 var Breadcrubs_1 = require("../../components/breadcrubs/Breadcrubs");
 var DoughnutChart_1 = require("../../components/charts/DoughnutChart");
+var video_1 = require("./video");
 var bread = [
     {
         name: 'Dashboard',
@@ -50,7 +51,7 @@ var AdvertisementDetails = function () {
         autoplay: false,
         playbackRates: [0.5, 1, 1.25, 1.5, 2],
         width: 720,
-        height: 300,
+        height: 600,
         controls: true,
         sources: [
             {
@@ -91,11 +92,9 @@ var AdvertisementDetails = function () {
                     react_1["default"].createElement("div", { onClick: function () { }, className: "flex flex-col cursor-pointer items-center p-1" },
                         react_1["default"].createElement(ExportIcon_1["default"], null),
                         react_1["default"].createElement("span", { className: 'text-[#949AB1] text-xs' }, "Export"))))),
-        react_1["default"].createElement("div", { className: "grid md:grid-cols-2  gap-10" },
-            react_1["default"].createElement("div", { className: "md:basis-1/2 flex flex-col bg-white" },
-                react_1["default"].createElement("video", { className: "w-full h-full", controls: true },
-                    react_1["default"].createElement("source", { src: "https://www.youtube.com/embed/vlDzYIIOYmM?enablejsapi=2&origin=https%3A%2F%2Fmdbootstrap.com", type: "video/mp4" }),
-                    "Your browser does not support the video tag.")),
+        react_1["default"].createElement("div", { className: "grid lg:grid-cols-2  gap-10" },
+            react_1["default"].createElement("div", { className: "flex-1 flex flex-col bg-white" },
+                react_1["default"].createElement(video_1["default"], { options: videoJsOptions, className: "video-js", onReady: handlePlayerReady })),
             react_1["default"].createElement("div", { className: "md:basis-[45%] flex flex-col bg-white mb-10" },
                 react_1["default"].createElement("div", { className: "" },
                     react_1["default"].createElement("div", { className: " flex h-full borderitems-center flex-row border-[#F1F3FF] text-[#949AB1] relative" },

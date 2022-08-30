@@ -1,9 +1,9 @@
 import React from 'react'
-import SearchIcon from '../../assets/svg/SearchIcon'
+// import SearchIcon from '../../assets/svg/SearchIcon'
 import SearchIconSupport from '../../assets/svg/SearchIconSupport'
 import ThreeVdots from '../../assets/svg/ThreeVdots'
 import Button from '../button/Button'
-import Input from '../input/Input'
+// import Input from '../input/Input'
 
 interface IProps {
     className?: string
@@ -38,7 +38,7 @@ const SearchBar = ({ className = "", placeholder = "Search", HeaderTitle, text, 
                     />
                 </div>
 
-                <Button to={to} text={text} {...{ children }} {...{prefixIcon}} className="ml-auto px-16 bg-[#516CF5] inline-flex " {...{onClick}} />
+                <Button to={to} text={text} {...{ children }}  {...{prefixIcon}} className="mx-auto w-[22%]  flex items-center justify-center" {...{onClick}} />
             </form>
         </div>
     )

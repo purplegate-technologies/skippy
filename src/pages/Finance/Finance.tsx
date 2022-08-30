@@ -6,6 +6,7 @@ import advertlist from "../../assets/jsonData/advert-list.json"
 import SearchBar from '../../components/support/SearchBar'
 import { useNavigate } from 'react-router-dom'
 import CategoryFilter from '../../components/CategoryFilter/CategoryFilter'
+import CreateAdsPlus from '../../assets/svg/CreateAdsPlus'
 
 
 const Finance = () => {
@@ -42,7 +43,7 @@ const Finance = () => {
 
 
     <div className="card">
-      <SearchBar className='' HeaderTitle='All Vouchers' placeholder='Enter Brand/Voucher Name' text="Create&nbsp;Voucher" onClick={() => navigate('/finance-details')}  />
+      <SearchBar className='' HeaderTitle='All Vouchers' placeholder='Enter Brand/Voucher Name' text="Create&nbsp;Voucher" onClick={() => navigate('/finance-details')} prefixIcon={<CreateAdsPlus />}  />
     <CategoryFilter />
       {/* Table */}
       <div className="row">

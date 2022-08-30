@@ -6,6 +6,8 @@ import { DateRange } from "react-date-range"
 import 'react-date-range/dist/styles.css'
 import 'react-date-range/dist/theme/default.css'
 import Dropdown from '../dropdown/Dropdown'
+import ApplyFilterCheckIcon from '../../assets/svg/ApplyFilterCheckIcon'
+import ClearFilter from '../../assets/svg/ClearFilter'
 
 const CategoryFilter = () => {
 
@@ -57,8 +59,8 @@ const CategoryFilter = () => {
                     />
                 )}
             </div>
-            <Button className='border-[#949AB1] bg-[#949AB1] text-white'>Apply Filter</Button>
-            <Button className='border-[#949AB1] text-[#949AB1] bg-[#ffffff]'>Clear Filter</Button>
+            <Button className='border-[#949AB1] bg-[#949AB1] text-white flex items-center' prefixIcon={<ApplyFilterCheckIcon />}>Apply Filter</Button>
+            <Button className='border-[#949AB1] text-[#949AB1] bg-[#ffffff] flex items-center'  prefixIcon={<ClearFilter />}>Clear Filter</Button>
         </div>
     )
 }

@@ -4,6 +4,7 @@ import advertlist from "../../assets/jsonData/advert-list.json"
 import "./activity.css"
 import SearchBar from '../../components/support/SearchBar'
 import { useNavigate } from 'react-router-dom'
+import CreateAdsPlus from '../../assets/svg/CreateAdsPlus'
 
 const ActivityLog = () => {
   const navigate = useNavigate()
@@ -37,7 +38,7 @@ const ActivityLog = () => {
       {/* Suport Search */}
 
       <div className="card">
-        <SearchBar HeaderTitle='Activity Log' placeholder='Search Activity' text="Invite User" onClick={() => navigate('/invite-users')} />
+        <SearchBar HeaderTitle='Activity Log' placeholder='Search Activity' text="Invite User" onClick={() => navigate('/invite-users')}  prefixIcon={<CreateAdsPlus />}  />
 
         {/* Table */}
         <div className="">

@@ -149,7 +149,7 @@ const Settings = () => {
                                 className={"border-[#949AB1] border-1 rounded p-2 my-3 w-full"}
                                 label={("SURNAME")}
                                 name="surname"
-                                placeholder={("User Name")}
+                                placeholder={("Surname")}
                                 value={lastName}
                                 onChange={(e: Event) => setLastName((e.target as HTMLInputElement).value)}
                             />

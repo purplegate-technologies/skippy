@@ -93,7 +93,8 @@ const Button = ({
         className={`text-white ${computedClasses.join(" ")}`}
         onClick={onClick}
       >
-        {prefixIcon}
+        {prefixIcon && (<> {prefixIcon}&nbsp;&nbsp;&nbsp;</>)
+        }
         {loading && "..." }
         {/* {loading ? "..." : prefixIcon} */}
         {text}

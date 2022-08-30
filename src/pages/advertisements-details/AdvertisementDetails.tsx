@@ -6,7 +6,6 @@ import ExportIcon from '../../assets/svg/ExportIcon'
 import Breadcrubs from '../../components/breadcrubs/Breadcrubs'
 import DoughnutChart from '../../components/charts/DoughnutChart'
 import VideoPlayer from './video'
-// import VideoPlayer from "react-video-js-player"
 
 export interface BreadcrumbsProps {
   url?: string
@@ -53,7 +52,7 @@ const AdvertisementDetails = () => {
     autoplay: false,
     playbackRates: [0.5, 1, 1.25, 1.5, 2],
     width: 720,
-    height: 300,
+    height:600,
     controls: true,
     sources: [
       {
@@ -110,18 +109,14 @@ const AdvertisementDetails = () => {
         </div>
       </div>
 
-      <div className="grid md:grid-cols-2  gap-10">
-        <div className="md:basis-1/2 flex flex-col bg-white">
+      <div className="grid lg:grid-cols-2  gap-10">
+        <div className="flex-1 flex flex-col bg-white">
 
-          {/* <VideoPlayer
+          <VideoPlayer
             options={videoJsOptions}
             className="video-js"
             onReady={handlePlayerReady}
-          /> */}
-          <video className="w-full h-full" controls>
-            <source src="https://www.youtube.com/embed/vlDzYIIOYmM?enablejsapi=2&amp;origin=https%3A%2F%2Fmdbootstrap.com" type="video/mp4" />
-              Your browser does not support the video tag.
-          </video>
+           />
         </div>
 
         <div className="md:basis-[45%] flex flex-col bg-white mb-10">

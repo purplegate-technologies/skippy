@@ -7,6 +7,8 @@ var react_date_range_1 = require("react-date-range");
 require("react-date-range/dist/styles.css");
 require("react-date-range/dist/theme/default.css");
 var Dropdown_1 = require("../dropdown/Dropdown");
+var ApplyFilterCheckIcon_1 = require("../../assets/svg/ApplyFilterCheckIcon");
+var ClearFilter_1 = require("../../assets/svg/ClearFilter");
 var CategoryFilter = function () {
     var _a = react_1.useState(false), fromState = _a[0], setFromState = _a[1];
     var _b = react_1.useState(false), toState = _b[0], setToRange = _b[1];
@@ -28,7 +30,7 @@ var CategoryFilter = function () {
             react_1["default"].createElement("p", null, "from"),
             react_1["default"].createElement("span", { className: 'cursor-pointer', onClick: function () { return setToRange(function (prev) { return !prev; }); } }, "-" + date_fns_1.format(date[0].endDate, 'MM/dd/yyyy')),
             toState && (react_1["default"].createElement(react_date_range_1.DateRange, { editableDateInputs: true, moveRangeOnFirstSelection: false, onChange: function (i) { return setDate([i.selection]); }, ranges: date, className: "date absolute top-10 z-10" }))),
-        react_1["default"].createElement(Button_1["default"], { className: 'border-[#949AB1] bg-[#949AB1] text-white' }, "Apply Filter"),
-        react_1["default"].createElement(Button_1["default"], { className: 'border-[#949AB1] text-[#949AB1] bg-[#ffffff]' }, "Clear Filter")));
+        react_1["default"].createElement(Button_1["default"], { className: 'border-[#949AB1] bg-[#949AB1] text-white flex items-center', prefixIcon: react_1["default"].createElement(ApplyFilterCheckIcon_1["default"], null) }, "Apply Filter"),
+        react_1["default"].createElement(Button_1["default"], { className: 'border-[#949AB1] text-[#949AB1] bg-[#ffffff] flex items-center', prefixIcon: react_1["default"].createElement(ClearFilter_1["default"], null) }, "Clear Filter")));
 };
 exports["default"] = CategoryFilter;

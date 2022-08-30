@@ -59,7 +59,10 @@ var Button = function (_a) {
     return (React.createElement("button", { type: type, disabled: disabled || loading, 
         // className={`${className} flex  py-[10px] px-5 rounded-[3px] bg-[#516CF5] text-white hover:text-grey`}
         className: "text-white " + computedClasses.join(" "), onClick: onClick },
-        prefixIcon,
+        prefixIcon && (React.createElement(React.Fragment, null,
+            " ",
+            prefixIcon,
+            "\u00A0\u00A0\u00A0")),
         loading && "...",
         text,
         " ",
