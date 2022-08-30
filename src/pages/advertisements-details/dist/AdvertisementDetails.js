@@ -17,6 +17,7 @@ var Deactivite_1 = require("../../assets/svg/Deactivite");
 var EditIcon_1 = require("../../assets/svg/EditIcon");
 var ExportIcon_1 = require("../../assets/svg/ExportIcon");
 var Breadcrubs_1 = require("../../components/breadcrubs/Breadcrubs");
+// import DoughnutChart from '../../components/charts/DoughnutChart'
 var video_1 = require("./video");
 var react_circular_progressbar_1 = require("react-circular-progressbar");
 var bread = [
@@ -50,17 +51,14 @@ var AdvertisementDetails = function () {
     var videoJsOptions = {
         autoplay: false,
         playbackRates: [0.5, 1, 1.25, 1.5, 2],
-        width: 720,
-        height: 600,
+        // width: 720,
+        // height: 100,
+        fluid: true,
         controls: true,
         sources: [
             {
                 src: '//vjs.zencdn.net/v/oceans.mp4',
                 type: 'video/mp4'
-            },
-            {
-                src: "https://www.youtube.com/watch?v=K9GymlBfrXg",
-                type: "video/mp4"
             },
         ]
     };
@@ -94,7 +92,7 @@ var AdvertisementDetails = function () {
                         react_1["default"].createElement("span", { className: 'text-[#949AB1] text-xs' }, "Export"))))),
         react_1["default"].createElement("div", { className: "grid lg:grid-cols-2  gap-10" },
             react_1["default"].createElement("div", { className: "flex-1 flex flex-col bg-white" },
-                react_1["default"].createElement(video_1["default"], { options: videoJsOptions, className: "video-js", onReady: handlePlayerReady })),
+                react_1["default"].createElement(video_1["default"], { options: videoJsOptions, className: 'video-js vjs-big-play-centered', onReady: handlePlayerReady })),
             react_1["default"].createElement("div", { className: "md:basis-[45%] flex flex-col bg-white mb-10" },
                 react_1["default"].createElement("div", { className: "" },
                     react_1["default"].createElement("div", { className: " flex h-full borderitems-center flex-row border-[#F1F3FF] text-[#949AB1] relative" },

@@ -13,9 +13,7 @@ var __assign = (this && this.__assign) || function () {
 exports.__esModule = true;
 var React = require("react");
 var video_js_1 = require("video.js");
-require("video.js/dist/video-js.css");
 require("./advertisement.css");
-// Styles
 require("video.js/dist/video-js.css");
 var initialOptions = {
     controls: true,
@@ -41,9 +39,9 @@ var VideoPlayer = function (_a) {
         };
     }, [options, onReady]);
     return React.createElement(React.Fragment, null,
-        React.createElement("div", null,
-            React.createElement("div", { className: " embed-responsive embed-responsive-1by1 relative w-full overflow-hidden" },
-                React.createElement("video", { ref: videoNode, className: className + " hidden   embed-responsive embed-responsive-1by1 overflow-hidden embed-responsive-item absolute top-0 right-0 bottom-0 left-0 w-full" }))));
+        React.createElement("div", { "data-vjs-player": true },
+            React.createElement("video", { ref: videoNode, className: className + " video-js video-js vjs-big-play-centered overflow-hidden h-max" }),
+            React.createElement("div", { className: "pt-[100%] embed-responsive embed-responsive-1by1 relative w-full overflow-hidden" })));
 };
 exports["default"] = VideoPlayer;
 // import React from 'react'

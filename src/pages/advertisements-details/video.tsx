@@ -1,10 +1,8 @@
 import * as React from "react";
 import videojs from "video.js";
-import 'video.js/dist/video-js.css'
 import "./advertisement.css"
+import 'video.js/dist/video-js.css';
 
-// Styles
-import "video.js/dist/video-js.css";
 
 interface IVideoPlayerProps {
   options: videojs.PlayerOptions;
@@ -43,11 +41,11 @@ const VideoPlayer: React.FC<IVideoPlayerProps> = ({ options, className, onReady 
   }, [options, onReady]);
 
   return <>
-    <div>
+    <div data-vjs-player>
+  <video ref={videoNode} className={`${className} video-js video-js vjs-big-play-centered overflow-hidden h-max`} />
       <div
-        className=" embed-responsive embed-responsive-1by1 relative w-full overflow-hidden"
+        className="pt-[100%] embed-responsive embed-responsive-1by1 relative w-full overflow-hidden"
       >
-  <video ref={videoNode} className={`${className} hidden   embed-responsive embed-responsive-1by1 overflow-hidden embed-responsive-item absolute top-0 right-0 bottom-0 left-0 w-full`} />
         {/* <iframe allowFullScreen className="embed-responsive-item absolute top-0 right-0 bottom-0 left-0 w-full h-full"
           src="https://www.youtube.com/embed/vlDzYIIOYmM?enablejsapi=2&amp;origin=https%3A%2F%2Fmdbootstrap.com"
           // allowfullscreen=""

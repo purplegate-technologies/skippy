@@ -4,7 +4,7 @@ import DeactiviteIcon from '../../assets/svg/Deactivite'
 import EditIcon from '../../assets/svg/EditIcon'
 import ExportIcon from '../../assets/svg/ExportIcon'
 import Breadcrubs from '../../components/breadcrubs/Breadcrubs'
-import DoughnutChart from '../../components/charts/DoughnutChart'
+// import DoughnutChart from '../../components/charts/DoughnutChart'
 import VideoPlayer from './video'
 
 import { CircularProgressbar } from "react-circular-progressbar"
@@ -54,8 +54,9 @@ const AdvertisementDetails = () => {
   const videoJsOptions = {
     autoplay: false,
     playbackRates: [0.5, 1, 1.25, 1.5, 2],
-    width: 720,
-    height:600,
+    // width: 720,
+    // height: 100,
+    fluid: true,
     controls: true,
     sources: [
       {
@@ -63,10 +64,10 @@ const AdvertisementDetails = () => {
         type: 'video/mp4',
       },
 
-      {
-        src: "https://www.youtube.com/watch?v=K9GymlBfrXg",
-        type: "video/mp4"
-      },
+      // {
+      //   src: "https://www.youtube.com/watch?v=K9GymlBfrXg",
+      //   type: "video/mp4"
+      // },
       // {
       //   src: "https://www.youtube.com/watch?v=0wvd5HD2zzQ&list=RDGMEMWO-g6DgCWEqKlDtKbJA1Gw&index=4",
       //   type: "video/mp4"
@@ -117,9 +118,10 @@ const AdvertisementDetails = () => {
 
           <VideoPlayer
             options={videoJsOptions}
-            className="video-js"
+            className='video-js vjs-big-play-centered'
             onReady={handlePlayerReady}
            />
+
         </div>
 
         <div className="md:basis-[45%] flex flex-col bg-white mb-10">
