@@ -150,10 +150,10 @@ var FinanceDetails = function () {
                                     } })),
                             react_1["default"].createElement("div", { className: "grid grid-cols-2 place-items-center text-center" },
                                 react_1["default"].createElement("div", { className: "p-4 border w-full" },
-                                    react_1["default"].createElement("h1", null, "30"),
+                                    react_1["default"].createElement("h1", { className: "font-bold text-xl" }, "30"),
                                     react_1["default"].createElement("p", { className: "" }, "Available")),
                                 react_1["default"].createElement("div", { className: "p-4 border w-full" },
-                                    react_1["default"].createElement("h1", null, "30"),
+                                    react_1["default"].createElement("h1", { className: "font-bold text-xl" }, "30"),
                                     react_1["default"].createElement("p", { className: "" }, "Redeemed")))))))))));
 };
 exports["default"] = FinanceDetails;

@@ -18,7 +18,7 @@ interface IProps {
   // const btnEnableDisable = !props.disabled ? "btn-enable" : "btn-disabled";
 
 const Button = ({
-    className = "",
+    className = "bg-[#516CF5]",
     prefixIcon = null,
     text = "",
     children = null,
@@ -51,7 +51,7 @@ const Button = ({
   // }
 
   // const computedClasses = ["Button rounded-lg bg-[#516CF5] text-white py-[10px] px-5 rounded-[3px]"]
-  const computedClasses = ["Button rounded-lg  text-white py-[10px] px-5 rounded-[3px]"]
+  const computedClasses = ["Button rounded-lg  text-white py-[10px] rounded-[3px]"]
 
   if (size === "full") {
       computedClasses.push("font-semibold h-10 lg:h-16 w-full px-10")
@@ -78,19 +78,11 @@ const Button = ({
   computedClasses.push(className)
 
 
-  const SIZES = {
-    small: 'p-1 min-w-120',
-    medium: 'p-2 min-w-152',
-    large: 'p-3 min-w-196',
-    full: 'p-3 min-w-196 w-full'
-  }
-
-
     return (
       <button
         type={type}
         disabled={disabled || loading}
-        // className={`${className} flex  py-[10px] px-5 rounded-[3px] bg-[#516CF5] text-white hover:text-grey`}
+        // className={`${className} flex  py-[10px] px-5 rounded-[3px]  text-white hover:text-grey`}
         className={`text-white ${computedClasses.join(" ")}`}
         onClick={onClick}
       >

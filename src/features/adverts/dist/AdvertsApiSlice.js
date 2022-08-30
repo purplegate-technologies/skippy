@@ -15,10 +15,7 @@ exports.advertsApiSlice = apiSlice_1.apiSlice.injectEndpoints({
             invalidatesTags: ['Advert']
         }),
         getAdvertAdmin: builder.query({
-            query: function () { return "adverts"; },
-            // Pick out data and prevent nested properties in a hook or selector
-            // transformResponse: (response: { data: {} | undefined | any }, meta, arg) => response.data,
-            providesTags: ["Advert"]
+            query: function () { return "adverts"; }
         }),
         getAdvertUser: builder.query({
             query: function () { return "adverts/user"; },

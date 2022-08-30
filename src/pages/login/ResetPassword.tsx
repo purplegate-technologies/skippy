@@ -37,9 +37,9 @@ const ResetPassword = () => {
   const [reset, {
     data: resetData,
     isSuccess,
-    isError
+    // isError,
     // error,
-    // isLoading,
+    isLoading,
   }] = useResetMutation()
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => setFormValue({ ...formValue, [e.target.name]: (e.target as HTMLInputElement).value })
@@ -129,7 +129,7 @@ const ResetPassword = () => {
             </div>
 
             <div className="">
-              <Button className='w-full bg-[#516CF5] ' size='medium' type='submit'>Reset</Button>
+              <Button loading={isLoading} className='w-full bg-[#516CF5] ' size='medium' type='submit'>Reset</Button>
             </div>
           </form>
 

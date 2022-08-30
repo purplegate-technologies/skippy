@@ -197,11 +197,11 @@ const FinanceDetails = () => {
                                 </div>
                                 <div className="grid grid-cols-2 place-items-center text-center">
                                     <div className="p-4 border w-full">
-                                        <h1>30</h1>
+                                        <h1 className="font-bold text-xl">30</h1>
                                         <p className="">Available</p>
                                     </div>
                                     <div className="p-4 border w-full">
-                                        <h1>30</h1>
+                                        <h1 className="font-bold text-xl">30</h1>
                                         <p className="">Redeemed</p>
                                     </div>
                                 </div>

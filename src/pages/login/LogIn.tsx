@@ -19,7 +19,7 @@ export interface initialStateType {
   password?: string,
   confirmPassword?: string
 }
-const initialState = {
+const initialState: initialStateType = {
   firstName: "",
   lastName: "",
   email: "",
@@ -47,10 +47,11 @@ const LogIn = () => {
       isSuccess: isLoginSuccess,
       isError: isLoginError,
       // error: loginError,
-      // isLoading,
+      isLoading,
       // reset,
       // status,
     }] = useLoginMutation()
+
   const handleChange = (e: any) => setFormValue({ ...formValue, [e.target.name]: e.target.value })
 
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -97,14 +98,14 @@ const LogIn = () => {
   }
 
 
-  // useEffect(() => {
-  //   if (isLoginSuccess) {
-  //     const { token, admin }: any = loginData
-  //     dispatch(setUser({ user: admin, token}))
-  //     tokenForUser && navigate('/', { replace: true })
-  //     toast.success("User Login Successfully")
-  //   }
-  // }, [isLoginSuccess, navigate, tokenForUser, dispatch, loginData])
+  useEffect(() => {
+    if (isLoginSuccess) {
+      const { token, admin }: any = loginData
+      dispatch(setUser({ user: admin, token}))
+      tokenForUser && navigate('/', { replace: true })
+      toast.success("User Login Successfully")
+    }
+  }, [isLoginSuccess, navigate, tokenForUser, dispatch, loginData])
 
 
   return (
@@ -144,7 +145,7 @@ const LogIn = () => {
             </div>
 
             <div className="">
-              <Button className='w-full' size='medium' type='submit'>Sign In</Button>
+              <Button loading={isLoading} className='w-full bg-[#516CF5]' size='medium' type='submit'>Sign In</Button>
             </div>
           </form>
 

@@ -10,6 +10,7 @@ var SearchBar_1 = require("../../components/support/SearchBar");
 var advert_list_json_1 = require("../../assets/jsonData/advert-list.json");
 var StatusCards_1 = require("../../components/statusCard/StatusCards");
 var statsApis_1 = require("../../features/stats/statsApis");
+var AdvertsApiSlice_1 = require("../../features/adverts/AdvertsApiSlice");
 var CategoryFilter_1 = require("../../components/CategoryFilter/CategoryFilter");
 var LinearGradientChart_1 = require("../../components/charts/LinearGradientChart");
 var StatusCardIcon_1 = require("../../assets/svg/StatusCardIcon");
@@ -32,9 +33,9 @@ var Advertisements = function () {
     var _m = react_1.useState(userData), externalGraph = _m[0], setExternalGraph = _m[1];
     var _o = react_1.useState(userData), internalGraph = _o[0], setInternalGraph = _o[1];
     var data = statsApis_1.useGetAdvertStatsQuery().data;
-    // const { data: getAds } = useGetAdvertAdminQuery()
+    var getAds = AdvertsApiSlice_1.useGetAdvertAdminQuery({ refetchOnMountOrArgChange: true }).data;
     // console.log(data, "useGetAdvertStatsQuery")
-    // console.log(getAds, "gerAds")
+    console.log(getAds === null || getAds === void 0 ? void 0 : getAds.docs, "gerAds");
     var navigate = react_router_dom_1.useNavigate();
     // InternalGraph
     react_1.useEffect(function () {

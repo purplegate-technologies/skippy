@@ -21,9 +21,9 @@ var Button = function (_a) {
     //         return { color: 'graylight'}
     //     }
     // }
-    var _b = _a.className, className = _b === void 0 ? "" : _b, _c = _a.prefixIcon, prefixIcon = _c === void 0 ? null : _c, _d = _a.text, text = _d === void 0 ? "" : _d, _e = _a.children, children = _e === void 0 ? null : _e, _f = _a.suffixIcon, suffixIcon = _f === void 0 ? null : _f, _g = _a.size, size = _g === void 0 ? "medium" : _g, _h = _a.theme, theme = _h === void 0 ? "primary" : _h, _j = _a.loading, loading = _j === void 0 ? false : _j, _k = _a.disabled, disabled = _k === void 0 ? false : _k, _l = _a.type, type = _l === void 0 ? "button" : _l, _m = _a.onClick, onClick = _m === void 0 ? function () { } : _m;
+    var _b = _a.className, className = _b === void 0 ? "bg-[#516CF5]" : _b, _c = _a.prefixIcon, prefixIcon = _c === void 0 ? null : _c, _d = _a.text, text = _d === void 0 ? "" : _d, _e = _a.children, children = _e === void 0 ? null : _e, _f = _a.suffixIcon, suffixIcon = _f === void 0 ? null : _f, _g = _a.size, size = _g === void 0 ? "medium" : _g, _h = _a.theme, theme = _h === void 0 ? "primary" : _h, _j = _a.loading, loading = _j === void 0 ? false : _j, _k = _a.disabled, disabled = _k === void 0 ? false : _k, _l = _a.type, type = _l === void 0 ? "button" : _l, _m = _a.onClick, onClick = _m === void 0 ? function () { } : _m;
     // const computedClasses = ["Button rounded-lg bg-[#516CF5] text-white py-[10px] px-5 rounded-[3px]"]
-    var computedClasses = ["Button rounded-lg  text-white py-[10px] px-5 rounded-[3px]"];
+    var computedClasses = ["Button rounded-lg  text-white py-[10px] rounded-[3px]"];
     if (size === "full") {
         computedClasses.push("font-semibold h-10 lg:h-16 w-full px-10");
     }
@@ -51,14 +51,8 @@ var Button = function (_a) {
         computedClasses.push("bg-opacity-50 ");
     }
     computedClasses.push(className);
-    var SIZES = {
-        small: 'p-1 min-w-120',
-        medium: 'p-2 min-w-152',
-        large: 'p-3 min-w-196',
-        full: 'p-3 min-w-196 w-full'
-    };
     return (React.createElement("button", { type: type, disabled: disabled || loading, 
-        // className={`${className} flex  py-[10px] px-5 rounded-[3px] bg-[#516CF5] text-white hover:text-grey`}
+        // className={`${className} flex  py-[10px] px-5 rounded-[3px]  text-white hover:text-grey`}
         className: "text-white " + computedClasses.join(" "), onClick: onClick },
         prefixIcon && (React.createElement(React.Fragment, null,
             " ",

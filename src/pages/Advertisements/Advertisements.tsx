@@ -35,11 +35,11 @@ const Advertisements = () => {
   const [externalGraph, setExternalGraph] = useState(userData)
   const [internalGraph, setInternalGraph] = useState(userData)
   const { data } = useGetAdvertStatsQuery()
-  // const { data: getAds } = useGetAdvertAdminQuery()
+  const { data: getAds } = useGetAdvertAdminQuery({ refetchOnMountOrArgChange: true })
 
 
   // console.log(data, "useGetAdvertStatsQuery")
-  // console.log(getAds, "gerAds")
+  console.log(getAds?.docs, "gerAds")
   const navigate = useNavigate()
 
 

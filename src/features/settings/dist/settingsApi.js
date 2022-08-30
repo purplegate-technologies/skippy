@@ -1,7 +1,6 @@
 "use strict";
-var _a;
 exports.__esModule = true;
-exports.settingApiSlice = void 0;
+exports.useSettingsMutation = exports.settingApiSlice = void 0;
 var apiSlice_1 = require("./../../services/api/apiSlice");
 exports.settingApiSlice = apiSlice_1.apiSlice.injectEndpoints({
     endpoints: function (builder) { return ({
@@ -16,4 +15,4 @@ exports.settingApiSlice = apiSlice_1.apiSlice.injectEndpoints({
         })
     }); }
 });
-exports._b = _a = exports.settingApiSlice;
+exports.useSettingsMutation = exports.settingApiSlice.useSettingsMutation;

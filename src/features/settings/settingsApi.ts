@@ -1,4 +1,5 @@
 import { apiSlice } from './../../services/api/apiSlice';
+
 export const settingApiSlice = apiSlice.injectEndpoints({
     endpoints: builder => ({
         settings: builder.mutation({
@@ -12,4 +13,4 @@ export const settingApiSlice = apiSlice.injectEndpoints({
         }),
     })
 })
-export const {  } = settingApiSlice
+export const {  useSettingsMutation } = settingApiSlice

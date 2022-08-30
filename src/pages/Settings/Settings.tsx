@@ -1,5 +1,6 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Link, useNavigate } from "react-router-dom"
+import { toast } from "react-toastify"
 import Button from "../../components/button/Button"
 import DropDownInout from "../../components/DropDownInput/DropDownInput"
 import Input from "../../components/input/Input"
@@ -8,46 +9,97 @@ import { useCreateAdminMutation } from "../../features/UserManagement/User Manag
 import "./settings.css"
 
 const options = [
-    {value: '', text: 'Select Role', disabled: true},
-    {value: 'admin', text: 'Super Admin 🍏'},
-    {value: 'regular', text: 'Regular 🍌'},
-    {value: 'normal', text: 'Normal Admin 🥝'},
-    {value: 'others', text: 'Others 🥝'},
-  ];
+    { value: '', text: 'Select Role', disabled: true },
+    { value: 'admin', text: 'Super Admin 🍏' },
+    { value: 'regular', text: 'Regular 🍌' },
+    { value: 'normal', text: 'Normal Admin 🥝' },
+    { value: 'others', text: 'Others 🥝' },
+];
 
+interface initialStateType {
+    firstName?: string,
+    lastName?: string,
+    email?: string,
+    mobile?: string,
+    roles?: string
+  }
+
+const initialState:initialStateType = {
+    firstName: "",
+    lastName: "",
+    email: "",
+    mobile: "",
+    roles: "",
+}
 
 const Settings = () => {
 
-    // const {data} = useCreateAdminMutation()
+    const [createAdmin, { isSuccess, isLoading, isError}] = useCreateAdminMutation()
+
+    const [formValue, setFormValue] = useState<initialStateType>(initialState)
 
     const [firstName, setFirstName] = useState("")
     const [lastName, setLastName] = useState("")
     const [email, setEmail] = useState("")
     const [mobile, setMobile] = useState("")
-    const [roles, setRoles] = useState("Finances and billing")
+    const [roles, setRoles] = useState("")
 
-    // const selectSTyle = {
-    //     display: "block",
-    //     width: "100%",
-    //     borderRadius: "0.25rem",
-    //     borderWidth: "2px",
-    //     borderOpacity: 1,
-    //     borderColor: "#949AB1",
-    //     // --tw-bg-opacity: 1,
-    //     backgroundColor: "white",
-    //     padding: "0.5rem",
-    //     outlineOffset: "2px",
-    //     outlineWidth: 1,
-    //     outlineColor: "transparent",
-    //     outlineStyle: "solid",
+    // useEffect(() => {
+    //     if (isSuccess) {
+    //         setFormValue({
 
-    // }
+    //         })
+    //     }
+    // }, [isSuccess]);
+
+    // const handleChange = (e: any) => setFormValue({ ...formValue, [e.target.name]: e.target.value })
+
+
+    const selectSTyle = {
+        display: "block",
+        width: "100%",
+        borderRadius: "0.25rem",
+        borderWidth: "2px",
+        borderOpacity: 1,
+        borderColor: "#949AB1",
+        // --tw-bg-opacity: 1,
+        backgroundColor: "white",
+        padding: "0.5rem",
+        outlineOffset: "2px",
+        outlineWidth: 1,
+        outlineColor: "transparent",
+        outlineStyle: "solid",
+        marginBottom: "8px"
+
+    }
 
     const navigate = useNavigate();
 
-    const HandleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const HandleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         // setFirstName()
+
+        try {
+            //  await createAdmin(formValue).unwrap()
+            if( firstName && lastName && email && mobile && roles) {
+                await createAdmin({
+                   firstName, lastName, email, mobile,roles
+                }).unwrap()
+
+                setFirstName('')
+                setLastName('')
+                setEmail('')
+                setEmail('')
+                setMobile('')
+                setRoles('')
+            }
+
+            // .then(() => {})
+            // .then((error) => {console.log(error)})
+        } catch {
+            toast.error("Failed Please Try again")
+        }
+
     }
 
     return (
@@ -67,19 +119,21 @@ const Settings = () => {
                             <label htmlFor="" className="text-xs text-[#516CF5]">
                                 {("ROLE")}
                             </label>
-                            <DropDownInout
-                           className="my-3"
-                            placeholder="Select Role"
-                            data={[
-                                {label: 'admin', value: 'Super Admin 🍏'},
-                                {label: 'regular', value: 'Regular 🍌'},
-                                {label: 'normal', value: 'Normal Admin 🥝'},
-                                {label: 'others', value: 'Others 🥝'},
-                              ]}
-                            getValue={v => v.value.toString()}
-                            />
+                            {/* <DropDownInout
+                                className="my-3"
+                                value={roles}
+                                placeholder="Select Role"
+                                data={[
+                                    { label: 'admin', value: 'Super Admin 🍏' },
+                                    { label: 'regular', value: 'Regular 🍌' },
+                                    { label: 'normal', value: 'Normal Admin 🥝' },
+                                    { label: 'others', value: 'Others 🥝' },
+                                ]}
+                                getValue={v => v.value.toString()}
+                                onChange={e => setRoles(e.target.value)}
+                            /> */}
 
-                            {/* <select
+                            <select
                             placeholder="Select Role"
                             style={selectSTyle}
                             name={roles}
@@ -97,7 +151,7 @@ const Settings = () => {
                                     {option.text}
                                 </option>
                                 ))}
-                            </select> */}
+                            </select>
                             {/* <select
                                 placeholder="Select Role"
                                 style={selectSTyle}
@@ -180,8 +234,8 @@ const Settings = () => {
                                 onChange={(e: Event) => setMobile((e.target as HTMLInputElement).value)}
                             />
 
-                            <Switch label="Activate Account"  />
-                            <Button className="mt-[2.5rem] mb-[2.36rem] capitalize bg-[#516CF5] " text="Save Changes" type="submit" />
+                            <Switch label="Activate Account" />
+                            <Button loading={isLoading} className="mt-[2.5rem] mb-[2.36rem] capitalize bg-[#516CF5] " text="Save Changes" type="submit" />
                         </div>
                     </div>
                 </div>

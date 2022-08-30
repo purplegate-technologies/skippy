@@ -75,7 +75,9 @@ var LogIn = function () {
     var navigate = react_router_dom_1.useNavigate();
     var dispatch = hooks_1.useAppDispatch();
     var tokenForUser = hooks_1.useAppSelector(authSlice_1.selectCurrentToken);
-    var _c = authApiSplice_1.useLoginMutation(), loginUser = _c[0], _d = _c[1], loginData = _d.data, isLoginSuccess = _d.isSuccess, isLoginError = _d.isError;
+    var _c = authApiSplice_1.useLoginMutation(), loginUser = _c[0], _d = _c[1], loginData = _d.data, isLoginSuccess = _d.isSuccess, isLoginError = _d.isError, 
+    // error: loginError,
+    isLoading = _d.isLoading;
     var handleChange = function (e) {
         var _a;
         return setFormValue(__assign(__assign({}, formValue), (_a = {}, _a[e.target.name] = e.target.value, _a)));
@@ -137,14 +139,14 @@ var LogIn = function () {
             }
         });
     }); };
-    // useEffect(() => {
-    //   if (isLoginSuccess) {
-    //     const { token, admin }: any = loginData
-    //     dispatch(setUser({ user: admin, token}))
-    //     tokenForUser && navigate('/', { replace: true })
-    //     toast.success("User Login Successfully")
-    //   }
-    // }, [isLoginSuccess, navigate, tokenForUser, dispatch, loginData])
+    react_1.useEffect(function () {
+        if (isLoginSuccess) {
+            var token = loginData.token, admin = loginData.admin;
+            dispatch(authSlice_1.setUser({ user: admin, token: token }));
+            tokenForUser && navigate('/', { replace: true });
+            react_toastify_1.toast.success("User Login Successfully");
+        }
+    }, [isLoginSuccess, navigate, tokenForUser, dispatch, loginData]);
     return (react_1["default"].createElement("div", { className: "h-screen" },
         react_1["default"].createElement("div", { className: "absolute scale-75 top-[-98px] left-[-40px]" },
             react_1["default"].createElement(LoginBackGIcons_1["default"], null)),
@@ -168,6 +170,6 @@ var LogIn = function () {
                     react_1["default"].createElement("div", { className: 'mb-3 userInput' },
                         react_1["default"].createElement(react_router_dom_1.Link, { to: "/reset", className: "text-[#FF5A5A] font-bold text-sm" }, "Reset Passsword")),
                     react_1["default"].createElement("div", { className: "" },
-                        react_1["default"].createElement(Button_1["default"], { className: 'w-full', size: 'medium', type: 'submit' }, "Sign In")))))));
+                        react_1["default"].createElement(Button_1["default"], { loading: isLoading, className: 'w-full bg-[#516CF5]', size: 'medium', type: 'submit' }, "Sign In")))))));
 };
 exports["default"] = LogIn;

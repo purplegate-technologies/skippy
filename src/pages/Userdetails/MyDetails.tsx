@@ -6,7 +6,7 @@ const MyDetails = () => {
 
     const initialValues = {
         firstName: '',
-        surname: '',
+        lastName: '',
         email: '',
         phoneNumber:"",
         password: '',
@@ -20,14 +20,15 @@ const MyDetails = () => {
     // const [phoneNumber, setPhoneNumber] = useState("")
     // const [roles, setRoles] = useState("Finances and billing")
 
-    const { firstName, surname, email, phoneNumber, confirmPassword, password } = formValues
+    const { firstName, lastName, email, phoneNumber, confirmPassword, password } = formValues
 
     const  handleChange  = (e: React.ChangeEvent<HTMLFormElement>) => {
         setFormValues({...formValues, [e.target.values]: e.target.name})
     }
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        console.log(formValues)
     }
 
     return (
@@ -41,7 +42,7 @@ const MyDetails = () => {
                         divStyel="lable w-full"
                         className={"border-[#949AB1] border-1 rounded p-2 my-3 w-full"}
                         label="FIRST NAME"
-                        name="Firstname"
+                        name="firstName"
                         placeholder="First Name"
                         value={firstName}
                         onChange={handleChange}
@@ -52,9 +53,9 @@ const MyDetails = () => {
                         divStyel="contactUs-form-lable"
                         className={"border-[#949AB1] border-1 rounded p-2 my-3 w-full"}
                         label="SURNAME"
-                        name="surname"
+                        name="lastName"
                         placeholder="SURNAME"
-                        value={surname}
+                        value={lastName}
                         onChange={handleChange}
                     />
                 </div>
