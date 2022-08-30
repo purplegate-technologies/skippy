@@ -7,6 +7,9 @@ import Breadcrubs from '../../components/breadcrubs/Breadcrubs'
 import DoughnutChart from '../../components/charts/DoughnutChart'
 import VideoPlayer from './video'
 
+import { CircularProgressbar } from "react-circular-progressbar"
+
+
 export interface BreadcrumbsProps {
   url?: string
   name?: string
@@ -217,8 +220,12 @@ const AdvertisementDetails = () => {
                       <p className='text-[#171837] text-[18px]'>Overall Payout</p>
 
                       <div className='text-center my-4'>
-                        <p className='text-[#171837] text-[18px]'>98,000</p>
                         <span className='text-[#949AB1] text-[10px]'>Skippy Points Volume</span>
+                        <p className='text-[#171837] text-[18px]'>98,000</p>
+                      </div>
+                      <div className='text-center my-4'>
+                        <span className='text-[#949AB1] text-[10px]'>Value (N)</span>
+                        <p className='text-[#171837] text-[18px]'>N45,000</p>
                       </div>
 
                       <div className="flex items-center justify-center mt-2 text-[10px] gap-1">
@@ -233,12 +240,32 @@ const AdvertisementDetails = () => {
                       <p className='text-[#171837] text-[18px]'>BOUNCE RATE</p>
 
 
-                      <div className="w-[45%] mx-auto my-3">
-                        <DoughnutChart className='flex items-center justify-center' />
+                      <div className=" mx-auto my-3">
+                        {/* <DoughnutChart className='flex items-center justify-center' /> */}
+                        <CircularProgressbar value={100} text="70%" strokeWidth={10} className="w-[150px] h-[150px] justify-self-center flex-1"
+                                        styles={{
+                                            path: {
+                                                transform: "rotate(180deg)",
+                                                transformOrigin: "center center",
+                                                strokeLinecap: "butt",
+                                                stroke: "#FF5660"
+                                            },
+                                            trail: {
+                                                // strokeWidth: 0
+                                            },
+                                            text: {
+                                                fontSize: 22,
+                                                fontWeight: 800,
+                                                animation: "fadein 2s",
+                                                fill: "#347BF4"
+                                            }
+                                        }}
+                                    />
+
                       </div>
 
                       <div className="flex items-center justify-center mt-2 text-[10px] gap-1">
-                        <p className="text-[#19C165] bg-[#E8F9F0] p-1 rounded">12% ↑</p>
+                        <p className="text-[#FF5660] bg-[#FFEDEE] p-1 rounded">12% ↑</p>
                         <p className="text-[#171837]">from 75k</p>
                       </div>
                     </div>

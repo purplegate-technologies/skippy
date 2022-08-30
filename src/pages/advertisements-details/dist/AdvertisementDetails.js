@@ -17,8 +17,8 @@ var Deactivite_1 = require("../../assets/svg/Deactivite");
 var EditIcon_1 = require("../../assets/svg/EditIcon");
 var ExportIcon_1 = require("../../assets/svg/ExportIcon");
 var Breadcrubs_1 = require("../../components/breadcrubs/Breadcrubs");
-var DoughnutChart_1 = require("../../components/charts/DoughnutChart");
 var video_1 = require("./video");
+var react_circular_progressbar_1 = require("react-circular-progressbar");
 var bread = [
     {
         name: 'Dashboard',
@@ -161,17 +161,36 @@ var AdvertisementDetails = function () {
                                     react_1["default"].createElement("div", { className: "flex flex-col items-center border w-full m-2 p-5 rounded-xl" },
                                         react_1["default"].createElement("p", { className: 'text-[#171837] text-[18px]' }, "Overall Payout"),
                                         react_1["default"].createElement("div", { className: 'text-center my-4' },
-                                            react_1["default"].createElement("p", { className: 'text-[#171837] text-[18px]' }, "98,000"),
-                                            react_1["default"].createElement("span", { className: 'text-[#949AB1] text-[10px]' }, "Skippy Points Volume")),
+                                            react_1["default"].createElement("span", { className: 'text-[#949AB1] text-[10px]' }, "Skippy Points Volume"),
+                                            react_1["default"].createElement("p", { className: 'text-[#171837] text-[18px]' }, "98,000")),
+                                        react_1["default"].createElement("div", { className: 'text-center my-4' },
+                                            react_1["default"].createElement("span", { className: 'text-[#949AB1] text-[10px]' }, "Value (N)"),
+                                            react_1["default"].createElement("p", { className: 'text-[#171837] text-[18px]' }, "N45,000")),
                                         react_1["default"].createElement("div", { className: "flex items-center justify-center mt-2 text-[10px] gap-1" },
                                             react_1["default"].createElement("p", { className: "text-[#19C165] bg-[#E8F9F0] p-1 rounded" }, "12% \u2191"),
                                             react_1["default"].createElement("p", { className: "text-[#171837]" }, "from 80,000"))),
                                     react_1["default"].createElement("div", { className: "flex flex-col items-center justify-between border w-full m-2 p-5 rounded-xl" },
                                         react_1["default"].createElement("p", { className: 'text-[#171837] text-[18px]' }, "BOUNCE RATE"),
-                                        react_1["default"].createElement("div", { className: "w-[45%] mx-auto my-3" },
-                                            react_1["default"].createElement(DoughnutChart_1["default"], { className: 'flex items-center justify-center' })),
+                                        react_1["default"].createElement("div", { className: " mx-auto my-3" },
+                                            react_1["default"].createElement(react_circular_progressbar_1.CircularProgressbar, { value: 100, text: "70%", strokeWidth: 10, className: "w-[150px] h-[150px] justify-self-center flex-1", styles: {
+                                                    path: {
+                                                        transform: "rotate(180deg)",
+                                                        transformOrigin: "center center",
+                                                        strokeLinecap: "butt",
+                                                        stroke: "#FF5660"
+                                                    },
+                                                    trail: {
+                                                    // strokeWidth: 0
+                                                    },
+                                                    text: {
+                                                        fontSize: 22,
+                                                        fontWeight: 800,
+                                                        animation: "fadein 2s",
+                                                        fill: "#347BF4"
+                                                    }
+                                                } })),
                                         react_1["default"].createElement("div", { className: "flex items-center justify-center mt-2 text-[10px] gap-1" },
-                                            react_1["default"].createElement("p", { className: "text-[#19C165] bg-[#E8F9F0] p-1 rounded" }, "12% \u2191"),
+                                            react_1["default"].createElement("p", { className: "text-[#FF5660] bg-[#FFEDEE] p-1 rounded" }, "12% \u2191"),
                                             react_1["default"].createElement("p", { className: "text-[#171837]" }, "from 75k")))))))))))));
 };
 exports["default"] = AdvertisementDetails;

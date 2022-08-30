@@ -43,8 +43,8 @@ const FinanceDetails = () => {
             <Breadcrubs {...{ bread }} />
             <div className="financedetails my-5 border rounded-xl shadow-sm p-4">
 
-                {/* <div className="grid lg:grid-flow-col"> */}
-                <div className="flex items-center flex-col md:flex-row justify-between">
+                <div className="grid lg:grid-flow-col">
+                {/* <div className="flex items-center flex-col md:flex-row justify-between"> */}
                     <div className="flex items-center">
                         <DollarIcon className="rounded-full shadow-lg" />
                         <div className='ml-3 text-[#949AB1]'>
@@ -55,7 +55,7 @@ const FinanceDetails = () => {
                         </div>
                     </div>
                     {/*  */}
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center">
                         <Link to="/create-voucher" className="flex flex-col items-center cursor-pointer w-1/2 p-1">
                             <EditIcon />
                             <span onClick={() => { }} className='text-[#949AB1] text-xs'>Edit</span>
@@ -70,26 +70,13 @@ const FinanceDetails = () => {
                             <span onClick={() => { }} className='text-[#949AB1] text-xs'>Export</span>
                         </div>
                     </div>
-                    {/* <div className="flex items-center ju lg:mt-auto mt-10">
-                        <div className="flex flex-col items-center w-1/2 p-1">
-                            <EditIcon />
-                            <span onClick={() => {}} className='text-[#949AB1] text-xs'>Edit</span>
-                        </div>
-                        <div className="flex flex-col items-center w-1/2 p-1">
-                            <DeactiviteIcon />
-                            <span onClick={() => {}} className='text-[#949AB1] text-xs'>Deactivite</span>
-                        </div>
-                        <div className="flex flex-col items-center w-1/2 p-1">
-                            <ExportIcon />
-                            <span onClick={() => {}} className='text-[#949AB1] text-xs'>Export</span>
-                        </div>
-                    </div> */}
+
                 </div>
             </div>
 
             {/* end of ... */}
 
-            <div className="grid md:grid-cols-2 gap-10 mb-5">
+            <div className="grid lg:grid-cols-2 gap-10 mb-5">
                 <div className="flex flex-col">
                     <div className=''>
                         <div className="pb-5">
