@@ -96,7 +96,7 @@ const AdvertisementDetails = () => {
             </div>
           </div>
           {/*  */}
-          <div className="flex items-center place-items-cente md:plrace-self-end gap-x-3 lg:mt-auto mt-10">
+          <div className="flex items-center justify-between md:gap-x-3 lg:mt-auto mt-10 md:mt-0  md:ml-auto">
               <Link to="/create-adverts" onClick={() => { }} className="flex flex-col cursor-pointer items-center p-1">
                 <EditIcon />
                 <span className='text-[#949AB1] text-xs'>Edit</span>
@@ -118,7 +118,6 @@ const AdvertisementDetails = () => {
 
           <VideoPlayer
             options={videoJsOptions}
-            className='video-js vjs-big-play-centered'
             onReady={handlePlayerReady}
            />
 

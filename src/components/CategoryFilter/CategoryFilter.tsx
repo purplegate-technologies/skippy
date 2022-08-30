@@ -60,7 +60,9 @@ const CategoryFilter = () => {
                 )}
             </div>
             <Button className='border-[#949AB1] bg-[#949AB1] text-white flex items-center' prefixIcon={<ApplyFilterCheckIcon />}>Apply Filter</Button>
-            <Button className='border-[#949AB1] text-[#949AB1] bg-[#ffffff] flex items-center'  prefixIcon={<ClearFilter />}>Clear Filter</Button>
+            <div className="border[#949AB1] border-2 rounded-[3px]">
+            <Button className='border-[#949AB1] border rouned text-[#949AB1] bg-[#ffffff] flex items-center'  prefixIcon={<ClearFilter />}>Clear Filter</Button>
+            </div>
         </div>
     )
 }

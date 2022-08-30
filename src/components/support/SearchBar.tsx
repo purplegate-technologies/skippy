@@ -38,7 +38,7 @@ const SearchBar = ({ className = "", placeholder = "Search", HeaderTitle, text, 
                     />
                 </div>
 
-                <Button to={to} text={text} {...{ children }}  {...{prefixIcon}} className="mx-auto w-[22%]  flex items-center justify-center" {...{onClick}} />
+                <Button to={to} text={text} {...{ children }}  {...{prefixIcon}} className="mx-auto w-[22%]  flex items-center justify-center bg-[#516CF5]" {...{onClick}} />
             </form>
         </div>
     )

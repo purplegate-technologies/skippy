@@ -44,8 +44,8 @@ const FinanceDetails = () => {
             <div className="financedetails my-5 border rounded-xl shadow-sm p-4">
 
                 <div className="grid lg:grid-flow-col">
-                {/* <div className="flex items-center flex-col md:flex-row justify-between"> */}
-                    <div className="flex items-center">
+                {/* <div className="flex items-center flex-wrap flex-row justify-between"> */}
+                    <div className="flex md:items-center">
                         <DollarIcon className="rounded-full shadow-lg" />
                         <div className='ml-3 text-[#949AB1]'>
                             <p className='text-md my-1'><span>Voucher</span> | <span className='text-[#00D48A]'>Available</span></p>
@@ -55,7 +55,7 @@ const FinanceDetails = () => {
                         </div>
                     </div>
                     {/*  */}
-                    <div className="flex items-center">
+                    <div className="flex items-center justify-between md:gap-x-3 lg:mt-auto mt-10 md:mt-0  md:ml-auto">
                         <Link to="/create-voucher" className="flex flex-col items-center cursor-pointer w-1/2 p-1">
                             <EditIcon />
                             <span onClick={() => { }} className='text-[#949AB1] text-xs'>Edit</span>

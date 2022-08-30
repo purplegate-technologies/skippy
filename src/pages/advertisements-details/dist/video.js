@@ -41,7 +41,8 @@ var VideoPlayer = function (_a) {
     return React.createElement(React.Fragment, null,
         React.createElement("div", { "data-vjs-player": true },
             React.createElement("video", { ref: videoNode, className: className + " video-js video-js vjs-big-play-centered overflow-hidden h-max" }),
-            React.createElement("div", { className: "pt-[100%] embed-responsive embed-responsive-1by1 relative w-full overflow-hidden" })));
+            React.createElement("div", { className: "relative pt-[100%] embed-responsive embed-responsive-1by1 relative w-full overflow-hidden" },
+                React.createElement("iframe", { allowFullScreen: true, className: "embed-responsive-item absolute top-0 right-0 bottom-0 left-0 w-full h-full", src: "https://www.youtube.com/embed/vlDzYIIOYmM?enablejsapi=2&origin=https%3A%2F%2Fmdbootstrap.com", "data-gtm-yt-inspected-2340190_699": "true" }))));
 };
 exports["default"] = VideoPlayer;
 // import React from 'react'

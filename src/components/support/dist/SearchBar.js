@@ -26,6 +26,6 @@ var SearchBar = function (_a) {
             react_1["default"].createElement("div", { className: 'h-[45px] flex w-full items-center bg-[#f1f3fb] rounded-[10px]' },
                 react_1["default"].createElement(SearchIconSupport_1["default"], { className: "ml-[.9rem] lg:ml-[1.3125rem] lg:mr-4 mr-3" }),
                 react_1["default"].createElement("input", { className: "flex-1 flex text-xs w-full lg:text-lg md:text-sm", type: "text", placeholder: placeholder })),
-            react_1["default"].createElement(Button_1["default"], __assign({ to: to, text: text }, { children: children }, { prefixIcon: prefixIcon }, { className: "mx-auto w-[22%]  flex items-center justify-center" }, { onClick: onClick })))));
+            react_1["default"].createElement(Button_1["default"], __assign({ to: to, text: text }, { children: children }, { prefixIcon: prefixIcon }, { className: "mx-auto w-[22%]  flex items-center justify-center bg-[#516CF5]" }, { onClick: onClick })))));
 };
 exports["default"] = SearchBar;

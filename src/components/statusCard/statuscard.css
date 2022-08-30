@@ -140,7 +140,7 @@
 .status-card:hover::before {
   transform: scale(3);
 }
-.status-card:hover::before,
+.status-card:hover::before, 
 .status-card__info__percent :nth-child(1):hover {
   /* background: red; */
   color: white;

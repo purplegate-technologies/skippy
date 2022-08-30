@@ -31,6 +31,7 @@ var CategoryFilter = function () {
             react_1["default"].createElement("span", { className: 'cursor-pointer', onClick: function () { return setToRange(function (prev) { return !prev; }); } }, "-" + date_fns_1.format(date[0].endDate, 'MM/dd/yyyy')),
             toState && (react_1["default"].createElement(react_date_range_1.DateRange, { editableDateInputs: true, moveRangeOnFirstSelection: false, onChange: function (i) { return setDate([i.selection]); }, ranges: date, className: "date absolute top-10 z-10" }))),
         react_1["default"].createElement(Button_1["default"], { className: 'border-[#949AB1] bg-[#949AB1] text-white flex items-center', prefixIcon: react_1["default"].createElement(ApplyFilterCheckIcon_1["default"], null) }, "Apply Filter"),
-        react_1["default"].createElement(Button_1["default"], { className: 'border-[#949AB1] text-[#949AB1] bg-[#ffffff] flex items-center', prefixIcon: react_1["default"].createElement(ClearFilter_1["default"], null) }, "Clear Filter")));
+        react_1["default"].createElement("div", { className: "border[#949AB1] border-2 rounded-[3px]" },
+            react_1["default"].createElement(Button_1["default"], { className: 'border-[#949AB1] border rouned text-[#949AB1] bg-[#ffffff] flex items-center', prefixIcon: react_1["default"].createElement(ClearFilter_1["default"], null) }, "Clear Filter"))));
 };
 exports["default"] = CategoryFilter;
