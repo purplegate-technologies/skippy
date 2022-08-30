@@ -44,14 +44,14 @@ const VideoPlayer: React.FC<IVideoPlayerProps> = ({ options, className, onReady 
     <div data-vjs-player>
   <video ref={videoNode} className={`${className} video-js video-js vjs-big-play-centered overflow-hidden h-max`} />
       <div
-        className="relative pt-[100%] embed-responsive embed-responsive-1by1 relative w-full overflow-hidden"
+        className="relative pt-[100%] embed-responsive embed-responsive-1by1 w-full overflow-hidden"
       >
-        <iframe allowFullScreen className="embed-responsive-item absolute top-0 right-0 bottom-0 left-0 w-full h-full"
+        {/* <iframe allowFullScreen className="embed-responsive-item absolute top-0 right-0 bottom-0 left-0 w-full h-full"
           src="https://www.youtube.com/embed/vlDzYIIOYmM?enablejsapi=2&amp;origin=https%3A%2F%2Fmdbootstrap.com"
           // allowfullscreen=""
           data-gtm-yt-inspected-2340190_699="true"
         // id="240632615"
-        ></iframe>
+        ></iframe> */}
       </div>
     </div>
   </>;

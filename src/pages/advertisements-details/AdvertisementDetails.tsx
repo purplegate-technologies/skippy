@@ -115,12 +115,7 @@ const AdvertisementDetails = () => {
 
       <div className="grid lg:grid-cols-2  gap-10">
         <div className="flex-1 flex flex-col bg-white">
-
-          <VideoPlayer
-            options={videoJsOptions}
-            onReady={handlePlayerReady}
-           />
-
+          <VideoPlayer options={videoJsOptions} onReady={handlePlayerReady} />
         </div>
 
         <div className="md:basis-[45%] flex flex-col bg-white mb-10">
