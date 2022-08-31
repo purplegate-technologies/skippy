@@ -12,7 +12,7 @@ import { useGetVouchersQuery } from '../../features/vouchers/VouchersApiSlice'
 
 const Finance = () => {
   const navigate = useNavigate()
-  const { data } = useGetVouchersQuery({ refetchOnMountOrArgChange: true })
+  const { data = [], isSuccess, isFetching } = useGetVouchersQuery({})
 
   const customerTableHead = [
     'Brand Name',
@@ -63,8 +63,11 @@ const Finance = () => {
                   limit='10'
                   headData={customerTableHead}
                   renderHead={(item: any, index: number) => renderHead(item, index)}
-                  bodyData={data?.docs}
+                  // bodyData={data?.docs}
+                  bodyData={isFetching ? [] : data?.docs }
                   renderBody={(item: any, index: number) => renderBody(item, index)}
+                  {...{isSuccess}}
+                  {...{isFetching}}
                 />
               </div>
             </div>

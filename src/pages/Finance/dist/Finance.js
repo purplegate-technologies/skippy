@@ -1,4 +1,15 @@
 "use strict";
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 exports.__esModule = true;
 var react_1 = require("react");
 var StatusCards_1 = require("../../components/statusCard/StatusCards");
@@ -10,7 +21,7 @@ var CreateAdsPlus_1 = require("../../assets/svg/CreateAdsPlus");
 var VouchersApiSlice_1 = require("../../features/vouchers/VouchersApiSlice");
 var Finance = function () {
     var navigate = react_router_dom_1.useNavigate();
-    var data = VouchersApiSlice_1.useGetVouchersQuery({ refetchOnMountOrArgChange: true }).data;
+    var _a = VouchersApiSlice_1.useGetVouchersQuery({}), _b = _a.data, data = _b === void 0 ? [] : _b, isSuccess = _a.isSuccess, isFetching = _a.isFetching;
     var customerTableHead = [
         'Brand Name',
         'Status',
@@ -43,6 +54,8 @@ var Finance = function () {
                 react_1["default"].createElement("div", { className: "col-12" },
                     react_1["default"].createElement("div", { className: "" },
                         react_1["default"].createElement("div", { className: "card__body" },
-                            react_1["default"].createElement(Table_1["default"], { limit: '10', headData: customerTableHead, renderHead: function (item, index) { return renderHead(item, index); }, bodyData: data === null || data === void 0 ? void 0 : data.docs, renderBody: function (item, index) { return renderBody(item, index); } }))))))));
+                            react_1["default"].createElement(Table_1["default"], __assign({ limit: '10', headData: customerTableHead, renderHead: function (item, index) { return renderHead(item, index); }, 
+                                // bodyData={data?.docs}
+                                bodyData: isFetching ? [] : data === null || data === void 0 ? void 0 : data.docs, renderBody: function (item, index) { return renderBody(item, index); } }, { isSuccess: isSuccess }, { isFetching: isFetching })))))))));
 };
 exports["default"] = Finance;

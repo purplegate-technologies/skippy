@@ -35,7 +35,7 @@ const Advertisements = () => {
   const [externalGraph, setExternalGraph] = useState(userData)
   const [internalGraph, setInternalGraph] = useState(userData)
   const { data } = useGetAdvertStatsQuery()
-  const { data: getAds, isSuccess, isLoading, isFetching } = useGetAdvertAdminQuery({ refetchOnMountOrArgChange: true })
+  const { data: getAds = [], isSuccess, isLoading, isFetching } = useGetAdvertAdminQuery({ refetchOnMountOrArgChange: true })
 
 
   // console.log(data, "useGetAdvertStatsQuery")
@@ -262,7 +262,8 @@ const Advertisements = () => {
                   limit='10'
                   headData={customerTableHead}
                   renderHead={(item: any, index: number) => renderHead(item, index)}
-                  bodyData={getAds?.docs}
+                  bodyData={isLoading ? [] : getAds?.docs}
+                  // bodyData={[]}
                   renderBody={(item: any, index: number) => renderBody(item, index)}
                 />
               </div>
