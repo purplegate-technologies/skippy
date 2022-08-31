@@ -34,7 +34,7 @@ var Finance = function () {
     var renderHead = function (item, index) { return react_1["default"].createElement("th", { key: index }, item); };
     var renderBody = function (item, index) { return (react_1["default"].createElement("tr", { key: item === null || item === void 0 ? void 0 : item._id },
         react_1["default"].createElement("td", { className: "flex items-center py-4 px-6 text-gray-900 whitespace-nowrap dark:text-white" },
-            react_1["default"].createElement("img", { className: "w-10 h-10 rounded-full", src: "/docs/images/people/profile-picture-1.jpg", alt: "svgFace" }),
+            react_1["default"].createElement("img", { className: "w-10 h-10 rounded-full", src: "https://mdbcdn.b-cdn.net/img/new/avatars/1.webp", alt: "svgFace" }),
             react_1["default"].createElement("div", { className: "pl-3" },
                 react_1["default"].createElement("div", { className: "text-base font-semibold" }, item === null || item === void 0 ? void 0 : item.title),
                 react_1["default"].createElement("div", { className: "font-normal text-gray-500" }, item === null || item === void 0 ? void 0 : item.terms))),
@@ -54,8 +54,6 @@ var Finance = function () {
                 react_1["default"].createElement("div", { className: "col-12" },
                     react_1["default"].createElement("div", { className: "" },
                         react_1["default"].createElement("div", { className: "card__body" },
-                            react_1["default"].createElement(Table_1["default"], __assign({ limit: '10', headData: customerTableHead, renderHead: function (item, index) { return renderHead(item, index); }, 
-                                // bodyData={data?.docs}
-                                bodyData: isFetching ? [] : data === null || data === void 0 ? void 0 : data.docs, renderBody: function (item, index) { return renderBody(item, index); } }, { isSuccess: isSuccess }, { isFetching: isFetching })))))))));
+                            react_1["default"].createElement(Table_1["default"], __assign({ limit: '10', headData: customerTableHead, renderHead: function (item, index) { return renderHead(item, index); }, bodyData: isFetching ? [] : data === null || data === void 0 ? void 0 : data.docs, renderBody: function (item, index) { return renderBody(item, index); } }, { isSuccess: isSuccess }, { isFetching: isFetching })))))))));
 };
 exports["default"] = Finance;

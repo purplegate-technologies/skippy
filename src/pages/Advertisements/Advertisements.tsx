@@ -263,7 +263,6 @@ const Advertisements = () => {
                   headData={customerTableHead}
                   renderHead={(item: any, index: number) => renderHead(item, index)}
                   bodyData={isLoading ? [] : getAds?.docs}
-                  // bodyData={[]}
                   renderBody={(item: any, index: number) => renderBody(item, index)}
                 />
               </div>

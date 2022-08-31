@@ -30,7 +30,7 @@ const Finance = () => {
     <tr key={item?._id}>
       {/* <td>{item?._id}</td> */}
       <td  className="flex items-center py-4 px-6 text-gray-900 whitespace-nowrap dark:text-white">
-        <img className="w-10 h-10 rounded-full" src="/docs/images/people/profile-picture-1.jpg" alt="svgFace" />
+        <img className="w-10 h-10 rounded-full" src="https://mdbcdn.b-cdn.net/img/new/avatars/1.webp" alt="svgFace" />
           <div className="pl-3">
             <div className="text-base font-semibold">{item?.title}</div>
             <div className="font-normal text-gray-500">{item?.terms}</div>
@@ -63,7 +63,6 @@ const Finance = () => {
                   limit='10'
                   headData={customerTableHead}
                   renderHead={(item: any, index: number) => renderHead(item, index)}
-                  // bodyData={data?.docs}
                   bodyData={isFetching ? [] : data?.docs }
                   renderBody={(item: any, index: number) => renderBody(item, index)}
                   {...{isSuccess}}
