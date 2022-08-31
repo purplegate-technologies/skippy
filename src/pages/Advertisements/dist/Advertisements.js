@@ -7,7 +7,6 @@ var Table_1 = require("../../components/Table/Table");
 var data_1 = require("../../assets/data/data");
 var ThreeVdots_1 = require("../../assets/svg/ThreeVdots");
 var SearchBar_1 = require("../../components/support/SearchBar");
-var advert_list_json_1 = require("../../assets/jsonData/advert-list.json");
 var StatusCards_1 = require("../../components/statusCard/StatusCards");
 var statsApis_1 = require("../../features/stats/statsApis");
 var AdvertsApiSlice_1 = require("../../features/adverts/AdvertsApiSlice");
@@ -33,7 +32,7 @@ var Advertisements = function () {
     var _m = react_1.useState(userData), externalGraph = _m[0], setExternalGraph = _m[1];
     var _o = react_1.useState(userData), internalGraph = _o[0], setInternalGraph = _o[1];
     var data = statsApis_1.useGetAdvertStatsQuery().data;
-    var getAds = AdvertsApiSlice_1.useGetAdvertAdminQuery({ refetchOnMountOrArgChange: true }).data;
+    var _p = AdvertsApiSlice_1.useGetAdvertAdminQuery({ refetchOnMountOrArgChange: true }), getAds = _p.data, isSuccess = _p.isSuccess, isLoading = _p.isLoading, isFetching = _p.isFetching;
     // console.log(data, "useGetAdvertStatsQuery")
     console.log(getAds === null || getAds === void 0 ? void 0 : getAds.docs, "gerAds");
     var navigate = react_router_dom_1.useNavigate();
@@ -102,15 +101,16 @@ var Advertisements = function () {
     ];
     var renderHead = function (item, index) { return React.createElement("th", { key: index }, item); };
     var renderBody = function (item, index) { return (React.createElement("tr", { key: index },
-        React.createElement("td", null, item.id),
-        React.createElement("td", null, item.name),
-        React.createElement("td", null, item.email),
-        React.createElement("td", null, item.phone),
-        React.createElement("td", null, item.total_orders),
-        React.createElement("td", null, item.total_spend),
-        React.createElement("td", null, item.location),
-        React.createElement("td", null, item.location),
-        React.createElement("td", null, item.location))); };
+        React.createElement("td", null, item === null || item === void 0 ? void 0 : item.title),
+        React.createElement("td", null, item === null || item === void 0 ? void 0 : item.streamCount),
+        React.createElement("td", null, item === null || item === void 0 ? void 0 : item.type),
+        React.createElement("td", null, item === null || item === void 0 ? void 0 : item.points),
+        React.createElement("td", null, item === null || item === void 0 ? void 0 : item.lengthInSeconds),
+        React.createElement("td", null, item === null || item === void 0 ? void 0 : item.createdAt),
+        React.createElement("td", null, item === null || item === void 0 ? void 0 : item.updatedAt),
+        React.createElement("td", null, item === null || item === void 0 ? void 0 : item.status),
+        React.createElement("td", null,
+            React.createElement(react_router_dom_1.Link, { to: "advertisements-details", className: "underline text-[#516CF5]" }, "View Details")))); };
     return (React.createElement("div", null,
         (data) ?
             React.createElement("div", null,
@@ -184,6 +184,6 @@ var Advertisements = function () {
                 React.createElement("div", { className: "col-12" },
                     React.createElement("div", { className: "" },
                         React.createElement("div", { className: "card__body" },
-                            React.createElement(Table_1["default"], { limit: '10', headData: customerTableHead, renderHead: function (item, index) { return renderHead(item, index); }, bodyData: advert_list_json_1["default"], renderBody: function (item, index) { return renderBody(item, index); } }))))))));
+                            React.createElement(Table_1["default"], { limit: '10', headData: customerTableHead, renderHead: function (item, index) { return renderHead(item, index); }, bodyData: getAds === null || getAds === void 0 ? void 0 : getAds.docs, renderBody: function (item, index) { return renderBody(item, index); } }))))))));
 };
 exports["default"] = Advertisements;

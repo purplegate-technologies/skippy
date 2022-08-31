@@ -65,11 +65,9 @@ var Table = function (_a) {
             React.createElement("table", null,
                 headData && renderHead ? (React.createElement("thead", null,
                     React.createElement("tr", null, headData.map(function (item, index) { return renderHead(item, index); })))) : null,
-                bodyData && renderBody ? (React.createElement("tbody", null, dataShow.map(function (item, index) { return renderBody(item, index); }))) : (React.createElement("body", { className: 'divide-y divide-grey-slate' },
+                (bodyData && renderBody && (bodyData.length !== 0) && ((bodyData === null || undefined) && [])) ? (React.createElement("tbody", null, dataShow.map(function (item, index) { return renderBody(item, index); }))) : (React.createElement("tbody", { className: '' },
                     React.createElement("tr", null,
-                        React.createElement("td", { 
-                            // colSpan={}
-                            className: 'text-center p-10 text-2l font-bold' }, "No Data")))))),
+                        React.createElement("td", { className: 'text-center w-full p-5 text-2l font-bold' }, "No Data")))))),
         React.createElement("div", { className: 'footerPagination' },
             React.createElement("div", { style: { display: 'flex', alignItems: 'center' } },
                 React.createElement("select", { className: 'tableSelectDropDown' },

@@ -19,7 +19,7 @@ var CategoryFilter = function () {
             key: "selection"
         }
     ]), date = _c[0], setDate = _c[1];
-    return (react_1["default"].createElement("div", { className: 'flex items-center justify-between gap-1 bg-[#F6F6F6] p-4' },
+    return (react_1["default"].createElement("div", { className: 'flex items-center flex-wrap justify-between gap-1 bg-[#F6F6F6] p-4' },
         react_1["default"].createElement(Dropdown_1["default"], { className: "p-4 border bg-red" }, " Select Category"),
         react_1["default"].createElement(Dropdown_1["default"], { className: "p-4 border" }, " Select Status"),
         react_1["default"].createElement("div", { className: "flex items-center border-[#949AB1] border rounded-md p-2 relative" },

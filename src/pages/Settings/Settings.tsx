@@ -10,7 +10,7 @@ import "./settings.css"
 
 const options = [
     { value: '', text: 'Select Role', disabled: true },
-    { value: 'admin', text: 'Super Admin 🍏' },
+    { value: 'admin', text: 'admin' },
     { value: 'regular', text: 'Regular 🍌' },
     { value: 'normal', text: 'Normal Admin 🥝' },
     { value: 'others', text: 'Others 🥝' },
@@ -21,7 +21,7 @@ interface initialStateType {
     lastName?: string,
     email?: string,
     mobile?: string,
-    roles?: string
+    type?: string
   }
 
 const initialState:initialStateType = {
@@ -29,28 +29,27 @@ const initialState:initialStateType = {
     lastName: "",
     email: "",
     mobile: "",
-    roles: "",
+    type: "",
 }
 
 const Settings = () => {
 
-    const [createAdmin, { isSuccess, isLoading, isError}] = useCreateAdminMutation()
+    const [createAdmin, { isSuccess, isLoading}] = useCreateAdminMutation()
 
-    const [formValue, setFormValue] = useState<initialStateType>(initialState)
+    // const [formValue, setFormValue] = useState<initialStateType>(initialState)
 
     const [firstName, setFirstName] = useState("")
     const [lastName, setLastName] = useState("")
     const [email, setEmail] = useState("")
     const [mobile, setMobile] = useState("")
-    const [roles, setRoles] = useState("")
+    const [type, setRoles] = useState("")
 
-    // useEffect(() => {
-    //     if (isSuccess) {
-    //         setFormValue({
+    useEffect(() => {
+        if (isSuccess) {
+            toast.success("Created an Administrator successfully");
+        }
 
-    //         })
-    //     }
-    // }, [isSuccess]);
+    }, [isSuccess]);
 
     // const handleChange = (e: any) => setFormValue({ ...formValue, [e.target.name]: e.target.value })
 
@@ -81,18 +80,18 @@ const Settings = () => {
 
         try {
             //  await createAdmin(formValue).unwrap()
-            if( firstName && lastName && email && mobile && roles) {
+            if( firstName && lastName && email && mobile && type) {
                 await createAdmin({
-                   firstName, lastName, email, mobile,roles
+                   firstName, lastName, email, mobile,type
                 }).unwrap()
 
                 setFirstName('')
                 setLastName('')
                 setEmail('')
-                setEmail('')
                 setMobile('')
                 setRoles('')
             }
+
 
             // .then(() => {})
             // .then((error) => {console.log(error)})
@@ -121,7 +120,7 @@ const Settings = () => {
                             </label>
                             {/* <DropDownInout
                                 className="my-3"
-                                value={roles}
+                                value={type}
                                 placeholder="Select Role"
                                 data={[
                                     { label: 'admin', value: 'Super Admin 🍏' },
@@ -136,7 +135,7 @@ const Settings = () => {
                             <select
                             placeholder="Select Role"
                             style={selectSTyle}
-                            name={roles}
+                            name={type}
                             onChange={(e) => {
                                 const select = e.target as HTMLSelectElement
                                 setRoles(select.options.item(select.selectedIndex)?.innerText!)
@@ -155,7 +154,7 @@ const Settings = () => {
                             {/* <select
                                 placeholder="Select Role"
                                 style={selectSTyle}
-                                name={roles}
+                                name={type}
                                 id=""
                                 // className="bg-white text-[#949AB1] border-[#949AB1] outline-none border-2 rounded p-2 mb-3 w-full"
                                 onChange={(e) => {

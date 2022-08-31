@@ -1,6 +1,6 @@
 import './advertisements.css'
 import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Table from '../../components/Table/Table'
 import { UserData } from '../../assets/data/data'
 import ThreeVdots from '../../assets/svg/ThreeVdots'
@@ -35,7 +35,7 @@ const Advertisements = () => {
   const [externalGraph, setExternalGraph] = useState(userData)
   const [internalGraph, setInternalGraph] = useState(userData)
   const { data } = useGetAdvertStatsQuery()
-  const { data: getAds } = useGetAdvertAdminQuery({ refetchOnMountOrArgChange: true })
+  const { data: getAds, isSuccess, isLoading, isFetching } = useGetAdvertAdminQuery({ refetchOnMountOrArgChange: true })
 
 
   // console.log(data, "useGetAdvertStatsQuery")
@@ -123,15 +123,15 @@ const Advertisements = () => {
 
   const renderBody = (item: any, index: number) => (
     <tr key={index}>
-      <td>{item.id}</td>
-      <td>{item.name}</td>
-      <td>{item.email}</td>
-      <td>{item.phone}</td>
-      <td>{item.total_orders}</td>
-      <td>{item.total_spend}</td>
-      <td>{item.location}</td>
-      <td>{item.location}</td>
-      <td>{item.location}</td>
+      <td>{item?.title}</td>
+      <td>{item?.streamCount}</td>
+      <td>{item?.type}</td>
+      <td>{item?.points}</td>
+      <td>{item?.lengthInSeconds}</td>
+      <td>{item?.createdAt}</td>
+      <td>{item?.updatedAt}</td>
+      <td>{item?.status}</td>
+      <td><Link to="advertisements-details" className="underline text-[#516CF5]">View Details</Link></td>
     </tr>
   )
 
@@ -262,7 +262,7 @@ const Advertisements = () => {
                   limit='10'
                   headData={customerTableHead}
                   renderHead={(item: any, index: number) => renderHead(item, index)}
-                  bodyData={advertlist}
+                  bodyData={getAds?.docs}
                   renderBody={(item: any, index: number) => renderBody(item, index)}
                 />
               </div>

@@ -11,7 +11,7 @@ exports.VouchersApiSlice = apiSlice_1.apiSlice.injectEndpoints({
                 body: body
             }); },
             // Pick out data and prevent nested properties in a hook or selector
-            transformResponse: function (response, meta, arg) { return response.data; },
+            // transformResponse: (response: { data: {} }, meta, arg) => response.data,
             invalidatesTags: ['Vouchers']
         }),
         getVouchers: builder.query({

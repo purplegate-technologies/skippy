@@ -9,12 +9,18 @@ import Dropdown from '../dropdown/Dropdown'
 import ApplyFilterCheckIcon from '../../assets/svg/ApplyFilterCheckIcon'
 import ClearFilter from '../../assets/svg/ClearFilter'
 
+interface DateTypeProps {
+    startDate: Date
+    endDate: Date
+    key: string
+}
+
 const CategoryFilter = () => {
 
     const [fromState, setFromState] = useState<boolean>(false)
     const [toState, setToRange] = useState<boolean>(false)
 
-    const [date, setDate] = useState<any>([
+    const [date, setDate] = useState<DateTypeProps[]>([
         {
             startDate: new Date(),
             endDate: new Date(),
@@ -23,7 +29,7 @@ const CategoryFilter = () => {
     ])
 
     return (
-        <div className='flex items-center justify-between gap-1 bg-[#F6F6F6] p-4'>
+        <div className='flex items-center flex-wrap justify-between gap-1 bg-[#F6F6F6] p-4'>
             {/* <DropDown defaultValue='Select Category' data={[]} className='border-[#949AB1] ' />
             <DropDown defaultValue='Select Status' data={[]} className='border-[#949AB1] ' /> */}
             <Dropdown  className="p-4 border bg-red"> Select Category</Dropdown>

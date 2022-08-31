@@ -97,20 +97,18 @@ const Table = ({limit, renderHead, bodyData, headData, renderBody}: Props) => {
                         ) : null
                     }
                     {
-                        bodyData && renderBody ? (
+                       ( bodyData && renderBody && (bodyData.length !== 0) && ((bodyData === null || undefined) && []) )? (
                             <tbody>
                                 {
                                     dataShow.map((item: any, index: number) => renderBody(item, index))
                                 }
                             </tbody>
                         ) : (
-                            <body className='divide-y divide-grey-slate'>
+                            <tbody className=''>
                                 <tr>
-                                    <td
-                                    // colSpan={}
-                                     className='text-center p-10 text-2l font-bold'>No Data</td>
+                                    <td className='text-center w-full p-5 text-2l font-bold'>No Data</td>
                                 </tr>
-                            </body>
+                            </tbody>
                         )
                     }
                 </table>

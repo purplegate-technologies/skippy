@@ -9,10 +9,10 @@ export const VouchersApiSlice = apiSlice.injectEndpoints({
                 body
             }),
             // Pick out data and prevent nested properties in a hook or selector
-            transformResponse: (response: { data: {} }, meta, arg) => response.data,
+            // transformResponse: (response: { data: {} }, meta, arg) => response.data,
             invalidatesTags: ['Vouchers'],
         }),
-        getVouchers: builder.query({ // get vouchers for tables finance vouchers on the tables
+        getVouchers: builder.query<any, any>({ // get >vouchers for tables finance vouchers on the tables
             query: () => `vouchers`,
             // Pick out data and prevent nested properties in a hook or selector
             transformResponse: (response: { data: {} | undefined | any }, meta, arg) => response.data,
@@ -24,7 +24,7 @@ export const VouchersApiSlice = apiSlice.injectEndpoints({
             transformResponse: (response: { data: {} | undefined | any }, meta, arg) => response.data,
             providesTags: ['Vouchers'],
         }),
-        deleteVoucher: builder.mutation<void, string>({ 
+        deleteVoucher: builder.mutation<void, string>({
             query: (id) => ({
                 url: `vouchers/${id}`,
                 method: "DELETE",

@@ -46,7 +46,7 @@ var User_ManagementApiSlcie_1 = require("../../features/UserManagement/User Mana
 require("./settings.css");
 var options = [
     { value: '', text: 'Select Role', disabled: true },
-    { value: 'admin', text: 'Super Admin 🍏' },
+    { value: 'admin', text: 'admin' },
     { value: 'regular', text: 'Regular 🍌' },
     { value: 'normal', text: 'Normal Admin 🥝' },
     { value: 'others', text: 'Others 🥝' },
@@ -56,22 +56,21 @@ var initialState = {
     lastName: "",
     email: "",
     mobile: "",
-    roles: ""
+    type: ""
 };
 var Settings = function () {
-    var _a = User_ManagementApiSlcie_1.useCreateAdminMutation(), createAdmin = _a[0], _b = _a[1], isSuccess = _b.isSuccess, isLoading = _b.isLoading, isError = _b.isError;
-    var _c = react_1.useState(initialState), formValue = _c[0], setFormValue = _c[1];
-    var _d = react_1.useState(""), firstName = _d[0], setFirstName = _d[1];
-    var _e = react_1.useState(""), lastName = _e[0], setLastName = _e[1];
-    var _f = react_1.useState(""), email = _f[0], setEmail = _f[1];
-    var _g = react_1.useState(""), mobile = _g[0], setMobile = _g[1];
-    var _h = react_1.useState(""), roles = _h[0], setRoles = _h[1];
-    // useEffect(() => {
-    //     if (isSuccess) {
-    //         setFormValue({
-    //         })
-    //     }
-    // }, [isSuccess]);
+    var _a = User_ManagementApiSlcie_1.useCreateAdminMutation(), createAdmin = _a[0], _b = _a[1], isSuccess = _b.isSuccess, isLoading = _b.isLoading;
+    // const [formValue, setFormValue] = useState<initialStateType>(initialState)
+    var _c = react_1.useState(""), firstName = _c[0], setFirstName = _c[1];
+    var _d = react_1.useState(""), lastName = _d[0], setLastName = _d[1];
+    var _e = react_1.useState(""), email = _e[0], setEmail = _e[1];
+    var _f = react_1.useState(""), mobile = _f[0], setMobile = _f[1];
+    var _g = react_1.useState(""), type = _g[0], setRoles = _g[1];
+    react_1.useEffect(function () {
+        if (isSuccess) {
+            react_toastify_1.toast.success("Created an Administrator successfully");
+        }
+    }, [isSuccess]);
     // const handleChange = (e: any) => setFormValue({ ...formValue, [e.target.name]: e.target.value })
     var selectSTyle = {
         display: "block",
@@ -99,15 +98,14 @@ var Settings = function () {
                     _b.label = 1;
                 case 1:
                     _b.trys.push([1, 4, , 5]);
-                    if (!(firstName && lastName && email && mobile && roles)) return [3 /*break*/, 3];
+                    if (!(firstName && lastName && email && mobile && type)) return [3 /*break*/, 3];
                     return [4 /*yield*/, createAdmin({
-                            firstName: firstName, lastName: lastName, email: email, mobile: mobile, roles: roles
+                            firstName: firstName, lastName: lastName, email: email, mobile: mobile, type: type
                         }).unwrap()];
                 case 2:
                     _b.sent();
                     setFirstName('');
                     setLastName('');
-                    setEmail('');
                     setEmail('');
                     setMobile('');
                     setRoles('');
@@ -130,7 +128,7 @@ var Settings = function () {
                 React.createElement("div", { className: "card-settings" },
                     React.createElement("div", { className: "contactUs-form-lable" },
                         React.createElement("label", { htmlFor: "", className: "text-xs text-[#516CF5]" }, ("ROLE")),
-                        React.createElement("select", { placeholder: "Select Role", style: selectSTyle, name: roles, onChange: function (e) {
+                        React.createElement("select", { placeholder: "Select Role", style: selectSTyle, name: type, onChange: function (e) {
                                 var _a;
                                 var select = e.target;
                                 setRoles((_a = select.options.item(select.selectedIndex)) === null || _a === void 0 ? void 0 : _a.innerText);
