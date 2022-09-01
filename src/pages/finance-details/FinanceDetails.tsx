@@ -11,6 +11,7 @@ import 'react-circular-progressbar/dist/styles.css';
 import DollarIcon from './DollarIcon'
 import DollarVoucher from './DollarVoucher'
 import { useGetVoucherByIdQuery } from '../../features/vouchers/VouchersApiSlice'
+import CoinDetailIcon from '../../assets/svg/CoinDetailIcon'
 
 export interface BreadcrumbsProps {
     url?: string
@@ -112,7 +113,7 @@ const FinanceDetails = () => {
                                     <p className='text-[#1C57AC]'>Terms & Conditions Apps</p>
                                 </div>
 
-                                <Button className="border rounded-full" onClick={() => navigate('create-voucher')}>1500</Button>
+                                <Button className="border rounded-full bg-[#516CF5]" onClick={() => navigate('create-voucher')} prefixIcon={<CoinDetailIcon />} >1500</Button>
                             </div>
                         </div>
                     </div>

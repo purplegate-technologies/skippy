@@ -24,6 +24,7 @@ require("react-circular-progressbar/dist/styles.css");
 var DollarIcon_1 = require("./DollarIcon");
 var DollarVoucher_1 = require("./DollarVoucher");
 var VouchersApiSlice_1 = require("../../features/vouchers/VouchersApiSlice");
+var CoinDetailIcon_1 = require("../../assets/svg/CoinDetailIcon");
 var bread = [
     {
         name: 'Dashboard',
@@ -90,7 +91,7 @@ var FinanceDetails = function () {
                             react_1["default"].createElement("div", null,
                                 react_1["default"].createElement("p", null, "Valid till: 04 Jan, 2023 11:59pm"),
                                 react_1["default"].createElement("p", { className: 'text-[#1C57AC]' }, "Terms & Conditions Apps")),
-                            react_1["default"].createElement(Button_1["default"], { className: "border rounded-full", onClick: function () { return navigate('create-voucher'); } }, "1500"))))),
+                            react_1["default"].createElement(Button_1["default"], { className: "border rounded-full bg-[#516CF5]", onClick: function () { return navigate('create-voucher'); }, prefixIcon: react_1["default"].createElement(CoinDetailIcon_1["default"], null) }, "1500"))))),
             react_1["default"].createElement("div", { className: "md:basis-1/2 flex flex-col bg-white mb-10" },
                 react_1["default"].createElement("div", { className: "" },
                     react_1["default"].createElement("div", { className: " flex h-full border items-center flex-row border-[#F1F3FF] text-[#949AB1] relative" },
