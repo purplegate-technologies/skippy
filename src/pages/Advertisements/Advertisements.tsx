@@ -35,7 +35,7 @@ const Advertisements = () => {
   const [externalGraph, setExternalGraph] = useState(userData)
   const [internalGraph, setInternalGraph] = useState(userData)
   const { data } = useGetAdvertStatsQuery()
-  const { data: getAds = [], isSuccess, isLoading, isFetching } = useGetAdvertAdminQuery({ refetchOnMountOrArgChange: true })
+  const { data: getAds, isSuccess, isLoading, isFetching } = useGetAdvertAdminQuery({ refetchOnMountOrArgChange: true })
 
 
   // console.log(data, "useGetAdvertStatsQuery")
@@ -122,7 +122,7 @@ const Advertisements = () => {
   const renderHead = (item: any, index: number) => <th key={index}>{item}</th>
 
   const renderBody = (item: any, index: number) => (
-    <tr key={index}>
+    <tr key={item?._id}>
       <td>{item?.title}</td>
       <td>{item?.streamCount}</td>
       <td>{item?.type}</td>
@@ -131,7 +131,7 @@ const Advertisements = () => {
       <td>{item?.createdAt}</td>
       <td>{item?.updatedAt}</td>
       <td>{item?.status}</td>
-      <td><Link to="advertisements-details" className="underline text-[#516CF5]">View Details</Link></td>
+      <td><Link to={`/advertisements/${item?._id}`} className="underline text-[#516CF5]">View Details</Link></td>
     </tr>
   )
 
@@ -264,6 +264,8 @@ const Advertisements = () => {
                   renderHead={(item: any, index: number) => renderHead(item, index)}
                   bodyData={isLoading ? [] : getAds?.docs}
                   renderBody={(item: any, index: number) => renderBody(item, index)}
+                  {...{isLoading}}
+                  {...{isFetching}}
                 />
               </div>
             </div>

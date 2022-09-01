@@ -12,7 +12,7 @@ import { useGetVouchersQuery } from '../../features/vouchers/VouchersApiSlice'
 
 const Finance = () => {
   const navigate = useNavigate()
-  const { data = [], isSuccess, isFetching } = useGetVouchersQuery({})
+  const { data, isLoading, isFetching } = useGetVouchersQuery({ refetchOnMountOrArgChange: true })
 
   const customerTableHead = [
     'Brand Name',
@@ -33,7 +33,7 @@ const Finance = () => {
         <img className="w-10 h-10 rounded-full" src="https://mdbcdn.b-cdn.net/img/new/avatars/1.webp" alt="svgFace" />
           <div className="pl-3">
             <div className="text-base font-semibold">{item?.title}</div>
-            <div className="font-normal text-gray-500">{item?.terms}</div>
+            <div className="font-normal text-gray-500 text-xs">{item?.terms}</div>
           </div>
         </td>
         <td>{item?.status}</td>
@@ -41,7 +41,7 @@ const Finance = () => {
         <td>{item?.value}</td>
         <td>{item?.startDate}</td>
         <td>{item?.endDate}</td>
-        <td><Link to="finance-details" className="underline text-[#516CF5]">View Details</Link></td>
+        <td><Link to={`/finance/${item?._id}`} className="underline text-[#516CF5]">View Details</Link></td>
     </tr>
   )
 
@@ -60,12 +60,12 @@ const Finance = () => {
             <div className="">
               <div className="card__body">
                 <Table
-                  limit='10'
+                  limit='2'
                   headData={customerTableHead}
                   renderHead={(item: any, index: number) => renderHead(item, index)}
                   bodyData={isFetching ? [] : data?.docs }
                   renderBody={(item: any, index: number) => renderBody(item, index)}
-                  {...{isSuccess}}
+                  {...{isLoading}}
                   {...{isFetching}}
                 />
               </div>

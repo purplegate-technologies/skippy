@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import DeactiviteIcon from '../../assets/svg/Deactivite'
 import EditIcon from '../../assets/svg/EditIcon'
 import ExportIcon from '../../assets/svg/ExportIcon'
@@ -10,6 +10,7 @@ import { CircularProgressbar } from "react-circular-progressbar"
 import 'react-circular-progressbar/dist/styles.css';
 import DollarIcon from './DollarIcon'
 import DollarVoucher from './DollarVoucher'
+import { useGetVoucherByIdQuery } from '../../features/vouchers/VouchersApiSlice'
 
 export interface BreadcrumbsProps {
     url?: string
@@ -35,8 +36,14 @@ const bread: BreadcrumbsProps[] = [
 ]
 const FinanceDetails = () => {
     const [tabIndex, setTabIndex] = useState<string>("Info")
+    const {id} = useParams()
+    const {data} = useGetVoucherByIdQuery(id)
 
     const navigate = useNavigate()
+
+    useEffect(() => {
+        console.log(id, "Params for voucher")
+          },[id])
 
     return (
         <section>

@@ -18,7 +18,7 @@ export const VouchersApiSlice = apiSlice.injectEndpoints({
             transformResponse: (response: { data: {} | undefined | any }, meta, arg) => response.data,
             providesTags: ['Vouchers'],
         }),
-        getVoucher: builder.query({
+        getVoucherById: builder.query({
             query: ({ id }) => `vouchers/${id}`,
             // Pick out data and prevent nested properties in a hook or selector
             transformResponse: (response: { data: {} | undefined | any }, meta, arg) => response.data,
@@ -36,4 +36,4 @@ export const VouchersApiSlice = apiSlice.injectEndpoints({
     })
 })
 
-export const { useGetVouchersQuery } = VouchersApiSlice
+export const { useGetVouchersQuery, useGetVoucherByIdQuery } = VouchersApiSlice

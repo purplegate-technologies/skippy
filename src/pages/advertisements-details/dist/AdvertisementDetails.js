@@ -20,6 +20,7 @@ var Breadcrubs_1 = require("../../components/breadcrubs/Breadcrubs");
 // import DoughnutChart from '../../components/charts/DoughnutChart'
 var video_1 = require("./video");
 var react_circular_progressbar_1 = require("react-circular-progressbar");
+var AdvertsApiSlice_1 = require("../../features/adverts/AdvertsApiSlice");
 var bread = [
     {
         name: 'Dashboard',
@@ -35,8 +36,14 @@ var bread = [
     }
 ];
 var AdvertisementDetails = function () {
+    var id = react_router_dom_1.useParams().id;
     var _a = react_1.useState("Info"), tabIndex = _a[0], setTabIndex = _a[1];
     var navigate = react_router_dom_1.useNavigate();
+    react_1.useEffect(function () {
+        console.log(id, "Params for adverts");
+    }, [id]);
+    var data = AdvertsApiSlice_1.useGetAdvertByIdQuery(id).data;
+    console.log(data, "v by id for adverts");
     var playerRef = react_1["default"].useRef(null);
     var handlePlayerReady = function (player) {
         playerRef.current = player;

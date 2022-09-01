@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import DeactiviteIcon from '../../assets/svg/Deactivite'
 import EditIcon from '../../assets/svg/EditIcon'
 import ExportIcon from '../../assets/svg/ExportIcon'
@@ -8,6 +8,7 @@ import Breadcrubs from '../../components/breadcrubs/Breadcrubs'
 import VideoPlayer from './video'
 
 import { CircularProgressbar } from "react-circular-progressbar"
+import { useGetAdvertByIdQuery } from '../../features/adverts/AdvertsApiSlice'
 
 
 export interface BreadcrumbsProps {
@@ -34,8 +35,18 @@ const bread: BreadcrumbsProps[] = [
 ]
 
 const AdvertisementDetails = () => {
+
+  const {id} = useParams()
   const [tabIndex, setTabIndex] = useState<string>("Info")
   const navigate = useNavigate();
+
+  useEffect(() => {
+console.log(id, "Params for adverts")
+  },[id])
+
+  const {data} = useGetAdvertByIdQuery(id)
+
+  console.log(data, "v by id for adverts")
 
   const playerRef = React.useRef(null);
   const handlePlayerReady = (player: any) => {

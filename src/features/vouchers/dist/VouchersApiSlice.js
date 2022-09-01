@@ -1,6 +1,6 @@
 "use strict";
 exports.__esModule = true;
-exports.useGetVouchersQuery = exports.VouchersApiSlice = void 0;
+exports.useGetVoucherByIdQuery = exports.useGetVouchersQuery = exports.VouchersApiSlice = void 0;
 var apiSlice_1 = require("../../services/api/apiSlice");
 exports.VouchersApiSlice = apiSlice_1.apiSlice.injectEndpoints({
     endpoints: function (builder) { return ({
@@ -20,7 +20,7 @@ exports.VouchersApiSlice = apiSlice_1.apiSlice.injectEndpoints({
             transformResponse: function (response, meta, arg) { return response.data; },
             providesTags: ['Vouchers']
         }),
-        getVoucher: builder.query({
+        getVoucherById: builder.query({
             query: function (_a) {
                 var id = _a.id;
                 return "vouchers/" + id;
@@ -40,4 +40,4 @@ exports.VouchersApiSlice = apiSlice_1.apiSlice.injectEndpoints({
         })
     }); }
 });
-exports.useGetVouchersQuery = exports.VouchersApiSlice.useGetVouchersQuery;
+exports.useGetVouchersQuery = exports.VouchersApiSlice.useGetVouchersQuery, exports.useGetVoucherByIdQuery = exports.VouchersApiSlice.useGetVoucherByIdQuery;

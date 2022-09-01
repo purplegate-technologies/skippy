@@ -23,6 +23,7 @@ var react_circular_progressbar_1 = require("react-circular-progressbar");
 require("react-circular-progressbar/dist/styles.css");
 var DollarIcon_1 = require("./DollarIcon");
 var DollarVoucher_1 = require("./DollarVoucher");
+var VouchersApiSlice_1 = require("../../features/vouchers/VouchersApiSlice");
 var bread = [
     {
         name: 'Dashboard',
@@ -39,7 +40,12 @@ var bread = [
 ];
 var FinanceDetails = function () {
     var _a = react_1.useState("Info"), tabIndex = _a[0], setTabIndex = _a[1];
+    var id = react_router_dom_1.useParams().id;
+    var data = VouchersApiSlice_1.useGetVoucherByIdQuery(id).data;
     var navigate = react_router_dom_1.useNavigate();
+    react_1.useEffect(function () {
+        console.log(id, "Params for voucher");
+    }, [id]);
     return (react_1["default"].createElement("section", null,
         react_1["default"].createElement(Breadcrubs_1["default"], __assign({}, { bread: bread })),
         react_1["default"].createElement("div", { className: "financedetails my-5 border rounded-xl shadow-sm p-4" },

@@ -1,6 +1,6 @@
 "use strict";
 exports.__esModule = true;
-exports.useGetStreamUserQuery = exports.useGetStreamAdminQuery = exports.useCompleteStreamsMutation = exports.useStartStreamsMutation = exports.useDeleteAdvertMutation = exports.useUpdateAdvertMutation = exports.useGetAdvertQuery = exports.useGetAdvertUserQuery = exports.useGetAdvertAdminQuery = exports.useCreateAdvertMutation = exports.advertsApiSlice = void 0;
+exports.useGetStreamUserQuery = exports.useGetStreamAdminQuery = exports.useCompleteStreamsMutation = exports.useStartStreamsMutation = exports.useDeleteAdvertMutation = exports.useUpdateAdvertMutation = exports.useGetAdvertByIdQuery = exports.useGetAdvertUserQuery = exports.useGetAdvertAdminQuery = exports.useCreateAdvertMutation = exports.advertsApiSlice = void 0;
 var apiSlice_1 = require("../../services/api/apiSlice");
 exports.advertsApiSlice = apiSlice_1.apiSlice.injectEndpoints({
     endpoints: function (builder) { return ({
@@ -26,7 +26,7 @@ exports.advertsApiSlice = apiSlice_1.apiSlice.injectEndpoints({
             transformResponse: function (response, meta, arg) { return response.data; },
             providesTags: ['Advert']
         }),
-        getAdvert: builder.query({
+        getAdvertById: builder.query({
             query: function (_a) {
                 var id = _a.id;
                 return "adverts/" + id;
@@ -102,4 +102,4 @@ exports.advertsApiSlice = apiSlice_1.apiSlice.injectEndpoints({
         })
     }); }
 });
-exports.useCreateAdvertMutation = exports.advertsApiSlice.useCreateAdvertMutation, exports.useGetAdvertAdminQuery = exports.advertsApiSlice.useGetAdvertAdminQuery, exports.useGetAdvertUserQuery = exports.advertsApiSlice.useGetAdvertUserQuery, exports.useGetAdvertQuery = exports.advertsApiSlice.useGetAdvertQuery, exports.useUpdateAdvertMutation = exports.advertsApiSlice.useUpdateAdvertMutation, exports.useDeleteAdvertMutation = exports.advertsApiSlice.useDeleteAdvertMutation, exports.useStartStreamsMutation = exports.advertsApiSlice.useStartStreamsMutation, exports.useCompleteStreamsMutation = exports.advertsApiSlice.useCompleteStreamsMutation, exports.useGetStreamAdminQuery = exports.advertsApiSlice.useGetStreamAdminQuery, exports.useGetStreamUserQuery = exports.advertsApiSlice.useGetStreamUserQuery;
+exports.useCreateAdvertMutation = exports.advertsApiSlice.useCreateAdvertMutation, exports.useGetAdvertAdminQuery = exports.advertsApiSlice.useGetAdvertAdminQuery, exports.useGetAdvertUserQuery = exports.advertsApiSlice.useGetAdvertUserQuery, exports.useGetAdvertByIdQuery = exports.advertsApiSlice.useGetAdvertByIdQuery, exports.useUpdateAdvertMutation = exports.advertsApiSlice.useUpdateAdvertMutation, exports.useDeleteAdvertMutation = exports.advertsApiSlice.useDeleteAdvertMutation, exports.useStartStreamsMutation = exports.advertsApiSlice.useStartStreamsMutation, exports.useCompleteStreamsMutation = exports.advertsApiSlice.useCompleteStreamsMutation, exports.useGetStreamAdminQuery = exports.advertsApiSlice.useGetStreamAdminQuery, exports.useGetStreamUserQuery = exports.advertsApiSlice.useGetStreamUserQuery;
