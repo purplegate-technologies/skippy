@@ -54,6 +54,6 @@ var Finance = function () {
                 react_1["default"].createElement("div", { className: "col-12" },
                     react_1["default"].createElement("div", { className: "" },
                         react_1["default"].createElement("div", { className: "card__body" },
-                            react_1["default"].createElement(Table_1["default"], __assign({ limit: '2', headData: customerTableHead, renderHead: function (item, index) { return renderHead(item, index); }, bodyData: isFetching ? [] : data === null || data === void 0 ? void 0 : data.docs, renderBody: function (item, index) { return renderBody(item, index); } }, { isLoading: isLoading }, { isFetching: isFetching })))))))));
+                            react_1["default"].createElement(Table_1["default"], __assign({ limit: '10', headData: customerTableHead, renderHead: function (item, index) { return renderHead(item, index); }, bodyData: isFetching ? [] : data === null || data === void 0 ? void 0 : data.docs, renderBody: function (item, index) { return renderBody(item, index); } }, { isLoading: isLoading }, { isFetching: isFetching })))))))));
 };
 exports["default"] = Finance;
