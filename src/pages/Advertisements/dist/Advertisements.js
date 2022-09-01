@@ -189,7 +189,7 @@ var Advertisements = function () {
                     React.createElement(LinearGradientChart_1["default"], { chartData: externalGraph })))),
         React.createElement("div", { className: 'my-5' }),
         React.createElement("div", { className: "card" },
-            React.createElement(SearchBar_1["default"], { HeaderTitle: 'All Adverts', placeholder: 'Enter Brand/Ad Name', text: 'Create Advert', onClick: function () { return navigate('/advertisements-details'); }, prefixIcon: React.createElement(CreateAdsPlus_1["default"], null) }),
+            React.createElement(SearchBar_1["default"], { HeaderTitle: 'All Adverts', placeholder: 'Enter Brand/Ad Name', text: 'Create Advert', onClick: function () { return navigate('/create-adverts'); }, prefixIcon: React.createElement(CreateAdsPlus_1["default"], null) }),
             React.createElement(CategoryFilter_1["default"], null),
             React.createElement("div", { className: "row " },
                 React.createElement("div", { className: "col-12" },

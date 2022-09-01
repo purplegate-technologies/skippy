@@ -9,7 +9,6 @@ var SearchBar_1 = require("../../components/support/SearchBar");
 require("./styles.css");
 var react_router_dom_1 = require("react-router-dom");
 var CategoryFilter_1 = require("../../components/CategoryFilter/CategoryFilter");
-var react_router_dom_2 = require("react-router-dom");
 var CreateAdsPlus_1 = require("../../assets/svg/CreateAdsPlus");
 var ManageUsers = function () {
     var navigate = react_router_dom_1.useNavigate();
@@ -44,7 +43,6 @@ var ManageUsers = function () {
                 React.createElement("div", { className: "card" },
                     React.createElement(SearchBar_1["default"], { HeaderTitle: 'App Users', text: "Invite User", onClick: function () { return navigate('/invite-users'); }, prefixIcon: React.createElement(CreateAdsPlus_1["default"], null) }),
                     React.createElement(CategoryFilter_1["default"], null),
-                    React.createElement(react_router_dom_2.Link, { to: "/activity-overview", className: "bg-red-600" }, "ActivityOverview"),
                     React.createElement("div", { className: "row" },
                         React.createElement("div", { className: "col-12" },
                             React.createElement("div", { className: "" },

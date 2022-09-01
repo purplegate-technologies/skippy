@@ -251,7 +251,7 @@ const Advertisements = () => {
       <div className='my-5' />
 
       <div className="card">
-        <SearchBar HeaderTitle='All Adverts' placeholder='Enter Brand/Ad Name' text='Create Advert' onClick={() => navigate('/advertisements-details')} prefixIcon={<CreateAdsPlus />}  />
+        <SearchBar HeaderTitle='All Adverts' placeholder='Enter Brand/Ad Name' text='Create Advert' onClick={() => navigate('/create-adverts')} prefixIcon={<CreateAdsPlus />}  />
         <CategoryFilter />
         {/* Table */}
         <div className="row ">

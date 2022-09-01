@@ -39,18 +39,18 @@ function App() {
 
         {/* protected routes */}
         <Route element={<RequiredAuth />}>
-          <Route path="advertisements/:id" element={<CreateAderts />} />
-          <Route path="finance/:id" element={<CreateVoucher />} />
+          <Route path="create-adverts" element={<CreateAderts />} />
+          <Route path="create-vouchers" element={<CreateVoucher />} />
           <Route path="voucher-details" element={<VoucherDetails />} />
 
 
           <Route path="/" element={<Layout />}>
             <Route index element={<Dashboard />} />
             <Route path="advertisements" element={<Advertisements />} />
-            <Route path="advertisements-details" element={<AdvertisementDetails />} />
+            <Route path="advertisements/:id" element={<AdvertisementDetails />} />
             <Route path="traffic" element={<Traffic />} />
             <Route path="finance" element={<Finance />} />
-            <Route path="finance-details" element={<FinanceDetails />} />
+            <Route path="finance/:id" element={<FinanceDetails />} />
             <Route path="manage-users" element={<ManageUsers />} />
             <Route path="invite-users" element={<InviteUser />} />
             <Route path="activity-log" element={<ActivityLog />} />
