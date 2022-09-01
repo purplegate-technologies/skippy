@@ -48,7 +48,7 @@ var Finance = function () {
     return (react_1["default"].createElement("div", null,
         react_1["default"].createElement(StatusCards_1["default"], null),
         react_1["default"].createElement("div", { className: "card" },
-            react_1["default"].createElement(SearchBar_1["default"], { className: '', HeaderTitle: 'All Vouchers', placeholder: 'Enter Brand/Voucher Name', text: "Create\u00A0Voucher", onClick: function () { return navigate('/create-voucher'); }, prefixIcon: react_1["default"].createElement(CreateAdsPlus_1["default"], null) }),
+            react_1["default"].createElement(SearchBar_1["default"], { className: '', HeaderTitle: 'All Vouchers', placeholder: 'Enter Brand/Voucher Name', text: "Create\u00A0Voucher", onClick: function () { return navigate('/create-vouchers'); }, prefixIcon: react_1["default"].createElement(CreateAdsPlus_1["default"], null) }),
             react_1["default"].createElement(CategoryFilter_1["default"], null),
             react_1["default"].createElement("div", { className: "row" },
                 react_1["default"].createElement("div", { className: "col-12" },
