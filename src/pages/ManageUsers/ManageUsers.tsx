@@ -7,8 +7,6 @@ import SearchBar from '../../components/support/SearchBar'
 import "./styles.css"
 import { useNavigate } from 'react-router-dom'
 import CategoryFilter from '../../components/CategoryFilter/CategoryFilter'
-
-import {Link} from "react-router-dom"
 import CreateAdsPlus from '../../assets/svg/CreateAdsPlus'
 
 
@@ -64,9 +62,7 @@ const ManageUsers = () => {
           <div className="card">
             <SearchBar HeaderTitle='App Users' text="Invite User" onClick={() => navigate('/invite-users')} prefixIcon={<CreateAdsPlus />}  />
             <CategoryFilter />
-                    <Link to="/activity-overview" className="bg-red-600">
-                    ActivityOverview
-                    </Link>
+
             {/* tab end */}
             <div className="row">
               <div className="col-12">
