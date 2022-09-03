@@ -213,41 +213,41 @@ const AdvertisementDetails = () => {
 
               <div className="flex flex-col px-4 mt-7">
                 <div className="flex items-center justify-between mb-6">
-                  <p className="text-[#949AB1] text-xs">Category</p>
-                  <p className="text-[#516CF5] text-xs text-right capitalize">{data ? `${data?.type} Advert` : "-"}</p>
+                  <p className="text-[#949AB1] text-sm">Category</p>
+                  <p className="text-[#516CF5] text-sm text-right capitalize">{data ? `${data?.type} Advert` : "-"}</p>
                 </div>
                 <div className="flex items-center justify-between mb-6">
-                  <p className="text-[#949AB1] text-xs">Brand Name/Ad Title</p>
-                  <p className="text-[#171837] text-xs text-right">{data ? data?.title : "-"}</p>
+                  <p className="text-[#949AB1] text-sm">Brand Name/Ad Title</p>
+                  <p className="text-[#171837] text-sm text-right">{data ? data?.title : "-"}</p>
                 </div>
                 <div className="flex items-center justify-between mb-6">
-                  <p className="text-[#949AB1] text-xs">Action Link</p>
-                  <p className="text-[#171837] text-xs text-right">{data ? data?.videoUrl : ""}</p>
-                  {/* <p className="text-[#171837] text-xs text-right">https://netflix.com/</p> */}
+                  <p className="text-[#949AB1] text-sm">Action Link</p>
+                  <p className="text-[#171837] text-sm text-right">{data ? data?.videoUrl : ""}</p>
+                  {/* <p className="text-[#171837] text-sm text-right">https://netflix.com/</p> */}
                 </div>
                 <div className="flex items-center justify-between mb-6">
-                  <p className="text-[#949AB1] text-xs">Duration</p>
-                  <p className="text-[#171837] text-xs text-right">{data ? data?.lengthInSeconds : "-"}</p>
+                  <p className="text-[#949AB1] text-sm">Duration</p>
+                  <p className="text-[#171837] text-sm text-right">{data ? data?.lengthInSeconds : "-"}</p>
                 </div>
                 <div className="flex items-center justify-between mb-6">
-                  <p className="text-[#949AB1] text-xs">Point per Play</p>
-                  <p className="text-[#171837] text-xs text-right">{data ? data?.points : "-"}</p>
+                  <p className="text-[#949AB1] text-sm">Point per Play</p>
+                  <p className="text-[#171837] text-sm text-right">{data ? data?.points : "-"}</p>
                 </div>
                 <div className="flex items-center justify-between mb-6">
-                  <p className="text-[#949AB1] text-xs">Created By</p>
-                  <p className="text-[#171837] text-xs text-right">{data ? data?.createdBy?.firstName : "-"} {data ? data?.createdBy?.lastName : "-"}</p>
+                  <p className="text-[#949AB1] text-sm">Created By</p>
+                  <p className="text-[#171837] text-sm text-right">{data ? data?.createdBy?.firstName : "-"} {data ? data?.createdBy?.lastName : "-"}</p>
                 </div>
                 <div className="flex items-center justify-between mb-6">
-                  <p className="text-[#949AB1] text-xs">Add Date</p>
-                  <p className="text-[#171837] text-xs text-right">{data ? data?.updatedAt : "-"}</p>
+                  <p className="text-[#949AB1] text-sm">Add Date</p>
+                  <p className="text-[#171837] text-sm text-right">{data ? data?.updatedAt : "-"}</p>
                 </div>
                 <div className="flex items-center justify-between mb-6">
-                  <p className="text-[#949AB1] text-xs">Last Modified</p>
-                  <p className="text-[#171837] text-xs text-right">{data ? data?.updatedAt : "-"}</p>
+                  <p className="text-[#949AB1] text-sm">Last Modified</p>
+                  <p className="text-[#171837] text-sm text-right">{data ? data?.updatedAt : "-"}</p>
                 </div>
                 <div className="flex items-center justify-between mb-6">
-                  <p className="text-[#949AB1] text-xs">Modified By</p>
-                  <p className="text-[#171837] text-xs text-right">{data ? data?.createdBy?.firstName : "-"} {data ? data?.createdBy?.lastName : "-"}</p>
+                  <p className="text-[#949AB1] text-sm">Modified By</p>
+                  <p className="text-[#171837] text-sm text-right">{data ? data?.createdBy?.firstName : "-"} {data ? data?.createdBy?.lastName : "-"}</p>
                 </div>
 
               </div>

@@ -44,7 +44,7 @@ const Table = ({limit, renderHead, bodyData, headData, renderBody, isFetching}: 
         const start = Number(limit) * page
         const end = start + Number(limit)
 
-        setDataShow(bodyData.slice(start, end))
+        // setDataShow(bodyData.slice(start, end))
 
         setCurrPage(page)
     }
@@ -122,16 +122,16 @@ const Table = ({limit, renderHead, bodyData, headData, renderBody, isFetching}: 
 
             <div className='footerPagination'>
                 <div style={{display:'flex', alignItems:'center'}}>
-                    <select className='tableSelectDropDown' value={limit}>
+                    <select className='tableSelectDropDown'>
                         <option disabled>Items per page</option>
-                        <option>3</option>
-                        <option>5</option>
-                        <option>7</option>
+                        <option>10</option>
+                        <option>50</option>
+                        <option>100</option>
                     </select>
                     {" "}
                     <span style={{marginLeft:'10px'}}>Items per page</span>
                 </div>
-                {/* {pages > 0 ? (
+                {pages > 0 ? (
                         <div className="table__pagination">
                             <button onClick={handlePrevbtn} disabled={currPage === pages[0] ? true : false}>Prev</button>
                                {range.map((item: any, index: number) => {
@@ -146,15 +146,15 @@ const Table = ({limit, renderHead, bodyData, headData, renderBody, isFetching}: 
                             <button onClick={handleNextbtn} disabled={currPage === pages[pages.length - 1] ? true : false}>Next</button>
                         </div>
                     ) : null
-                } */}
-
+                }
+                {/* default
                 {
                     range.slice(0, 5).map((item, index) => (
                         <div key={index} className={`table__pagination-item ${currPage === index && 'active'}`} onClick={() => selectPage(index)}>
                             {item + 1}
                         </div>
                     ))
-                }
+                } */}
             </div>
         </div>
     )

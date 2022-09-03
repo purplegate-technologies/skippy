@@ -38,7 +38,7 @@ const bread: BreadcrumbsProps[] = [
 const FinanceDetails = () => {
     const [tabIndex, setTabIndex] = useState<string>("Info")
     const {id} = useParams()
-    
+
     const {data} = useGetVoucherByIdQuery(id)
 
     console.log(data, "useGetVoucherByIdQuery")
@@ -59,10 +59,11 @@ const FinanceDetails = () => {
                     <div className="flex md:items-center">
                         <DollarIcon className="rounded-full shadow-lg" />
                         <div className='ml-3 text-[#949AB1]'>
-                            <p className='text-md my-1'><span>Voucher</span> | <span className='text-[#00D48A]'>Available</span></p>
+                            {/* <p className='text-md my-1'><span>Voucher</span> | <span className='text-[#00D48A]'>Available</span></p> */}
+                            <p className='text-md my-1'><span>Voucher</span> | <span className='text-[#00D48A] capitalize'>{data ? data?.status : "-"}</span></p>
 
                             <span className='font-bold text-[#171837]'>N1500.00 Voucher</span>
-                            <p className='text-xs my-1'>Expiry Date: 15/09/2022</p>
+                            <p className='text-xs my-1'>Expiry Date: {data ? data?.endDate : "-"}</p>
                         </div>
                     </div>
                     {/*  */}
@@ -99,7 +100,8 @@ const FinanceDetails = () => {
                                 <span className="text-xl font-bold ml-3">N1500.00 Voucher</span>
                             </div>
                             <div className='p-5'>
-                                <p className='pb-5 text-[#404040] text-lg font-bold text-center'>This voucher holds a value of N1,500.00 only, and can be redeemed for cash</p>
+                                {/* <p className='pb-5 text-[#404040] text-lg font-bold text-center'>This voucher holds a value of N1,500.00 only, and can be redeemed for cash</p> */}
+                                <p className='pb-5 text-[#404040] text-lg font-bold text-center'>{data ? data?.description : "-"}</p>
                                 <p className='text-[#404040] text-lg'>
                                     <p>•	This Voucher is redeemable for cash</p>
                                     <p>•	This voucher can only be used once</p>
@@ -136,40 +138,56 @@ const FinanceDetails = () => {
 
                             <div className="flex flex-col px-4 mt-7">
                                 <div className="flex items-center justify-between mb-6">
-                                    <p className="text-[#949AB1] text-xs">Category</p>
-                                    <p className="text-[#516CF5] text-xs text-right">Netflix Price Slash Promo</p>
+                                    <p className="text-[#949AB1] text-sm">Status</p>
+                                    <p className="text-[#516CF5] text-sm text-right capitalize">{data ? data?.status : "-"}</p>
                                 </div>
                                 <div className="flex items-center justify-between mb-6">
-                                    <p className="text-[#949AB1] text-xs">Brand Name/Ad Title</p>
-                                    <p className="text-[#171837] text-xs text-right">Netflix Price Slash Promo</p>
+                                    <p className="text-[#949AB1] text-sm">Brand Name/Ad Title</p>
+                                    <p className="text-[#171837] text-sm text-right">{data ? data?.title : "-"}</p>
                                 </div>
                                 <div className="flex items-center justify-between mb-6">
-                                    <p className="text-[#949AB1] text-xs">Action Link</p>
-                                    <p className="text-[#171837] text-xs text-right">https://netflix.com/</p>
+                                    <p className="text-[#949AB1] text-sm">NGN Value/Voucher</p>
+                                    <p className="text-[#171837] text-sm text-right">{data ? data?.value : "-"}</p>
                                 </div>
                                 <div className="flex items-center justify-between mb-6">
-                                    <p className="text-[#949AB1] text-xs">Duration</p>
-                                    <p className="text-[#171837] text-xs text-right">01:30 mins</p>
+                                    <p className="text-[#949AB1] text-sm">Quantity</p>
+                                    <p className="text-[#171837] text-sm text-right">{data ? data?.totalQuantity : "-"}</p>
                                 </div>
                                 <div className="flex items-center justify-between mb-6">
-                                    <p className="text-[#949AB1] text-xs">Point per Play</p>
-                                    <p className="text-[#171837] text-xs text-right">100</p>
+                                    <p className="text-[#949AB1] text-sm">Points Equivalent</p>
+                                    <p className="text-[#171837] text-sm text-right">{data ? data?.price : "-"}</p>
                                 </div>
                                 <div className="flex items-center justify-between mb-6">
-                                    <p className="text-[#949AB1] text-xs">Created By</p>
-                                    <p className="text-[#171837] text-xs text-right">Imani Johnson</p>
+                                    <p className="text-[#949AB1] text-sm">Action Link</p>
+                                    <p className="text-[#171837] text-sm text-right">{data ? data?.image : "-"}</p>
                                 </div>
                                 <div className="flex items-center justify-between mb-6">
-                                    <p className="text-[#949AB1] text-xs">Add Date</p>
-                                    <p className="text-[#171837] text-xs text-right">01/05/2021</p>
+                                    <p className="text-[#949AB1] text-sm">Start Date</p>
+                                    <p className="text-[#171837] text-sm text-right">{data ? data?.startDate : "-"}</p>
                                 </div>
                                 <div className="flex items-center justify-between mb-6">
-                                    <p className="text-[#949AB1] text-xs">Last Modified</p>
-                                    <p className="text-[#171837] text-xs text-right">01/05/2021</p>
+                                    <p className="text-[#949AB1] text-sm">Expiry Date</p>
+                                    <p className="text-[#171837] text-sm text-right">{data ? data?.endDate : "-"}</p>
                                 </div>
                                 <div className="flex items-center justify-between mb-6">
-                                    <p className="text-[#949AB1] text-xs">Modified By</p>
-                                    <p className="text-[#171837] text-xs text-right">Imani Johnson</p>
+                                    <p className="text-[#949AB1] text-sm">Created By</p>
+                                    <p className="text-[#171837] text-sm text-right">{data ? data?.createdBy : "-"}</p>
+                                </div>
+                                <div className="flex items-center justify-between mb-6">
+                                    <p className="text-[#949AB1] text-sm">User Quantity</p>
+                                    <p className="text-[#171837] text-sm text-right">{data ? data?.userQuantity : "-"}</p>
+                                </div>
+                                <div className="flex items-center justify-between mb-6">
+                                    <p className="text-[#949AB1] text-sm">Last Modified</p>
+                                    <p className="text-[#171837] text-sm text-right">{data ? data?.updatedAt : "-"}</p>
+                                </div>
+                                <div className="flex items-center justify-between mb-6">
+                                    <p className="text-[#949AB1] text-sm">Last Modified By</p>
+                                    <p className="text-[#171837] text-sm text-right">{data ? data?.updatedBy : "-"}</p>
+                                </div>
+                                <div className="flex items-center justify-between mb-6">
+                                    <p className="text-[#949AB1] text-sm">Modified By</p>
+                                    <p className="text-[#171837] text-sm text-right">{data ? data?.createdBy : "-"}</p>
                                 </div>
 
                             </div>

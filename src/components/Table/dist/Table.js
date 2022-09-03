@@ -30,7 +30,7 @@ var Table = function (_a) {
     var selectPage = function (page) {
         var start = Number(limit) * page;
         var end = start + Number(limit);
-        setDataShow(bodyData.slice(start, end));
+        // setDataShow(bodyData.slice(start, end))
         setCurrPage(page);
     };
     var handleNextbtn = function () {
@@ -70,14 +70,24 @@ var Table = function (_a) {
                         React.createElement("td", { className: 'text-center w-full p-5 text-2l font-bold' }, "No Data"))))))),
         React.createElement("div", { className: 'footerPagination' },
             React.createElement("div", { style: { display: 'flex', alignItems: 'center' } },
-                React.createElement("select", { className: 'tableSelectDropDown', value: limit },
+                React.createElement("select", { className: 'tableSelectDropDown' },
                     React.createElement("option", { disabled: true }, "Items per page"),
-                    React.createElement("option", null, "3"),
-                    React.createElement("option", null, "5"),
-                    React.createElement("option", null, "7")),
+                    React.createElement("option", null, "10"),
+                    React.createElement("option", null, "50"),
+                    React.createElement("option", null, "100")),
                 " ",
                 React.createElement("span", { style: { marginLeft: '10px' } }, "Items per page")),
-            range.slice(0, 5).map(function (item, index) { return (React.createElement("div", { key: index, className: "table__pagination-item " + (currPage === index && 'active'), onClick: function () { return selectPage(index); } }, item + 1)); }))));
+            pages > 0 ? (React.createElement("div", { className: "table__pagination" },
+                React.createElement("button", { onClick: handlePrevbtn, disabled: currPage === pages[0] ? true : false }, "Prev"),
+                range.map(function (item, index) {
+                    if (item < maxPageNumberLimit + 1 && item > minPageNumberLimit) {
+                        return React.createElement("div", { key: index, className: "table__pagination-item " + (currPage === index && 'active'), onClick: function () { return selectPage(index); } }, item);
+                    }
+                    else {
+                        return null;
+                    }
+                }),
+                React.createElement("button", { onClick: handleNextbtn, disabled: currPage === pages[pages.length - 1] ? true : false }, "Next"))) : null)));
 };
 exports["default"] = Table;
 // import React, {useState} from 'react'
