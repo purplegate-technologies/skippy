@@ -10,7 +10,7 @@ exports.__esModule = true;
 var react_1 = require("react");
 require("./table.css");
 var Table = function (_a) {
-    var limit = _a.limit, renderHead = _a.renderHead, bodyData = _a.bodyData, headData = _a.headData, renderBody = _a.renderBody;
+    var limit = _a.limit, renderHead = _a.renderHead, bodyData = _a.bodyData, headData = _a.headData, renderBody = _a.renderBody, isFetching = _a.isFetching;
     var initDataShow = limit && bodyData ? bodyData.slice(0, Number(limit)) : bodyData;
     var _b = react_1.useState(initDataShow), dataShow = _b[0], setDataShow = _b[1];
     var _c = react_1.useState(0), currPage = _c[0], setCurrPage = _c[1];
@@ -65,9 +65,9 @@ var Table = function (_a) {
             React.createElement("table", null,
                 headData && renderHead ? (React.createElement("thead", null,
                     React.createElement("tr", null, headData.map(function (item, index) { return renderHead(item, index); })))) : null,
-                bodyData && (bodyData === null || bodyData === void 0 ? void 0 : bodyData.length) !== 0 && (bodyData !== undefined || null) ? (React.createElement("tbody", null, dataShow === null || dataShow === void 0 ? void 0 : dataShow.map(function (item, index) { return renderBody(item, index); }))) : (React.createElement("tbody", { className: '' },
+                isFetching ? "isFetching Data" : React.createElement(React.Fragment, null, bodyData && (bodyData === null || bodyData === void 0 ? void 0 : bodyData.length) !== 0 ? (React.createElement("tbody", null, dataShow === null || dataShow === void 0 ? void 0 : dataShow.map(function (item, index) { return renderBody(item, index); }))) : (React.createElement("tbody", { className: '' },
                     React.createElement("tr", null,
-                        React.createElement("td", { className: 'text-center w-full p-5 text-2l font-bold' }, "No Data")))))),
+                        React.createElement("td", { className: 'text-center w-full p-5 text-2l font-bold' }, "No Data"))))))),
         React.createElement("div", { className: 'footerPagination' },
             React.createElement("div", { style: { display: 'flex', alignItems: 'center' } },
                 React.createElement("select", { className: 'tableSelectDropDown' },

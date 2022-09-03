@@ -73,9 +73,8 @@ const AdvertisementDetails = () => {
   const navigate = useNavigate();
 
 
-  const { data, isFetching , isLoading } = useGetAdvertByIdQuery(id, { refetchOnMountOrArgChange: true })
+  const { data, isFetching, isLoading } = useGetAdvertByIdQuery(id, { refetchOnMountOrArgChange: true })
 
-  console.log(data, "516CF5")
   const playerRef = React.useRef(null);
   const handlePlayerReady = (player: any) => {
     playerRef.current = player;
@@ -161,14 +160,14 @@ const AdvertisementDetails = () => {
               alt="Avatar"
               className="rounded-full w-14 shadow-lg" />
             <div className='ml-3 text-[#949AB1]'>
-              <p className='text-sm my-1'><span>{data ? data?.external: "-"} Advert</span> | <span className='capitalize text-[#00D48A]'>{data ? data?.status : "-"}</span></p>
+              <p className='text-sm my-1'><span>{data ? data?.external : "-"} Advert</span> | <span className='capitalize text-[#00D48A]'>{data ? data?.status : "-"}</span></p>
               <span className='font-bold text-[#171837]'>{data ? data?.title : "-"}</span>
               <p className='text-sm my-1'>Created: {data ? data?.createdAt : "-"}</p>
             </div>
           </div>
           {/*  */}
           <div className="flex items-center justify-between md:gap-x-3 lg:mt-auto mt-10 md:mt-0  md:ml-auto">
-            <Link to="/create-adverts"  onClick={() => { }} className="flex flex-col cursor-pointer items-center p-1">
+            <Link to="/create-adverts" onClick={() => { }} className="flex flex-col cursor-pointer items-center p-1">
               <EditIcon />
               <span className='text-[#949AB1] text-xs'>Edit</span>
             </Link>
@@ -186,9 +185,13 @@ const AdvertisementDetails = () => {
 
       <div className="grid lg:grid-cols-2  gap-10">
         <div className="flex-1 flex flex-col bg-white">
-          {isLoading && "isFetching Videos"}
-          {isFetching && "isFetching Videos"}
-          <VideoPlayer options={videoJsOptions} onReady={handlePlayerReady} />
+          {isLoading ? "isFetching Videos" : (
+            <>{isFetching ? "isFetching Videos" : (
+              <VideoPlayer options={videoJsOptions} onReady={handlePlayerReady} />
+            )}
+            </>)
+          }
+
           {/* <video src={data ? data?.videoUrl : ""} className="p-[50%]" autoPlay controls /> */}
 
           {/* <video src={videos[current].sources} autoPlay controls /> */}

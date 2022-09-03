@@ -65,7 +65,6 @@ var AdvertisementDetails = function () {
     var _f = react_1.useState("Info"), tabIndex = _f[0], setTabIndex = _f[1];
     var navigate = react_router_dom_1.useNavigate();
     var _g = AdvertsApiSlice_1.useGetAdvertByIdQuery(id, { refetchOnMountOrArgChange: true }), data = _g.data, isFetching = _g.isFetching, isLoading = _g.isLoading;
-    console.log(data, "516CF5");
     var playerRef = react_1["default"].useRef(null);
     var handlePlayerReady = function (player) {
         playerRef.current = player;
@@ -124,10 +123,7 @@ var AdvertisementDetails = function () {
                         react_1["default"].createElement(ExportIcon_1["default"], null),
                         react_1["default"].createElement("span", { className: 'text-[#949AB1] text-xs' }, "Export"))))),
         react_1["default"].createElement("div", { className: "grid lg:grid-cols-2  gap-10" },
-            react_1["default"].createElement("div", { className: "flex-1 flex flex-col bg-white" },
-                isLoading && "isFetching Videos",
-                isFetching && "isFetching Videos",
-                react_1["default"].createElement(video_1["default"], { options: videoJsOptions, onReady: handlePlayerReady })),
+            react_1["default"].createElement("div", { className: "flex-1 flex flex-col bg-white" }, isLoading ? "isFetching Videos" : (react_1["default"].createElement(react_1["default"].Fragment, null, isFetching ? "isFetching Videos" : (react_1["default"].createElement(video_1["default"], { options: videoJsOptions, onReady: handlePlayerReady }))))),
             react_1["default"].createElement("div", { className: "md:basis-[45%] flex flex-col bg-white mb-10" },
                 react_1["default"].createElement("div", { className: "" },
                     react_1["default"].createElement("div", { className: " flex h-full borderitems-center flex-row border-[#F1F3FF] text-[#949AB1] relative" },

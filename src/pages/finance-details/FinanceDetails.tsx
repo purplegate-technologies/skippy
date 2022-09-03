@@ -38,6 +38,7 @@ const bread: BreadcrumbsProps[] = [
 const FinanceDetails = () => {
     const [tabIndex, setTabIndex] = useState<string>("Info")
     const {id} = useParams()
+    
     const {data} = useGetVoucherByIdQuery(id)
 
     console.log(data, "useGetVoucherByIdQuery")

@@ -16,7 +16,7 @@ interface Props<T = any> {
     isFetching?: boolean
 }
 
-const Table = ({limit, renderHead, bodyData, headData, renderBody}: Props) => {
+const Table = ({limit, renderHead, bodyData, headData, renderBody, isFetching}: Props) => {
 
     const initDataShow = limit && bodyData ? bodyData.slice(0, Number(limit)) : bodyData
 
@@ -100,8 +100,9 @@ const Table = ({limit, renderHead, bodyData, headData, renderBody}: Props) => {
                             </thead>
                         ) : null
                     }
+                    {isFetching ? "isFetching Data" : <>
                     {
-                       bodyData && bodyData?.length !== 0 && (bodyData !== undefined || null) ? (
+                        bodyData && bodyData?.length !== 0 ? (
                             <tbody>
                                 {
                                     dataShow?.map((item: any, index: number) => renderBody(item, index))
@@ -115,6 +116,7 @@ const Table = ({limit, renderHead, bodyData, headData, renderBody}: Props) => {
                             </tbody>
                         )
                     }
+                        </>}
                 </table>
             </div>
 
