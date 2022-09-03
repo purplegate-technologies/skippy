@@ -34,7 +34,7 @@ const CreateAderts = () => {
         <div className='md:basis-1/2 flex flex-col bg-white col-span-4'>
           <VideoSlider />
           <FileUpload />
-          <Button className="w-full border-[#516CF5] border border-dashed bg-white text-[#516CF5]">
+          <Button className="w-full border-[#516CF5] mt-10 border border-dashed bg-white text-[#516CF5]">
             {/* <CloudAddScene /> */}
             &nbsp;&nbsp;Add&nbsp;a&nbsp;Scene</Button>
         </div>
@@ -47,7 +47,7 @@ const CreateAderts = () => {
           </div>
 
           {tabIndex === "Scene" && (<>
-            <div className='bg-white border'>
+            <div className='bg-white border p-3'>
 
               <div className="flex items-center gap-x-5 my-5">
                 <img src="https://mdbcdn.b-cdn.net/img/new/avatars/1.webp" className="h-20 w-20" alt="" />
@@ -61,9 +61,13 @@ const CreateAderts = () => {
                 </div>
               </div>
 
-              <div className="flex">
-                <h1 className="text-[#171837] font-bold text-lg">Text Setup</h1>
-                <Input placeholder='Enter text here' />
+              <div className="">
+                  <h1 className="text-[#171837] font-bold text-lg block">Text Setup</h1>
+                <div className="flex">
+                  <div className='flex my-2 flex-1'>
+                  <input placeholder='Enter text here'  type='text' name='ddd' className=" p-2 border border-1 border-[#CFD1D5] w-fuil flex-1" />
+                  </div>
+                </div>
 
                 <div className="flex items-center">
                   <div className="contactUs-form-lable">
@@ -157,7 +161,7 @@ const CreateAderts = () => {
 
 
 
-      <div className="flex  items-center justify-between bg-[#FCFCFF] border-[#F1F3FF] border p-5 fixed bottom-0 w-[100%]">
+      <div className="flex  items-center justify-between bg-[#FCFCFF] border-[#F1F3FF] border p-5  w-[100%]">
         <div className="gap-x-3 flex">
           <Button className="bg-[#949AB1]">Undo Changes</Button>
           <Button className="bg-[#FF5660]">Delete Advert</Button>

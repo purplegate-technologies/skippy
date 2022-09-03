@@ -35,7 +35,7 @@ export const advertsApiSlice = apiSlice.injectEndpoints({
             providesTags: ['Advert']
         }),
         getAdvertById: builder.query({ // get advert for tables by id for each user
-            query: ({ id }) => `adverts/${id}`,
+            query: (id) => `adverts/${id}`,
             // Pick out data and prevent nested properties in a hook or selector
             transformResponse: (response: { data: {} | undefined | any }, meta, arg) => response.data,
             providesTags: ['Advert'],
@@ -50,14 +50,13 @@ export const advertsApiSlice = apiSlice.injectEndpoints({
             transformResponse: (response: { data: AdvertsApiSlice }, meta, arg) => response.data,
             invalidatesTags: ['Advert'],
         }),
-        deleteAdvert: builder.mutation({ // get advert by id
-            query: ({ body, id }) => ({
+        deleteAdvert: builder.mutation<void, string>({ // get advert by id
+            query: (id) => ({
                 url: `adverts/${id}`,
                 method: 'DELETE',
-                body
             }),
             // Pick out data and prevent nested properties in a hook or selector
-            transformResponse: (response: { data: AdvertsApiSlice }, meta, arg) => response.data,
+            transformResponse: (response: { data: any }, meta, arg) => response.data,
             invalidatesTags: ['Advert'],
         }),
 

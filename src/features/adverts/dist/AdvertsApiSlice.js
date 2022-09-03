@@ -27,10 +27,7 @@ exports.advertsApiSlice = apiSlice_1.apiSlice.injectEndpoints({
             providesTags: ['Advert']
         }),
         getAdvertById: builder.query({
-            query: function (_a) {
-                var id = _a.id;
-                return "adverts/" + id;
-            },
+            query: function (id) { return "adverts/" + id; },
             // Pick out data and prevent nested properties in a hook or selector
             transformResponse: function (response, meta, arg) { return response.data; },
             providesTags: ['Advert']
@@ -49,14 +46,10 @@ exports.advertsApiSlice = apiSlice_1.apiSlice.injectEndpoints({
             invalidatesTags: ['Advert']
         }),
         deleteAdvert: builder.mutation({
-            query: function (_a) {
-                var body = _a.body, id = _a.id;
-                return ({
-                    url: "adverts/" + id,
-                    method: 'DELETE',
-                    body: body
-                });
-            },
+            query: function (id) { return ({
+                url: "adverts/" + id,
+                method: 'DELETE'
+            }); },
             // Pick out data and prevent nested properties in a hook or selector
             transformResponse: function (response, meta, arg) { return response.data; },
             invalidatesTags: ['Advert']

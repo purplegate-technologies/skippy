@@ -21,6 +21,29 @@ var Breadcrubs_1 = require("../../components/breadcrubs/Breadcrubs");
 var video_1 = require("./video");
 var react_circular_progressbar_1 = require("react-circular-progressbar");
 var AdvertsApiSlice_1 = require("../../features/adverts/AdvertsApiSlice");
+var videos = [
+    {
+        description: "Big Buck Bunny tells the story of a giant rabbit with a heart bigger than himself. When one sunny day three rodents rudely harass him, something snaps... and the rabbit ain't no bunny anymore! In the typical cartoon tradition he prepares the nasty rodents a comical revenge.\n\nLicensed under the Creative Commons Attribution license\nhttp://www.bigbuckbunny.org",
+        sources: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+        subtitle: "By Blender Foundation",
+        thumb: "images/BigBuckBunny.jpg",
+        title: "Big Buck Bunny"
+    },
+    {
+        description: "The first Blender Open Movie from 2006",
+        sources: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+        subtitle: "By Blender Foundation",
+        thumb: "images/ElephantsDream.jpg",
+        title: "Elephant Dream"
+    },
+    {
+        description: "HBO GO now works with Chromecast -- the easiest way to enjoy online video on your TV. For when you want to settle into your Iron Throne to watch the latest episodes. For $35.\nLearn how to use Chromecast with HBO GO and more at google.com/chromecast.",
+        sources: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+        subtitle: "By Google",
+        thumb: "images/ForBiggerBlazes.jpg",
+        title: "For Bigger Blazes"
+    }
+];
 var bread = [
     {
         name: 'Dashboard',
@@ -36,14 +59,13 @@ var bread = [
     }
 ];
 var AdvertisementDetails = function () {
+    var _a, _b, _c, _d;
+    var _e = react_1["default"].useState(0), current = _e[0], setCurrent = _e[1];
     var id = react_router_dom_1.useParams().id;
-    var _a = react_1.useState("Info"), tabIndex = _a[0], setTabIndex = _a[1];
+    var _f = react_1.useState("Info"), tabIndex = _f[0], setTabIndex = _f[1];
     var navigate = react_router_dom_1.useNavigate();
-    react_1.useEffect(function () {
-        console.log(id, "Params for adverts");
-    }, [id]);
-    var data = AdvertsApiSlice_1.useGetAdvertByIdQuery(id).data;
-    console.log(data, "v by id for adverts");
+    var _g = AdvertsApiSlice_1.useGetAdvertByIdQuery(id, { refetchOnMountOrArgChange: true }), data = _g.data, isFetching = _g.isFetching, isLoading = _g.isLoading;
+    console.log(data, "516CF5");
     var playerRef = react_1["default"].useRef(null);
     var handlePlayerReady = function (player) {
         playerRef.current = player;
@@ -64,7 +86,7 @@ var AdvertisementDetails = function () {
         controls: true,
         sources: [
             {
-                src: '//vjs.zencdn.net/v/oceans.mp4',
+                src: data ? data === null || data === void 0 ? void 0 : data.videoUrl : "",
                 type: 'video/mp4'
             },
         ]
@@ -82,11 +104,15 @@ var AdvertisementDetails = function () {
                     react_1["default"].createElement("img", { src: "https://mdbcdn.b-cdn.net/img/new/avatars/1.webp", alt: "Avatar", className: "rounded-full w-14 shadow-lg" }),
                     react_1["default"].createElement("div", { className: 'ml-3 text-[#949AB1]' },
                         react_1["default"].createElement("p", { className: 'text-sm my-1' },
-                            react_1["default"].createElement("span", null, "Internal Advert"),
+                            react_1["default"].createElement("span", null,
+                                data ? data === null || data === void 0 ? void 0 : data.external : "-",
+                                " Advert"),
                             " | ",
-                            react_1["default"].createElement("span", { className: 'text-[#00D48A]' }, "Active")),
-                        react_1["default"].createElement("span", { className: 'font-bold text-[#171837]' }, "Netflix Price Slash Promo"),
-                        react_1["default"].createElement("p", { className: 'text-sm my-1' }, "Created: 15/05/2021"))),
+                            react_1["default"].createElement("span", { className: 'capitalize text-[#00D48A]' }, data ? data === null || data === void 0 ? void 0 : data.status : "-")),
+                        react_1["default"].createElement("span", { className: 'font-bold text-[#171837]' }, data ? data === null || data === void 0 ? void 0 : data.title : "-"),
+                        react_1["default"].createElement("p", { className: 'text-sm my-1' },
+                            "Created: ",
+                            data ? data === null || data === void 0 ? void 0 : data.createdAt : "-"))),
                 react_1["default"].createElement("div", { className: "flex items-center justify-between md:gap-x-3 lg:mt-auto mt-10 md:mt-0  md:ml-auto" },
                     react_1["default"].createElement(react_router_dom_1.Link, { to: "/create-adverts", onClick: function () { }, className: "flex flex-col cursor-pointer items-center p-1" },
                         react_1["default"].createElement(EditIcon_1["default"], null),
@@ -99,6 +125,8 @@ var AdvertisementDetails = function () {
                         react_1["default"].createElement("span", { className: 'text-[#949AB1] text-xs' }, "Export"))))),
         react_1["default"].createElement("div", { className: "grid lg:grid-cols-2  gap-10" },
             react_1["default"].createElement("div", { className: "flex-1 flex flex-col bg-white" },
+                isLoading && "isFetching Videos",
+                isFetching && "isFetching Videos",
                 react_1["default"].createElement(video_1["default"], { options: videoJsOptions, onReady: handlePlayerReady })),
             react_1["default"].createElement("div", { className: "md:basis-[45%] flex flex-col bg-white mb-10" },
                 react_1["default"].createElement("div", { className: "" },
@@ -113,31 +141,37 @@ var AdvertisementDetails = function () {
                         react_1["default"].createElement("div", { className: "flex flex-col px-4 mt-7" },
                             react_1["default"].createElement("div", { className: "flex items-center justify-between mb-6" },
                                 react_1["default"].createElement("p", { className: "text-[#949AB1] text-xs" }, "Category"),
-                                react_1["default"].createElement("p", { className: "text-[#516CF5] text-xs text-right" }, "Netflix Price Slash Promo")),
+                                react_1["default"].createElement("p", { className: "text-[#516CF5] text-xs text-right capitalize" }, data ? (data === null || data === void 0 ? void 0 : data.type) + " Advert" : "-")),
                             react_1["default"].createElement("div", { className: "flex items-center justify-between mb-6" },
                                 react_1["default"].createElement("p", { className: "text-[#949AB1] text-xs" }, "Brand Name/Ad Title"),
-                                react_1["default"].createElement("p", { className: "text-[#171837] text-xs text-right" }, "Netflix Price Slash Promo")),
+                                react_1["default"].createElement("p", { className: "text-[#171837] text-xs text-right" }, data ? data === null || data === void 0 ? void 0 : data.title : "-")),
                             react_1["default"].createElement("div", { className: "flex items-center justify-between mb-6" },
                                 react_1["default"].createElement("p", { className: "text-[#949AB1] text-xs" }, "Action Link"),
-                                react_1["default"].createElement("p", { className: "text-[#171837] text-xs text-right" }, "https://netflix.com/")),
+                                react_1["default"].createElement("p", { className: "text-[#171837] text-xs text-right" }, data ? data === null || data === void 0 ? void 0 : data.videoUrl : "")),
                             react_1["default"].createElement("div", { className: "flex items-center justify-between mb-6" },
                                 react_1["default"].createElement("p", { className: "text-[#949AB1] text-xs" }, "Duration"),
-                                react_1["default"].createElement("p", { className: "text-[#171837] text-xs text-right" }, "01:30 mins")),
+                                react_1["default"].createElement("p", { className: "text-[#171837] text-xs text-right" }, data ? data === null || data === void 0 ? void 0 : data.lengthInSeconds : "-")),
                             react_1["default"].createElement("div", { className: "flex items-center justify-between mb-6" },
                                 react_1["default"].createElement("p", { className: "text-[#949AB1] text-xs" }, "Point per Play"),
-                                react_1["default"].createElement("p", { className: "text-[#171837] text-xs text-right" }, "100")),
+                                react_1["default"].createElement("p", { className: "text-[#171837] text-xs text-right" }, data ? data === null || data === void 0 ? void 0 : data.points : "-")),
                             react_1["default"].createElement("div", { className: "flex items-center justify-between mb-6" },
                                 react_1["default"].createElement("p", { className: "text-[#949AB1] text-xs" }, "Created By"),
-                                react_1["default"].createElement("p", { className: "text-[#171837] text-xs text-right" }, "Imani Johnson")),
+                                react_1["default"].createElement("p", { className: "text-[#171837] text-xs text-right" },
+                                    data ? (_a = data === null || data === void 0 ? void 0 : data.createdBy) === null || _a === void 0 ? void 0 : _a.firstName : "-",
+                                    " ",
+                                    data ? (_b = data === null || data === void 0 ? void 0 : data.createdBy) === null || _b === void 0 ? void 0 : _b.lastName : "-")),
                             react_1["default"].createElement("div", { className: "flex items-center justify-between mb-6" },
                                 react_1["default"].createElement("p", { className: "text-[#949AB1] text-xs" }, "Add Date"),
-                                react_1["default"].createElement("p", { className: "text-[#171837] text-xs text-right" }, "01/05/2021")),
+                                react_1["default"].createElement("p", { className: "text-[#171837] text-xs text-right" }, data ? data === null || data === void 0 ? void 0 : data.updatedAt : "-")),
                             react_1["default"].createElement("div", { className: "flex items-center justify-between mb-6" },
                                 react_1["default"].createElement("p", { className: "text-[#949AB1] text-xs" }, "Last Modified"),
-                                react_1["default"].createElement("p", { className: "text-[#171837] text-xs text-right" }, "01/05/2021")),
+                                react_1["default"].createElement("p", { className: "text-[#171837] text-xs text-right" }, data ? data === null || data === void 0 ? void 0 : data.updatedAt : "-")),
                             react_1["default"].createElement("div", { className: "flex items-center justify-between mb-6" },
                                 react_1["default"].createElement("p", { className: "text-[#949AB1] text-xs" }, "Modified By"),
-                                react_1["default"].createElement("p", { className: "text-[#171837] text-xs text-right" }, "Imani Johnson")))))),
+                                react_1["default"].createElement("p", { className: "text-[#171837] text-xs text-right" },
+                                    data ? (_c = data === null || data === void 0 ? void 0 : data.createdBy) === null || _c === void 0 ? void 0 : _c.firstName : "-",
+                                    " ",
+                                    data ? (_d = data === null || data === void 0 ? void 0 : data.createdBy) === null || _d === void 0 ? void 0 : _d.lastName : "-")))))),
                 tabIndex !== "Info" && (react_1["default"].createElement(react_1["default"].Fragment, null,
                     react_1["default"].createElement("div", { className: "" },
                         react_1["default"].createElement("h1", { className: "m-6 font-bold text-[#171837] text-base" }, "Advert Report"),

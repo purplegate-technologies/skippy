@@ -292,7 +292,7 @@ const Traffic = () => {
                   <p className="text-[#171837] text-2xl">120,124</p>
                 </div>
               </div>
-              <Button className="rounded-2xl text-center">+ 23,91%</Button>
+              <Button className="rounded-2xl text-center bg-[#516CF5]">+ 23,91%</Button>
             </div>
           </div>
 

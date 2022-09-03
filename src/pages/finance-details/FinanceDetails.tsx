@@ -40,6 +40,8 @@ const FinanceDetails = () => {
     const {id} = useParams()
     const {data} = useGetVoucherByIdQuery(id)
 
+    console.log(data, "useGetVoucherByIdQuery")
+
     const navigate = useNavigate()
 
     useEffect(() => {

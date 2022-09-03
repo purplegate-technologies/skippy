@@ -11,6 +11,35 @@ import { CircularProgressbar } from "react-circular-progressbar"
 import { useGetAdvertByIdQuery } from '../../features/adverts/AdvertsApiSlice'
 
 
+const videos: any = [
+  {
+    description:
+      "Big Buck Bunny tells the story of a giant rabbit with a heart bigger than himself. When one sunny day three rodents rudely harass him, something snaps... and the rabbit ain't no bunny anymore! In the typical cartoon tradition he prepares the nasty rodents a comical revenge.\n\nLicensed under the Creative Commons Attribution license\nhttp://www.bigbuckbunny.org",
+    sources:
+      "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+    subtitle: "By Blender Foundation",
+    thumb: "images/BigBuckBunny.jpg",
+    title: "Big Buck Bunny"
+  },
+  {
+    description: "The first Blender Open Movie from 2006",
+    sources:
+      "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+    subtitle: "By Blender Foundation",
+    thumb: "images/ElephantsDream.jpg",
+    title: "Elephant Dream"
+  },
+  {
+    description:
+      "HBO GO now works with Chromecast -- the easiest way to enjoy online video on your TV. For when you want to settle into your Iron Throne to watch the latest episodes. For $35.\nLearn how to use Chromecast with HBO GO and more at google.com/chromecast.",
+    sources:
+      "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+    subtitle: "By Google",
+    thumb: "images/ForBiggerBlazes.jpg",
+    title: "For Bigger Blazes"
+  }
+]
+
 export interface BreadcrumbsProps {
   url?: string
   name?: string
@@ -36,18 +65,17 @@ const bread: BreadcrumbsProps[] = [
 
 const AdvertisementDetails = () => {
 
-  const {id} = useParams()
+  const [current, setCurrent] = React.useState(0);
+
+
+  const { id } = useParams()
   const [tabIndex, setTabIndex] = useState<string>("Info")
   const navigate = useNavigate();
 
-  useEffect(() => {
-console.log(id, "Params for adverts")
-  },[id])
 
-  const {data} = useGetAdvertByIdQuery(id)
+  const { data, isFetching , isLoading } = useGetAdvertByIdQuery(id, { refetchOnMountOrArgChange: true })
 
-  console.log(data, "v by id for adverts")
-
+  console.log(data, "516CF5")
   const playerRef = React.useRef(null);
   const handlePlayerReady = (player: any) => {
     playerRef.current = player;
@@ -71,19 +99,51 @@ console.log(id, "Params for adverts")
     controls: true,
     sources: [
       {
-        src: '//vjs.zencdn.net/v/oceans.mp4',
+        src: data ? data?.videoUrl : "",
         type: 'video/mp4',
       },
+      //   {
+      //     src: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      //     type: "video/mp4"
+      //   },
+      //   {
+      //     src: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+      //     type: "video/mp4"
+      //   },
+      //   {
+      //     src:  "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+      //     type: "video/mp4"
+      //   },
+      //   {
+      //   src: 'http://media.w3.org/2010/05/sintel/trailer.mp4',
+      //   type: 'video/mp4',
+      //   poster: 'http://media.w3.org/2010/05/sintel/poster.png'
+      //   },
 
       // {
-      //   src: "https://www.youtube.com/watch?v=K9GymlBfrXg",
-      //   type: "video/mp4"
+      //   src: 'http://media.w3.org/2010/05/bunny/trailer.mp4',
+      //   type: 'video/mp4',
+      //   poster: 'http://media.w3.org/2010/05/bunny/poster.png'
       // },
+
       // {
-      //   src: "https://www.youtube.com/watch?v=0wvd5HD2zzQ&list=RDGMEMWO-g6DgCWEqKlDtKbJA1Gw&index=4",
-      //   type: "video/mp4"
+      //   src: 'http://vjs.zencdn.net/v/oceans.mp4',
+      //   type: 'video/mp4',
+      //   poster: 'http://www.videojs.com/img/poster.jpg'
       // },
-    ]
+
+      // {
+      //   src: 'http://media.w3.org/2010/05/bunny/movie.mp4',
+      //   type: 'video/mp4',
+      //   poster: 'http://media.w3.org/2010/05/bunny/poster.png'
+      // },
+
+      // {
+      //   src: 'http://media.w3.org/2010/05/video/movie_300.mp4',
+      //   type: 'video/mp4',
+      //   poster: 'http://media.w3.org/2010/05/video/poster.png'
+      // },
+    ],
   };
 
   return (
@@ -101,17 +161,17 @@ console.log(id, "Params for adverts")
               alt="Avatar"
               className="rounded-full w-14 shadow-lg" />
             <div className='ml-3 text-[#949AB1]'>
-              <p className='text-sm my-1'><span>Internal Advert</span> | <span className='text-[#00D48A]'>Active</span></p>
-              <span className='font-bold text-[#171837]'>Netflix Price Slash Promo</span>
-              <p className='text-sm my-1'>Created: 15/05/2021</p>
+              <p className='text-sm my-1'><span>{data ? data?.external: "-"} Advert</span> | <span className='capitalize text-[#00D48A]'>{data ? data?.status : "-"}</span></p>
+              <span className='font-bold text-[#171837]'>{data ? data?.title : "-"}</span>
+              <p className='text-sm my-1'>Created: {data ? data?.createdAt : "-"}</p>
             </div>
           </div>
           {/*  */}
           <div className="flex items-center justify-between md:gap-x-3 lg:mt-auto mt-10 md:mt-0  md:ml-auto">
-              <Link to="/create-adverts" onClick={() => { }} className="flex flex-col cursor-pointer items-center p-1">
-                <EditIcon />
-                <span className='text-[#949AB1] text-xs'>Edit</span>
-              </Link>
+            <Link to="/create-adverts"  onClick={() => { }} className="flex flex-col cursor-pointer items-center p-1">
+              <EditIcon />
+              <span className='text-[#949AB1] text-xs'>Edit</span>
+            </Link>
             <div onClick={() => { }} className="flex flex-col cursor-pointer items-center p-1">
               <DeactiviteIcon />
               <span className='text-[#949AB1] text-xs'>Deactivite</span>
@@ -126,7 +186,13 @@ console.log(id, "Params for adverts")
 
       <div className="grid lg:grid-cols-2  gap-10">
         <div className="flex-1 flex flex-col bg-white">
+          {isLoading && "isFetching Videos"}
+          {isFetching && "isFetching Videos"}
           <VideoPlayer options={videoJsOptions} onReady={handlePlayerReady} />
+          {/* <video src={data ? data?.videoUrl : ""} className="p-[50%]" autoPlay controls /> */}
+
+          {/* <video src={videos[current].sources} autoPlay controls /> */}
+          {/* <button onClick={() => setCurrent(current < 2 ? current + 1 : 0)}>Next Video</button> */}
         </div>
 
         <div className="md:basis-[45%] flex flex-col bg-white mb-10">
@@ -145,39 +211,40 @@ console.log(id, "Params for adverts")
               <div className="flex flex-col px-4 mt-7">
                 <div className="flex items-center justify-between mb-6">
                   <p className="text-[#949AB1] text-xs">Category</p>
-                  <p className="text-[#516CF5] text-xs text-right">Netflix Price Slash Promo</p>
+                  <p className="text-[#516CF5] text-xs text-right capitalize">{data ? `${data?.type} Advert` : "-"}</p>
                 </div>
                 <div className="flex items-center justify-between mb-6">
                   <p className="text-[#949AB1] text-xs">Brand Name/Ad Title</p>
-                  <p className="text-[#171837] text-xs text-right">Netflix Price Slash Promo</p>
+                  <p className="text-[#171837] text-xs text-right">{data ? data?.title : "-"}</p>
                 </div>
                 <div className="flex items-center justify-between mb-6">
                   <p className="text-[#949AB1] text-xs">Action Link</p>
-                  <p className="text-[#171837] text-xs text-right">https://netflix.com/</p>
+                  <p className="text-[#171837] text-xs text-right">{data ? data?.videoUrl : ""}</p>
+                  {/* <p className="text-[#171837] text-xs text-right">https://netflix.com/</p> */}
                 </div>
                 <div className="flex items-center justify-between mb-6">
                   <p className="text-[#949AB1] text-xs">Duration</p>
-                  <p className="text-[#171837] text-xs text-right">01:30 mins</p>
+                  <p className="text-[#171837] text-xs text-right">{data ? data?.lengthInSeconds : "-"}</p>
                 </div>
                 <div className="flex items-center justify-between mb-6">
                   <p className="text-[#949AB1] text-xs">Point per Play</p>
-                  <p className="text-[#171837] text-xs text-right">100</p>
+                  <p className="text-[#171837] text-xs text-right">{data ? data?.points : "-"}</p>
                 </div>
                 <div className="flex items-center justify-between mb-6">
                   <p className="text-[#949AB1] text-xs">Created By</p>
-                  <p className="text-[#171837] text-xs text-right">Imani Johnson</p>
+                  <p className="text-[#171837] text-xs text-right">{data ? data?.createdBy?.firstName : "-"} {data ? data?.createdBy?.lastName : "-"}</p>
                 </div>
                 <div className="flex items-center justify-between mb-6">
                   <p className="text-[#949AB1] text-xs">Add Date</p>
-                  <p className="text-[#171837] text-xs text-right">01/05/2021</p>
+                  <p className="text-[#171837] text-xs text-right">{data ? data?.updatedAt : "-"}</p>
                 </div>
                 <div className="flex items-center justify-between mb-6">
                   <p className="text-[#949AB1] text-xs">Last Modified</p>
-                  <p className="text-[#171837] text-xs text-right">01/05/2021</p>
+                  <p className="text-[#171837] text-xs text-right">{data ? data?.updatedAt : "-"}</p>
                 </div>
                 <div className="flex items-center justify-between mb-6">
                   <p className="text-[#949AB1] text-xs">Modified By</p>
-                  <p className="text-[#171837] text-xs text-right">Imani Johnson</p>
+                  <p className="text-[#171837] text-xs text-right">{data ? data?.createdBy?.firstName : "-"} {data ? data?.createdBy?.lastName : "-"}</p>
                 </div>
 
               </div>
@@ -250,24 +317,24 @@ console.log(id, "Params for adverts")
                       <div className=" mx-auto my-3">
                         {/* <DoughnutChart className='flex items-center justify-center' /> */}
                         <CircularProgressbar value={100} text="70%" strokeWidth={10} className="w-[150px] h-[150px] justify-self-center flex-1"
-                                        styles={{
-                                            path: {
-                                                transform: "rotate(180deg)",
-                                                transformOrigin: "center center",
-                                                strokeLinecap: "butt",
-                                                stroke: "#FF5660"
-                                            },
-                                            trail: {
-                                                // strokeWidth: 0
-                                            },
-                                            text: {
-                                                fontSize: 22,
-                                                fontWeight: 800,
-                                                animation: "fadein 2s",
-                                                fill: "#347BF4"
-                                            }
-                                        }}
-                                    />
+                          styles={{
+                            path: {
+                              transform: "rotate(180deg)",
+                              transformOrigin: "center center",
+                              strokeLinecap: "butt",
+                              stroke: "#FF5660"
+                            },
+                            trail: {
+                              // strokeWidth: 0
+                            },
+                            text: {
+                              fontSize: 22,
+                              fontWeight: 800,
+                              animation: "fadein 2s",
+                              fill: "#347BF4"
+                            }
+                          }}
+                        />
 
                       </div>
 

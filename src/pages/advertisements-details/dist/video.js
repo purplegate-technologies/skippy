@@ -28,7 +28,9 @@ var VideoPlayer = function (_a) {
     var options = _a.options, className = _a.className, onReady = _a.onReady;
     var videoNode = React.useRef();
     var player = React.useRef();
+    // player.current?.canPlayType()
     React.useEffect(function () {
+        // player.current?.cancelFullScreen()
         player.current = video_js_1["default"](videoNode.current, __assign(__assign({}, initialOptions), options)).ready(function () {
             // console.log('onPlayerReady', this);
         });
@@ -41,7 +43,7 @@ var VideoPlayer = function (_a) {
     return React.createElement(React.Fragment, null,
         React.createElement("div", { "data-vjs-player": true },
             React.createElement("video", { ref: videoNode, className: className + " video-js video-js vjs-big-play-centered overflow-hidden h-max" }),
-            React.createElement("div", { className: "relative pt-[100%] embed-responsive embed-responsive-1by1 w-full overflow-hidden" })));
+            React.createElement("div", { className: "relative embed-responsive embed-responsive-1by1 w-full overflow-hidden" })));
 };
 exports["default"] = VideoPlayer;
 // import React from 'react'

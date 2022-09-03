@@ -19,7 +19,7 @@ export const VouchersApiSlice = apiSlice.injectEndpoints({
             providesTags: ['Vouchers'],
         }),
         getVoucherById: builder.query({
-            query: ({ id }) => `vouchers/${id}`,
+            query: (id) => `vouchers/${id}`,
             // Pick out data and prevent nested properties in a hook or selector
             transformResponse: (response: { data: {} | undefined | any }, meta, arg) => response.data,
             providesTags: ['Vouchers'],

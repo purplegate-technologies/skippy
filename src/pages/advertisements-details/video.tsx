@@ -2,6 +2,7 @@ import * as React from "react";
 import videojs from "video.js";
 import "./advertisement.css"
 import 'video.js/dist/video-js.css';
+// import 'videojs-playlist';
 
 
 interface IVideoPlayerProps {
@@ -25,7 +26,11 @@ const VideoPlayer: React.FC<IVideoPlayerProps> = ({ options, className, onReady 
   const videoNode = React.useRef<HTMLVideoElement | undefined | any>();
   const player = React.useRef<videojs.Player>();
 
+
+// player.current?.canPlayType()
+
   React.useEffect(() => {
+    // player.current?.cancelFullScreen()
     player.current = videojs(videoNode.current, {
       ...initialOptions,
       ...options,
@@ -44,7 +49,7 @@ const VideoPlayer: React.FC<IVideoPlayerProps> = ({ options, className, onReady 
     <div data-vjs-player>
   <video ref={videoNode} className={`${className} video-js video-js vjs-big-play-centered overflow-hidden h-max`} />
       <div
-        className="relative pt-[100%] embed-responsive embed-responsive-1by1 w-full overflow-hidden"
+        className="relative embed-responsive embed-responsive-1by1 w-full overflow-hidden"
       >
         {/* <iframe allowFullScreen className="embed-responsive-item absolute top-0 right-0 bottom-0 left-0 w-full h-full"
           src="https://www.youtube.com/embed/vlDzYIIOYmM?enablejsapi=2&amp;origin=https%3A%2F%2Fmdbootstrap.com"

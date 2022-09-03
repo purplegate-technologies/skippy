@@ -50,9 +50,7 @@ export const apiSlice = createApi({
     baseQuery: baseQueryWithReauth,
     reducerPath: "authApi",
     tagTypes: ['Auth', 'Advert', "UserAuth", "UserAuth", "Wallet", 'Stats', "Settings", "UserManagerment", "Vouchers"],
-    endpoints: builder => ({
-
-    })
+    endpoints: builder => ({})
 })
 
 // const {useCreateAdvertMutation, useGetAdvertAdminQuery} = apiSlice

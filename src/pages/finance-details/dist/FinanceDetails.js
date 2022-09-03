@@ -43,6 +43,7 @@ var FinanceDetails = function () {
     var _a = react_1.useState("Info"), tabIndex = _a[0], setTabIndex = _a[1];
     var id = react_router_dom_1.useParams().id;
     var data = VouchersApiSlice_1.useGetVoucherByIdQuery(id).data;
+    console.log(data, "useGetVoucherByIdQuery");
     var navigate = react_router_dom_1.useNavigate();
     react_1.useEffect(function () {
         console.log(id, "Params for voucher");

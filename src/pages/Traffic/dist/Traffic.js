@@ -210,7 +210,7 @@ var Traffic = function () {
                             react_1["default"].createElement("div", { className: 'flex flex-col items-center' },
                                 react_1["default"].createElement("span", { className: "text-[#949AB1] text-xs my-1" }, "Last Month"),
                                 react_1["default"].createElement("p", { className: "text-[#171837] text-2xl" }, "120,124"))),
-                        react_1["default"].createElement(Button_1["default"], { className: "rounded-2xl text-center" }, "+ 23,91%"))),
+                        react_1["default"].createElement(Button_1["default"], { className: "rounded-2xl text-center bg-[#516CF5]" }, "+ 23,91%"))),
                 react_1["default"].createElement("div", { className: "py-6 card" },
                     react_1["default"].createElement("div", { className: "min-w-[355]" },
                         react_1["default"].createElement("p", { className: 'text-sm my-3' }, "Overall Engagements"),
