@@ -99,16 +99,16 @@ const CreateAderts = () => {
                 </div>
               </div>
 
-              <div className="flex items-center justify-between border flex-1 lg:mt-auto mt-10 rounded">
-                <div className={`flex flex-col items-center border w-full p-2 cursor-pointer ${(tabIndexText === "Add" && "text-[#516CF5] border-2 border-[#516CF5]")}}`} onClick={() => setTabIndexText("Add")}>
+              <div className="flex items-center justify-between  flex-1 lg:mt-auto mt-10 rounded-lg">
+                <div className={`flex flex-col items-center border w-full p-2 cursor-pointer ` + (tabIndexText === "Add" && "text-[#516CF5] border-2 border-[#516CF5]")} onClick={() => setTabIndexText("Add")}>
                   <p className='text-[#516CF5] text-[28px]'>A+</p>
                   <span className='text-[#949AB1] text-xs'>Add Text</span>
                 </div>
-                <div className={`flex flex-col items-center border w-full p-2 cursor-pointer ${(tabIndexText === "Edit" && "text-[#516CF5] border-2 border-[#516CF5]")}}`} onClick={() => setTabIndexText("Edit")}>
+                <div className={`flex flex-col items-center border w-full p-2 cursor-pointer` + (tabIndexText === "Edit" && "text-[#516CF5] border-2 border-[#516CF5]")} onClick={() => setTabIndexText("Edit")}>
                   <p className='text-[#516CF5] text-[28px]'>30</p>
                   <span className='text-[#949AB1] text-xs'>Edit Scene</span>
                 </div>
-                <div className={`flex flex-col items-center border w-full p-2 cursor-pointer ${(tabIndexText === "Back" && "text-[#516CF5] border-2 border-[#516CF5]")}}`} onClick={() => setTabIndexText("Back")}>
+                <div className={`flex flex-col items-center border w-full p-2 cursor-pointer` + (tabIndexText === "Back" && "text-[#516CF5] border-2 border-[#516CF5]") } onClick={() => setTabIndexText("Back")}>
                   <p className='text-[#516CF5] text-[28px]'>Rec</p>
                   <span className='text-[#949AB1] text-xs'>Background</span>
                 </div>
@@ -178,7 +178,7 @@ const CreateAderts = () => {
                         onChange={handleChangeSeelect}
                         options={options}
                         className="w-full my-2"
-                        // isRtl
+                      // isRtl
                       />
 
                       <Select
@@ -186,23 +186,23 @@ const CreateAderts = () => {
                         onChange={handleChangeSeelect}
                         options={options}
                         className="w-full my-2"
-                        // components={{ DropdownIndicator:() => null, IndicatorSeparator:() => null }}
-                        // styles={{
-                          // indicatorSeparator: defaultStyles => ({
-                          //   ...defaultStyles,
-                          //   '& svg': { display: 'none' }
-                          // }), // removes the "stick"
-                          // dropdownIndicator: defaultStyles => ({
-                          //   ...defaultStyles,
-                          //   '& svg': { display: 'none' }
-                          // })
-                        // }}
+                      // components={{ DropdownIndicator:() => null, IndicatorSeparator:() => null }}
+                      // styles={{
+                      // indicatorSeparator: defaultStyles => ({
+                      //   ...defaultStyles,
+                      //   '& svg': { display: 'none' }
+                      // }), // removes the "stick"
+                      // dropdownIndicator: defaultStyles => ({
+                      //   ...defaultStyles,
+                      //   '& svg': { display: 'none' }
+                      // })
+                      // }}
                       />
 
                     </div>
 
                     <div className="flex flex-col flex-1 w-full">
-                      <div className="h-40 w-full flex bg-blue-400">
+                      <div className="h-40 w-full flex bg-blue-400 rounded-sm">
 
                       </div>
                     </div>
@@ -212,7 +212,20 @@ const CreateAderts = () => {
               </>}
               {tabIndexText === "Back" && <>
                 <div>
-                  Back
+                  <div>Background Colour</div>
+
+                  <div className=" ">
+                    {/* <Input label='' placeholder='Enter text here' type='text' name='' labelStyle='my-1 text-[#171837]' className='flex flex-1 w-full p-2 border border-[#949AB1] rounded' /> */}
+
+                    <div className="flex border rounded-lg p-2 my-3">
+
+                      <p>Background HEX-Code </p>
+                      <div className='flex my-2 flex-1'>
+                        <input placeholder='Enter text here' type='color' name='ddd' className=" p-2 border border-1 border-[#949AB1]  w-fuil flex flex-1" />
+                      </div>
+                    </div>
+
+                  </div>
                 </div>
               </>}
 
