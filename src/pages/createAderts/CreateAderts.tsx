@@ -115,7 +115,7 @@ const CreateAderts = () => {
               </div>
 
 
-                {/* ADD */}
+              {/* ADD */}
               {tabIndexText === "Add" && <>
                 <div className="">
                   <h1 className="text-[#171837] font-bold text-lg block">Text Setup</h1>
@@ -163,14 +163,57 @@ const CreateAderts = () => {
 
               {/* EDIT */}
               {tabIndexText === "Edit" && <>
-                          <div>
-                            EDIT
-                          </div>
+                <div>
+                  <div className="flex  gap-x-4 mb-2 p-2">
+
+                    <div className="flex flex-col flex-1 items-start">
+                      {/* <Input label='Brand name/Ad Title' type='text' name='' labelStyle='my-1 text-[#171837]' className='flex flex-1 w-full p-2 border border-[#949AB1] rounded' /> */}
+                      <div className="w-full">
+                        <label className='my-1 text-[#171837]'>Duration </label>
+                        <input type='text' name='' className='flex flex-1 w-full p-2 border border-[#949AB1] rounded' />
+                      </div>
+
+                      <Select
+                        defaultValue={selectedOption}
+                        onChange={handleChangeSeelect}
+                        options={options}
+                        className="w-full my-2"
+                        // isRtl
+                      />
+
+                      <Select
+                        defaultValue={selectedOption}
+                        onChange={handleChangeSeelect}
+                        options={options}
+                        className="w-full my-2"
+                        // components={{ DropdownIndicator:() => null, IndicatorSeparator:() => null }}
+                        // styles={{
+                          // indicatorSeparator: defaultStyles => ({
+                          //   ...defaultStyles,
+                          //   '& svg': { display: 'none' }
+                          // }), // removes the "stick"
+                          // dropdownIndicator: defaultStyles => ({
+                          //   ...defaultStyles,
+                          //   '& svg': { display: 'none' }
+                          // })
+                        // }}
+                      />
+
+                    </div>
+
+                    <div className="flex flex-col flex-1 w-full">
+                      <div className="h-40 w-full flex bg-blue-400">
+
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
               </>}
               {tabIndexText === "Back" && <>
-                          <div>
-                            Back
-                          </div>
+                <div>
+                  Back
+                </div>
               </>}
 
             </div>
