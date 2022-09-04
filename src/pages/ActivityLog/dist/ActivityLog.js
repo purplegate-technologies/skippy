@@ -34,6 +34,6 @@ var ActivityLog = function () {
                 react_1["default"].createElement("div", { className: "" },
                     react_1["default"].createElement("div", { className: "" },
                         react_1["default"].createElement("div", { className: "card__body" },
-                            react_1["default"].createElement(Table_1["default"], { limit: '10', headData: customerTableHead, renderHead: function (item, index) { return renderHead(item, index); }, bodyData: advert_list_json_1["default"], renderBody: function (item, index) { return renderBody(item, index); } }))))))));
+                            react_1["default"].createElement(Table_1["default"], { limit: 10, headData: customerTableHead, renderHead: function (item, index) { return renderHead(item, index); }, bodyData: advert_list_json_1["default"], renderBody: function (item, index) { return renderBody(item, index); } }))))))));
 };
 exports["default"] = ActivityLog;

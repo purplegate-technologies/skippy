@@ -22,7 +22,7 @@ var VoucherDetails = function () {
     return (react_1["default"].createElement(react_1["default"].Fragment, null,
         react_1["default"].createElement("div", { className: "grid lg:grid-cols-7 bg-[#FCFCFF] lg:gap-x-10" },
             react_1["default"].createElement("div", { className: "card__body lg:col-span-5" },
-                react_1["default"].createElement(Table_1["default"], { limit: '10', headData: customerTableHead, renderHead: function (item, index) { return renderHead(item, index); }, bodyData: [], renderBody: function (item, index) { return renderBody(item, index); } })),
+                react_1["default"].createElement(Table_1["default"], { limit: 10, headData: customerTableHead, renderHead: function (item, index) { return renderHead(item, index); }, bodyData: [], renderBody: function (item, index) { return renderBody(item, index); } })),
             react_1["default"].createElement("div", { className: "md:col-span-2 flex flex-col bg-white  items-center justify-between gap-8" },
                 react_1["default"].createElement("div", { className: ' rounded-lg flex p-2 items-center  bg-[#F1F3FF]' },
                     react_1["default"].createElement(ValidVoucherIcon_1["default"], null),

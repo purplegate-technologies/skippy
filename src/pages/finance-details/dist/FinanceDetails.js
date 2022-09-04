@@ -17,7 +17,6 @@ var Deactivite_1 = require("../../assets/svg/Deactivite");
 var EditIcon_1 = require("../../assets/svg/EditIcon");
 var ExportIcon_1 = require("../../assets/svg/ExportIcon");
 var Breadcrubs_1 = require("../../components/breadcrubs/Breadcrubs");
-var Button_1 = require("../../components/button/Button");
 // import DoughnutChart from '../../components/charts/DoughnutChart'
 var react_circular_progressbar_1 = require("react-circular-progressbar");
 require("react-circular-progressbar/dist/styles.css");
@@ -43,11 +42,8 @@ var FinanceDetails = function () {
     var _a = react_1.useState("Info"), tabIndex = _a[0], setTabIndex = _a[1];
     var id = react_router_dom_1.useParams().id;
     var data = VouchersApiSlice_1.useGetVoucherByIdQuery(id).data;
-    console.log(data, "useGetVoucherByIdQuery");
+    // console.log(data, "useGetVoucherByIdQuery")
     var navigate = react_router_dom_1.useNavigate();
-    react_1.useEffect(function () {
-        console.log(id, "Params for voucher");
-    }, [id]);
     return (react_1["default"].createElement("section", null,
         react_1["default"].createElement(Breadcrubs_1["default"], __assign({}, { bread: bread })),
         react_1["default"].createElement("div", { className: "financedetails my-5 border rounded-xl shadow-sm p-4" },
@@ -94,8 +90,11 @@ var FinanceDetails = function () {
                             react_1["default"].createElement("div", null,
                                 react_1["default"].createElement("p", null, "Valid till: 04 Jan, 2023 11:59pm"),
                                 react_1["default"].createElement("p", { className: 'text-[#1C57AC]' }, "Terms & Conditions Apps")),
-                            react_1["default"].createElement(Button_1["default"], { className: "border rounded-full bg-[#516CF5]", onClick: function () { return navigate('create-voucher'); }, prefixIcon: react_1["default"].createElement(CoinDetailIcon_1["default"], null) }, "1500"))))),
-            react_1["default"].createElement("div", { className: "md:basis-1/2 flex flex-col bg-white mb-10" },
+                            react_1["default"].createElement("div", { className: "flex items-center border rounded-full cursor-pointer bg-[#516CF5] text-white p-2 px-4", onClick: function () { return navigate('create-voucher'); } },
+                                react_1["default"].createElement(CoinDetailIcon_1["default"], { className: "z-50" }),
+                                "  ",
+                                react_1["default"].createElement("p", null, "1500")))))),
+            react_1["default"].createElement("div", { className: "flex flex-col bg-white mb-10" },
                 react_1["default"].createElement("div", { className: "" },
                     react_1["default"].createElement("div", { className: " flex h-full border items-center flex-row border-[#F1F3FF] text-[#949AB1] relative" },
                         react_1["default"].createElement("p", { className: "tabIndex text-center p-3 w-24 hover:border-t-2 hover:border-[#516CF5] cursor-pointer hover:text-[#516CF5]" + (tabIndex === "Info" && "tabIndex text-[#516CF5] border-t-2 border-t-[#516CF5]"), onClick: function () { return setTabIndex("Info"); } },

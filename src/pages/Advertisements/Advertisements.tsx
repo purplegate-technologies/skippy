@@ -39,7 +39,7 @@ const Advertisements = () => {
 
 
   // console.log(data, "useGetAdvertStatsQuery")
-  console.log(getAds?.docs, "gerAds")
+  // console.log(getAds?.docs, "gerAds")
   const navigate = useNavigate()
 
 
@@ -259,7 +259,7 @@ const Advertisements = () => {
             <div className="">
               <div className="card__body">
                 <Table
-                  limit='10'
+                  limit={10}
                   headData={customerTableHead}
                   renderHead={(item: any, index: number) => renderHead(item, index)}
                   bodyData={isLoading ? [] : getAds?.docs}

@@ -46,7 +46,7 @@ const ActivityLog = () => {
             <div className="">
               <div className="card__body">
                 <Table
-                  limit='10'
+                  limit={10}
                   headData={customerTableHead}
                   renderHead={(item: any, index: number) => renderHead(item, index)}
                   bodyData={advertlist}

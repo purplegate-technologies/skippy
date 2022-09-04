@@ -12,6 +12,7 @@ import DollarIcon from './DollarIcon'
 import DollarVoucher from './DollarVoucher'
 import { useGetVoucherByIdQuery } from '../../features/vouchers/VouchersApiSlice'
 import CoinDetailIcon from '../../assets/svg/CoinDetailIcon'
+import Input from '../../components/input/Input'
 
 export interface BreadcrumbsProps {
     url?: string
@@ -37,17 +38,14 @@ const bread: BreadcrumbsProps[] = [
 ]
 const FinanceDetails = () => {
     const [tabIndex, setTabIndex] = useState<string>("Info")
-    const {id} = useParams()
+    const { id } = useParams()
 
-    const {data} = useGetVoucherByIdQuery(id)
+    const { data } = useGetVoucherByIdQuery(id)
 
-    console.log(data, "useGetVoucherByIdQuery")
+    // console.log(data, "useGetVoucherByIdQuery")
 
     const navigate = useNavigate()
 
-    useEffect(() => {
-        console.log(id, "Params for voucher")
-          },[id])
 
     return (
         <section>
@@ -55,7 +53,7 @@ const FinanceDetails = () => {
             <div className="financedetails my-5 border rounded-xl shadow-sm p-4">
 
                 <div className="grid lg:grid-flow-col">
-                {/* <div className="flex items-center flex-wrap flex-row justify-between"> */}
+                    {/* <div className="flex items-center flex-wrap flex-row justify-between"> */}
                     <div className="flex md:items-center">
                         <DollarIcon className="rounded-full shadow-lg" />
                         <div className='ml-3 text-[#949AB1]'>
@@ -118,13 +116,16 @@ const FinanceDetails = () => {
                                     <p className='text-[#1C57AC]'>Terms & Conditions Apps</p>
                                 </div>
 
-                                <Button className="border rounded-full bg-[#516CF5]" onClick={() => navigate('create-voucher')} prefixIcon={<CoinDetailIcon />} >1500</Button>
+                                {/* <Button className="border rounded-full bg-[#516CF5] px-10 text-white" onClick={() => navigate('create-voucher')} prefixIcon={<CoinDetailIcon />} >1500</Button> */}
+
+                                <div className="flex items-center border rounded-full cursor-pointer bg-[#516CF5] text-white p-2 px-4" onClick={() => navigate('create-voucher')}>
+                                    <CoinDetailIcon className="z-50" />  <p>1500</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div className="md:basis-1/2 flex flex-col bg-white mb-10">
-
+                <div className="flex flex-col bg-white mb-10">
                     <div className="">
                         <div className=" flex h-full border items-center flex-row border-[#F1F3FF] text-[#949AB1] relative">
                             <p className={"tabIndex text-center p-3 w-24 hover:border-t-2 hover:border-[#516CF5] cursor-pointer hover:text-[#516CF5]" + (tabIndex === "Info" && "tabIndex text-[#516CF5] border-t-2 border-t-[#516CF5]")} onClick={() => setTabIndex("Info")}>Info{" "}</p>

@@ -11,19 +11,19 @@ var react_1 = require("react");
 require("./table.css");
 var Table = function (_a) {
     var limit = _a.limit, renderHead = _a.renderHead, bodyData = _a.bodyData, headData = _a.headData, renderBody = _a.renderBody, isFetching = _a.isFetching;
-    var initDataShow = limit && bodyData ? bodyData.slice(0, Number(limit)) : bodyData;
+    var initDataShow = limit && bodyData ? bodyData.slice(0, (limit)) : bodyData;
     var _b = react_1.useState(initDataShow), dataShow = _b[0], setDataShow = _b[1];
     var _c = react_1.useState(0), currPage = _c[0], setCurrPage = _c[1];
     // new
     var _d = react_1.useState(5), pageNumberLimit = _d[0], setpageNumberLimit = _d[1];
     var _e = react_1.useState(5), maxPageNumberLimit = _e[0], setmaxPageNumberLimit = _e[1];
-    var _f = react_1.useState(0), minPageNumberLimit = _f[0], setminPageNumberLimit = _f[1];
+    var _f = react_1.useState(1), minPageNumberLimit = _f[0], setminPageNumberLimit = _f[1];
     // let pages = 1
     var pages = 1;
     var range = [];
     if (limit !== undefined) {
-        var page = Math.floor((bodyData === null || bodyData === void 0 ? void 0 : bodyData.length) / Number(limit));
-        pages = (bodyData === null || bodyData === void 0 ? void 0 : bodyData.length) % Number(limit) === 0 ? page : page + 1;
+        var page = Math.floor((bodyData === null || bodyData === void 0 ? void 0 : bodyData.length) / (limit));
+        pages = (bodyData === null || bodyData === void 0 ? void 0 : bodyData.length) % (limit) === 0 ? page : page + 1;
         // range = [...Array(pages).keys()]
         range = __spreadArrays(Array(pages));
     }
@@ -90,65 +90,3 @@ var Table = function (_a) {
                 React.createElement("button", { onClick: handleNextbtn, disabled: currPage === pages[pages.length - 1] ? true : false }, "Next"))) : null)));
 };
 exports["default"] = Table;
-// import React, {useState} from 'react'
-// import './table.css'
-// const Table = (props) => {
-//     const initDataShow = props.limit && props.bodyData ? props.bodyData.slice(0, Number(props.limit)) : props.bodyData
-//     const [dataShow, setDataShow] = useState(initDataShow)
-//     const [currPage, setCurrPage] = useState(0)
-//     let pages = 1
-//     let range = []
-//     if (props.limit !== undefined) {
-//         let page = Math.floor(props.bodyData.length / Number(props.limit))
-//         pages = props.bodyData.length % Number(props.limit) === 0 ? page : page + 1
-//         range = [...Array(pages).keys()]
-//     }
-//     const selectPage = (page) => {
-//         const start = Number(props.limit) * page
-//         const end = start + Number(props.limit)
-//         setDataShow(props.bodyData.slice(start, end))
-//         setCurrPage(page)
-//     }
-//     return (
-//         <div>
-//             <div className="table-wrapper">
-//                 <table>
-//                     {
-//                         props.headData && props.renderHead ? (
-//                             <thead>
-//                                 <tr>
-//                                     {
-//                                         props.headData.map((item, index) => props.renderHead(item, index))
-//                                     }
-//                                 </tr>
-//                             </thead>
-//                         ) : null
-//                     }
-//                     {
-//                         props.bodyData && props.renderBody ? (
-//                             <tbody>
-//                                 {
-//                                     dataShow.map((item, index) => props.renderBody(item, index))
-//                                 }
-//                             </tbody>
-//                         ) : null
-//                     }
-//                 </table>
-//             </div>
-//             {
-//                 pages > 1 ? (
-//                     <div className="table__pagination">
-//                         {
-//                             range.map((item, index) => (
-//                                 <div key={index} className={`table__pagination-item ${currPage === index && 'active'}`} onClick={() => selectPage(index)}>
-//                                     {item + 1}
-//                                 </div>
-//                             ))
-//                         }
-//                     </div>
-//                 ) : null
-//             }
-//         </div>
-//     )
-// }
-// export default Table

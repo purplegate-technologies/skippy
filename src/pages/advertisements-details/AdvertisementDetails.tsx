@@ -65,7 +65,7 @@ const bread: BreadcrumbsProps[] = [
 
 const AdvertisementDetails = () => {
 
-  const [current, setCurrent] = React.useState(0);
+  // const [current, setCurrent] = React.useState(0);
 
 
   const { id } = useParams()

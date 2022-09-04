@@ -59,12 +59,12 @@ var bread = [
     }
 ];
 var AdvertisementDetails = function () {
+    // const [current, setCurrent] = React.useState(0);
     var _a, _b, _c, _d;
-    var _e = react_1["default"].useState(0), current = _e[0], setCurrent = _e[1];
     var id = react_router_dom_1.useParams().id;
-    var _f = react_1.useState("Info"), tabIndex = _f[0], setTabIndex = _f[1];
+    var _e = react_1.useState("Info"), tabIndex = _e[0], setTabIndex = _e[1];
     var navigate = react_router_dom_1.useNavigate();
-    var _g = AdvertsApiSlice_1.useGetAdvertByIdQuery(id, { refetchOnMountOrArgChange: true }), data = _g.data, isFetching = _g.isFetching, isLoading = _g.isLoading;
+    var _f = AdvertsApiSlice_1.useGetAdvertByIdQuery(id, { refetchOnMountOrArgChange: true }), data = _f.data, isFetching = _f.isFetching, isLoading = _f.isLoading;
     var playerRef = react_1["default"].useRef(null);
     var handlePlayerReady = function (player) {
         playerRef.current = player;

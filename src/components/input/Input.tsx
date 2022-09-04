@@ -46,7 +46,7 @@ const Input = ({
     type = "text",
     label = "",
     value = "",
-    placeholder = "Placeholder",
+    placeholder = "",
     name = "name",
     children,
     onChange = () => { },

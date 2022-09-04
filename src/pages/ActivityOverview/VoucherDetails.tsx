@@ -32,7 +32,7 @@ const VoucherDetails = () => {
             <div className="grid lg:grid-cols-7 bg-[#FCFCFF] lg:gap-x-10">
                 <div className="card__body lg:col-span-5">
                     <Table
-                        limit='10'
+                        limit={10}
                         headData={customerTableHead}
                         renderHead={(item: any, index: number) => renderHead(item, index)}
                         bodyData={[]}

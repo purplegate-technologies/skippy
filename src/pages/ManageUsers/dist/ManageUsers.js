@@ -47,7 +47,7 @@ var ManageUsers = function () {
                         React.createElement("div", { className: "col-12" },
                             React.createElement("div", { className: "" },
                                 React.createElement("div", { className: "card__body" },
-                                    React.createElement(Table_1["default"], { limit: '10', headData: customerTableHead, renderHead: function (item, index) { return renderHead(item, index); }, bodyData: advert_list_json_1["default"], renderBody: function (item, index) { return renderBody(item, index); } })))))))),
+                                    React.createElement(Table_1["default"], { limit: 10, headData: customerTableHead, renderHead: function (item, index) { return renderHead(item, index); }, bodyData: advert_list_json_1["default"], renderBody: function (item, index) { return renderBody(item, index); } })))))))),
             tabIndex === "Administrators" && (React.createElement(React.Fragment, null,
                 React.createElement("div", { className: "card" },
                     React.createElement(SearchBar_1["default"], { HeaderTitle: 'Administrators', text: "Create Admin", onClick: function () { return navigate('/settings'); }, prefixIcon: React.createElement(CreateAdsPlus_1["default"], null) }),
@@ -55,6 +55,6 @@ var ManageUsers = function () {
                         React.createElement("div", { className: "col-12" },
                             React.createElement("div", { className: "" },
                                 React.createElement("div", { className: "card__body" },
-                                    React.createElement(Table_1["default"], { limit: '10', headData: customerTableHead, renderHead: function (item, index) { return renderHead(item, index); }, bodyData: advert_list_json_1["default"], renderBody: function (item, index) { return renderBody(item, index); } })))))))))));
+                                    React.createElement(Table_1["default"], { limit: 10, headData: customerTableHead, renderHead: function (item, index) { return renderHead(item, index); }, bodyData: advert_list_json_1["default"], renderBody: function (item, index) { return renderBody(item, index); } })))))))))));
 };
 exports["default"] = ManageUsers;

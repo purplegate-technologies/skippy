@@ -10,9 +10,28 @@ import DeleteAdsIcon from './DeleteAdsIcon';
 import EditAdsIcon from './EditAdsIcon';
 import SnapAdsIcon from './SnapAdsIcon';
 import VideoSlider from './VideoSlider';
+import Select from 'react-select';
+
+
+
+const options = [
+  { value: 'chocolate', label: 'Chocolate' },
+  { value: 'strawberry', label: 'Strawberry' },
+  { value: 'vanilla', label: 'Vanilla' },
+];
+
 
 const CreateAderts = () => {
+
+  const [selectedOption, setSelectedOption] = useState(null);
+
+  const handleChangeSeelect = (val: any) => {
+    setSelectedOption(val)
+  }
+
+
   const [tabIndex, setTabIndex] = useState<string>("Scene")
+  const [tabIndexText, setTabIndexText] = useState<string>("Add")
   const [roles, setRoles] = useState("Finances and billing")
 
   const navigate = useNavigate();
@@ -48,6 +67,25 @@ const CreateAderts = () => {
 
           {tabIndex === "Scene" && (<>
             <div className='bg-white border p-3'>
+              <div className="flex-items-center flex-row justify-between my-2" style={{ display: 'flex', justifyContent: 'space-between' }}>
+
+                <p>Brand Details</p>
+                <p className="bg-[#EAEDFE] text-[#516CF5] rounded-full p-1 px-2 text-sm">Internal</p>
+
+              </div>
+
+              <div className="flex items-center gap-x-5 mb-2">
+                <div className="h-20 w-20 bg-blue-400">
+
+                </div>
+                <div className="flex flex-1 w-full">
+                  {/* <Input label='Brand name/Ad Title' type='text' name='' labelStyle='my-1 text-[#171837]' className='flex flex-1 w-full p-2 border border-[#949AB1] rounded' /> */}
+                  <div className="w-full">
+                    <label className='my-1 text-[#171837]'>Brand name/Ad Title </label>
+                    <input type='text' name='' className='flex flex-1 w-full p-2 border border-[#949AB1] rounded' />
+                  </div>
+                </div>
+              </div>
 
               <div className="flex items-center gap-x-5 my-5">
                 <img src="https://mdbcdn.b-cdn.net/img/new/avatars/1.webp" className="h-20 w-20" alt="" />
@@ -61,99 +99,77 @@ const CreateAderts = () => {
                 </div>
               </div>
 
-              <div className="">
-                  <h1 className="text-[#171837] font-bold text-lg block">Text Setup</h1>
-                <div className="flex">
-                  <div className='flex my-2 flex-1'>
-                  <input placeholder='Enter text here'  type='text' name='ddd' className=" p-2 border border-1 border-[#CFD1D5] w-fuil flex-1" />
-                  </div>
-                </div>
-
-                <div className="flex items-center">
-                  <div className="contactUs-form-lable">
-                    <label htmlFor="" className="text-xs text-[#516CF5]">
-                      {("ROLE")}
-                      <p className="text-[#EB0000] inline">{`*`}</p>
-                    </label>
-                    <select
-                      // style={selectSTyle}
-                      name=""
-                      id=""
-                      className="text-[#949AB1] border-[#949AB1] outline-none border-2 rounded p-2 mb-3 w-full"
-                      onChange={(e) => {
-                        const select = e.target as HTMLSelectElement
-                        setRoles(select.options.item(select.selectedIndex)?.innerText!)
-                      }}>
-                      <option value="super-admin">
-                        {("Super Admin")}
-                      </option>
-                      <option value="normal">
-                        {("Normal Admin")}
-                      </option>
-                      <option value="Manager">
-                        {("Regular Admin")}
-                      </option>
-                      <option value="account">
-                        {("Bad Admin")}
-                      </option>
-                      <option value="other">
-                        {("Other")}
-                      </option>
-                    </select>
-                  </div>
-                  <div className="contactUs-form-lable">
-                    <label htmlFor="" className="text-xs text-[#516CF5]">
-                      {("ROLE")}
-                      <p className="text-[#EB0000] inline">{`*`}</p>
-                    </label>
-                    <select
-                      // style={selectSTyle}
-                      name=""
-                      id=""
-                      className="text-[#949AB1] border-[#949AB1] outline-none border-2 rounded p-2 mb-3 w-full"
-                      onChange={(e) => {
-                        const select = e.target as HTMLSelectElement
-                        setRoles(select.options.item(select.selectedIndex)?.innerText!)
-                      }}>
-                      <option value="super-admin">
-                        {("Super Admin")}
-                      </option>
-                      <option value="normal">
-                        {("Normal Admin")}
-                      </option>
-                      <option value="Manager">
-                        {("Regular Admin")}
-                      </option>
-                      <option value="account">
-                        {("Bad Admin")}
-                      </option>
-                      <option value="other">
-                        {("Other")}
-                      </option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-              <div className="flex items-center justify-between border flex-1 lg:mt-auto mt-10">
-                <div className="flex flex-col items-center border w-full p-2">
+              <div className="flex items-center justify-between border flex-1 lg:mt-auto mt-10 rounded">
+                <div className={`flex flex-col items-center border w-full p-2 cursor-pointer ${(tabIndexText === "Info" && "tabIndex text-[#516CF5] border-t-2 border-t-[#516CF5]")}}`} onClick={() => setTabIndexText("Add")}>
                   <p className='text-[#516CF5] text-[28px]'>A+</p>
                   <span className='text-[#949AB1] text-xs'>Add Text</span>
                 </div>
-                <div className="flex flex-col items-center border w-full p-2">
+                <div className={`flex flex-col items-center border w-full p-2 cursor-pointer ${(tabIndexText === "Info" && "tabIndex text-[#516CF5] border-t-2 border-t-[#516CF5]")}}`} onClick={() => setTabIndexText("Edit")}>
                   <p className='text-[#516CF5] text-[28px]'>30</p>
                   <span className='text-[#949AB1] text-xs'>Edit Scene</span>
                 </div>
-                <div className="flex flex-col items-center border w-full p-2">
+                <div className={`flex flex-col items-center border w-full p-2 cursor-pointer ${(tabIndexText === "Info" && "tabIndex text-[#516CF5] border-t-2 border-t-[#516CF5]")}}`} onClick={() => setTabIndexText("Back")}>
                   <p className='text-[#516CF5] text-[28px]'>Rec</p>
                   <span className='text-[#949AB1] text-xs'>Background</span>
                 </div>
               </div>
+
+              {tabIndexText === "Add" && <>
+                <div className="">
+                  <h1 className="text-[#171837] font-bold text-lg block">Text Setup</h1>
+                  <div className="flex ">
+                    {/* <Input label='' placeholder='Enter text here' type='text' name='' labelStyle='my-1 text-[#171837]' className='flex flex-1 w-full p-2 border border-[#949AB1] rounded' /> */}
+                    <div className='flex my-2 flex-1'>
+                      <input placeholder='Enter text here' type='text' name='ddd' className=" p-2 border border-1 border-[#949AB1]  w-fuil flex flex-1" />
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-x-5 my-3 w-full justify-evenly">
+                    <div className="contactUs-form-lable flex flex-col w-full">
+                      <label htmlFor="" className="text-xs my-1 text-[#516CF5]">
+                        Position
+                      </label>
+                      <Select
+                        defaultValue={selectedOption}
+                        onChange={handleChangeSeelect}
+                        options={options}
+                      />
+
+                    </div>
+                    <div className="contactUs-form-lable flex flex-col w-full">
+                      <label htmlFor="" className="text-xs my-1 text-[#516CF5]">
+                        Text style</label>
+                      <Select
+                        defaultValue={selectedOption}
+                        onChange={(e: any) => {
+                          const select = e.target as HTMLSelectElement
+                          setRoles(select.options.item(select.selectedIndex)?.innerText!)
+                        }}
+                        options={options}
+                      />
+
+                    </div>
+                  </div>
+
+                  <div>
+                    <p>Animation</p>
+
+                    
+                  </div>
+                </div>
+              </>}
+
             </div>
           </>)}
           {tabIndex !== "Scene" && (<>
+            <div className="bg-white border p-3">
 
-            <div className="">
-
+              <h1 className="text-[#171837] font-bold text-lg block">Embed Code</h1>
+              <div className="flex">
+                <div className='flex my-2 flex-1 w-full'>
+                  <input placeholder='Enter text here' type='text' name='ddd' className=" p-2 border border-1 border-[#949AB1]  w-fuil flex flex-1" />
+                </div>
+              </div>
             </div>
           </>)}
         </div>

@@ -14,7 +14,7 @@ const Dashboard = () => {
     const [iconState, setIconState] = useState<string>("")
 
 
-    console.log(data, "data dashboard")
+    // console.log(data, "data dashboard")
 
 
     const [lineData] = useState({
