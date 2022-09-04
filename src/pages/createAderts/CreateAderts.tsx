@@ -100,20 +100,22 @@ const CreateAderts = () => {
               </div>
 
               <div className="flex items-center justify-between border flex-1 lg:mt-auto mt-10 rounded">
-                <div className={`flex flex-col items-center border w-full p-2 cursor-pointer ${(tabIndexText === "Info" && "tabIndex text-[#516CF5] border-t-2 border-t-[#516CF5]")}}`} onClick={() => setTabIndexText("Add")}>
+                <div className={`flex flex-col items-center border w-full p-2 cursor-pointer ${(tabIndexText === "Add" && "text-[#516CF5] border-2 border-[#516CF5]")}}`} onClick={() => setTabIndexText("Add")}>
                   <p className='text-[#516CF5] text-[28px]'>A+</p>
                   <span className='text-[#949AB1] text-xs'>Add Text</span>
                 </div>
-                <div className={`flex flex-col items-center border w-full p-2 cursor-pointer ${(tabIndexText === "Info" && "tabIndex text-[#516CF5] border-t-2 border-t-[#516CF5]")}}`} onClick={() => setTabIndexText("Edit")}>
+                <div className={`flex flex-col items-center border w-full p-2 cursor-pointer ${(tabIndexText === "Edit" && "text-[#516CF5] border-2 border-[#516CF5]")}}`} onClick={() => setTabIndexText("Edit")}>
                   <p className='text-[#516CF5] text-[28px]'>30</p>
                   <span className='text-[#949AB1] text-xs'>Edit Scene</span>
                 </div>
-                <div className={`flex flex-col items-center border w-full p-2 cursor-pointer ${(tabIndexText === "Info" && "tabIndex text-[#516CF5] border-t-2 border-t-[#516CF5]")}}`} onClick={() => setTabIndexText("Back")}>
+                <div className={`flex flex-col items-center border w-full p-2 cursor-pointer ${(tabIndexText === "Back" && "text-[#516CF5] border-2 border-[#516CF5]")}}`} onClick={() => setTabIndexText("Back")}>
                   <p className='text-[#516CF5] text-[28px]'>Rec</p>
                   <span className='text-[#949AB1] text-xs'>Background</span>
                 </div>
               </div>
 
+
+                {/* ADD */}
               {tabIndexText === "Add" && <>
                 <div className="">
                   <h1 className="text-[#171837] font-bold text-lg block">Text Setup</h1>
@@ -154,9 +156,21 @@ const CreateAderts = () => {
                   <div>
                     <p>Animation</p>
 
-                    
+
                   </div>
                 </div>
+              </>}
+
+              {/* EDIT */}
+              {tabIndexText === "Edit" && <>
+                          <div>
+                            EDIT
+                          </div>
+              </>}
+              {tabIndexText === "Back" && <>
+                          <div>
+                            Back
+                          </div>
               </>}
 
             </div>
