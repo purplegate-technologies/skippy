@@ -5,39 +5,14 @@ import Table from '../../components/Table/Table'
 import SearchBar from '../../components/support/SearchBar'
 // import Input from '../../components/input/Input'
 import "./styles.css"
-import { useNavigate } from 'react-router-dom'
-import CategoryFilter from '../../components/CategoryFilter/CategoryFilter'
-import CreateAdsPlus from '../../assets/svg/CreateAdsPlus'
+import { useNavigate, Link } from 'react-router-dom'
+import Administrators from './Administrators'
+import AppUsers from './AppUsers'
 
 
 const ManageUsers = () => {
-  const navigate = useNavigate()
 
   const [tabIndex, setTabIndex] = useState<string>("Administrators")
-
-  const customerTableHead = [
-    '',
-    'name',
-    'email',
-    'phone',
-    'total orders',
-    'total spend',
-    'location'
-  ]
-
-  const renderHead = (item: any, index: number) => <th key={index}>{item}</th>
-
-  const renderBody = (item: any, index: number) => (
-    <tr key={index}>
-      <td>{item.id}</td>
-      <td>{item.name}</td>
-      <td>{item.email}</td>
-      <td>{item.phone}</td>
-      <td>{item.total_orders}</td>
-      <td>{item.total_spend}</td>
-      <td>{item.location}</td>
-    </tr>
-  )
 
   return (
     <div>
@@ -56,59 +31,11 @@ const ManageUsers = () => {
         </div>
         {/* Tab Container */}
 
-        {tabIndex !== "Administrators" && (<>
-          {/* tab index */}
-
-          <div className="card">
-            <SearchBar HeaderTitle='App Users' text="Invite User" onClick={() => navigate('/invite-users')} prefixIcon={<CreateAdsPlus />}  />
-            <CategoryFilter />
-
-            {/* tab end */}
-            <div className="row">
-              <div className="col-12">
-                <div className="">
-                  {/* Tabs */}
-                  <div className="card__body">
-                    <Table
-                      limit={10}
-                      headData={customerTableHead}
-                      renderHead={(item: any, index: number) => renderHead(item, index)}
-                      bodyData={advertlist}
-                      renderBody={(item: any, index: number) => renderBody(item, index)}
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-          {/* end of atabIndex === "Administrators" */}
-        </>)}
         {tabIndex === "Administrators" && (<>
-          {/* tab index */}
-          <div className="card">
-            <SearchBar HeaderTitle='Administrators' text="Create Admin" onClick={() => navigate('/settings')} prefixIcon={<CreateAdsPlus />}  />
-
-            {/* tab end */}
-            <div className="row">
-              <div className="col-12">
-                <div className="">
-                  {/* Tabs */}
-                  <div className="card__body">
-                    <Table
-                     limit={10}
-                      headData={customerTableHead}
-                      renderHead={(item: any, index: number) => renderHead(item, index)}
-                      bodyData={advertlist}
-                      renderBody={(item: any, index: number) => renderBody(item, index)}
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-          {/* end of atabIndex === "Administrators" */}
+          <Administrators />
+        </>)}
+        {tabIndex !== "Administrators" && (<>
+          <AppUsers />
         </>)}
       </div>
       {/* /////// */}

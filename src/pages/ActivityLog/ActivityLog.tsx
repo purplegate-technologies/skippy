@@ -3,20 +3,18 @@ import Table from '../../components/Table/Table'
 import advertlist from "../../assets/jsonData/advert-list.json"
 import "./activity.css"
 import SearchBar from '../../components/support/SearchBar'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import CreateAdsPlus from '../../assets/svg/CreateAdsPlus'
 
 const ActivityLog = () => {
   const navigate = useNavigate()
 
   const customerTableHead = [
-    '',
-    'name',
-    'email',
-    'phone',
-    'total orders',
-    'total spend',
-    'location'
+    'User',
+    'User TYPE',
+    'Activity',
+    'Date & Time',
+    'Action',
   ]
 
   const renderHead = (item: any, index: number) => <th key={index}>{item}</th>
@@ -27,9 +25,9 @@ const ActivityLog = () => {
       <td>{item.name}</td>
       <td>{item.email}</td>
       <td>{item.phone}</td>
-      <td>{item.total_orders}</td>
-      <td>{item.total_spend}</td>
-      <td>{item.location}</td>
+      {/* <td>{item.total_orders}</td>
+      <td>{item.total_spend}</td> */}
+      <td><Link to="/activity-overview" className="underline text-blue-600">{item.location}</Link></td>
     </tr>
   )
 

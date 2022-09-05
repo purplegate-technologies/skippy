@@ -10,13 +10,11 @@ var CreateAdsPlus_1 = require("../../assets/svg/CreateAdsPlus");
 var ActivityLog = function () {
     var navigate = react_router_dom_1.useNavigate();
     var customerTableHead = [
-        '',
-        'name',
-        'email',
-        'phone',
-        'total orders',
-        'total spend',
-        'location'
+        'User',
+        'User TYPE',
+        'Activity',
+        'Date & Time',
+        'Action',
     ];
     var renderHead = function (item, index) { return react_1["default"].createElement("th", { key: index }, item); };
     var renderBody = function (item, index) { return (react_1["default"].createElement("tr", { key: index },
@@ -24,9 +22,8 @@ var ActivityLog = function () {
         react_1["default"].createElement("td", null, item.name),
         react_1["default"].createElement("td", null, item.email),
         react_1["default"].createElement("td", null, item.phone),
-        react_1["default"].createElement("td", null, item.total_orders),
-        react_1["default"].createElement("td", null, item.total_spend),
-        react_1["default"].createElement("td", null, item.location))); };
+        react_1["default"].createElement("td", null,
+            react_1["default"].createElement(react_router_dom_1.Link, { to: "/activity-overview", className: "underline text-blue-600" }, item.location)))); };
     return (react_1["default"].createElement(react_1["default"].Fragment, null,
         react_1["default"].createElement("div", { className: "card" },
             react_1["default"].createElement(SearchBar_1["default"], { HeaderTitle: 'Activity Log', placeholder: 'Search Activity', text: "Invite User", onClick: function () { return navigate('/invite-users'); }, prefixIcon: react_1["default"].createElement(CreateAdsPlus_1["default"], null) }),

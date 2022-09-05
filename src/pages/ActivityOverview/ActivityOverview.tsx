@@ -73,8 +73,8 @@ const ActivityOverview = () => {
             {/* Tabs */}
             <div className="">
                 <div className=" flex gap-6 h-full items-center flex-row my-4 ml-4 border-b-2 border-[#F1F3FF] text-[#949AB1] cursor-pointer relative">
-                    <p className={"tabIndex py-3 hover:border-b-2 hover:border-[#516CF5] cursor-pointer hover:text-[#516CF5]" + (tabIndex === "Earning History" && "tabIndex text-[#516CF5] border-b-2 border-b-[#516CF5]")} onClick={() => setTabIndex("Earning History")}>My Details{" "}</p>
-                    <p className={"tabIndex py-3 hover:border-b-2 hover:border-[#516CF5] cursor-pointer hover:text-[#516CF5]" + (tabIndex === "Voucher Details" && "text-[#516CF5] border-b-2 border-b-[#516CF5]")} onClick={() => setTabIndex("Voucher Details")}>Activity Log</p>
+                    <p className={"tabIndex py-3 hover:border-b-2 hover:border-[#516CF5] cursor-pointer hover:text-[#516CF5]" + (tabIndex === "Earning History" && "tabIndex text-[#516CF5] border-b-2 border-b-[#516CF5]")} onClick={() => setTabIndex("Earning History")}>Earning History{" "}</p>
+                    <p className={"tabIndex py-3 hover:border-b-2 hover:border-[#516CF5] cursor-pointer hover:text-[#516CF5]" + (tabIndex === "Voucher Details" && "text-[#516CF5] border-b-2 border-b-[#516CF5]")} onClick={() => setTabIndex("Voucher Details")}>Voucher Details</p>
                 </div>
             </div>
 
