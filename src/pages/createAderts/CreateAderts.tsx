@@ -11,7 +11,7 @@ import EditAdsIcon from './EditAdsIcon';
 import SnapAdsIcon from './SnapAdsIcon';
 import VideoSlider from './VideoSlider';
 import Select from 'react-select';
-import { useGetStreamAdminQuery } from '../../features/adverts/AdvertsApiSlice';
+import { useCreateAdvertMutation,useDeleteAdvertMutation, useGetStreamAdminQuery } from '../../features/adverts/AdvertsApiSlice';
 
 
 
@@ -34,6 +34,10 @@ const CreateAderts = () => {
   const [tabIndex, setTabIndex] = useState<string>("Scene")
   const [tabIndexText, setTabIndexText] = useState<string>("Add")
   const [roles, setRoles] = useState("Finances and billing")
+  // create Adverts
+  const [createAdvert, {isLoading}] = useCreateAdvertMutation()
+
+  useDeleteAdvertMutation()
 
   const {data} = useGetStreamAdminQuery({})
   console.log(data, 'data useGetStreamAdminQuery')

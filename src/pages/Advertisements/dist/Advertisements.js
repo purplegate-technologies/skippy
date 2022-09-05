@@ -43,7 +43,7 @@ var Advertisements = function () {
     var _m = react_1.useState(userData), externalGraph = _m[0], setExternalGraph = _m[1];
     var _o = react_1.useState(userData), internalGraph = _o[0], setInternalGraph = _o[1];
     var data = statsApis_1.useGetAdvertStatsQuery().data;
-    var _p = AdvertsApiSlice_1.useGetAdvertAdminQuery({ refetchOnMountOrArgChange: true }), getAds = _p.data, isSuccess = _p.isSuccess, isLoading = _p.isLoading, isFetching = _p.isFetching;
+    var _p = AdvertsApiSlice_1.useGetAdvertAdminQuery({ refetchOnMountOrArgChange: true }), getAds = _p.data, isLoading = _p.isLoading, isFetching = _p.isFetching;
     // console.log(data, "useGetAdvertStatsQuery")
     // console.log(getAds?.docs, "gerAds")
     var navigate = react_router_dom_1.useNavigate();

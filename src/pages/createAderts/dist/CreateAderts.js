@@ -25,6 +25,9 @@ var CreateAderts = function () {
     var _b = react_1.useState("Scene"), tabIndex = _b[0], setTabIndex = _b[1];
     var _c = react_1.useState("Add"), tabIndexText = _c[0], setTabIndexText = _c[1];
     var _d = react_1.useState("Finances and billing"), roles = _d[0], setRoles = _d[1];
+    // create Adverts
+    var _e = AdvertsApiSlice_1.useCreateAdvertMutation(), createAdvert = _e[0], isLoading = _e[1].isLoading;
+    AdvertsApiSlice_1.useDeleteAdvertMutation();
     var data = AdvertsApiSlice_1.useGetStreamAdminQuery({}).data;
     console.log(data, 'data useGetStreamAdminQuery');
     var navigate = react_router_dom_1.useNavigate();
