@@ -84,13 +84,13 @@ exports.advertsApiSlice = apiSlice_1.apiSlice.injectEndpoints({
         getStreamAdmin: builder.query({
             query: function () { return "adverts/streams"; },
             // Pick out data and prevent nested properties in a hook or selector
-            transformResponse: function (response, meta, arg) { return response.data; },
+            transformResponse: function (response) { return response.data; },
             providesTags: ["Advert"]
         }),
         getStreamUser: builder.query({
             query: function () { return "adverts/streams/user"; },
             // Pick out data and prevent nested properties in a hook or selector
-            transformResponse: function (response, meta, arg) { return response.data; },
+            transformResponse: function (response) { return response.data; },
             providesTags: ["Advert"]
         })
     }); }

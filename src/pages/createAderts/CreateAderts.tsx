@@ -11,6 +11,7 @@ import EditAdsIcon from './EditAdsIcon';
 import SnapAdsIcon from './SnapAdsIcon';
 import VideoSlider from './VideoSlider';
 import Select from 'react-select';
+import { useGetStreamAdminQuery } from '../../features/adverts/AdvertsApiSlice';
 
 
 
@@ -33,6 +34,9 @@ const CreateAderts = () => {
   const [tabIndex, setTabIndex] = useState<string>("Scene")
   const [tabIndexText, setTabIndexText] = useState<string>("Add")
   const [roles, setRoles] = useState("Finances and billing")
+
+  const {data} = useGetStreamAdminQuery({})
+  console.log(data, 'data useGetStreamAdminQuery')
 
   const navigate = useNavigate();
   return (
@@ -99,8 +103,8 @@ const CreateAderts = () => {
                 </div>
               </div>
 
-              <div className="flex items-center justify-between  flex-1 lg:mt-auto mt-10 rounded-lg">
-                <div className={`flex flex-col items-center border w-full p-2 cursor-pointer ` + (tabIndexText === "Add" && "text-[#516CF5] border-2 border-[#516CF5]")} onClick={() => setTabIndexText("Add")}>
+              <div className="flex items-center justify-between flex-1 lg:mt-auto mt-10 rounded-lg">
+                <div className={`flex flex-col items-center border w-full p-2 cursor-pointer ` + (tabIndexText === "Add" && "text-[#516CF5] border-2 rounded-tl-lg rounded-bl-lg border-[#516CF5]")} onClick={() => setTabIndexText("Add")}>
                   <p className='text-[#516CF5] text-[28px]'>A+</p>
                   <span className='text-[#949AB1] text-xs'>Add Text</span>
                 </div>
@@ -108,7 +112,7 @@ const CreateAderts = () => {
                   <p className='text-[#516CF5] text-[28px]'>30</p>
                   <span className='text-[#949AB1] text-xs'>Edit Scene</span>
                 </div>
-                <div className={`flex flex-col items-center border w-full p-2 cursor-pointer` + (tabIndexText === "Back" && "text-[#516CF5] border-2 border-[#516CF5]") } onClick={() => setTabIndexText("Back")}>
+                <div className={`flex flex-col items-center border w-full p-2 cursor-pointer` + (tabIndexText === "Back" && "text-[#516CF5] border-2 rounded-tr-lg rounded-br-lg rouned-tr-lg border-[#516CF5]")} onClick={() => setTabIndexText("Back")}>
                   <p className='text-[#516CF5] text-[28px]'>Rec</p>
                   <span className='text-[#949AB1] text-xs'>Background</span>
                 </div>
@@ -214,18 +218,37 @@ const CreateAderts = () => {
                 <div>
                   <div>Background Colour</div>
 
-                  <div className=" ">
+                  <form className=" ">
                     {/* <Input label='' placeholder='Enter text here' type='text' name='' labelStyle='my-1 text-[#171837]' className='flex flex-1 w-full p-2 border border-[#949AB1] rounded' /> */}
 
-                    <div className="flex border rounded-lg p-2 my-3">
+                    <div className=" border rounded-lg p-2 my-3">
 
                       <p>Background HEX-Code </p>
-                      <div className='flex my-2 flex-1'>
-                        <input placeholder='Enter text here' type='color' name='ddd' className=" p-2 border border-1 border-[#949AB1]  w-fuil flex flex-1" />
+                      <div className='flex items-center my-2 flex-1 gap-x-3 '>
+                        <input placeholder='Enter text here' type='color' name='' className=" p-2 border border-1 border-[#949AB1]  w-fuil flex flex-1" />
+                        <Button className="bg-[#949AB1]">Pick Color</Button>
                       </div>
                     </div>
 
-                  </div>
+                    <div className=" border rounded-lg p-2 my-3">
+
+                      <p>Button Background HEX-Code  </p>
+                      <div className='flex items-center my-2 flex-1 gap-x-3 '>
+                        <input placeholder='Enter text here' type='color' name='' className=" p-2 border border-1 border-[#949AB1]  w-fuil flex flex-1" />
+                        <Button className="bg-[#949AB1]">Pick Color</Button>
+                      </div>
+                    </div>
+                    <div className=" border rounded-lg p-2 my-3">
+
+                      <p>Button Border HEX-Code  </p>
+                      <div className='flex items-center my-2 flex-1 gap-x-3 '>
+                        <input placeholder='Enter text here' type='color' name='' className=" p-2 border border-1 border-[#949AB1]  w-fuil flex flex-1" />
+                        <Button className="bg-[#949AB1]">Pick Color</Button>
+                      </div>
+                    </div>
+
+
+                  </form>
                 </div>
               </>}
 
@@ -240,6 +263,50 @@ const CreateAderts = () => {
                   <input placeholder='Enter text here' type='text' name='ddd' className=" p-2 border border-1 border-[#949AB1]  w-fuil flex flex-1" />
                 </div>
               </div>
+
+              <div className="flex  flex-1 items-center gap-x-3 my-3">
+                <Select
+                  defaultValue={selectedOption}
+                  onChange={handleChangeSeelect}
+                  options={options}
+                  className="w-full my-2"
+                // isRtl
+                />
+                <Select
+                  defaultValue={selectedOption}
+                  onChange={handleChangeSeelect}
+                  options={options}
+                  className="w-full my-2"
+                // isRtl
+                />
+              </div>
+              <div className="flex  flex-1 items-center gap-x-3 my-3">
+                <Select
+                  defaultValue={selectedOption}
+                  onChange={handleChangeSeelect}
+                  options={options}
+                  className="w-full my-2"
+                // isRtl
+                />
+                <Select
+                  defaultValue={selectedOption}
+                  onChange={handleChangeSeelect}
+                  options={options}
+                  className="w-full my-2"
+                // isRtl
+                />
+              </div>
+
+
+              <div className=" border rounded-lg p-2 my-3">
+
+                <p>Button Label  Color HEX-Code   </p>
+                <div className='flex items-center my-2 flex-1 gap-x-3 '>
+                  <input placeholder='Enter text here' type='color' name='' className=" p-2 border border-1 border-bg-[#949AB1]  w-fuil flex flex-1" />
+                  <Button className="bg-[#949AB1]">Pick Color</Button>
+                </div>
+              </div>
+
             </div>
           </>)}
         </div>

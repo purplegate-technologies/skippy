@@ -84,13 +84,13 @@ export const advertsApiSlice = apiSlice.injectEndpoints({
         getStreamAdmin: builder.query({ // get advert admin
             query: () => `adverts/streams`,
             // Pick out data and prevent nested properties in a hook or selector
-            transformResponse: (response: { data: AdvertsApiSlice }, meta, arg) => response.data,
+            transformResponse: (response: any) => response.data,
             providesTags: ["Advert"]
         }),
         getStreamUser: builder.query({ // get advert admin
             query: () => `adverts/streams/user`,
             // Pick out data and prevent nested properties in a hook or selector
-            transformResponse: (response: { data: AdvertsApiSlice }, meta, arg) => response.data,
+            transformResponse: (response: any) => response.data,
             providesTags: ["Advert"]
         }),
     })
