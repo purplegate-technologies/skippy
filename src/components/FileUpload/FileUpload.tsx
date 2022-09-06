@@ -12,33 +12,35 @@ const FileUpload = () => {
         // setIsSelected(true);
     };
 
-    const handleSubmission = (e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
-        e.preventDefault()
-        const formData = new FormData();
+    // const handleSubmission = (e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
+    //     e.preventDefault()
+    //     const formData = new FormData();
 
-        formData.append('File', selectedFile);
+    //     formData.append('File', selectedFile);
 
-        fetch(
-            'https://freeimage.host/api/1/upload?key=<YOUR_API_KEY>',
-            {
-                method: 'POST',
-                body: formData,
-            }
-        )
-            .then((response) => response.json())
-            .then((result) => {
-                console.log('Success:', result);
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-            });
-    };
+    //     fetch(
+    //         'https://freeimage.host/api/1/upload?key=<YOUR_API_KEY>',
+    //         {
+    //             method: 'POST',
+    //             body: formData,
+    //         }
+    //     )
+    //         .then((response) => response.json())
+    //         .then((result) => {
+    //             console.log('Success:', result);
+    //         })
+    //         .catch((error) => {
+    //             console.error('Error:', error);
+    //         });
+
+    //         console.log(formData)
+    // };
 
 
 
     return (
         <div>
-            <form className='flex items-center my-3'
+            <section className='flex items-center my-3'
             // onSubmit={handleSubmission}
             >
 
@@ -48,17 +50,17 @@ const FileUpload = () => {
                     <div className="flex flex-col justify-center items-start">
                         <p className={"text-left"}>Select an audio file</p>
                     </div>
-                    <Input  type="file" className="hidden w-full" />
+                    <Input  type="file" name='' className="hidden w-full" required value="" />
                 </label>
 
 
 
                 <div>
                     <Button type='submit' className='rounded-none bg-[#516CF5]'
-                        onClick={handleSubmission}
+                        // onClick={handleSubmission}
                     >Add Audio</Button>
                 </div>
-            </form>
+            </section>
 
 
             {/* <div className="flex justify-center items-center w-full">

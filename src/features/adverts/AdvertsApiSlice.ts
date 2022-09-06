@@ -14,7 +14,7 @@ export const advertsApiSlice = apiSlice.injectEndpoints({
     endpoints: builder => ({
         createAdvert: builder.mutation({
             query: body => ({
-                url: `adverts`,
+                url: `/adverts`,
                 method: 'POST',
                 body
             }),
