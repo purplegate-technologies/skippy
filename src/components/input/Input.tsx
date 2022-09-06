@@ -35,7 +35,7 @@ interface Iprops {
     autoCorrect?: boolean
     full?: boolean
     checked?: boolean
-    divStyel?: string
+    divStyle?: string
     labelStyle?: string
     minLength?: number
     maxLength?: number
@@ -60,7 +60,7 @@ const Input = ({
     disabled = false,
     className = "",
     checked = false,
-    divStyel = "",
+    divStyle = "",
     labelStyle = "",
     maxLength,
     minLength,
@@ -108,7 +108,7 @@ const Input = ({
     }
 
     return (
-        <div className={`form-input  ${divStyel} ` + (error && "error")}>
+        <div className={`form-input  ${divStyle} ` + (error && "error")}>
             <label htmlFor={name} className={`block text-xs text-[#516CF5]  ${labelStyle}`}>
                 {label}{" "}
                 <p className="text-[#EB0000] inline">{`${requiredMsg}`}</p>

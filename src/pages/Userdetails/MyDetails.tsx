@@ -37,9 +37,9 @@ const MyDetails = () => {
                 <div className="grid md:grid-cols-2 gap-x-4 ">
                     {/* <div className="flex justify-between gap-[2.8rem] mb-8"> */}
                     <Input
-                        // divStyel="w-[19rem]contactUs-form-lable"
+                        // divStyle="w-[19rem]contactUs-form-lable"
                         labelStyle=""
-                        divStyel="lable w-full"
+                        divStyle="lable w-full"
                         className={"border-[#949AB1] border-1 rounded p-2 my-3 w-full"}
                         label="FIRST NAME"
                         name="firstName"
@@ -49,8 +49,8 @@ const MyDetails = () => {
                         // onChange={(e: Event) => setFirstName((e.target as HTMLInputElement).value)}
                     />
                     <Input
-                        // divStyel="w-[19rem]contactUs-form-lable"
-                        divStyel="contactUs-form-lable"
+                        // divStyle="w-[19rem]contactUs-form-lable"
+                        divStyle="contactUs-form-lable"
                         className={"border-[#949AB1] border-1 rounded p-2 my-3 w-full"}
                         label="SURNAME"
                         name="lastName"
@@ -63,8 +63,8 @@ const MyDetails = () => {
                 <div className="grid md:grid-cols-2 gap-x-4">
                     {/* <div className="flex flex-wrap justify-between gap-[2.8rem] mb-8"> */}
                     <Input
-                        // divStyel="w-[19rem]contactUs-form-lable"
-                        divStyel="contactUs-form-lable"
+                        // divStyle="w-[19rem]contactUs-form-lable"
+                        divStyle="contactUs-form-lable"
                         className={"border-[#949AB1] border-1 rounded p-2 my-3 w-full"}
                         label="EMAIL"
                         name="email"
@@ -74,8 +74,8 @@ const MyDetails = () => {
                         onChange={handleChange}
                     />
                     <Input
-                        // divStyel="w-[19rem]contactUs-form-lable"
-                        divStyel="contactUs-form-lable"
+                        // divStyle="w-[19rem]contactUs-form-lable"
+                        divStyle="contactUs-form-lable"
                         className={"border-[#949AB1] border-1 rounded p-2 my-3 w-full"}
                         label="MOBILE NUMBER"
                         name="phoneNumber"
@@ -89,8 +89,8 @@ const MyDetails = () => {
                 <div className="grid md:grid-cols-2 gap-x-4">
                     {/* <div className="flex flex-wrap justify-between gap-[2.8rem] mb-8"> */}
                     <Input
-                        // divStyel="w-[19rem]contactUs-form-lable"
-                        divStyel="contactUs-form-lable"
+                        // divStyle="w-[19rem]contactUs-form-lable"
+                        divStyle="contactUs-form-lable"
                         className={"border-[#949AB1] border-1 rounded p-2 my-3 w-full"}
                         label="PASSWORD"
                         name="password"
@@ -100,8 +100,8 @@ const MyDetails = () => {
                         onChange={handleChange}
                     />
                     <Input
-                        // divStyel="w-[19rem]contactUs-form-lable"
-                        divStyel="contactUs-form-lable"
+                        // divStyle="w-[19rem]contactUs-form-lable"
+                        divStyle="contactUs-form-lable"
                         className={"border-[#949AB1] border-1 rounded p-2 my-3 w-full"}
                         label="cONFRIM PASSWORD"
                         name="confirmPassword"

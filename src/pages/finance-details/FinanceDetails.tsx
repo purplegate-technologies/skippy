@@ -66,7 +66,7 @@ const FinanceDetails = () => {
                     </div>
                     {/*  */}
                     <div className="flex items-center justify-between md:gap-x-3 lg:mt-auto mt-10 md:mt-0  md:ml-auto">
-                        <Link to="/create-voucher" className="flex flex-col items-center cursor-pointer w-1/2 p-1">
+                        <Link to="/create-vouchers" className="flex flex-col items-center cursor-pointer w-1/2 p-1">
                             <EditIcon />
                             <span onClick={() => { }} className='text-[#949AB1] text-xs'>Edit</span>
                         </Link>

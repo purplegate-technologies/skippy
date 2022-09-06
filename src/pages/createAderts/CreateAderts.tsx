@@ -108,7 +108,7 @@ const CreateAderts = () => {
               </div>
 
               <div className="flex items-center justify-between flex-1 lg:mt-auto mt-10 rounded-lg">
-                <div className={`flex flex-col items-center border w-full p-2 cursor-pointer ` + (tabIndexText === "Add" && "text-[#516CF5] border-2 rounded-tl-lg rounded-bl-lg border-[#516CF5]")} onClick={() => setTabIndexText("Add")}>
+                <div className={`flex flex-col items-center border w-full p-2  ` + (tabIndexText === "Add" && "text-[#516CF5] border-2 rounded-tl-lg rounded-bl-lg border-[#516CF5]")} onClick={() => setTabIndexText("Add")}>
                   <p className='text-[#516CF5] text-[28px]'>A+</p>
                   <span className='text-[#949AB1] text-xs'>Add Text</span>
                 </div>

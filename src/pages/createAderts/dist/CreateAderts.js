@@ -72,7 +72,7 @@ var CreateAderts = function () {
                                     react_1["default"].createElement(SnapAdsIcon_1["default"], { className: 'cursor-pointer' }),
                                     react_1["default"].createElement(DeleteAdsIcon_1["default"], { className: 'cursor-pointer' })))),
                         react_1["default"].createElement("div", { className: "flex items-center justify-between flex-1 lg:mt-auto mt-10 rounded-lg" },
-                            react_1["default"].createElement("div", { className: "flex flex-col items-center border w-full p-2 cursor-pointer " + (tabIndexText === "Add" && "text-[#516CF5] border-2 rounded-tl-lg rounded-bl-lg border-[#516CF5]"), onClick: function () { return setTabIndexText("Add"); } },
+                            react_1["default"].createElement("div", { className: "flex flex-col items-center border w-full p-2  " + (tabIndexText === "Add" && "text-[#516CF5] border-2 rounded-tl-lg rounded-bl-lg border-[#516CF5]"), onClick: function () { return setTabIndexText("Add"); } },
                                 react_1["default"].createElement("p", { className: 'text-[#516CF5] text-[28px]' }, "A+"),
                                 react_1["default"].createElement("span", { className: 'text-[#949AB1] text-xs' }, "Add Text")),
                             react_1["default"].createElement("div", { className: "flex flex-col items-center border w-full p-2 cursor-pointer" + (tabIndexText === "Edit" && "text-[#516CF5] border-2 border-[#516CF5]"), onClick: function () { return setTabIndexText("Edit"); } },
