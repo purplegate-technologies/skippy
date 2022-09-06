@@ -85,8 +85,8 @@ const CreateAderts = () => {
     await createAdvert(formValues).unwrap()
     // setFormValue()
     toast.success("successfully Created an Advert");
-   } catch {
-
+  } catch(e: any) {
+    toast.error(e)
    }
 
   };
