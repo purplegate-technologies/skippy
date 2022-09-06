@@ -60,7 +60,7 @@ var FinanceDetails = function () {
                             "Expiry Date: ",
                             data ? data === null || data === void 0 ? void 0 : data.endDate : "-"))),
                 react_1["default"].createElement("div", { className: "flex items-center justify-between md:gap-x-3 lg:mt-auto mt-10 md:mt-0  md:ml-auto" },
-                    react_1["default"].createElement(react_router_dom_1.Link, { to: "/create-vouchers", className: "flex flex-col items-center cursor-pointer w-1/2 p-1" },
+                    react_1["default"].createElement(react_router_dom_1.Link, { to: "/edit-voucher" + id, className: "flex flex-col items-center cursor-pointer w-1/2 p-1" },
                         react_1["default"].createElement(EditIcon_1["default"], null),
                         react_1["default"].createElement("span", { onClick: function () { }, className: 'text-[#949AB1] text-xs' }, "Edit")),
                     react_1["default"].createElement("div", { className: "flex flex-col items-center cursor-pointer w-1/2 p-1" },

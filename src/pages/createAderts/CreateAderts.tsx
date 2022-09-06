@@ -60,9 +60,9 @@ const CreateAderts = () => {
 
   const [tabIndex, setTabIndex] = useState<string>("Scene")
   const [tabIndexText, setTabIndexText] = useState<string>("Add")
-  const [roles, setRoles] = useState("Finances and billing")
+  // const [roles, setRoles] = useState("Finances and billing")
   // create Adverts
-  const [createAdvert, { isLoading }] = useCreateAdvertMutation()
+  const [createAdvert] = useCreateAdvertMutation()
 
   useDeleteAdvertMutation()
 
@@ -83,7 +83,11 @@ const CreateAderts = () => {
 
    try {
     await createAdvert(formValues).unwrap()
-    // setFormValue()
+    setFormValue({ title: "",
+    type: '',
+    status: "",
+    points: "",
+    file: ""})
     toast.success("successfully Created an Advert");
   } catch(e: any) {
     toast.error(e)
@@ -118,7 +122,7 @@ const CreateAderts = () => {
               <div className="flex flex-col justify-center items-start">
                 <p className={"text-left"}>Select an audio file</p>
               </div>
-              <Input type="file" className=" w-full" required onChange={handleUploadCover} />
+              <Input type="file" className="hidden w-full" required onChange={handleUploadCover} />
             </label>
 
             <div>

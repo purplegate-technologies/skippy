@@ -113,7 +113,7 @@ var AdvertisementDetails = function () {
                             "Created: ",
                             data ? data === null || data === void 0 ? void 0 : data.createdAt : "-"))),
                 react_1["default"].createElement("div", { className: "flex items-center justify-between md:gap-x-3 lg:mt-auto mt-10 md:mt-0  md:ml-auto" },
-                    react_1["default"].createElement(react_router_dom_1.Link, { to: "/create-adverts", onClick: function () { }, className: "flex flex-col cursor-pointer items-center p-1" },
+                    react_1["default"].createElement(react_router_dom_1.Link, { to: "/edit-advert/" + id, onClick: function () { }, className: "flex flex-col cursor-pointer items-center p-1" },
                         react_1["default"].createElement(EditIcon_1["default"], null),
                         react_1["default"].createElement("span", { className: 'text-[#949AB1] text-xs' }, "Edit")),
                     react_1["default"].createElement("div", { onClick: function () { }, className: "flex flex-col cursor-pointer items-center p-1" },

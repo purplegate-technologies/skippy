@@ -167,7 +167,7 @@ const AdvertisementDetails = () => {
           </div>
           {/*  */}
           <div className="flex items-center justify-between md:gap-x-3 lg:mt-auto mt-10 md:mt-0  md:ml-auto">
-            <Link to="/create-adverts" onClick={() => { }} className="flex flex-col cursor-pointer items-center p-1">
+            <Link to={`/edit-advert/${id}`} onClick={() => { }} className="flex flex-col cursor-pointer items-center p-1">
               <EditIcon />
               <span className='text-[#949AB1] text-xs'>Edit</span>
             </Link>

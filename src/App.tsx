@@ -22,7 +22,6 @@ import CreateVoucher from "./pages/create-voucher/CreateVoucher";
 import FinanceDetails from "./pages/finance-details/FinanceDetails";
 import AdvertisementDetails from "./pages/advertisements-details/AdvertisementDetails";
 import InviteUser from "./pages/InviteUser/InviteUser";
-import VoucherDetails from "./pages/VoucherDetails/VoucherDetails";
 import ResetPassword from "./pages/login/ResetPassword";
 import ActivityOverview from "./pages/ActivityOverview/ActivityOverview";
 
@@ -40,9 +39,9 @@ function App() {
         {/* protected routes */}
         <Route element={<RequiredAuth />}>
           <Route path="create-adverts" element={<CreateAderts />} />
-          <Route path="edit-advert:id" element={<CreateAderts />} />
+          <Route path="edit-advert/:id" element={<CreateAderts />} />
           <Route path="create-vouchers" element={<CreateVoucher />} />
-          <Route path="voucher-details" element={<VoucherDetails />} />
+          <Route path="edit-voucher/:id" element={<CreateVoucher />} />
 
 
           <Route path="/" element={<Layout />}>

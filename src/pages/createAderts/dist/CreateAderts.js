@@ -88,9 +88,9 @@ var CreateAderts = function () {
     };
     var _c = react_1.useState("Scene"), tabIndex = _c[0], setTabIndex = _c[1];
     var _d = react_1.useState("Add"), tabIndexText = _d[0], setTabIndexText = _d[1];
-    var _e = react_1.useState("Finances and billing"), roles = _e[0], setRoles = _e[1];
+    // const [roles, setRoles] = useState("Finances and billing")
     // create Adverts
-    var _f = AdvertsApiSlice_1.useCreateAdvertMutation(), createAdvert = _f[0], isLoading = _f[1].isLoading;
+    var createAdvert = AdvertsApiSlice_1.useCreateAdvertMutation()[0];
     AdvertsApiSlice_1.useDeleteAdvertMutation();
     // const { data } = useGetStreamAdminQuery({})
     // console.log(data, 'data useGetStreamAdminQuery')
@@ -110,12 +110,14 @@ var CreateAderts = function () {
                     _a.label = 1;
                 case 1:
                     _a.trys.push([1, 3, , 4]);
-                    return [4 /*yield*/, createAdvert(formValues).unwrap()
-                        // setFormValue()
-                    ];
+                    return [4 /*yield*/, createAdvert(formValues).unwrap()];
                 case 2:
                     _a.sent();
-                    // setFormValue()
+                    setFormValue({ title: "",
+                        type: '',
+                        status: "",
+                        points: "",
+                        file: "" });
                     react_toastify_1.toast.success("successfully Created an Advert");
                     return [3 /*break*/, 4];
                 case 3:
@@ -144,7 +146,7 @@ var CreateAderts = function () {
                         react_1["default"].createElement("label", { className: "flex flex-col justify-center items-center w-full h-10 bg-[#F1F3FF] border-2 border-gray-300  cursor-pointer dark:hover:bg-bray-800 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 " },
                             react_1["default"].createElement("div", { className: "flex flex-col justify-center items-start" },
                                 react_1["default"].createElement("p", { className: "text-left" }, "Select an audio file")),
-                            react_1["default"].createElement(Input_1["default"], { type: "file", className: " w-full", required: true, onChange: handleUploadCover })),
+                            react_1["default"].createElement(Input_1["default"], { type: "file", className: "hidden w-full", required: true, onChange: handleUploadCover })),
                         react_1["default"].createElement("div", null,
                             react_1["default"].createElement(Button_1["default"], { className: 'rounded-none bg-[#516CF5]', 
                                 // onClick={handleSubmission}

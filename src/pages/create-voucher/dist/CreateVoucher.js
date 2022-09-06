@@ -1,4 +1,40 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
 exports.__esModule = true;
 var react_router_dom_1 = require("react-router-dom");
 var CompanyLogo_1 = require("../../assets/svg/CompanyLogo");
@@ -6,162 +42,194 @@ var Button_1 = require("../../components/button/Button");
 var Input_1 = require("../../components/input/Input");
 var Switch_1 = require("../../components/switch/Switch");
 var TopNav_1 = require("../../components/topnav/TopNav");
+var VouchersApiSlice_1 = require("../../features/vouchers/VouchersApiSlice");
+var react_toastify_1 = require("react-toastify");
+var react_1 = require("react");
 var CreateVoucher = function () {
+    var initialState = {
+        firstName: "",
+        lastName: "",
+        email: "",
+        password: "",
+        confirmPassword: ""
+    };
+    var _a = react_1.useState(initialState), formValue = _a[0], setFormValue = _a[1];
+    var createVouchers = VouchersApiSlice_1.useCreateVouchersMutation()[0];
     var navigate = react_router_dom_1.useNavigate();
-    return (React.createElement("section", null,
-        React.createElement("div", { className: 'flex' },
-            React.createElement("div", { className: "sidebar__logo" },
-                React.createElement(react_router_dom_1.Link, { to: "/" },
-                    React.createElement(CompanyLogo_1["default"], null)),
-                React.createElement(react_router_dom_1.Link, { to: "/", style: { textDecoration: 'none', color: 'black', marginLeft: '8px' } }, "Admin@skippy.com"),
-                React.createElement("div", { className: 'h-10' })),
-            React.createElement("div", { className: "flex-1" },
-                React.createElement(TopNav_1["default"], null))),
-        React.createElement("div", { className: "grid md:grid-cols-12 gap-10 m-5" },
-            React.createElement("div", { className: 'md:col-span-7 flex flex-col bg-white' },
-                React.createElement("div", { className: "p-2 items-center flex justify-between" },
-                    " ",
-                    React.createElement("span", null, "Voucher  Details "),
-                    " ",
-                    React.createElement("span", { className: "text-[#949AB1]" }, "e.g. 30% off / Buy 1 get 1 free")),
-                React.createElement(Input_1["default"], { type: 'text', className: 'flex-1 w-full flex border border-[#CFD1D5] p-2 mb-5 rounded-lg', placeholder: 'N1500.00 Voucher' }),
-                React.createElement("div", { className: "flex items-center gap-x-5 justify-between mb-5" },
-                    React.createElement(Input_1["default"], { type: 'date', divStyle: "lable w-full", className: 'flex-1 w-full flex border border-[#CFD1D5] p-2 rounded-lg', label: 'Start Date', labelStyle: 'text-sm' }),
-                    React.createElement(Input_1["default"], { type: 'date', divStyle: "lable w-full", className: 'flex-1 w-full flex border border-[#CFD1D5] p-2 rounded-lg', label: 'Expiry Date', labelStyle: 'text-sm' })),
-                React.createElement("form", { className: "mb-5 " },
-                    React.createElement("div", { className: "mb-1 w-full bg-gray-50 rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600" },
-                        React.createElement("div", { className: "flex justify-between items-center flex-row-reverse py-2 px-3 border-b dark:border-gray-600" },
-                            React.createElement("div", { className: "flex flex-wrap items-center divide-gray-200 sm:divide-x dark:divide-gray-600" },
-                                React.createElement("div", { className: "flex items-center space-x-1 sm:pr-4" },
-                                    React.createElement("button", { type: "button", className: "p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600" },
-                                        React.createElement("svg", { "aria-hidden": "true", className: "w-5 h-5", fill: "currentColor", viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg" },
-                                            React.createElement("path", { "fill-rule": "evenodd", d: "M8 4a3 3 0 00-3 3v4a5 5 0 0010 0V7a1 1 0 112 0v4a7 7 0 11-14 0V7a5 5 0 0110 0v4a3 3 0 11-6 0V7a1 1 0 012 0v4a1 1 0 102 0V7a3 3 0 00-3-3z", "clip-rule": "evenodd" })),
-                                        React.createElement("span", { className: "sr-only" }, "Attach file")),
-                                    React.createElement("button", { type: "button", className: "p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600" },
-                                        React.createElement("svg", { "aria-hidden": "true", className: "w-5 h-5", fill: "currentColor", viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg" },
-                                            React.createElement("path", { "fill-rule": "evenodd", d: "M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z", "clip-rule": "evenodd" })),
-                                        React.createElement("span", { className: "sr-only" }, "Embed map")),
-                                    React.createElement("button", { type: "button", className: "p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600" },
-                                        React.createElement("svg", { "aria-hidden": "true", className: "w-5 h-5", fill: "currentColor", viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg" },
-                                            React.createElement("path", { "fill-rule": "evenodd", d: "M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z", "clip-rule": "evenodd" })),
-                                        React.createElement("span", { className: "sr-only" }, "Upload image")),
-                                    React.createElement("button", { type: "button", className: "p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600" },
-                                        React.createElement("svg", { "aria-hidden": "true", className: "w-5 h-5", fill: "currentColor", viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg" },
-                                            React.createElement("path", { "fill-rule": "evenodd", d: "M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z", "clip-rule": "evenodd" })),
-                                        React.createElement("span", { className: "sr-only" }, "Format code")),
-                                    React.createElement("button", { type: "button", className: "p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600" },
-                                        React.createElement("svg", { "aria-hidden": "true", className: "w-5 h-5", fill: "currentColor", viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg" },
-                                            React.createElement("path", { "fill-rule": "evenodd", d: "M10 18a8 8 0 100-16 8 8 0 000 16zM7 9a1 1 0 100-2 1 1 0 000 2zm7-1a1 1 0 11-2 0 1 1 0 012 0zm-.464 5.535a1 1 0 10-1.415-1.414 3 3 0 01-4.242 0 1 1 0 00-1.415 1.414 5 5 0 007.072 0z", "clip-rule": "evenodd" })),
-                                        React.createElement("span", { className: "sr-only" }, "Add emoji"))),
-                                React.createElement("div", { className: "flex flex-wrap items-center space-x-1 sm:pl-4" },
-                                    React.createElement("button", { type: "button", className: "p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600" },
-                                        React.createElement("svg", { "aria-hidden": "true", className: "w-5 h-5", fill: "currentColor", viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg" },
-                                            React.createElement("path", { "fill-rule": "evenodd", d: "M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z", "clip-rule": "evenodd" })),
-                                        React.createElement("span", { className: "sr-only" }, "Add list")),
-                                    React.createElement("button", { type: "button", className: "p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600" },
-                                        React.createElement("svg", { "aria-hidden": "true", className: "w-5 h-5", fill: "currentColor", viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg" },
-                                            React.createElement("path", { "fill-rule": "evenodd", d: "M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z", "clip-rule": "evenodd" })),
-                                        React.createElement("span", { className: "sr-only" }, "Settings")),
-                                    React.createElement("button", { type: "button", className: "p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600" },
-                                        React.createElement("svg", { "aria-hidden": "true", className: "w-5 h-5", fill: "currentColor", viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg" },
-                                            React.createElement("path", { "fill-rule": "evenodd", d: "M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z", "clip-rule": "evenodd" })),
-                                        React.createElement("span", { className: "sr-only" }, "Timeline")),
-                                    React.createElement("button", { type: "button", className: "p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600" },
-                                        React.createElement("svg", { "aria-hidden": "true", className: "w-5 h-5", fill: "currentColor", viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg" },
-                                            React.createElement("path", { "fill-rule": "evenodd", d: "M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z", "clip-rule": "evenodd" })),
-                                        React.createElement("span", { className: "sr-only" }, "Download")))),
-                            React.createElement("span", { className: "" }, "Voucher Description")),
-                        React.createElement("div", { className: "py-2 px-4 bg-white rounded-b-lg dark:bg-gray-800" },
-                            React.createElement("label", { className: "sr-only" }, "Publish post"),
-                            React.createElement("textarea", { id: "editor", className: "block px-0 w-full text-sm text-gray-800 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400", placeholder: "Write an article...", required: true }))),
-                    React.createElement("p", { className: "text-[#516CF5] text-sm" }, "A brief Description about the voucher")),
-                React.createElement("form", { className: "mb-5 " },
-                    React.createElement("div", { className: "mb-1 w-full bg-gray-50 rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600" },
-                        React.createElement("div", { className: "flex justify-between items-center py-2 px-3 border-b dark:border-gray-600" },
-                            React.createElement("div", { className: "" }, "Voucher Terms"),
-                            React.createElement("div", { className: "flex flex-wrap items-center divide-gray-200 sm:divide-x dark:divide-gray-600" },
-                                React.createElement("div", { className: "flex items-center space-x-1 sm:pr-4" },
-                                    React.createElement("button", { type: "button", className: "p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600" },
-                                        React.createElement("svg", { "aria-hidden": "true", className: "w-5 h-5", fill: "currentColor", viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg" },
-                                            React.createElement("path", { "fill-rule": "evenodd", d: "M8 4a3 3 0 00-3 3v4a5 5 0 0010 0V7a1 1 0 112 0v4a7 7 0 11-14 0V7a5 5 0 0110 0v4a3 3 0 11-6 0V7a1 1 0 012 0v4a1 1 0 102 0V7a3 3 0 00-3-3z", "clip-rule": "evenodd" })),
-                                        React.createElement("span", { className: "sr-only" }, "Attach file")),
-                                    React.createElement("button", { type: "button", className: "p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600" },
-                                        React.createElement("svg", { "aria-hidden": "true", className: "w-5 h-5", fill: "currentColor", viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg" },
-                                            React.createElement("path", { "fill-rule": "evenodd", d: "M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z", "clip-rule": "evenodd" })),
-                                        React.createElement("span", { className: "sr-only" }, "Embed map")),
-                                    React.createElement("button", { type: "button", className: "p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600" },
-                                        React.createElement("svg", { "aria-hidden": "true", className: "w-5 h-5", fill: "currentColor", viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg" },
-                                            React.createElement("path", { "fill-rule": "evenodd", d: "M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z", "clip-rule": "evenodd" })),
-                                        React.createElement("span", { className: "sr-only" }, "Upload image")),
-                                    React.createElement("button", { type: "button", className: "p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600" },
-                                        React.createElement("svg", { "aria-hidden": "true", className: "w-5 h-5", fill: "currentColor", viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg" },
-                                            React.createElement("path", { "fill-rule": "evenodd", d: "M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z", "clip-rule": "evenodd" })),
-                                        React.createElement("span", { className: "sr-only" }, "Format code")),
-                                    React.createElement("button", { type: "button", className: "p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600" },
-                                        React.createElement("svg", { "aria-hidden": "true", className: "w-5 h-5", fill: "currentColor", viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg" },
-                                            React.createElement("path", { "fill-rule": "evenodd", d: "M10 18a8 8 0 100-16 8 8 0 000 16zM7 9a1 1 0 100-2 1 1 0 000 2zm7-1a1 1 0 11-2 0 1 1 0 012 0zm-.464 5.535a1 1 0 10-1.415-1.414 3 3 0 01-4.242 0 1 1 0 00-1.415 1.414 5 5 0 007.072 0z", "clip-rule": "evenodd" })),
-                                        React.createElement("span", { className: "sr-only" }, "Add emoji"))),
-                                React.createElement("div", { className: "flex flex-wrap items-center space-x-1 sm:pl-4" },
-                                    React.createElement("button", { type: "button", className: "p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600" },
-                                        React.createElement("svg", { "aria-hidden": "true", className: "w-5 h-5", fill: "currentColor", viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg" },
-                                            React.createElement("path", { "fill-rule": "evenodd", d: "M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z", "clip-rule": "evenodd" })),
-                                        React.createElement("span", { className: "sr-only" }, "Add list")),
-                                    React.createElement("button", { type: "button", className: "p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600" },
-                                        React.createElement("svg", { "aria-hidden": "true", className: "w-5 h-5", fill: "currentColor", viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg" },
-                                            React.createElement("path", { "fill-rule": "evenodd", d: "M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z", "clip-rule": "evenodd" })),
-                                        React.createElement("span", { className: "sr-only" }, "Settings")),
-                                    React.createElement("button", { type: "button", className: "p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600" },
-                                        React.createElement("svg", { "aria-hidden": "true", className: "w-5 h-5", fill: "currentColor", viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg" },
-                                            React.createElement("path", { "fill-rule": "evenodd", d: "M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z", "clip-rule": "evenodd" })),
-                                        React.createElement("span", { className: "sr-only" }, "Timeline")),
-                                    React.createElement("button", { type: "button", className: "p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600" },
-                                        React.createElement("svg", { "aria-hidden": "true", className: "w-5 h-5", fill: "currentColor", viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg" },
-                                            React.createElement("path", { "fill-rule": "evenodd", d: "M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z", "clip-rule": "evenodd" })),
-                                        React.createElement("span", { className: "sr-only" }, "Download"))))),
-                        React.createElement("div", { className: "py-2 px-4 bg-white rounded-b-lg dark:bg-gray-800" },
-                            React.createElement("label", { className: "sr-only" }, "Publish post"),
-                            React.createElement("textarea", { id: "editor", className: "block px-0 w-full text-sm text-gray-800 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400", placeholder: "Write an article...", required: true }))),
-                    React.createElement("p", { className: "text-[#516CF5] text-sm" }, "Enter the Terms  of the Voucher, press the enter key to go to next line"))),
-            React.createElement("div", { className: 'md:col-span-5 flex flex-col bg-white' },
-                React.createElement("div", { className: "border p-4 mb-6" },
-                    React.createElement("div", { className: "flex-items-center flex-row justify-between my-2", style: { display: 'flex', justifyContent: 'space-between' } },
-                        React.createElement("p", null, "Vendor Details"),
-                        React.createElement("p", null)),
-                    React.createElement("div", { className: "flex items-center gap-x-5 mb-2" },
-                        React.createElement("svg", { className: "w-20 h-20 text-gray-200 border p-2", xmlns: "http://www.w3.org/2000/svg", "aria-hidden": "true", fill: "currentColor", viewBox: "0 0 640 512" },
-                            React.createElement("path", { d: "M480 80C480 35.82 515.8 0 560 0C604.2 0 640 35.82 640 80C640 124.2 604.2 160 560 160C515.8 160 480 124.2 480 80zM0 456.1C0 445.6 2.964 435.3 8.551 426.4L225.3 81.01C231.9 70.42 243.5 64 256 64C268.5 64 280.1 70.42 286.8 81.01L412.7 281.7L460.9 202.7C464.1 196.1 472.2 192 480 192C487.8 192 495 196.1 499.1 202.7L631.1 419.1C636.9 428.6 640 439.7 640 450.9C640 484.6 612.6 512 578.9 512H55.91C25.03 512 .0006 486.1 .0006 456.1L0 456.1z" })),
-                        React.createElement("div", { className: "flex flex-1 w-full" },
+    var handleSubmit = function () { return __awaiter(void 0, void 0, void 0, function () {
+        var e_1;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    _a.trys.push([0, 2, , 3]);
+                    return [4 /*yield*/, createVouchers({}).unwrap()];
+                case 1:
+                    _a.sent();
+                    react_toastify_1.toast.success("Successfully Create a Voucher");
+                    return [3 /*break*/, 3];
+                case 2:
+                    e_1 = _a.sent();
+                    react_toastify_1.toast.error(e_1);
+                    return [3 /*break*/, 3];
+                case 3: return [2 /*return*/];
+            }
+        });
+    }); };
+    return (React.createElement("section", { className: "bg-[#FCFCFF]" },
+        React.createElement("form", { onSubmit: handleSubmit },
+            React.createElement("div", { className: 'flex' },
+                React.createElement("div", { className: "sidebar__logo" },
+                    React.createElement(react_router_dom_1.Link, { to: "/" },
+                        React.createElement(CompanyLogo_1["default"], null)),
+                    React.createElement(react_router_dom_1.Link, { to: "/", style: { textDecoration: 'none', color: 'black', marginLeft: '8px' } }, "Admin@skippy.com"),
+                    React.createElement("div", { className: 'h-10' })),
+                React.createElement("div", { className: "flex-1" },
+                    React.createElement(TopNav_1["default"], null))),
+            React.createElement("div", { className: "grid md:grid-cols-12 gap-10 m-5" },
+                React.createElement("div", { className: 'md:col-span-7 flex flex-col bg-white' },
+                    React.createElement("div", { className: "p-2 items-center flex justify-between" },
+                        " ",
+                        React.createElement("span", null, "Voucher  Details "),
+                        " ",
+                        React.createElement("span", { className: "text-[#949AB1]" }, "e.g. 30% off / Buy 1 get 1 free")),
+                    React.createElement(Input_1["default"], { type: 'text', className: 'flex-1 w-full flex border border-[#CFD1D5] p-2 mb-5 rounded-lg', placeholder: 'N1500.00 Voucher' }),
+                    React.createElement("div", { className: "flex items-center gap-x-5 justify-between mb-5" },
+                        React.createElement(Input_1["default"], { type: 'date', divStyle: "lable w-full", className: 'flex-1 w-full flex border border-[#CFD1D5] p-2 rounded-lg', label: 'Start Date', labelStyle: 'text-sm' }),
+                        React.createElement(Input_1["default"], { type: 'date', divStyle: "lable w-full", className: 'flex-1 w-full flex border border-[#CFD1D5] p-2 rounded-lg', label: 'Expiry Date', labelStyle: 'text-sm' })),
+                    React.createElement("form", { className: "mb-5 " },
+                        React.createElement("div", { className: "mb-1 w-full bg-gray-50 rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600" },
+                            React.createElement("div", { className: "flex justify-between items-center flex-row-reverse py-2 px-3 border-b dark:border-gray-600" },
+                                React.createElement("div", { className: "flex flex-wrap items-center divide-gray-200 sm:divide-x dark:divide-gray-600" },
+                                    React.createElement("div", { className: "flex items-center space-x-1 sm:pr-4" },
+                                        React.createElement("button", { type: "button", className: "p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600" },
+                                            React.createElement("svg", { "aria-hidden": "true", className: "w-5 h-5", fill: "currentColor", viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg" },
+                                                React.createElement("path", { "fill-rule": "evenodd", d: "M8 4a3 3 0 00-3 3v4a5 5 0 0010 0V7a1 1 0 112 0v4a7 7 0 11-14 0V7a5 5 0 0110 0v4a3 3 0 11-6 0V7a1 1 0 012 0v4a1 1 0 102 0V7a3 3 0 00-3-3z", "clip-rule": "evenodd" })),
+                                            React.createElement("span", { className: "sr-only" }, "Attach file")),
+                                        React.createElement("button", { type: "button", className: "p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600" },
+                                            React.createElement("svg", { "aria-hidden": "true", className: "w-5 h-5", fill: "currentColor", viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg" },
+                                                React.createElement("path", { "fill-rule": "evenodd", d: "M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z", "clip-rule": "evenodd" })),
+                                            React.createElement("span", { className: "sr-only" }, "Embed map")),
+                                        React.createElement("button", { type: "button", className: "p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600" },
+                                            React.createElement("svg", { "aria-hidden": "true", className: "w-5 h-5", fill: "currentColor", viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg" },
+                                                React.createElement("path", { "fill-rule": "evenodd", d: "M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z", "clip-rule": "evenodd" })),
+                                            React.createElement("span", { className: "sr-only" }, "Upload image")),
+                                        React.createElement("button", { type: "button", className: "p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600" },
+                                            React.createElement("svg", { "aria-hidden": "true", className: "w-5 h-5", fill: "currentColor", viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg" },
+                                                React.createElement("path", { "fill-rule": "evenodd", d: "M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z", "clip-rule": "evenodd" })),
+                                            React.createElement("span", { className: "sr-only" }, "Format code")),
+                                        React.createElement("button", { type: "button", className: "p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600" },
+                                            React.createElement("svg", { "aria-hidden": "true", className: "w-5 h-5", fill: "currentColor", viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg" },
+                                                React.createElement("path", { "fill-rule": "evenodd", d: "M10 18a8 8 0 100-16 8 8 0 000 16zM7 9a1 1 0 100-2 1 1 0 000 2zm7-1a1 1 0 11-2 0 1 1 0 012 0zm-.464 5.535a1 1 0 10-1.415-1.414 3 3 0 01-4.242 0 1 1 0 00-1.415 1.414 5 5 0 007.072 0z", "clip-rule": "evenodd" })),
+                                            React.createElement("span", { className: "sr-only" }, "Add emoji"))),
+                                    React.createElement("div", { className: "flex flex-wrap items-center space-x-1 sm:pl-4" },
+                                        React.createElement("button", { type: "button", className: "p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600" },
+                                            React.createElement("svg", { "aria-hidden": "true", className: "w-5 h-5", fill: "currentColor", viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg" },
+                                                React.createElement("path", { "fill-rule": "evenodd", d: "M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z", "clip-rule": "evenodd" })),
+                                            React.createElement("span", { className: "sr-only" }, "Add list")),
+                                        React.createElement("button", { type: "button", className: "p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600" },
+                                            React.createElement("svg", { "aria-hidden": "true", className: "w-5 h-5", fill: "currentColor", viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg" },
+                                                React.createElement("path", { "fill-rule": "evenodd", d: "M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z", "clip-rule": "evenodd" })),
+                                            React.createElement("span", { className: "sr-only" }, "Settings")),
+                                        React.createElement("button", { type: "button", className: "p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600" },
+                                            React.createElement("svg", { "aria-hidden": "true", className: "w-5 h-5", fill: "currentColor", viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg" },
+                                                React.createElement("path", { "fill-rule": "evenodd", d: "M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z", "clip-rule": "evenodd" })),
+                                            React.createElement("span", { className: "sr-only" }, "Timeline")),
+                                        React.createElement("button", { type: "button", className: "p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600" },
+                                            React.createElement("svg", { "aria-hidden": "true", className: "w-5 h-5", fill: "currentColor", viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg" },
+                                                React.createElement("path", { "fill-rule": "evenodd", d: "M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z", "clip-rule": "evenodd" })),
+                                            React.createElement("span", { className: "sr-only" }, "Download")))),
+                                React.createElement("span", { className: "" }, "Voucher Description")),
+                            React.createElement("div", { className: "py-2 px-4 bg-white rounded-b-lg dark:bg-gray-800" },
+                                React.createElement("label", { className: "sr-only" }, "Publish post"),
+                                React.createElement("textarea", { id: "editor", className: "block px-0 w-full text-sm text-gray-800 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400", placeholder: "Write an article...", required: true }))),
+                        React.createElement("p", { className: "text-[#516CF5] text-sm" }, "A brief Description about the voucher")),
+                    React.createElement("form", { className: "mb-5 " },
+                        React.createElement("div", { className: "mb-1 w-full bg-gray-50 rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600" },
+                            React.createElement("div", { className: "flex justify-between items-center py-2 px-3 border-b dark:border-gray-600" },
+                                React.createElement("div", { className: "" }, "Voucher Terms"),
+                                React.createElement("div", { className: "flex flex-wrap items-center divide-gray-200 sm:divide-x dark:divide-gray-600" },
+                                    React.createElement("div", { className: "flex items-center space-x-1 sm:pr-4" },
+                                        React.createElement("button", { type: "button", className: "p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600" },
+                                            React.createElement("svg", { "aria-hidden": "true", className: "w-5 h-5", fill: "currentColor", viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg" },
+                                                React.createElement("path", { "fill-rule": "evenodd", d: "M8 4a3 3 0 00-3 3v4a5 5 0 0010 0V7a1 1 0 112 0v4a7 7 0 11-14 0V7a5 5 0 0110 0v4a3 3 0 11-6 0V7a1 1 0 012 0v4a1 1 0 102 0V7a3 3 0 00-3-3z", "clip-rule": "evenodd" })),
+                                            React.createElement("span", { className: "sr-only" }, "Attach file")),
+                                        React.createElement("button", { type: "button", className: "p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600" },
+                                            React.createElement("svg", { "aria-hidden": "true", className: "w-5 h-5", fill: "currentColor", viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg" },
+                                                React.createElement("path", { "fill-rule": "evenodd", d: "M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z", "clip-rule": "evenodd" })),
+                                            React.createElement("span", { className: "sr-only" }, "Embed map")),
+                                        React.createElement("button", { type: "button", className: "p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600" },
+                                            React.createElement("svg", { "aria-hidden": "true", className: "w-5 h-5", fill: "currentColor", viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg" },
+                                                React.createElement("path", { "fill-rule": "evenodd", d: "M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z", "clip-rule": "evenodd" })),
+                                            React.createElement("span", { className: "sr-only" }, "Upload image")),
+                                        React.createElement("button", { type: "button", className: "p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600" },
+                                            React.createElement("svg", { "aria-hidden": "true", className: "w-5 h-5", fill: "currentColor", viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg" },
+                                                React.createElement("path", { "fill-rule": "evenodd", d: "M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z", "clip-rule": "evenodd" })),
+                                            React.createElement("span", { className: "sr-only" }, "Format code")),
+                                        React.createElement("button", { type: "button", className: "p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600" },
+                                            React.createElement("svg", { "aria-hidden": "true", className: "w-5 h-5", fill: "currentColor", viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg" },
+                                                React.createElement("path", { "fill-rule": "evenodd", d: "M10 18a8 8 0 100-16 8 8 0 000 16zM7 9a1 1 0 100-2 1 1 0 000 2zm7-1a1 1 0 11-2 0 1 1 0 012 0zm-.464 5.535a1 1 0 10-1.415-1.414 3 3 0 01-4.242 0 1 1 0 00-1.415 1.414 5 5 0 007.072 0z", "clip-rule": "evenodd" })),
+                                            React.createElement("span", { className: "sr-only" }, "Add emoji"))),
+                                    React.createElement("div", { className: "flex flex-wrap items-center space-x-1 sm:pl-4" },
+                                        React.createElement("button", { type: "button", className: "p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600" },
+                                            React.createElement("svg", { "aria-hidden": "true", className: "w-5 h-5", fill: "currentColor", viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg" },
+                                                React.createElement("path", { "fill-rule": "evenodd", d: "M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z", "clip-rule": "evenodd" })),
+                                            React.createElement("span", { className: "sr-only" }, "Add list")),
+                                        React.createElement("button", { type: "button", className: "p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600" },
+                                            React.createElement("svg", { "aria-hidden": "true", className: "w-5 h-5", fill: "currentColor", viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg" },
+                                                React.createElement("path", { "fill-rule": "evenodd", d: "M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z", "clip-rule": "evenodd" })),
+                                            React.createElement("span", { className: "sr-only" }, "Settings")),
+                                        React.createElement("button", { type: "button", className: "p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600" },
+                                            React.createElement("svg", { "aria-hidden": "true", className: "w-5 h-5", fill: "currentColor", viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg" },
+                                                React.createElement("path", { "fill-rule": "evenodd", d: "M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z", "clip-rule": "evenodd" })),
+                                            React.createElement("span", { className: "sr-only" }, "Timeline")),
+                                        React.createElement("button", { type: "button", className: "p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600" },
+                                            React.createElement("svg", { "aria-hidden": "true", className: "w-5 h-5", fill: "currentColor", viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg" },
+                                                React.createElement("path", { "fill-rule": "evenodd", d: "M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z", "clip-rule": "evenodd" })),
+                                            React.createElement("span", { className: "sr-only" }, "Download"))))),
+                            React.createElement("div", { className: "py-2 px-4 bg-white rounded-b-lg dark:bg-gray-800" },
+                                React.createElement("label", { className: "sr-only" }, "Publish post"),
+                                React.createElement("textarea", { id: "editor", className: "block px-0 w-full text-sm text-gray-800 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400", placeholder: "Write an article...", required: true }))),
+                        React.createElement("p", { className: "text-[#516CF5] text-sm" }, "Enter the Terms  of the Voucher, press the enter key to go to next line"))),
+                React.createElement("div", { className: 'md:col-span-5 flex flex-col bg-white' },
+                    React.createElement("div", { className: "border p-4 mb-6" },
+                        React.createElement("div", { className: "flex-items-center flex-row justify-between my-2", style: { display: 'flex', justifyContent: 'space-between' } },
+                            React.createElement("p", null, "Vendor Details"),
+                            React.createElement("p", null)),
+                        React.createElement("div", { className: "flex items-center gap-x-5 mb-2" },
+                            React.createElement("svg", { className: "w-20 h-20 text-gray-200 border p-2", xmlns: "http://www.w3.org/2000/svg", "aria-hidden": "true", fill: "currentColor", viewBox: "0 0 640 512" },
+                                React.createElement("path", { d: "M480 80C480 35.82 515.8 0 560 0C604.2 0 640 35.82 640 80C640 124.2 604.2 160 560 160C515.8 160 480 124.2 480 80zM0 456.1C0 445.6 2.964 435.3 8.551 426.4L225.3 81.01C231.9 70.42 243.5 64 256 64C268.5 64 280.1 70.42 286.8 81.01L412.7 281.7L460.9 202.7C464.1 196.1 472.2 192 480 192C487.8 192 495 196.1 499.1 202.7L631.1 419.1C636.9 428.6 640 439.7 640 450.9C640 484.6 612.6 512 578.9 512H55.91C25.03 512 .0006 486.1 .0006 456.1L0 456.1z" })),
+                            React.createElement("div", { className: "flex flex-1 w-full" },
+                                React.createElement("div", { className: "w-full" },
+                                    React.createElement("label", { className: 'my-1 text-[#171837]' }, "Brand name/Ad Title "),
+                                    React.createElement(Input_1["default"], { type: 'text', name: '', divStyle: "w-full", className: ' w-full p-2 border border-[#CFD1D5] rounded' }))))),
+                    React.createElement("div", { className: "border pb-4" },
+                        React.createElement("div", { className: "p-4 border-b" },
+                            React.createElement("p", { className: "text-[#516CF5]" }, "Voucher Settings")),
+                        React.createElement("div", { className: "grid grid-cols-2 gap-10 p-4" },
                             React.createElement("div", { className: "w-full" },
-                                React.createElement("label", { className: 'my-1 text-[#171837]' }, "Brand name/Ad Title "),
-                                React.createElement(Input_1["default"], { type: 'text', name: '', divStyle: "w-full", className: ' w-full p-2 border border-[#CFD1D5] rounded' }))))),
-                React.createElement("div", { className: "border pb-4" },
-                    React.createElement("div", { className: "p-4 border-b" },
-                        React.createElement("p", { className: "text-[#516CF5]" }, "Voucher Settings")),
-                    React.createElement("div", { className: "grid grid-cols-2 gap-10 p-4" },
-                        React.createElement("div", { className: "w-full" },
-                            React.createElement("label", { className: 'my-1 text-[#171837]' }, "  Total Quantity "),
-                            React.createElement(Input_1["default"], { type: 'number', name: '', divStyle: "w-full", className: 'rounded-lg w-full p-2 border border-[#CFD1D5]' })),
-                        React.createElement("div", { className: "w-full" },
-                            React.createElement("label", { className: 'my-1 text-[#171837]' }, "Quantity per User "),
-                            React.createElement(Input_1["default"], { type: 'number', name: '', divStyle: "w-full", className: ' w-full p-2 border border-[#CFD1D5] rounded-lg' }))),
-                    React.createElement("div", { className: "grid grid-cols-2 gap-10 p-4" },
-                        React.createElement("div", { className: "w-full" },
-                            React.createElement("label", { className: 'my-1 text-[#171837]' }, "  Voucher Value "),
-                            React.createElement(Input_1["default"], { type: 'number', name: '', divStyle: "w-full", className: 'rounded-lg w-full p-2 border border-[#CFD1D5]' })),
-                        React.createElement("div", { className: "w-full" },
-                            React.createElement("label", { className: 'my-1 text-[#171837]' }, "Voucher Cost (Skippy Points) "),
-                            React.createElement(Input_1["default"], { type: 'number', name: '', divStyle: "w-full", className: ' w-full p-2 border border-[#CFD1D5] rounded-lg' }))),
-                    React.createElement("div", { className: "w-full  p-4" },
-                        React.createElement("label", { className: 'my-1 text-[#171837]' }, "Embed Code) "),
-                        React.createElement(Input_1["default"], { type: 'number', name: '', divStyle: "w-full", className: ' w-full p-2 border border-[#CFD1D5] rounded-lg', placeholder: "Enter action link here" })),
-                    React.createElement(Switch_1["default"], { label: "Turn on notifications for voucher validity", className: 'p-4' })))),
-        React.createElement("div", { className: "flex  items-center justify-between bg-[#FCFCFF] border-[#F1F3FF] border p-5  w-[100%]" },
-            React.createElement("div", { className: "gap-x-3 flex" },
-                React.createElement(Button_1["default"], { className: "bg-[#949AB1]" }, "Undo Changes"),
-                React.createElement(Button_1["default"], { className: "bg-[#FF5660]" }, "Delete Advert")),
-            React.createElement("div", { className: "gap-x-3 flex" },
-                React.createElement(Button_1["default"], { className: 'bg-[#868BA1]', onClick: function () { return navigate(-1); } }, "Cancel"),
-                React.createElement(Button_1["default"], { className: 'bg-[#19C165]' }, "Save Changes")))));
+                                React.createElement("label", { className: 'my-1 text-[#171837]' }, "  Total Quantity "),
+                                React.createElement(Input_1["default"], { type: 'number', name: '', divStyle: "w-full", className: 'rounded-lg w-full p-2 border border-[#CFD1D5]' })),
+                            React.createElement("div", { className: "w-full" },
+                                React.createElement("label", { className: 'my-1 text-[#171837]' }, "Quantity per User "),
+                                React.createElement(Input_1["default"], { type: 'number', name: '', divStyle: "w-full", className: ' w-full p-2 border border-[#CFD1D5] rounded-lg' }))),
+                        React.createElement("div", { className: "grid grid-cols-2 gap-10 p-4" },
+                            React.createElement("div", { className: "w-full" },
+                                React.createElement("label", { className: 'my-1 text-[#171837]' }, "  Voucher Value "),
+                                React.createElement(Input_1["default"], { type: 'number', name: '', divStyle: "w-full", className: 'rounded-lg w-full p-2 border border-[#CFD1D5]' })),
+                            React.createElement("div", { className: "w-full" },
+                                React.createElement("label", { className: 'my-1 text-[#171837]' }, "Voucher Cost (Skippy Points) "),
+                                React.createElement(Input_1["default"], { type: 'number', name: '', divStyle: "w-full", className: ' w-full p-2 border border-[#CFD1D5] rounded-lg' }))),
+                        React.createElement("div", { className: "w-full  p-4" },
+                            React.createElement("label", { className: 'my-1 text-[#171837]' }, "Embed Code) "),
+                            React.createElement(Input_1["default"], { type: 'number', name: '', divStyle: "w-full", className: ' w-full p-2 border border-[#CFD1D5] rounded-lg', placeholder: "Enter action link here" })),
+                        React.createElement(Switch_1["default"], { label: "Turn on notifications for voucher validity", className: 'p-4' })))),
+            React.createElement("div", { className: "flex  items-center justify-between bg-[#FCFCFF] border-[#F1F3FF] border p-5  w-[100%]" },
+                React.createElement("div", { className: "gap-x-3 flex" },
+                    React.createElement(Button_1["default"], { className: "bg-[#949AB1]" }, "Undo Changes"),
+                    React.createElement(Button_1["default"], { className: "bg-[#FF5660]" }, "Delete Advert")),
+                React.createElement("div", { className: "gap-x-3 flex" },
+                    React.createElement(Button_1["default"], { className: 'bg-[#868BA1]', onClick: function () { return navigate(-1); } }, "Cancel"),
+                    React.createElement(Button_1["default"], { className: 'bg-[#19C165]' }, "Save Changes"))))));
 };
 exports["default"] = CreateVoucher;
 // <form>

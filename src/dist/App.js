@@ -23,7 +23,6 @@ var CreateVoucher_1 = require("./pages/create-voucher/CreateVoucher");
 var FinanceDetails_1 = require("./pages/finance-details/FinanceDetails");
 var AdvertisementDetails_1 = require("./pages/advertisements-details/AdvertisementDetails");
 var InviteUser_1 = require("./pages/InviteUser/InviteUser");
-var VoucherDetails_1 = require("./pages/VoucherDetails/VoucherDetails");
 var ResetPassword_1 = require("./pages/login/ResetPassword");
 var ActivityOverview_1 = require("./pages/ActivityOverview/ActivityOverview");
 function App() {
@@ -36,9 +35,9 @@ function App() {
             React.createElement(react_router_dom_1.Route, { path: "*", element: React.createElement(react_router_dom_1.Navigate, { to: '/' }) }),
             React.createElement(react_router_dom_1.Route, { element: React.createElement(RequiredAuth_1["default"], null) },
                 React.createElement(react_router_dom_1.Route, { path: "create-adverts", element: React.createElement(CreateAderts_1["default"], null) }),
-                React.createElement(react_router_dom_1.Route, { path: "edit-advert:id", element: React.createElement(CreateAderts_1["default"], null) }),
+                React.createElement(react_router_dom_1.Route, { path: "edit-advert/:id", element: React.createElement(CreateAderts_1["default"], null) }),
                 React.createElement(react_router_dom_1.Route, { path: "create-vouchers", element: React.createElement(CreateVoucher_1["default"], null) }),
-                React.createElement(react_router_dom_1.Route, { path: "voucher-details", element: React.createElement(VoucherDetails_1["default"], null) }),
+                React.createElement(react_router_dom_1.Route, { path: "edit-voucher/:id", element: React.createElement(CreateVoucher_1["default"], null) }),
                 React.createElement(react_router_dom_1.Route, { path: "/", element: React.createElement(Layout_1["default"], null) },
                     React.createElement(react_router_dom_1.Route, { index: true, element: React.createElement(Dashboard_1["default"], null) }),
                     React.createElement(react_router_dom_1.Route, { path: "advertisements", element: React.createElement(Advertisements_1["default"], null) }),
