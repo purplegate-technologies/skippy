@@ -13,6 +13,7 @@ import VideoSlider from './VideoSlider';
 import Select from 'react-select';
 import { useCreateAdvertMutation, useDeleteAdvertMutation, useGetStreamAdminQuery } from '../../features/adverts/AdvertsApiSlice';
 import { Select as AiSelect } from '../../components/Select/Select'
+import { toast } from 'react-toastify';
 
 
 
@@ -78,11 +79,16 @@ const CreateAderts = () => {
 
   const onFinish = async (e: any) => {
     e.preventDefault()
-    const formData = new FormData();
+    // const formData = new FormData();
 
+   try {
     await createAdvert(formValues).unwrap()
+    // setFormValue()
+    toast.success("successfully Created an Advert");
+   } catch {
 
-    console.log(formData)
+   }
+
   };
 
   const navigate = useNavigate();

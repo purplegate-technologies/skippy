@@ -36,6 +36,7 @@ function App() {
             React.createElement(react_router_dom_1.Route, { path: "*", element: React.createElement(react_router_dom_1.Navigate, { to: '/' }) }),
             React.createElement(react_router_dom_1.Route, { element: React.createElement(RequiredAuth_1["default"], null) },
                 React.createElement(react_router_dom_1.Route, { path: "create-adverts", element: React.createElement(CreateAderts_1["default"], null) }),
+                React.createElement(react_router_dom_1.Route, { path: "edit-advert:id", element: React.createElement(CreateAderts_1["default"], null) }),
                 React.createElement(react_router_dom_1.Route, { path: "create-vouchers", element: React.createElement(CreateVoucher_1["default"], null) }),
                 React.createElement(react_router_dom_1.Route, { path: "voucher-details", element: React.createElement(VoucherDetails_1["default"], null) }),
                 React.createElement(react_router_dom_1.Route, { path: "/", element: React.createElement(Layout_1["default"], null) },

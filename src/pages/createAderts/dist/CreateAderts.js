@@ -60,6 +60,7 @@ var VideoSlider_1 = require("./VideoSlider");
 var react_select_1 = require("react-select");
 var AdvertsApiSlice_1 = require("../../features/adverts/AdvertsApiSlice");
 var Select_1 = require("../../components/Select/Select");
+var react_toastify_1 = require("react-toastify");
 var options = [
     { value: 'chocolate', label: 'Chocolate' },
     { value: 'strawberry', label: 'Strawberry' },
@@ -101,17 +102,26 @@ var CreateAderts = function () {
         setField("file", e.target.files[0].name);
     };
     var onFinish = function (e) { return __awaiter(void 0, void 0, void 0, function () {
-        var formData;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
+        var _a;
+        return __generator(this, function (_b) {
+            switch (_b.label) {
                 case 0:
                     e.preventDefault();
-                    formData = new FormData();
-                    return [4 /*yield*/, createAdvert(formValues).unwrap()];
+                    _b.label = 1;
                 case 1:
-                    _a.sent();
-                    console.log(formData);
-                    return [2 /*return*/];
+                    _b.trys.push([1, 3, , 4]);
+                    return [4 /*yield*/, createAdvert(formValues).unwrap()
+                        // setFormValue()
+                    ];
+                case 2:
+                    _b.sent();
+                    // setFormValue()
+                    react_toastify_1.toast.success("successfully Created an Advert");
+                    return [3 /*break*/, 4];
+                case 3:
+                    _a = _b.sent();
+                    return [3 /*break*/, 4];
+                case 4: return [2 /*return*/];
             }
         });
     }); };

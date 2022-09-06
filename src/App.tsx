@@ -40,6 +40,7 @@ function App() {
         {/* protected routes */}
         <Route element={<RequiredAuth />}>
           <Route path="create-adverts" element={<CreateAderts />} />
+          <Route path="edit-advert:id" element={<CreateAderts />} />
           <Route path="create-vouchers" element={<CreateVoucher />} />
           <Route path="voucher-details" element={<VoucherDetails />} />
 
