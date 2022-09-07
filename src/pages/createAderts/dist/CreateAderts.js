@@ -91,7 +91,7 @@ var CreateAderts = function () {
     // const [roles, setRoles] = useState("Finances and billing")
     // create Adverts
     var createAdvert = AdvertsApiSlice_1.useCreateAdvertMutation()[0];
-    AdvertsApiSlice_1.useDeleteAdvertMutation();
+    var deleteAdvert = AdvertsApiSlice_1.useDeleteAdvertMutation()[0];
     // const { data } = useGetStreamAdminQuery({})
     // console.log(data, 'data useGetStreamAdminQuery')
     var handleUploadCover = function (e) {
@@ -274,7 +274,7 @@ var CreateAderts = function () {
             react_1["default"].createElement("div", { className: "flex  items-center justify-between bg-[#FCFCFF] border-[#F1F3FF] border p-5  w-[100%]" },
                 react_1["default"].createElement("div", { className: "gap-x-3 flex" },
                     react_1["default"].createElement(Button_1["default"], { className: "bg-[#949AB1]" }, "Undo Changes"),
-                    react_1["default"].createElement(Button_1["default"], { className: "bg-[#FF5660]" }, "Delete Advert")),
+                    react_1["default"].createElement(Button_1["default"], { className: "bg-[#FF5660]", onClick: function () { return deleteAdvert; } }, "Delete Advert")),
                 react_1["default"].createElement("div", { className: "gap-x-3 flex" },
                     react_1["default"].createElement(Button_1["default"], { className: 'bg-[#868BA1] ', onClick: function () { return navigate(-1); } }, "Cancel"),
                     react_1["default"].createElement(Button_1["default"], { className: 'bg-[#19C165]' }, "Save Changes"))))));

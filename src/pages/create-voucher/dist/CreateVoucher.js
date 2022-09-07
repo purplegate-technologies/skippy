@@ -54,6 +54,7 @@ var CreateVoucher = function () {
         confirmPassword: ""
     };
     var _a = react_1.useState(initialState), formValue = _a[0], setFormValue = _a[1];
+    var deleteVoucher = VouchersApiSlice_1.useDeleteVoucherMutation()[0];
     var createVouchers = VouchersApiSlice_1.useCreateVouchersMutation()[0];
     var navigate = react_router_dom_1.useNavigate();
     var handleSubmit = function () { return __awaiter(void 0, void 0, void 0, function () {
@@ -226,7 +227,7 @@ var CreateVoucher = function () {
             React.createElement("div", { className: "flex  items-center justify-between bg-[#FCFCFF] border-[#F1F3FF] border p-5  w-[100%]" },
                 React.createElement("div", { className: "gap-x-3 flex" },
                     React.createElement(Button_1["default"], { className: "bg-[#949AB1]" }, "Undo Changes"),
-                    React.createElement(Button_1["default"], { className: "bg-[#FF5660]" }, "Delete Advert")),
+                    React.createElement(Button_1["default"], { className: "bg-[#FF5660]", onClick: function () { return deleteVoucher(); } }, "Delete Advert")),
                 React.createElement("div", { className: "gap-x-3 flex" },
                     React.createElement(Button_1["default"], { className: 'bg-[#868BA1]', onClick: function () { return navigate(-1); } }, "Cancel"),
                     React.createElement(Button_1["default"], { className: 'bg-[#19C165]' }, "Save Changes"))))));

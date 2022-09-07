@@ -1,6 +1,6 @@
 "use strict";
 exports.__esModule = true;
-exports.useGetVoucherByIdQuery = exports.useGetVouchersQuery = exports.useCreateVouchersMutation = exports.VouchersApiSlice = void 0;
+exports.use = exports.useGetVoucherByIdQuery = exports.useGetVouchersQuery = exports.useCreateVouchersMutation = exports.VouchersApiSlice = void 0;
 var apiSlice_1 = require("../../services/api/apiSlice");
 exports.VouchersApiSlice = apiSlice_1.apiSlice.injectEndpoints({
     endpoints: function (builder) { return ({
@@ -37,4 +37,4 @@ exports.VouchersApiSlice = apiSlice_1.apiSlice.injectEndpoints({
         })
     }); }
 });
-exports.useCreateVouchersMutation = exports.VouchersApiSlice.useCreateVouchersMutation, exports.useGetVouchersQuery = exports.VouchersApiSlice.useGetVouchersQuery, exports.useGetVoucherByIdQuery = exports.VouchersApiSlice.useGetVoucherByIdQuery;
+exports.useCreateVouchersMutation = exports.VouchersApiSlice.useCreateVouchersMutation, exports.useGetVouchersQuery = exports.VouchersApiSlice.useGetVouchersQuery, exports.useGetVoucherByIdQuery = exports.VouchersApiSlice.useGetVoucherByIdQuery, exports.use = exports.VouchersApiSlice.use;

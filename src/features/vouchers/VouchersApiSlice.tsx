@@ -36,4 +36,4 @@ export const VouchersApiSlice = apiSlice.injectEndpoints({
     })
 })
 
-export const {useCreateVouchersMutation, useGetVouchersQuery, useGetVoucherByIdQuery } = VouchersApiSlice
+export const {useCreateVouchersMutation, useGetVouchersQuery, useGetVoucherByIdQuery, useDeleteVoucherMutation } = VouchersApiSlice

@@ -4,7 +4,7 @@ import Button from '../../components/button/Button'
 import Input from '../../components/input/Input'
 import Switch from '../../components/switch/Switch'
 import TopNav from '../../components/topnav/TopNav'
-import { useCreateVouchersMutation } from '../../features/vouchers/VouchersApiSlice'
+import { useCreateVouchersMutation, useDeleteVoucherMutation } from '../../features/vouchers/VouchersApiSlice'
 import { toast } from 'react-toastify';
 import { useState } from 'react'
 
@@ -26,6 +26,7 @@ const CreateVoucher = () => {
     confirmPassword: "",
   }
   const [formValue, setFormValue] = useState<initialStateType>(initialState)
+  const [deleteVoucher] = useDeleteVoucherMutation()
 
   const [createVouchers] = useCreateVouchersMutation()
   const navigate = useNavigate();
@@ -271,7 +272,7 @@ const CreateVoucher = () => {
         <div className="flex  items-center justify-between bg-[#FCFCFF] border-[#F1F3FF] border p-5  w-[100%]">
           <div className="gap-x-3 flex">
             <Button className="bg-[#949AB1]">Undo Changes</Button>
-            <Button className="bg-[#FF5660]">Delete Advert</Button>
+            <Button className="bg-[#FF5660]" onClick={() => deleteVoucher()}>Delete Advert</Button>
           </div>
           <div className="gap-x-3 flex">
             <Button className='bg-[#868BA1]' onClick={() => navigate(-1)}>Cancel</Button>

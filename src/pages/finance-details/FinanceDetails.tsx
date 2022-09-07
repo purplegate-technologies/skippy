@@ -42,8 +42,6 @@ const FinanceDetails = () => {
 
     const { data } = useGetVoucherByIdQuery(id)
 
-    // console.log(data, "useGetVoucherByIdQuery")
-
     const navigate = useNavigate()
 
 

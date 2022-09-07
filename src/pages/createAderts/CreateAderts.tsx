@@ -64,7 +64,7 @@ const CreateAderts = () => {
   // create Adverts
   const [createAdvert] = useCreateAdvertMutation()
 
-  useDeleteAdvertMutation()
+  const [deleteAdvert] = useDeleteAdvertMutation()
 
   // const { data } = useGetStreamAdminQuery({})
   // console.log(data, 'data useGetStreamAdminQuery')
@@ -420,7 +420,7 @@ const CreateAderts = () => {
         <div className="flex  items-center justify-between bg-[#FCFCFF] border-[#F1F3FF] border p-5  w-[100%]">
           <div className="gap-x-3 flex">
             <Button className="bg-[#949AB1]">Undo Changes</Button>
-            <Button className="bg-[#FF5660]">Delete Advert</Button>
+            <Button className="bg-[#FF5660]"  onClick={() => deleteAdvert}>Delete Advert</Button>
           </div>
           <div className="gap-x-3 flex">
             <Button className='bg-[#868BA1] ' onClick={() => navigate(-1)}>Cancel</Button>
