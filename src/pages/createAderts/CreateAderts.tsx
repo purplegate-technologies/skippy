@@ -424,7 +424,7 @@ const CreateAderts = () => {
           </div>
           <div className="gap-x-3 flex">
             <Button className='bg-[#868BA1] ' onClick={() => navigate(-1)}>Cancel</Button>
-            <Button className='bg-[#19C165]'>Save Changes</Button>
+            <Button className='bg-[#19C165]' onClick={onFinish}>Save Changes</Button>
           </div>
         </div>
 

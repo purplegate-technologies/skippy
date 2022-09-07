@@ -14,6 +14,7 @@ interface PropTypes {
   disabled?: boolean;
   canNotEdit?: boolean;
   selectedOption?: string;
+  className?: string
 }
 export const Select = ({
   label = "",
@@ -25,6 +26,7 @@ export const Select = ({
   disabled = false,
   canNotEdit = false,
   selectedOption,
+  className
 }: PropTypes) => {
   return (
     <div className={`space-y-2 flex flex-col ${disabled && "opacity-60"}`}>
@@ -46,7 +48,7 @@ export const Select = ({
         //   id={id}
           disabled={disabled}
           onChange={(e) => onChange(e.target.value)}
-          className="h-14  lg:h-12 border-none focus:outline-none w-full md:auto bg-white"
+          className={`${className} h-14  lg:h-10 border-none focus:outline-none w-full md:auto bg-white`}
           required={required}
         >
           <option value="" disabled>

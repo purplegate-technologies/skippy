@@ -6,33 +6,56 @@ import Switch from '../../components/switch/Switch'
 import TopNav from '../../components/topnav/TopNav'
 import { useCreateVouchersMutation, useDeleteVoucherMutation } from '../../features/vouchers/VouchersApiSlice'
 import { toast } from 'react-toastify';
-import { useState } from 'react'
+import React, { useState } from 'react'
+import { Select } from '../../components/Select/Select'
 
 
 interface initialStateType {
-  firstName?: string,
-  lastName?: string,
-  email?: string,
-  password?: string,
-  confirmPassword?: string
+  title?: string,
+  description?: string,
+  terms?: string,
+  price?: string,
+  value?: string
+  userQuantity?: string
+  totalQuantity?: string
+  startDate?: string
+  endDate?: string
+  status?: string
 }
 
 const CreateVoucher = () => {
   const initialState: initialStateType = {
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
+    title: "",
+    description: "",
+    terms: "",
+    price: "",
+    value: "",
+    userQuantity: "",
+    totalQuantity: "",
+    startDate: "",
+    endDate: "",
+    status: "",
   }
   const [formValue, setFormValue] = useState<initialStateType>(initialState)
   const [deleteVoucher] = useDeleteVoucherMutation()
 
   const [createVouchers] = useCreateVouchersMutation()
   const navigate = useNavigate();
+
+
+  const setField = (field: any, value: any) => {
+    setFormValue({
+      ...formValue,
+      [field]: value,
+    });
+  };
+
+
   const handleSubmit = async () => {
+
+    console.log(formValue, "formValues")
     try {
-      await createVouchers({}).unwrap()
+      await createVouchers(formValue).unwrap()
       toast.success("Successfully Create a Voucher")
     } catch (e: any) {
       toast.error(e)
@@ -55,13 +78,13 @@ const CreateVoucher = () => {
 
         <div className="grid md:grid-cols-12 gap-10 m-5">
           <div className='md:col-span-7 flex flex-col bg-white'>
-            <div className="p-2 items-center flex justify-between"> <span>Voucher  Details </span> <span className="text-[#949AB1]">e.g. 30% off / Buy 1 get 1 free</span></div>
+            <div className="p-2 items-center flex justify-between"> <span>Voucher  Deal </span> <span className="text-[#949AB1]">e.g. 30% off / Buy 1 get 1 free</span></div>
 
-            <Input type='text' className='flex-1 w-full flex border border-[#CFD1D5] p-2 mb-5 rounded-lg' placeholder='N1500.00 Voucher' />
+            <Input type='number' value={formValue.value} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setField('value', e.target.value)}  className='flex-1 w-full flex border border-[#CFD1D5] p-2 mb-5 rounded-lg' placeholder='N1500.00 Voucher' />
 
             <div className="flex items-center gap-x-5 justify-between mb-5">
-              <Input type='date' divStyle="lable w-full" className='flex-1 w-full flex border border-[#CFD1D5] p-2 rounded-lg' label='Start Date' labelStyle='text-sm' />
-              <Input type='date' divStyle="lable w-full" className='flex-1 w-full flex border border-[#CFD1D5] p-2 rounded-lg' label='Expiry Date' labelStyle='text-sm' />
+              <Input type='date' value={formValue.startDate} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setField('startDate', e.target.value)} divStyle="lable w-full" className='flex-1 w-full flex border border-[#CFD1D5] p-2 rounded-lg' label='Start Date' labelStyle='text-sm' />
+              <Input type='date' value={formValue.endDate} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setField('endDate', e.target.value)} divStyle="lable w-full" className='flex-1 w-full flex border border-[#CFD1D5] p-2 rounded-lg' label='Expiry Date' labelStyle='text-sm' />
             </div>
 
             {/*  */}
@@ -122,7 +145,7 @@ const CreateVoucher = () => {
                 </div>
                 <div className="py-2 px-4 bg-white rounded-b-lg dark:bg-gray-800">
                   <label className="sr-only">Publish post</label>
-                  <textarea id="editor" className="block px-0 w-full text-sm text-gray-800 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="Write an article..." required></textarea>
+                  <textarea id="editor" value={formValue.description} onChange={e => setField("description", e.target.value)} className="block px-0 w-full text-sm text-gray-800 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="Write an article..." required></textarea>
                 </div>
 
               </div>
@@ -192,7 +215,7 @@ const CreateVoucher = () => {
                 </div>
                 <div className="py-2 px-4 bg-white rounded-b-lg dark:bg-gray-800">
                   <label className="sr-only">Publish post</label>
-                  <textarea id="editor" className="block px-0 w-full text-sm text-gray-800 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="Write an article..." required></textarea>
+                  <textarea id="editor" value={formValue.terms} onChange={e => setField('terms', e.target.value)} className="block px-0 w-full text-sm text-gray-800 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="Write an article..." required></textarea>
                 </div>
 
               </div>
@@ -219,7 +242,7 @@ const CreateVoucher = () => {
                   {/* <Input label='Brand name/Ad Title' type='text' name='' labelStyle='my-1 text-[#171837]' className='flex flex-1 w-full p-2 border border-[#949AB1] rounded' /> */}
                   <div className="w-full">
                     <label className='my-1 text-[#171837]'>Brand name/Ad Title </label>
-                    <Input type='text' name='' divStyle="w-full" className=' w-full p-2 border border-[#CFD1D5] rounded' />
+                    <Input type='text' name='' value={formValue.title} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setField("title", e.target.value)} divStyle="w-full" className=' w-full p-2 border border-[#CFD1D5] rounded' placeholder='Skippy Voucher' />
                   </div>
                 </div>
               </div>
@@ -234,29 +257,41 @@ const CreateVoucher = () => {
               <div className="grid grid-cols-2 gap-10 p-4">
                 <div className="w-full">
                   <label className='my-1 text-[#171837]'>  Total Quantity </label>
-                  <Input type='number' name='' divStyle="w-full" className='rounded-lg w-full p-2 border border-[#CFD1D5]' />
+                  <Input type='number' value={formValue.totalQuantity} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setField('totalQuantity', e.target.value)}  name='' divStyle="w-full" className='rounded-lg w-full p-2 border border-[#CFD1D5]' />
                 </div>
                 <div className="w-full">
                   <label className='my-1 text-[#171837]'>Quantity per User </label>
-                  <Input type='number' name='' divStyle="w-full" className=' w-full p-2 border border-[#CFD1D5] rounded-lg' />
+                  <Input type='number' value={formValue.userQuantity} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setField('userQuantity', e.target.value)} name='' divStyle="w-full" className=' w-full p-2 border border-[#CFD1D5] rounded-lg' />
                 </div>
               </div>
 
               <div className="grid grid-cols-2 gap-10 p-4">
                 <div className="w-full">
                   <label className='my-1 text-[#171837]'>  Voucher Value </label>
-                  <Input type='number' name='' divStyle="w-full" className='rounded-lg w-full p-2 border border-[#CFD1D5]' />
+                  <Input type='number' name='' value={formValue.value} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setField('value', e.target.value)}  divStyle="w-full" className='rounded-lg w-full p-2 border border-[#CFD1D5]' />
                 </div>
                 <div className="w-full">
                   <label className='my-1 text-[#171837]'>Voucher Cost (Skippy Points) </label>
-                  <Input type='number' name='' divStyle="w-full" className=' w-full p-2 border border-[#CFD1D5] rounded-lg' />
+                  <Input type='number' value={formValue.price} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setField('price', e.target.value)} name='' divStyle="w-full" className=' w-full p-2 border border-[#CFD1D5] rounded-lg' />
                 </div>
               </div>
 
               <div className="w-full  p-4">
-                <label className='my-1 text-[#171837]'>Embed Code) </label>
+                <label className='my-1 text-[#171837]'>Embed Code</label>
                 <Input type='number' name='' divStyle="w-full" className=' w-full p-2 border border-[#CFD1D5] rounded-lg' placeholder="Enter action link here" />
               </div>
+
+              <div className='my-2'>
+                        <label htmlFor="">status</label>
+
+                        <Select
+                          // label="Your role in the chair"
+                          options={["active", "inactive"]}
+                          required
+                          value={formValue.status}
+                          onChange={(value: any) => setField("status", value)}
+                        />
+                      </div>
 
               <Switch label="Turn on notifications for voucher validity" className='p-4' />
 
@@ -272,11 +307,11 @@ const CreateVoucher = () => {
         <div className="flex  items-center justify-between bg-[#FCFCFF] border-[#F1F3FF] border p-5  w-[100%]">
           <div className="gap-x-3 flex">
             <Button className="bg-[#949AB1]">Undo Changes</Button>
-            <Button className="bg-[#FF5660]" onClick={() => deleteVoucher()}>Delete Advert</Button>
+            <Button className="bg-[#FF5660]" onClick={() => deleteVoucher}>Delete Advert</Button>
           </div>
           <div className="gap-x-3 flex">
             <Button className='bg-[#868BA1]' onClick={() => navigate(-1)}>Cancel</Button>
-            <Button className='bg-[#19C165]'>Save Changes</Button>
+            <Button className='bg-[#19C165]' onClick={handleSubmit}>Save Changes</Button>
           </div>
         </div>
 

@@ -277,6 +277,6 @@ var CreateAderts = function () {
                     react_1["default"].createElement(Button_1["default"], { className: "bg-[#FF5660]", onClick: function () { return deleteAdvert; } }, "Delete Advert")),
                 react_1["default"].createElement("div", { className: "gap-x-3 flex" },
                     react_1["default"].createElement(Button_1["default"], { className: 'bg-[#868BA1] ', onClick: function () { return navigate(-1); } }, "Cancel"),
-                    react_1["default"].createElement(Button_1["default"], { className: 'bg-[#19C165]' }, "Save Changes"))))));
+                    react_1["default"].createElement(Button_1["default"], { className: 'bg-[#19C165]', onClick: onFinish }, "Save Changes"))))));
 };
 exports["default"] = CreateAderts;
