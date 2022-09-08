@@ -67,6 +67,8 @@ var options = [
     { value: 'draft', label: 'draft' },
 ];
 var CreateAderts = function () {
+    var id = react_router_dom_1.useParams().id;
+    console.log(id, "so hlep me God");
     var initailState = {
         title: "",
         type: '',
@@ -89,10 +91,22 @@ var CreateAderts = function () {
     var _d = react_1.useState("Add"), tabIndexText = _d[0], setTabIndexText = _d[1];
     // const [roles, setRoles] = useState("Finances and billing")
     // create Adverts
-    var createAdvert = AdvertsApiSlice_1.useCreateAdvertMutation()[0];
+    var _e = AdvertsApiSlice_1.useCreateAdvertMutation(), createAdvert = _e[0], isSuccess = _e[1].isSuccess;
     var deleteAdvert = AdvertsApiSlice_1.useDeleteAdvertMutation()[0];
     // const { data } = useGetStreamAdminQuery({})
     // console.log(data, 'data useGetStreamAdminQuery')
+    var handleDelete = function (id) { return __awaiter(void 0, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, deleteAdvert(id)];
+                case 1:
+                    _a.sent();
+                    react_toastify_1.toast.success("Advert Deleted Successfully");
+                    navigate('/advertisements');
+                    return [2 /*return*/];
+            }
+        });
+    }); };
     var handleUploadCover = function (e) {
         e.preventDefault();
         var formData = new FormData();
@@ -121,6 +135,7 @@ var CreateAderts = function () {
                         file: ""
                     });
                     react_toastify_1.toast.success("successfully Created an Advert");
+                    navigate('/advertisements');
                     return [3 /*break*/, 4];
                 case 3:
                     react_toastify_1.toast.error("Please fill all Input field");
@@ -283,7 +298,7 @@ var CreateAderts = function () {
             react_1["default"].createElement("div", { className: "flex  items-center justify-between bg-[#FCFCFF] border-[#F1F3FF] border p-5  w-[100%]" },
                 react_1["default"].createElement("div", { className: "gap-x-3 flex" },
                     react_1["default"].createElement(Button_1["default"], { className: "bg-[#949AB1]" }, "Undo Changes"),
-                    react_1["default"].createElement(Button_1["default"], { className: "bg-[#FF5660]", onClick: function () { return deleteAdvert; } }, "Delete Advert")),
+                    react_1["default"].createElement(Button_1["default"], { className: "bg-[#FF5660]", onClick: function () { return handleDelete(id); } }, "Delete Advert")),
                 react_1["default"].createElement("div", { className: "gap-x-3 flex" },
                     react_1["default"].createElement(Button_1["default"], { className: 'bg-[#868BA1] ', onClick: function () { return navigate(-1); } }, "Cancel"),
                     react_1["default"].createElement(Button_1["default"], { className: 'bg-[#19C165]', onClick: onFinish }, "Save Changes"))))));

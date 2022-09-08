@@ -58,6 +58,7 @@ var react_toastify_1 = require("react-toastify");
 var react_1 = require("react");
 var Select_1 = require("../../components/Select/Select");
 var CreateVoucher = function () {
+    var id = react_router_dom_1.useParams().id;
     var initialState = {
         title: "",
         description: "",
@@ -75,6 +76,18 @@ var CreateVoucher = function () {
     var deleteVoucher = VouchersApiSlice_1.useDeleteVoucherMutation()[0];
     var createVouchers = VouchersApiSlice_1.useCreateVouchersMutation()[0];
     var navigate = react_router_dom_1.useNavigate();
+    var handleDelete = function (id) { return __awaiter(void 0, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, deleteVoucher(id)];
+                case 1:
+                    _a.sent();
+                    react_toastify_1.toast.success("Voucher Deleted Successfully");
+                    navigate('/finance');
+                    return [2 /*return*/];
+            }
+        });
+    }); };
     var setField = function (field, value) {
         var _a;
         setFormValue(__assign(__assign({}, formValue), (_a = {}, _a[field] = value, _a)));
@@ -261,7 +274,7 @@ var CreateVoucher = function () {
             react_1["default"].createElement("div", { className: "flex  items-center justify-between bg-[#FCFCFF] border-[#F1F3FF] border p-5  w-[100%]" },
                 react_1["default"].createElement("div", { className: "gap-x-3 flex" },
                     react_1["default"].createElement(Button_1["default"], { className: "bg-[#949AB1]" }, "Undo Changes"),
-                    react_1["default"].createElement(Button_1["default"], { className: "bg-[#FF5660]", onClick: function () { return deleteVoucher; } }, "Delete Advert")),
+                    react_1["default"].createElement(Button_1["default"], { className: "bg-[#FF5660]", onClick: function () { return handleDelete(id); } }, "Delete Advert")),
                 react_1["default"].createElement("div", { className: "gap-x-3 flex" },
                     react_1["default"].createElement(Button_1["default"], { className: 'bg-[#868BA1]', onClick: function () { return navigate(-1); } }, "Cancel"),
                     react_1["default"].createElement(Button_1["default"], { className: 'bg-[#19C165]', onClick: handleSubmit }, "Save Changes"))))));

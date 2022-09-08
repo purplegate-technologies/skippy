@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import CompanyLogo from '../../assets/svg/CompanyLogo';
 import Button from '../../components/button/Button';
 import FileUpload from '../../components/FileUpload/FileUpload';
@@ -25,6 +25,8 @@ const options = [
 
 
 const CreateAderts = () => {
+  const {id} = useParams()
+  console.log(id, "so hlep me God")
   const initailState = {
     title: "",
     type: '',
@@ -61,12 +63,19 @@ const CreateAderts = () => {
   const [tabIndexText, setTabIndexText] = useState<string>("Add")
   // const [roles, setRoles] = useState("Finances and billing")
   // create Adverts
-  const [createAdvert] = useCreateAdvertMutation()
+  const [createAdvert, {isSuccess}] = useCreateAdvertMutation()
 
   const [deleteAdvert] = useDeleteAdvertMutation()
 
   // const { data } = useGetStreamAdminQuery({})
   // console.log(data, 'data useGetStreamAdminQuery')
+
+  const handleDelete = async (id: any) => {
+
+    await deleteAdvert(id)
+      toast.success("Advert Deleted Successfully")
+      navigate('/advertisements')
+  }
 
   const handleUploadCover = (e: any) => {
     e.preventDefault();
@@ -92,6 +101,7 @@ const CreateAderts = () => {
           file: ""
         })
         toast.success("successfully Created an Advert");
+        navigate('/advertisements')
       } else {
         toast.error("Please fill all Input field")
       }
@@ -428,7 +438,7 @@ const CreateAderts = () => {
         <div className="flex  items-center justify-between bg-[#FCFCFF] border-[#F1F3FF] border p-5  w-[100%]">
           <div className="gap-x-3 flex">
             <Button className="bg-[#949AB1]">Undo Changes</Button>
-            <Button className="bg-[#FF5660]" onClick={() => deleteAdvert}>Delete Advert</Button>
+            <Button className="bg-[#FF5660]" onClick={() => handleDelete(id)}>Delete Advert</Button>
           </div>
           <div className="gap-x-3 flex">
             <Button className='bg-[#868BA1] ' onClick={() => navigate(-1)}>Cancel</Button>

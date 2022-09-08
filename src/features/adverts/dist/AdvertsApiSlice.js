@@ -29,7 +29,7 @@ exports.advertsApiSlice = apiSlice_1.apiSlice.injectEndpoints({
         getAdvertById: builder.query({
             query: function (id) { return "adverts/" + id; },
             // Pick out data and prevent nested properties in a hook or selector
-            transformResponse: function (response, meta, arg) { return response.data; },
+            transformResponse: function (response) { return response.data; },
             providesTags: ['Advert']
         }),
         updateAdvert: builder.mutation({

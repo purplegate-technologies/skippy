@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import CompanyLogo from '../../assets/svg/CompanyLogo'
 import Button from '../../components/button/Button'
 import Input from '../../components/input/Input'
@@ -24,6 +24,7 @@ interface initialStateType {
 }
 
 const CreateVoucher = () => {
+  const{id} = useParams()
   const initialState: initialStateType = {
     title: "",
     description: "",
@@ -44,6 +45,11 @@ const CreateVoucher = () => {
   const [createVouchers] = useCreateVouchersMutation()
   const navigate = useNavigate();
 
+  const handleDelete = async (id: any) => {
+    await deleteVoucher(id)
+    toast.success("Voucher Deleted Successfully")
+      navigate('/finance')
+  }
 
   const setField = (field: any, value: any) => {
     setFormValue({
@@ -312,7 +318,7 @@ const CreateVoucher = () => {
         <div className="flex  items-center justify-between bg-[#FCFCFF] border-[#F1F3FF] border p-5  w-[100%]">
           <div className="gap-x-3 flex">
             <Button className="bg-[#949AB1]">Undo Changes</Button>
-            <Button className="bg-[#FF5660]" onClick={() => deleteVoucher}>Delete Advert</Button>
+            <Button className="bg-[#FF5660]" onClick={() => handleDelete(id)}>Delete Advert</Button>
           </div>
           <div className="gap-x-3 flex">
             <Button className='bg-[#868BA1]' onClick={() => navigate(-1)}>Cancel</Button>

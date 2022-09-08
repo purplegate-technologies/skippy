@@ -17,7 +17,7 @@ exports.VouchersApiSlice = apiSlice_1.apiSlice.injectEndpoints({
         getVouchers: builder.query({
             query: function () { return "vouchers"; },
             // Pick out data and prevent nested properties in a hook or selector
-            transformResponse: function (response, meta, arg) { return response.data; },
+            transformResponse: function (response) { return response.data; },
             providesTags: ['Vouchers']
         }),
         getVoucherById: builder.query({

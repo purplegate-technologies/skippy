@@ -37,7 +37,7 @@ export const advertsApiSlice = apiSlice.injectEndpoints({
         getAdvertById: builder.query({ // get advert for tables by id for each user
             query: (id) => `adverts/${id}`,
             // Pick out data and prevent nested properties in a hook or selector
-            transformResponse: (response: { data: {} | undefined | any }, meta, arg) => response.data,
+            transformResponse: (response: any) => response.data,
             providesTags: ['Advert'],
         }),
         updateAdvert: builder.mutation({ // get advert by id
