@@ -91,7 +91,7 @@ var CreateAderts = function () {
     var _d = react_1.useState("Add"), tabIndexText = _d[0], setTabIndexText = _d[1];
     // const [roles, setRoles] = useState("Finances and billing")
     // create Adverts
-    var _e = AdvertsApiSlice_1.useCreateAdvertMutation(), createAdvert = _e[0], isSuccess = _e[1].isSuccess;
+    var createAdvert = AdvertsApiSlice_1.useCreateAdvertMutation()[0];
     var deleteAdvert = AdvertsApiSlice_1.useDeleteAdvertMutation()[0];
     // const { data } = useGetStreamAdminQuery({})
     // console.log(data, 'data useGetStreamAdminQuery')
@@ -138,7 +138,7 @@ var CreateAderts = function () {
                     navigate('/advertisements');
                     return [3 /*break*/, 4];
                 case 3:
-                    react_toastify_1.toast.error("Please fill all Input field");
+                    react_toastify_1.toast.error("Please fill all required Input field");
                     _a.label = 4;
                 case 4: return [3 /*break*/, 6];
                 case 5:

@@ -25,7 +25,7 @@ const options = [
 
 
 const CreateAderts = () => {
-  const {id} = useParams()
+  const { id } = useParams()
   console.log(id, "so hlep me God")
   const initailState = {
     title: "",
@@ -63,7 +63,7 @@ const CreateAderts = () => {
   const [tabIndexText, setTabIndexText] = useState<string>("Add")
   // const [roles, setRoles] = useState("Finances and billing")
   // create Adverts
-  const [createAdvert, {isSuccess}] = useCreateAdvertMutation()
+  const [createAdvert] = useCreateAdvertMutation()
 
   const [deleteAdvert] = useDeleteAdvertMutation()
 
@@ -71,10 +71,9 @@ const CreateAderts = () => {
   // console.log(data, 'data useGetStreamAdminQuery')
 
   const handleDelete = async (id: any) => {
-
     await deleteAdvert(id)
-      toast.success("Advert Deleted Successfully")
-      navigate('/advertisements')
+    toast.success("Advert Deleted Successfully")
+    navigate('/advertisements')
   }
 
   const handleUploadCover = (e: any) => {
@@ -103,7 +102,7 @@ const CreateAderts = () => {
         toast.success("successfully Created an Advert");
         navigate('/advertisements')
       } else {
-        toast.error("Please fill all Input field")
+        toast.error("Please fill all required Input field")
       }
     } catch (e: any) {
       toast.error(e)
