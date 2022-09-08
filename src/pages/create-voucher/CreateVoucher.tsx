@@ -37,6 +37,8 @@ const CreateVoucher = () => {
     status: "",
   }
   const [formValue, setFormValue] = useState<initialStateType>(initialState)
+
+  const {title, description, terms, price, value, userQuantity, totalQuantity, startDate, endDate, status} = formValue
   const [deleteVoucher] = useDeleteVoucherMutation()
 
   const [createVouchers] = useCreateVouchersMutation()
@@ -53,10 +55,13 @@ const CreateVoucher = () => {
 
   const handleSubmit = async () => {
 
-    console.log(formValue, "formValues")
     try {
-      await createVouchers(formValue).unwrap()
-      toast.success("Successfully Create a Voucher")
+      if(title && description && terms && price && value && userQuantity && totalQuantity && startDate && endDate && status){
+        await createVouchers(formValue).unwrap()
+        toast.success("Successfully Create a Voucher")
+      } else {
+        toast.error("Please fill all Input field")
+      }
     } catch (e: any) {
       toast.error(e)
     }

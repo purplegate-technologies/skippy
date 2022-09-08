@@ -65,28 +65,25 @@ var Table = function (_a) {
             React.createElement("table", null,
                 headData && renderHead ? (React.createElement("thead", null,
                     React.createElement("tr", null, headData.map(function (item, index) { return renderHead(item, index); })))) : null,
-                isFetching ? "isFetching Data" : React.createElement(React.Fragment, null, bodyData && (bodyData === null || bodyData === void 0 ? void 0 : bodyData.length) !== 0 ? (React.createElement("tbody", null, dataShow === null || dataShow === void 0 ? void 0 : dataShow.map(function (item, index) { return renderBody(item, index); }))) : (React.createElement("tbody", { className: '' },
+                isFetching ? React.createElement("td", { className: 'text-center w-full p-5 text-2l font-bold' }, "isFetching Data") : React.createElement(React.Fragment, null, bodyData ? (React.createElement("tbody", null, 
+                // dataShow?.map((item: any, index: number) => renderBody(item, index))
+                bodyData === null || 
+                // dataShow?.map((item: any, index: number) => renderBody(item, index))
+                bodyData === void 0 ? void 0 : 
+                // dataShow?.map((item: any, index: number) => renderBody(item, index))
+                bodyData.map(function (item, index) { return renderBody(item, index); }))) : (React.createElement("tbody", { className: '' },
                     React.createElement("tr", null,
                         React.createElement("td", { className: 'text-center w-full p-5 text-2l font-bold' }, "No Data"))))))),
         React.createElement("div", { className: 'footerPagination' },
             React.createElement("div", { style: { display: 'flex', alignItems: 'center' } },
-                React.createElement("select", { className: 'tableSelectDropDown' },
+                React.createElement("select", { value: currPage, className: 'tableSelectDropDown' },
                     React.createElement("option", { disabled: true }, "Items per page"),
-                    React.createElement("option", null, "10"),
-                    React.createElement("option", null, "50"),
-                    React.createElement("option", null, "100")),
+                    React.createElement("option", { value: "5" }, "5"),
+                    React.createElement("option", { value: "10" }, "10"),
+                    React.createElement("option", { value: "15" }, "15")),
                 " ",
                 React.createElement("span", { style: { marginLeft: '10px' } }, "Items per page")),
-            pages > 0 ? (React.createElement("div", { className: "table__pagination" },
-                React.createElement("button", { onClick: handlePrevbtn, disabled: currPage === pages[0] ? true : false }, "Prev"),
-                range.map(function (item, index) {
-                    if (item < maxPageNumberLimit + 1 && item > minPageNumberLimit) {
-                        return React.createElement("div", { key: index, className: "table__pagination-item " + (currPage === index && 'active'), onClick: function () { return selectPage(index); } }, item);
-                    }
-                    else {
-                        return null;
-                    }
-                }),
-                React.createElement("button", { onClick: handleNextbtn, disabled: currPage === pages[pages.length - 1] ? true : false }, "Next"))) : null)));
+            pages > 0 && (React.createElement(React.Fragment, null,
+                React.createElement("div", { className: "table__pagination" }, range.slice(0, 5).map(function (item, index) { return (React.createElement("div", { key: index, className: "table__pagination-item " + (currPage === index && 'active'), onClick: function () { return selectPage(index); } }, item + 1)); })))))));
 };
 exports["default"] = Table;

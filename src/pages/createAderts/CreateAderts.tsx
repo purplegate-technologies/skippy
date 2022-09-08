@@ -18,9 +18,9 @@ import { toast } from 'react-toastify';
 
 
 const options = [
-  { value: 'chocolate', label: 'Chocolate' },
-  { value: 'strawberry', label: 'Strawberry' },
-  { value: 'vanilla', label: 'Vanilla' },
+  { value: 'active', label: 'Active' },
+  { value: 'inactive', label: 'InActive' },
+  { value: 'draft', label: 'draft' },
 ];
 
 
@@ -38,7 +38,6 @@ const CreateAderts = () => {
   const [selectedOption, setSelectedOption] = useState(null);
 
 
-  console.log(formValues, "formValues")
   const { title, type, status, points, file } = formValues
 
   const handleChangeSeelect = (val: any) => {
@@ -81,17 +80,24 @@ const CreateAderts = () => {
     e.preventDefault()
     // const formData = new FormData();
 
-   try {
-    await createAdvert(formValues).unwrap()
-    setFormValue({ title: "",
-    type: '',
-    status: "",
-    points: "",
-    file: ""})
-    toast.success("successfully Created an Advert");
-  } catch(e: any) {
-    toast.error(e)
-   }
+    try {
+      if (title && type && status && points && file) {
+
+        await createAdvert(formValues).unwrap()
+        setFormValue({
+          title: "",
+          type: '',
+          status: "",
+          points: "",
+          file: ""
+        })
+        toast.success("successfully Created an Advert");
+      } else {
+        toast.error("Please fill all Input field")
+      }
+    } catch (e: any) {
+      toast.error(e)
+    }
 
   };
 
@@ -116,22 +122,22 @@ const CreateAderts = () => {
             <VideoSlider />
             {/* <FileUpload /> */}
 
-          <div className="flex items-center my-3">
+            <div className="flex items-center my-3">
 
-            <label className="flex flex-col justify-center items-center w-full h-10 bg-[#F1F3FF] border-2 border-gray-300  cursor-pointer dark:hover:bg-bray-800 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 ">
-              <div className="flex flex-col justify-center items-start">
-                <p className={"text-left"}>Select an audio file</p>
+              <label className="flex flex-col justify-center items-center w-full h-10 bg-[#F1F3FF] border-2 border-gray-300  cursor-pointer dark:hover:bg-bray-800 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 ">
+                <div className="flex flex-col justify-center items-start">
+                  <p className={"text-left"}>Select an audio file</p>
+                </div>
+                <Input type="file" className="hidden w-full" required onChange={handleUploadCover} />
+              </label>
+
+              <div>
+                <Button className='rounded-none bg-[#516CF5]'
+                  // onClick={handleSubmission}
+                  onClick={handleUploadCover}
+                >Add Audio</Button>
               </div>
-              <Input type="file" className="hidden w-full" required onChange={handleUploadCover} />
-            </label>
-
-            <div>
-              <Button className='rounded-none bg-[#516CF5]'
-              // onClick={handleSubmission}
-              onClick={onFinish}
-              >Add Audio</Button>
             </div>
-          </div>
 
 
             <Button type='submit' className="w-full border-[#516CF5] mt-10 border border-dashed bg-white text-[#516CF5]">
@@ -157,7 +163,7 @@ const CreateAderts = () => {
                     onChange={(e) => {
                       const select = e.target as HTMLSelectElement
                       setField("type", select.value)
-                  }}>
+                    }}>
 
                     <option value="internal">Internal</option>
                     <option value="external">External</option>
@@ -253,7 +259,9 @@ const CreateAderts = () => {
                           //   const select = e.target as HTMLSelectElement
                           //   setRoles(select.options.item(select.selectedIndex)?.innerText!)
                           // }}
-                          onChange={handleChangeSeelect}
+                          // value={status}
+                          onChange={(value: any) => setField("status", value)}
+                          // onChange={handleChangeSeelect}
                           options={options}
                         />
 
@@ -420,7 +428,7 @@ const CreateAderts = () => {
         <div className="flex  items-center justify-between bg-[#FCFCFF] border-[#F1F3FF] border p-5  w-[100%]">
           <div className="gap-x-3 flex">
             <Button className="bg-[#949AB1]">Undo Changes</Button>
-            <Button className="bg-[#FF5660]"  onClick={() => deleteAdvert}>Delete Advert</Button>
+            <Button className="bg-[#FF5660]" onClick={() => deleteAdvert}>Delete Advert</Button>
           </div>
           <div className="gap-x-3 flex">
             <Button className='bg-[#868BA1] ' onClick={() => navigate(-1)}>Cancel</Button>

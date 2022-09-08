@@ -1,22 +1,22 @@
 
 
-import {useState} from 'react'
+import { useState } from 'react'
 import './table.css'
 
 interface Props<T = any> {
     limit?: number
     headData?: string[]
-	// bodyData?: T[];
-	bodyData?: any;
-	// type?: ETableType;
-	// column?: TColumnType[];
-    renderBody:   (n: any, b: number) => JSX.Element
+    // bodyData?: T[];
+    bodyData?: any;
+    // type?: ETableType;
+    // column?: TColumnType[];
+    renderBody: (n: any, b: number) => JSX.Element
     renderHead: (n: any, b: number) => JSX.Element
     isSuccess?: boolean
     isFetching?: boolean
 }
 
-const Table = ({limit, renderHead, bodyData, headData, renderBody, isFetching}: Props) => {
+const Table = ({ limit, renderHead, bodyData, headData, renderBody, isFetching }: Props) => {
 
     const initDataShow = limit && bodyData ? bodyData.slice(0, (limit)) : bodyData
 
@@ -55,35 +55,35 @@ const Table = ({limit, renderHead, bodyData, headData, renderBody, isFetching}: 
         selectPage(currPage + 1)
 
         if (currPage + 1 > maxPageNumberLimit) {
-          setmaxPageNumberLimit(maxPageNumberLimit + pageNumberLimit);
-          setminPageNumberLimit(minPageNumberLimit + pageNumberLimit);
+            setmaxPageNumberLimit(maxPageNumberLimit + pageNumberLimit);
+            setminPageNumberLimit(minPageNumberLimit + pageNumberLimit);
         }
-      };
+    };
 
-      const handlePrevbtn = () => {
+    const handlePrevbtn = () => {
         setCurrPage(currPage - 1);
         // selectPage(currPage - 1)
 
         if ((currPage - 1) % pageNumberLimit === 0) {
-          setmaxPageNumberLimit(maxPageNumberLimit - pageNumberLimit);
-          setminPageNumberLimit(minPageNumberLimit - pageNumberLimit);
+            setmaxPageNumberLimit(maxPageNumberLimit - pageNumberLimit);
+            setminPageNumberLimit(minPageNumberLimit - pageNumberLimit);
         }
-      };
+    };
 
 
-        let pageIncrementBtn = null;
-        if (pages.length > maxPageNumberLimit) {
-            pageIncrementBtn = <li onClick={handleNextbtn}> &hellip; </li>;
-        }
+    let pageIncrementBtn = null;
+    if (pages.length > maxPageNumberLimit) {
+        pageIncrementBtn = <li onClick={handleNextbtn}> &hellip; </li>;
+    }
 
-        let pageDecrementBtn = null;
-        if (minPageNumberLimit >= 1) {
-            pageDecrementBtn = <li onClick={handlePrevbtn}> &hellip; </li>;
-        }
+    let pageDecrementBtn = null;
+    if (minPageNumberLimit >= 1) {
+        pageDecrementBtn = <li onClick={handlePrevbtn}> &hellip; </li>;
+    }
 
-//   const handleLoadMore = () => {
-//     setitemsPerPage(itemsPerPage + 5);
-//   };
+    //   const handleLoadMore = () => {
+    //     setitemsPerPage(itemsPerPage + 5);
+    //   };
 
     return (
         <div>
@@ -100,38 +100,39 @@ const Table = ({limit, renderHead, bodyData, headData, renderBody, isFetching}: 
                             </thead>
                         ) : null
                     }
-                    {isFetching ? "isFetching Data" : <>
-                    {
-                        bodyData && bodyData?.length !== 0 ? (
-                            <tbody>
-                                {
-                                    dataShow?.map((item: any, index: number) => renderBody(item, index))
-                                }
-                            </tbody>
-                        ) : (
-                            <tbody className=''>
-                                <tr>
-                                    <td className='text-center w-full p-5 text-2l font-bold'>No Data</td>
-                                </tr>
-                            </tbody>
-                        )
-                    }
-                        </>}
+                    {isFetching ? <td className='text-center w-full p-5 text-2l font-bold'>isFetching Data</td> : <>
+                        {
+                            bodyData ? (
+                                <tbody>
+                                    {
+                                        // dataShow?.map((item: any, index: number) => renderBody(item, index))
+                                        bodyData?.map((item: any, index: number) => renderBody(item, index))
+                                    }
+                                </tbody>
+                            ) : (
+                                <tbody className=''>
+                                    <tr>
+                                        <td className='text-center w-full p-5 text-2l font-bold'>No Data</td>
+                                    </tr>
+                                </tbody>
+                            )
+                        }
+                    </>}
                 </table>
             </div>
 
             <div className='footerPagination'>
-                <div style={{display:'flex', alignItems:'center'}}>
-                    <select className='tableSelectDropDown'>
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                    <select value={currPage} className='tableSelectDropDown'>
                         <option disabled>Items per page</option>
-                        <option>10</option>
-                        <option>50</option>
-                        <option>100</option>
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="15">15</option>
                     </select>
                     {" "}
-                    <span style={{marginLeft:'10px'}}>Items per page</span>
+                    <span style={{ marginLeft: '10px' }}>Items per page</span>
                 </div>
-                {pages > 0 ? (
+                {/* {pages > 0 ? (
                         <div className="table__pagination">
                             <button onClick={handlePrevbtn} disabled={currPage === pages[0] ? true : false}>Prev</button>
                                {range.map((item: any, index: number) => {
@@ -146,15 +147,19 @@ const Table = ({limit, renderHead, bodyData, headData, renderBody, isFetching}: 
                             <button onClick={handleNextbtn} disabled={currPage === pages[pages.length - 1] ? true : false}>Next</button>
                         </div>
                     ) : null
-                }
-                {/* default
-                {
-                    range.slice(0, 5).map((item, index) => (
-                        <div key={index} className={`table__pagination-item ${currPage === index && 'active'}`} onClick={() => selectPage(index)}>
-                            {item + 1}
-                        </div>
-                    ))
                 } */}
+                {pages > 0 && (<>
+                    <div className="table__pagination">
+                        {
+
+                            range.slice(0, 5).map((item, index) => (
+                                <div key={index} className={`table__pagination-item ${currPage === index && 'active'}`} onClick={() => selectPage(index)}>
+                                    {item + 1}
+                                </div>
+                            ))
+                        }
+                    </div>
+                </>)}
             </div>
         </div>
     )

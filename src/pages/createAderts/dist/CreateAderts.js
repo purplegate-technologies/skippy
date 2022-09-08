@@ -62,9 +62,9 @@ var AdvertsApiSlice_1 = require("../../features/adverts/AdvertsApiSlice");
 var Select_1 = require("../../components/Select/Select");
 var react_toastify_1 = require("react-toastify");
 var options = [
-    { value: 'chocolate', label: 'Chocolate' },
-    { value: 'strawberry', label: 'Strawberry' },
-    { value: 'vanilla', label: 'Vanilla' },
+    { value: 'active', label: 'Active' },
+    { value: 'inactive', label: 'InActive' },
+    { value: 'draft', label: 'draft' },
 ];
 var CreateAderts = function () {
     var initailState = {
@@ -76,7 +76,6 @@ var CreateAderts = function () {
     };
     var _a = react_1.useState(initailState), formValues = _a[0], setFormValue = _a[1];
     var _b = react_1.useState(null), selectedOption = _b[0], setSelectedOption = _b[1];
-    console.log(formValues, "formValues");
     var title = formValues.title, type = formValues.type, status = formValues.status, points = formValues.points, file = formValues.file;
     var handleChangeSeelect = function (val) {
         setSelectedOption(val);
@@ -109,22 +108,29 @@ var CreateAderts = function () {
                     e.preventDefault();
                     _a.label = 1;
                 case 1:
-                    _a.trys.push([1, 3, , 4]);
+                    _a.trys.push([1, 5, , 6]);
+                    if (!(title && type && status && points && file)) return [3 /*break*/, 3];
                     return [4 /*yield*/, createAdvert(formValues).unwrap()];
                 case 2:
                     _a.sent();
-                    setFormValue({ title: "",
+                    setFormValue({
+                        title: "",
                         type: '',
                         status: "",
                         points: "",
-                        file: "" });
+                        file: ""
+                    });
                     react_toastify_1.toast.success("successfully Created an Advert");
                     return [3 /*break*/, 4];
                 case 3:
+                    react_toastify_1.toast.error("Please fill all Input field");
+                    _a.label = 4;
+                case 4: return [3 /*break*/, 6];
+                case 5:
                     e_1 = _a.sent();
                     react_toastify_1.toast.error(e_1);
-                    return [3 /*break*/, 4];
-                case 4: return [2 /*return*/];
+                    return [3 /*break*/, 6];
+                case 6: return [2 /*return*/];
             }
         });
     }); };
@@ -150,7 +156,7 @@ var CreateAderts = function () {
                         react_1["default"].createElement("div", null,
                             react_1["default"].createElement(Button_1["default"], { className: 'rounded-none bg-[#516CF5]', 
                                 // onClick={handleSubmission}
-                                onClick: onFinish }, "Add Audio"))),
+                                onClick: handleUploadCover }, "Add Audio"))),
                     react_1["default"].createElement(Button_1["default"], { type: 'submit', className: "w-full border-[#516CF5] mt-10 border border-dashed bg-white text-[#516CF5]" }, "\u00A0\u00A0Add\u00A0a\u00A0Scene")),
                 react_1["default"].createElement("div", { className: 'md:basis-1/2 flex flex-col bg-white col-span-3' },
                     react_1["default"].createElement("div", { className: "" },
@@ -221,7 +227,10 @@ var CreateAderts = function () {
                                                 //   const select = e.target as HTMLSelectElement
                                                 //   setRoles(select.options.item(select.selectedIndex)?.innerText!)
                                                 // }}
-                                                onChange: handleChangeSeelect, options: options }))),
+                                                // value={status}
+                                                onChange: function (value) { return setField("status", value); }, 
+                                                // onChange={handleChangeSeelect}
+                                                options: options }))),
                                     react_1["default"].createElement("div", null,
                                         react_1["default"].createElement("p", null, "Animation")))),
                             tabIndexText === "Edit" && react_1["default"].createElement(react_1["default"].Fragment, null,

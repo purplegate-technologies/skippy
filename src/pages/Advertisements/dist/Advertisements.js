@@ -43,7 +43,7 @@ var Advertisements = function () {
     var _m = react_1.useState(userData), externalGraph = _m[0], setExternalGraph = _m[1];
     var _o = react_1.useState(userData), internalGraph = _o[0], setInternalGraph = _o[1];
     var data = statsApis_1.useGetAdvertStatsQuery().data;
-    var _p = AdvertsApiSlice_1.useGetAdvertAdminQuery({ refetchOnMountOrArgChange: true }), getAds = _p.data, isLoading = _p.isLoading, isFetching = _p.isFetching;
+    var _p = AdvertsApiSlice_1.useGetAdvertAdminQuery({}), getAds = _p.data, isLoading = _p.isLoading, isFetching = _p.isFetching;
     // console.log(data, "useGetAdvertStatsQuery")
     // console.log(getAds?.docs, "gerAds")
     var navigate = react_router_dom_1.useNavigate();
@@ -195,6 +195,6 @@ var Advertisements = function () {
                 React.createElement("div", { className: "col-12" },
                     React.createElement("div", { className: "" },
                         React.createElement("div", { className: "card__body" },
-                            React.createElement(Table_1["default"], __assign({ limit: 10, headData: customerTableHead, renderHead: function (item, index) { return renderHead(item, index); }, bodyData: isLoading ? [] : getAds === null || getAds === void 0 ? void 0 : getAds.docs, renderBody: function (item, index) { return renderBody(item, index); } }, { isLoading: isLoading }, { isFetching: isFetching })))))))));
+                            React.createElement(Table_1["default"], __assign({ limit: 10, headData: customerTableHead, renderHead: function (item, index) { return renderHead(item, index); }, bodyData: isFetching ? ['Loaded Data'] : getAds === null || getAds === void 0 ? void 0 : getAds.docs, renderBody: function (item, index) { return renderBody(item, index); } }, { isLoading: isLoading }, { isFetching: isFetching })))))))));
 };
 exports["default"] = Advertisements;

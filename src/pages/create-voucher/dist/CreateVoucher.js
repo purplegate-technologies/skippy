@@ -71,6 +71,7 @@ var CreateVoucher = function () {
         status: ""
     };
     var _a = react_1.useState(initialState), formValue = _a[0], setFormValue = _a[1];
+    var title = formValue.title, description = formValue.description, terms = formValue.terms, price = formValue.price, value = formValue.value, userQuantity = formValue.userQuantity, totalQuantity = formValue.totalQuantity, startDate = formValue.startDate, endDate = formValue.endDate, status = formValue.status;
     var deleteVoucher = VouchersApiSlice_1.useDeleteVoucherMutation()[0];
     var createVouchers = VouchersApiSlice_1.useCreateVouchersMutation()[0];
     var navigate = react_router_dom_1.useNavigate();
@@ -83,20 +84,22 @@ var CreateVoucher = function () {
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    console.log(formValue, "formValues");
-                    _a.label = 1;
-                case 1:
-                    _a.trys.push([1, 3, , 4]);
+                    _a.trys.push([0, 4, , 5]);
+                    if (!(title && description && terms && price && value && userQuantity && totalQuantity && startDate && endDate && status)) return [3 /*break*/, 2];
                     return [4 /*yield*/, createVouchers(formValue).unwrap()];
-                case 2:
+                case 1:
                     _a.sent();
                     react_toastify_1.toast.success("Successfully Create a Voucher");
-                    return [3 /*break*/, 4];
-                case 3:
+                    return [3 /*break*/, 3];
+                case 2:
+                    react_toastify_1.toast.error("Please fill all Input field");
+                    _a.label = 3;
+                case 3: return [3 /*break*/, 5];
+                case 4:
                     e_1 = _a.sent();
                     react_toastify_1.toast.error(e_1);
-                    return [3 /*break*/, 4];
-                case 4: return [2 /*return*/];
+                    return [3 /*break*/, 5];
+                case 5: return [2 /*return*/];
             }
         });
     }); };

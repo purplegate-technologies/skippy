@@ -21,7 +21,7 @@ var CreateAdsPlus_1 = require("../../assets/svg/CreateAdsPlus");
 var VouchersApiSlice_1 = require("../../features/vouchers/VouchersApiSlice");
 var Finance = function () {
     var navigate = react_router_dom_1.useNavigate();
-    var _a = VouchersApiSlice_1.useGetVouchersQuery({ refetchOnMountOrArgChange: true }), data = _a.data, isLoading = _a.isLoading, isFetching = _a.isFetching;
+    var _a = VouchersApiSlice_1.useGetVouchersQuery({}), data = _a.data, isLoading = _a.isLoading, isFetching = _a.isFetching;
     var customerTableHead = [
         'Brand Name',
         'Status',

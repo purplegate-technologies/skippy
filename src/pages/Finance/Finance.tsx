@@ -12,7 +12,7 @@ import { useGetVouchersQuery } from '../../features/vouchers/VouchersApiSlice'
 
 const Finance = () => {
   const navigate = useNavigate()
-  const { data, isLoading, isFetching } = useGetVouchersQuery({ refetchOnMountOrArgChange: true })
+  const { data, isLoading, isFetching } = useGetVouchersQuery({ })
 
   const customerTableHead = [
     'Brand Name',
