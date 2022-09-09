@@ -78,9 +78,10 @@ const CreateVoucher = () => {
       })
       toast.success("Successfully Edited a Voucher")
       navigate("/finance")
-    }
-    try {
-      if(title && description && terms && price && value && userQuantity && totalQuantity && startDate && endDate && status && !id){
+    } else {
+
+      try {
+        if(title && description && terms && price && value && userQuantity && totalQuantity && startDate && endDate && status && !id){
         await createVouchers(formValue).unwrap()
         setFormValue({
           title: "",
@@ -102,6 +103,7 @@ const CreateVoucher = () => {
     } catch (e: any) {
       toast.error(e)
     }
+  }
   }
   return (
     <section className="bg-[#FCFCFF]">

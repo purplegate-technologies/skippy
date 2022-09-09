@@ -116,7 +116,7 @@ var CreateVoucher = function () {
                     });
                     react_toastify_1.toast.success("Successfully Edited a Voucher");
                     navigate("/finance");
-                    _a.label = 2;
+                    return [3 /*break*/, 7];
                 case 2:
                     _a.trys.push([2, 6, , 7]);
                     if (!(title && description && terms && price && value && userQuantity && totalQuantity && startDate && endDate && status && !id)) return [3 /*break*/, 4];

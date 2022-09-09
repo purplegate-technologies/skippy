@@ -50,7 +50,7 @@ exports.VouchersApiSlice = apiSlice_1.apiSlice.injectEndpoints({
             query: function (_a) {
                 var id = _a.id, body = __rest(_a, ["id"]);
                 return ({
-                    url: "vouchers/" + id,
+                    url: "/vouchers/" + id,
                     method: "PUT",
                     body: body
                 });

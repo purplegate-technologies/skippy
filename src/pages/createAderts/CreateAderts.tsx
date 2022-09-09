@@ -26,7 +26,7 @@ const options = [
 
 const CreateAderts = () => {
   const { id } = useParams()
-  console.log(id, "so hlep me God")
+
   const initailState = {
     title: "",
     type: '',
