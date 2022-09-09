@@ -80,8 +80,7 @@ const CreateVoucher = () => {
       navigate("/finance")
     }
     try {
-
-      if(title && description && terms && price && value && userQuantity && totalQuantity && startDate && endDate && status){
+      if(title && description && terms && price && value && userQuantity && totalQuantity && startDate && endDate && status && !id){
         await createVouchers(formValue).unwrap()
         setFormValue({
           title: "",

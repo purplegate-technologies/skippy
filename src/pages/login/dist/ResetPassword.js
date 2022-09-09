@@ -117,7 +117,7 @@ var ResetPassword = function () {
                         react_toastify_1.toast.error("Something went wrong, please try again...");
                     }
                     else {
-                        // toast.error(err.data._meta.error.message);
+                        react_toastify_1.toast.error(err_1);
                     }
                     return [3 /*break*/, 5];
                 case 5: return [2 /*return*/];
@@ -131,7 +131,7 @@ var ResetPassword = function () {
             navigate('/login', { replace: true });
             react_toastify_1.toast.success("User Login Successfully");
         }
-    }, [isSuccess, navigate]);
+    }, [isSuccess, navigate, resetData]);
     return (react_1["default"].createElement("div", { className: "reset h-screen" },
         react_1["default"].createElement("div", { className: "absolute scale-75 top-[-98px] left-[-40px]" },
             react_1["default"].createElement(LoginBackGIcons_1["default"], null)),

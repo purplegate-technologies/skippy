@@ -76,7 +76,7 @@ const ResetPassword = () => {
       if (err.status === "FETCH_ERROR") {
         toast.error("Something went wrong, please try again...");
       } else {
-        // toast.error(err.data._meta.error.message);
+        toast.error(err);
       }
     }
   };
@@ -89,7 +89,7 @@ const ResetPassword = () => {
      navigate('/login', { replace: true })
       toast.success("User Login Successfully")
     }
-  }, [isSuccess, navigate])
+  }, [isSuccess, navigate, resetData])
 
 
   return (

@@ -119,7 +119,7 @@ var CreateVoucher = function () {
                     _a.label = 2;
                 case 2:
                     _a.trys.push([2, 6, , 7]);
-                    if (!(title && description && terms && price && value && userQuantity && totalQuantity && startDate && endDate && status)) return [3 /*break*/, 4];
+                    if (!(title && description && terms && price && value && userQuantity && totalQuantity && startDate && endDate && status && !id)) return [3 /*break*/, 4];
                     return [4 /*yield*/, createVouchers(formValue).unwrap()];
                 case 3:
                     _a.sent();
