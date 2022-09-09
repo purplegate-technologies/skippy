@@ -40,14 +40,14 @@ export const advertsApiSlice = apiSlice.injectEndpoints({
             transformResponse: (response: any) => response.data,
             providesTags: ['Advert'],
         }),
-        updateAdvert: builder.mutation({ // get advert by id
-            query: ({ body, id }) => ({
+        updateAdvert: builder.mutation<void, any>({ // get advert by id
+            query: ({ id, ...body }) => ({
                 url: `adverts/${id}`,
                 method: 'PUT',
                 body
             }),
             // Pick out data and prevent nested properties in a hook or selector
-            transformResponse: (response: { data: AdvertsApiSlice }, meta, arg) => response.data,
+            transformResponse: (response: any) => response.data,
             invalidatesTags: ['Advert'],
         }),
         deleteAdvert: builder.mutation<void, string>({ // get advert by id

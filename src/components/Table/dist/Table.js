@@ -1,11 +1,4 @@
 "use strict";
-var __spreadArrays = (this && this.__spreadArrays) || function () {
-    for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
-    for (var r = Array(s), k = 0, i = 0; i < il; i++)
-        for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
-            r[k] = a[j];
-    return r;
-};
 exports.__esModule = true;
 var react_1 = require("react");
 require("./table.css");
@@ -25,7 +18,7 @@ var Table = function (_a) {
         var page = Math.floor((bodyData === null || bodyData === void 0 ? void 0 : bodyData.length) / (limit));
         pages = (bodyData === null || bodyData === void 0 ? void 0 : bodyData.length) % (limit) === 0 ? page : page + 1;
         // range = [...Array(pages).keys()]
-        range = __spreadArrays(Array(pages));
+        // range = [...Array(pages)]
     }
     var selectPage = function (page) {
         var start = Number(limit) * page;
@@ -65,7 +58,7 @@ var Table = function (_a) {
             React.createElement("table", null,
                 headData && renderHead ? (React.createElement("thead", null,
                     React.createElement("tr", null, headData.map(function (item, index) { return renderHead(item, index); })))) : null,
-                isFetching ? React.createElement("td", { className: 'text-center w-full p-5 text-2l font-bold' }, "isFetching Data") : React.createElement(React.Fragment, null, bodyData ? (React.createElement("tbody", null, 
+                isFetching ? React.createElement("td", { className: 'text-center w-full p-5 text-2l font-bold' }, "isFetching Data") : React.createElement(React.Fragment, null, bodyData && (bodyData !== null || undefined) ? (React.createElement("tbody", null, 
                 // dataShow?.map((item: any, index: number) => renderBody(item, index))
                 bodyData === null || 
                 // dataShow?.map((item: any, index: number) => renderBody(item, index))
@@ -76,7 +69,13 @@ var Table = function (_a) {
                         React.createElement("td", { className: 'text-center w-full p-5 text-2l font-bold' }, "No Data"))))))),
         React.createElement("div", { className: 'footerPagination' },
             React.createElement("div", { style: { display: 'flex', alignItems: 'center' } },
-                React.createElement("select", { value: currPage, className: 'tableSelectDropDown' },
+                React.createElement("select", { 
+                    // value={currPage}
+                    className: 'tableSelectDropDown', onChange: function (e) {
+                        // setCurrPage(e.target.value)
+                        // const select = e.target as HTMLSelectElement
+                        // setCurrPage(select.options.item(select.selectedIndex)?.innerText!)
+                    } },
                     React.createElement("option", { disabled: true }, "Items per page"),
                     React.createElement("option", { value: "5" }, "5"),
                     React.createElement("option", { value: "10" }, "10"),

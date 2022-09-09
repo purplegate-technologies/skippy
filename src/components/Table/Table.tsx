@@ -36,7 +36,7 @@ const Table = ({ limit, renderHead, bodyData, headData, renderBody, isFetching }
         let page = Math.floor(bodyData?.length / (limit))
         pages = bodyData?.length % (limit) === 0 ? page : page + 1
         // range = [...Array(pages).keys()]
-        range = [...Array(pages)]
+        // range = [...Array(pages)]
     }
 
 
@@ -102,7 +102,7 @@ const Table = ({ limit, renderHead, bodyData, headData, renderBody, isFetching }
                     }
                     {isFetching ? <td className='text-center w-full p-5 text-2l font-bold'>isFetching Data</td> : <>
                         {
-                            bodyData ? (
+                            bodyData && (bodyData !== null || undefined) ? (
                                 <tbody>
                                     {
                                         // dataShow?.map((item: any, index: number) => renderBody(item, index))
@@ -123,7 +123,15 @@ const Table = ({ limit, renderHead, bodyData, headData, renderBody, isFetching }
 
             <div className='footerPagination'>
                 <div style={{ display: 'flex', alignItems: 'center' }}>
-                    <select value={currPage} className='tableSelectDropDown'>
+                    <select
+                    // value={currPage}
+                     className='tableSelectDropDown' onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
+
+                        // setCurrPage(e.target.value)
+                    // const select = e.target as HTMLSelectElement
+                    // setCurrPage(select.options.item(select.selectedIndex)?.innerText!)
+                }
+                    }>
                         <option disabled>Items per page</option>
                         <option value="5">5</option>
                         <option value="10">10</option>

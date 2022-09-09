@@ -11,7 +11,7 @@ import EditAdsIcon from './EditAdsIcon';
 import SnapAdsIcon from './SnapAdsIcon';
 import VideoSlider from './VideoSlider';
 import Select from 'react-select';
-import { useCreateAdvertMutation, useDeleteAdvertMutation, useGetStreamAdminQuery } from '../../features/adverts/AdvertsApiSlice';
+import { useCreateAdvertMutation, useDeleteAdvertMutation, useGetStreamAdminQuery, useUpdateAdvertMutation } from '../../features/adverts/AdvertsApiSlice';
 import { Select as AiSelect } from '../../components/Select/Select'
 import { toast } from 'react-toastify';
 
@@ -67,6 +67,9 @@ const CreateAderts = () => {
 
   const [deleteAdvert] = useDeleteAdvertMutation()
 
+  const [updateAdvert] = useUpdateAdvertMutation()
+
+
   // const { data } = useGetStreamAdminQuery({})
   // console.log(data, 'data useGetStreamAdminQuery')
 
@@ -88,9 +91,20 @@ const CreateAderts = () => {
     e.preventDefault()
     // const formData = new FormData();
 
+    if (id) {
+      await updateAdvert({id,...formValues}).unwrap()
+      setFormValue({
+        title: "",
+        type: '',
+        status: "",
+        points: "",
+        file: ""
+      })
+      toast.success("successfully Edited an Advert");
+      navigate('/advertisements')
+    }
     try {
       if (title && type && status && points && file) {
-
         await createAdvert(formValues).unwrap()
         setFormValue({
           title: "",

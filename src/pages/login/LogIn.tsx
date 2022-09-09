@@ -31,8 +31,8 @@ const LogIn = () => {
   const [formValue, setFormValue] = useState<initialStateType>(initialState)
   const { email, password, } = formValue
 
-  const userRef = useRef<any>()
-  const errRef = useRef<any>()
+  // const userRef = useRef<any>()
+  // const errRef = useRef<any>()
   const [errMsg, setErrMsg] = useState("")
 
   const navigate = useNavigate()
@@ -46,10 +46,7 @@ const LogIn = () => {
       data: loginData,
       isSuccess: isLoginSuccess,
       isError: isLoginError,
-      // error: loginError,
       isLoading,
-      // reset,
-      // status,
     }] = useLoginMutation()
 
   const handleChange = (e: any) => setFormValue({ ...formValue, [e.target.name]: e.target.value })
@@ -64,8 +61,7 @@ const LogIn = () => {
         // console.log(await loginUser({ email, password })).unwrap();
 
         // call login trigger from rtk query
-        const response: any = await loginUser({ email, password }).unwrap();
-        console.log(response, "response response response")
+        await loginUser({ email, password }).unwrap();
 
         const {  admin, token }: any = await loginData
         // set user data and token in redux store
@@ -79,7 +75,6 @@ const LogIn = () => {
         toast.error("Please fill all Input field")
       }
     } catch (err:  any) {
-      console.log(err.data, "err err err")
       if (!err?.response) {
         toast.error(!err?.response_message);
         setErrMsg("No Server Response")
@@ -93,7 +88,7 @@ const LogIn = () => {
       } else {
         setErrMsg("Login Failed")
       }
-      errRef.current.focus()
+      // errRef.current.focus()
     }
   }
 

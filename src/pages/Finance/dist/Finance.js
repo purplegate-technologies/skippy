@@ -33,7 +33,7 @@ var Finance = function () {
     ];
     var renderHead = function (item, index) { return react_1["default"].createElement("th", { key: index }, item); };
     var renderBody = function (item, index) { return (react_1["default"].createElement("tr", { key: item === null || item === void 0 ? void 0 : item._id },
-        react_1["default"].createElement("td", { className: "flex items-center py-4 px-6 text-gray-900 whitespace-nowrap dark:text-white" },
+        react_1["default"].createElement("td", { className: "flex items-center py-4 px-6 text-gray-900 whitespace-nowrap dark:text-white overflow-hidden" },
             react_1["default"].createElement("img", { className: "w-10 h-10 rounded-full", src: "https://mdbcdn.b-cdn.net/img/new/avatars/1.webp", alt: "svgFace" }),
             react_1["default"].createElement("div", { className: "pl-3" },
                 react_1["default"].createElement("div", { className: "text-base font-semibold" }, item === null || item === void 0 ? void 0 : item.title),

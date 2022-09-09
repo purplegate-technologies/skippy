@@ -33,7 +33,17 @@ export const VouchersApiSlice = apiSlice.injectEndpoints({
             transformResponse: (response: { data: {} | undefined | any }, meta, arg) => response.data,
             invalidatesTags: ['Vouchers'],
         }),
+        updateVoucher: builder.mutation<void, any>({
+            query: ({id, ...body}) => ({
+                url: `vouchers/${id}`,
+                method: "PUT",
+                body
+            }) ,
+            // Pick out data and prevent nested properties in a hook or selector
+            transformResponse: (response: any) => response.data,
+            invalidatesTags: ['Vouchers'],
+        }),
     })
 })
 
-export const {useCreateVouchersMutation, useGetVouchersQuery, useGetVoucherByIdQuery, useDeleteVoucherMutation } = VouchersApiSlice
+export const {useCreateVouchersMutation, useGetVouchersQuery, useGetVoucherByIdQuery, useDeleteVoucherMutation, useUpdateVoucherMutation } = VouchersApiSlice

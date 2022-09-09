@@ -93,6 +93,7 @@ var CreateAderts = function () {
     // create Adverts
     var createAdvert = AdvertsApiSlice_1.useCreateAdvertMutation()[0];
     var deleteAdvert = AdvertsApiSlice_1.useDeleteAdvertMutation()[0];
+    var updateAdvert = AdvertsApiSlice_1.useUpdateAdvertMutation()[0];
     // const { data } = useGetStreamAdminQuery({})
     // console.log(data, 'data useGetStreamAdminQuery')
     var handleDelete = function (id) { return __awaiter(void 0, void 0, void 0, function () {
@@ -120,12 +121,25 @@ var CreateAderts = function () {
             switch (_a.label) {
                 case 0:
                     e.preventDefault();
-                    _a.label = 1;
+                    if (!id) return [3 /*break*/, 2];
+                    return [4 /*yield*/, updateAdvert(__assign({ id: id }, formValues)).unwrap()];
                 case 1:
-                    _a.trys.push([1, 5, , 6]);
-                    if (!(title && type && status && points && file)) return [3 /*break*/, 3];
-                    return [4 /*yield*/, createAdvert(formValues).unwrap()];
+                    _a.sent();
+                    setFormValue({
+                        title: "",
+                        type: '',
+                        status: "",
+                        points: "",
+                        file: ""
+                    });
+                    react_toastify_1.toast.success("successfully Edited an Advert");
+                    navigate('/advertisements');
+                    _a.label = 2;
                 case 2:
+                    _a.trys.push([2, 6, , 7]);
+                    if (!(title && type && status && points && file)) return [3 /*break*/, 4];
+                    return [4 /*yield*/, createAdvert(formValues).unwrap()];
+                case 3:
                     _a.sent();
                     setFormValue({
                         title: "",
@@ -136,16 +150,16 @@ var CreateAderts = function () {
                     });
                     react_toastify_1.toast.success("successfully Created an Advert");
                     navigate('/advertisements');
-                    return [3 /*break*/, 4];
-                case 3:
+                    return [3 /*break*/, 5];
+                case 4:
                     react_toastify_1.toast.error("Please fill all required Input field");
-                    _a.label = 4;
-                case 4: return [3 /*break*/, 6];
-                case 5:
+                    _a.label = 5;
+                case 5: return [3 /*break*/, 7];
+                case 6:
                     e_1 = _a.sent();
                     react_toastify_1.toast.error(e_1);
-                    return [3 /*break*/, 6];
-                case 6: return [2 /*return*/];
+                    return [3 /*break*/, 7];
+                case 7: return [2 /*return*/];
             }
         });
     }); };

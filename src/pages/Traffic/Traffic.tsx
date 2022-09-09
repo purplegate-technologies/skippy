@@ -28,7 +28,7 @@ const Traffic = () => {
   const [iconState, setIconState] = useState<string>("")
 
   const { data } = useGetTrafficStatsQuery()
-  console.log(data?.data, "data data data")
+  // console.log(data?.data, "data data data")
 
   const [userData, setUserrData] = useState({
     labels: UserData.map((data) => data.day.toUpperCase()),

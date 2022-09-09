@@ -27,7 +27,7 @@ var Traffic = function () {
     var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m;
     var _o = react_1.useState(""), iconState = _o[0], setIconState = _o[1];
     var data = statsApis_1.useGetTrafficStatsQuery().data;
-    console.log(data === null || data === void 0 ? void 0 : data.data, "data data data");
+    // console.log(data?.data, "data data data")
     var _p = react_1.useState({
         labels: data_1.UserData.map(function (data) { return data.day.toUpperCase(); }),
         datasets: [

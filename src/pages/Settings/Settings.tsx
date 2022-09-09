@@ -76,7 +76,6 @@ const Settings = () => {
 
     const HandleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        // setFirstName()
 
         try {
             //  await createAdmin(formValue).unwrap()

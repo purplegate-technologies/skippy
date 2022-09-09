@@ -69,21 +69,19 @@ var initialState = {
 var LogIn = function () {
     var _a = react_1.useState(initialState), formValue = _a[0], setFormValue = _a[1];
     var email = formValue.email, password = formValue.password;
-    var userRef = react_1.useRef();
-    var errRef = react_1.useRef();
+    // const userRef = useRef<any>()
+    // const errRef = useRef<any>()
     var _b = react_1.useState(""), errMsg = _b[0], setErrMsg = _b[1];
     var navigate = react_router_dom_1.useNavigate();
     var dispatch = hooks_1.useAppDispatch();
     var tokenForUser = hooks_1.useAppSelector(authSlice_1.selectCurrentToken);
-    var _c = authApiSplice_1.useLoginMutation(), loginUser = _c[0], _d = _c[1], loginData = _d.data, isLoginSuccess = _d.isSuccess, isLoginError = _d.isError, 
-    // error: loginError,
-    isLoading = _d.isLoading;
+    var _c = authApiSplice_1.useLoginMutation(), loginUser = _c[0], _d = _c[1], loginData = _d.data, isLoginSuccess = _d.isSuccess, isLoginError = _d.isError, isLoading = _d.isLoading;
     var handleChange = function (e) {
         var _a;
         return setFormValue(__assign(__assign({}, formValue), (_a = {}, _a[e.target.name] = e.target.value, _a)));
     };
     var handleLogin = function (e) { return __awaiter(void 0, void 0, void 0, function () {
-        var response, _a, admin, token, err_1;
+        var _a, admin, token, err_1;
         var _b, _c, _d, _e;
         return __generator(this, function (_f) {
             switch (_f.label) {
@@ -93,10 +91,15 @@ var LogIn = function () {
                 case 1:
                     _f.trys.push([1, 6, , 7]);
                     if (!(email && password)) return [3 /*break*/, 4];
+                    // await loginUser({ email, password })
+                    // console.log(await loginUser({ email, password })).unwrap();
+                    // call login trigger from rtk query
                     return [4 /*yield*/, loginUser({ email: email, password: password }).unwrap()];
                 case 2:
-                    response = _f.sent();
-                    console.log(response, "response response response");
+                    // await loginUser({ email, password })
+                    // console.log(await loginUser({ email, password })).unwrap();
+                    // call login trigger from rtk query
+                    _f.sent();
                     return [4 /*yield*/, loginData
                         // set user data and token in redux store
                         // dispatch(setUser({ user: admin.firstName, token }))
@@ -116,7 +119,6 @@ var LogIn = function () {
                 case 5: return [3 /*break*/, 7];
                 case 6:
                     err_1 = _f.sent();
-                    console.log(err_1.data, "err err err");
                     if (!(err_1 === null || err_1 === void 0 ? void 0 : err_1.response)) {
                         react_toastify_1.toast.error(!(err_1 === null || err_1 === void 0 ? void 0 : err_1.response_message));
                         setErrMsg("No Server Response");
@@ -133,7 +135,6 @@ var LogIn = function () {
                     else {
                         setErrMsg("Login Failed");
                     }
-                    errRef.current.focus();
                     return [3 /*break*/, 7];
                 case 7: return [2 /*return*/];
             }

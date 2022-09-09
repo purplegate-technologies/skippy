@@ -1,4 +1,15 @@
 "use strict";
+var __rest = (this && this.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
 exports.__esModule = true;
 exports.useGetStreamUserQuery = exports.useGetStreamAdminQuery = exports.useCompleteStreamsMutation = exports.useStartStreamsMutation = exports.useDeleteAdvertMutation = exports.useUpdateAdvertMutation = exports.useGetAdvertByIdQuery = exports.useGetAdvertUserQuery = exports.useGetAdvertAdminQuery = exports.useCreateAdvertMutation = exports.advertsApiSlice = void 0;
 var apiSlice_1 = require("../../services/api/apiSlice");
@@ -34,7 +45,7 @@ exports.advertsApiSlice = apiSlice_1.apiSlice.injectEndpoints({
         }),
         updateAdvert: builder.mutation({
             query: function (_a) {
-                var body = _a.body, id = _a.id;
+                var id = _a.id, body = __rest(_a, ["id"]);
                 return ({
                     url: "adverts/" + id,
                     method: 'PUT',
@@ -42,7 +53,7 @@ exports.advertsApiSlice = apiSlice_1.apiSlice.injectEndpoints({
                 });
             },
             // Pick out data and prevent nested properties in a hook or selector
-            transformResponse: function (response, meta, arg) { return response.data; },
+            transformResponse: function (response) { return response.data; },
             invalidatesTags: ['Advert']
         }),
         deleteAdvert: builder.mutation({
