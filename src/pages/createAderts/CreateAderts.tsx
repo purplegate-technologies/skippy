@@ -92,7 +92,7 @@ const CreateAderts = () => {
     // const formData = new FormData();
 
     if (id) {
-      await updateAdvert({id,...formValues}).unwrap()
+      await updateAdvert({id, ...formValues}).unwrap()
       setFormValue({
         title: "",
         type: '',

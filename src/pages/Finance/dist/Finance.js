@@ -33,18 +33,18 @@ var Finance = function () {
     ];
     var renderHead = function (item, index) { return react_1["default"].createElement("th", { key: index }, item); };
     var renderBody = function (item, index) { return (react_1["default"].createElement("tr", { key: item === null || item === void 0 ? void 0 : item._id },
-        react_1["default"].createElement("td", { className: "flex items-center py-4 px-6 text-gray-900 whitespace-nowrap dark:text-white overflow-hidden" },
+        react_1["default"].createElement("td", { className: "flex items-center py-4 px-6 text-gray-900 whitespace-pre-line dark:text-white ", style: { textOverflow: 'ellipsis' } },
             react_1["default"].createElement("img", { className: "w-10 h-10 rounded-full", src: "https://mdbcdn.b-cdn.net/img/new/avatars/1.webp", alt: "svgFace" }),
             react_1["default"].createElement("div", { className: "pl-3" },
                 react_1["default"].createElement("div", { className: "text-base font-semibold" }, item === null || item === void 0 ? void 0 : item.title),
-                react_1["default"].createElement("div", { className: "font-normal text-gray-500 text-xs" }, item === null || item === void 0 ? void 0 : item.terms))),
+                react_1["default"].createElement("div", { className: "font-normal text-gray-500 text-xs", style: { overflow: 'hidden', textOverflow: 'ellipsis' } }, item === null || item === void 0 ? void 0 : item.terms))),
         react_1["default"].createElement("td", null, item === null || item === void 0 ? void 0 : item.status),
         react_1["default"].createElement("td", null, item === null || item === void 0 ? void 0 : item.userQuantity),
         react_1["default"].createElement("td", null, item === null || item === void 0 ? void 0 : item.value),
-        react_1["default"].createElement("td", null, item === null || item === void 0 ? void 0 : item.startDate),
-        react_1["default"].createElement("td", null, item === null || item === void 0 ? void 0 : item.endDate),
+        react_1["default"].createElement("td", { className: "whitespace-nowrap" }, item === null || item === void 0 ? void 0 : item.startDate),
+        react_1["default"].createElement("td", { className: "whitespace-nowrap" }, item === null || item === void 0 ? void 0 : item.endDate),
         react_1["default"].createElement("td", null,
-            react_1["default"].createElement(react_router_dom_1.Link, { to: "/finance/" + (item === null || item === void 0 ? void 0 : item._id), className: "underline text-[#516CF5]" }, "View Details")))); };
+            react_1["default"].createElement(react_router_dom_1.Link, { to: "/finance/" + (item === null || item === void 0 ? void 0 : item._id), className: "underline text-[#516CF5] whitespace-nowrap" }, "View Details")))); };
     return (react_1["default"].createElement("div", null,
         react_1["default"].createElement(StatusCards_1["default"], null),
         react_1["default"].createElement("div", { className: "card" },

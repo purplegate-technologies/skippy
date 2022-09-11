@@ -128,10 +128,10 @@ const Advertisements = () => {
       <td>{item?.type}</td>
       <td>{item?.points}</td>
       <td>{item?.lengthInSeconds}</td>
-      <td>{item?.createdAt}</td>
-      <td>{item?.updatedAt}</td>
+      <td className="whitespace-nowrap">{item?.createdAt}</td>
+      <td className="whitespace-nowrap">{item?.updatedAt}</td>
       <td>{item?.status}</td>
-      <td><Link to={`/advertisements/${item?._id}`} className="underline text-[#516CF5]">View Details</Link></td>
+      <td><Link to={`/advertisements/${item?._id}`} className="underline text-[#516CF5] whitespace-nowrap">View Details</Link></td>
     </tr>
   )
 
