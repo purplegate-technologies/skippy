@@ -35,7 +35,7 @@ export const VouchersApiSlice = apiSlice.injectEndpoints({
         }),
         updateVoucher: builder.mutation<void, any>({
             query: ({id, ...body}) => ({
-                url: `vouchers/${id}`,
+                url: `/vouchers/${id}`,
                 method: "PUT",
                 body
             }) ,

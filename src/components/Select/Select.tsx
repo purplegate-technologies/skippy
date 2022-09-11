@@ -40,7 +40,7 @@ export const Select = ({
             ? () => toast.error( "error")
             : () => {}
         }
-        className="border-2  border-[#DDDDDD] px-3 rounded  text-sm md:text-base"
+        className="border-2  border-[#DDDDDD] px-3 rounded-xlg  text-sm md:text-base"
       >
         <select
           value={value}
@@ -48,7 +48,7 @@ export const Select = ({
         //   id={id}
           disabled={disabled}
           onChange={(e) => onChange(e.target.value)}
-          className={`${className} h-14  lg:h-10 border-none focus:outline-none w-full md:auto bg-white`}
+          className={`${className} h-14  lg:h-10 border-none border-blue-600:: focus:outline-none w-full md:auto bg-white`}
           required={required}
         >
           <option value="" disabled>

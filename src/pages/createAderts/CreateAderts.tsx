@@ -26,7 +26,7 @@ const options = [
 
 const CreateAderts = () => {
   const { id } = useParams()
-  console.log(id, "so hlep me God")
+
   const initailState = {
     title: "",
     type: '',
@@ -92,7 +92,7 @@ const CreateAderts = () => {
     // const formData = new FormData();
 
     if (id) {
-      await updateAdvert({id,...formValues}).unwrap()
+      await updateAdvert({id, ...formValues}).unwrap()
       setFormValue({
         title: "",
         type: '',

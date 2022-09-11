@@ -117,11 +117,11 @@ var Advertisements = function () {
         React.createElement("td", null, item === null || item === void 0 ? void 0 : item.type),
         React.createElement("td", null, item === null || item === void 0 ? void 0 : item.points),
         React.createElement("td", null, item === null || item === void 0 ? void 0 : item.lengthInSeconds),
-        React.createElement("td", null, item === null || item === void 0 ? void 0 : item.createdAt),
-        React.createElement("td", null, item === null || item === void 0 ? void 0 : item.updatedAt),
+        React.createElement("td", { className: "whitespace-nowrap" }, item === null || item === void 0 ? void 0 : item.createdAt),
+        React.createElement("td", { className: "whitespace-nowrap" }, item === null || item === void 0 ? void 0 : item.updatedAt),
         React.createElement("td", null, item === null || item === void 0 ? void 0 : item.status),
         React.createElement("td", null,
-            React.createElement(react_router_dom_1.Link, { to: "/advertisements/" + (item === null || item === void 0 ? void 0 : item._id), className: "underline text-[#516CF5]" }, "View Details")))); };
+            React.createElement(react_router_dom_1.Link, { to: "/advertisements/" + (item === null || item === void 0 ? void 0 : item._id), className: "underline text-[#516CF5] whitespace-nowrap" }, "View Details")))); };
     return (React.createElement("div", null,
         (data) ?
             React.createElement("div", null,

@@ -116,7 +116,7 @@ var CreateVoucher = function () {
                     });
                     react_toastify_1.toast.success("Successfully Edited a Voucher");
                     navigate("/finance");
-                    _a.label = 2;
+                    return [3 /*break*/, 7];
                 case 2:
                     _a.trys.push([2, 6, , 7]);
                     if (!(title && description && terms && price && value && userQuantity && totalQuantity && startDate && endDate && status && !id)) return [3 /*break*/, 4];
@@ -297,7 +297,7 @@ var CreateVoucher = function () {
                         react_1["default"].createElement("div", { className: "w-full  p-4" },
                             react_1["default"].createElement("label", { className: 'my-1 text-[#171837]' }, "Embed Code"),
                             react_1["default"].createElement(Input_1["default"], { type: 'number', name: '', divStyle: "w-full", className: ' w-full p-2 border border-[#CFD1D5] rounded-lg', placeholder: "Enter action link here" })),
-                        react_1["default"].createElement("div", { className: 'my-2' },
+                        react_1["default"].createElement("div", { className: 'my-2 mx-4' },
                             react_1["default"].createElement("label", { htmlFor: "" }, "status"),
                             react_1["default"].createElement(Select_1.Select
                             // label="Your role in the chair"

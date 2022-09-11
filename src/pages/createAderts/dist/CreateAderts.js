@@ -68,7 +68,6 @@ var options = [
 ];
 var CreateAderts = function () {
     var id = react_router_dom_1.useParams().id;
-    console.log(id, "so hlep me God");
     var initailState = {
         title: "",
         type: '',
