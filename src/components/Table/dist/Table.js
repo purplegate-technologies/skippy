@@ -5,14 +5,14 @@ var react_paginate_1 = require("react-paginate");
 require("./table.css");
 var Table = function (_a) {
     var limit = _a.limit, renderHead = _a.renderHead, bodyData = _a.bodyData, headData = _a.headData, renderBody = _a.renderBody, isFetching = _a.isFetching;
-    var itemsPerPage = 3;
+    var _b = react_1.useState(10), itemsPerPage = _b[0], setItemsPerPage = _b[1];
     // for react paginate
     // We start with an empty list of items.setCurrentItems
-    var _b = react_1.useState(bodyData), currentItems = _b[0], setCurrentItems = _b[1];
-    var _c = react_1.useState(0), pageCount = _c[0], setPageCount = _c[1];
+    var _c = react_1.useState(bodyData), currentItems = _c[0], setCurrentItems = _c[1];
+    var _d = react_1.useState(0), pageCount = _d[0], setPageCount = _d[1];
     // Here we use item offsets; we could also use page offsets
     // following the API or data you're working with.
-    var _d = react_1.useState(0), itemOffset = _d[0], setItemOffset = _d[1];
+    var _e = react_1.useState(0), itemOffset = _e[0], setItemOffset = _e[1];
     react_1.useEffect(function () {
         // Fetch items from another resources.
         var endOffset = itemOffset + itemsPerPage;
@@ -44,9 +44,7 @@ var Table = function (_a) {
                         React.createElement("td", { className: 'text-center w-full p-5 text-2l font-bold' }, "No Data"))))))),
         React.createElement("div", { className: 'footerPagination' },
             React.createElement("div", { style: { display: 'flex', alignItems: 'center' } },
-                React.createElement("select", { 
-                    // value={currPage}
-                    className: 'tableSelectDropDown', onChange: function (e) { } },
+                React.createElement("select", { value: itemsPerPage, className: 'tableSelectDropDown', onChange: function (e) { setItemsPerPage(e.target.value); } },
                     React.createElement("option", { disabled: true }, "Items per page"),
                     React.createElement("option", { value: "5" }, "5"),
                     React.createElement("option", { value: "10" }, "10"),

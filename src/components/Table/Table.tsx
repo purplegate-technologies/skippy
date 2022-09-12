@@ -17,7 +17,7 @@ interface Props<T = any> {
 
 const Table = ({ limit, renderHead, bodyData, headData, renderBody, isFetching }: Props) => {
 
-    const itemsPerPage = 3
+    const [itemsPerPage, setItemsPerPage] = useState(10)
 
     // for react paginate
 
@@ -90,8 +90,9 @@ const Table = ({ limit, renderHead, bodyData, headData, renderBody, isFetching }
             <div className='footerPagination'>
                 <div style={{ display: 'flex', alignItems: 'center' }}>
                     <select
-                        // value={currPage}
-                        className='tableSelectDropDown' onChange={(e: React.ChangeEvent<HTMLSelectElement>) => { }
+                        value={itemsPerPage}
+                        className='tableSelectDropDown'
+                        onChange={(e: React.ChangeEvent<HTMLSelectElement | any>) => { setItemsPerPage(e.target.value)}
                         }>
                         <option disabled>Items per page</option>
                         <option value="5">5</option>
