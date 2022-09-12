@@ -72,6 +72,12 @@ var Settings = function () {
         }
     }, [isSuccess]);
     // const handleChange = (e: any) => setFormValue({ ...formValue, [e.target.name]: e.target.value })
+    // const setField = (field: any, value: any) => {
+    //     setRoles({
+    //       type,
+    //       [field]: value,
+    //     });
+    //   };
     var selectSTyle = {
         display: "block",
         width: "100%",
@@ -128,7 +134,7 @@ var Settings = function () {
                 React.createElement("div", { className: "card-settings" },
                     React.createElement("div", { className: "contactUs-form-lable" },
                         React.createElement("label", { htmlFor: "", className: "text-xs text-[#516CF5]" }, ("ROLE")),
-                        React.createElement("select", { placeholder: "Select Role", style: selectSTyle, name: type, onChange: function (e) {
+                        React.createElement("select", { placeholder: "Select Role", defaultValue: type, style: selectSTyle, required: true, name: type, onChange: function (e) {
                                 var _a;
                                 var select = e.target;
                                 setRoles((_a = select.options.item(select.selectedIndex)) === null || _a === void 0 ? void 0 : _a.innerText);

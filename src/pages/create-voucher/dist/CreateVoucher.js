@@ -161,7 +161,7 @@ var CreateVoucher = function () {
                 react_1["default"].createElement("div", { className: "flex-1" },
                     react_1["default"].createElement(TopNav_1["default"], null))),
             react_1["default"].createElement("div", { className: "grid md:grid-cols-12 gap-10 m-5" },
-                react_1["default"].createElement("div", { className: 'md:col-span-7 flex flex-col bg-white' },
+                react_1["default"].createElement("div", { className: 'md:col-span-7 flex flex-col bg-white p-4' },
                     react_1["default"].createElement("div", { className: "p-2 items-center flex justify-between" },
                         " ",
                         react_1["default"].createElement("span", null, "Voucher  Deal "),
@@ -216,7 +216,7 @@ var CreateVoucher = function () {
                                 react_1["default"].createElement("span", { className: "" }, "Voucher Description")),
                             react_1["default"].createElement("div", { className: "py-2 px-4 bg-white rounded-b-lg dark:bg-gray-800" },
                                 react_1["default"].createElement("label", { className: "sr-only" }, "Publish post"),
-                                react_1["default"].createElement("textarea", { id: "editor", value: formValue.description, onChange: function (e) { return setField("description", e.target.value); }, className: "block px-0 w-full text-sm text-gray-800 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400", placeholder: "Write an article...", required: true }))),
+                                react_1["default"].createElement("textarea", { id: "editor", value: formValue.description, onChange: function (e) { return setField("description", e.target.value); }, className: "focus:ring-blue-500 focus:border-blue-500 block px-0 w-full text-sm text-gray-800 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400", placeholder: "Write an article...", required: true }))),
                         react_1["default"].createElement("p", { className: "text-[#516CF5] text-sm" }, "A brief Description about the voucher")),
                     react_1["default"].createElement("form", { className: "mb-5 " },
                         react_1["default"].createElement("div", { className: "mb-1 w-full bg-gray-50 rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600" },
@@ -292,7 +292,7 @@ var CreateVoucher = function () {
                                 react_1["default"].createElement("label", { className: 'my-1 text-[#171837]' }, "  Voucher Value "),
                                 react_1["default"].createElement(Input_1["default"], { type: 'number', name: '', value: formValue.value, onChange: function (e) { return setField('value', e.target.value); }, divStyle: "w-full", className: 'rounded-lg w-full p-2 border border-[#CFD1D5]' })),
                             react_1["default"].createElement("div", { className: "w-full" },
-                                react_1["default"].createElement("label", { className: 'my-1 text-[#171837]' }, "Voucher Cost (Skippy Points) "),
+                                react_1["default"].createElement("label", { className: 'my-1 text-[#171837] whitespace-nowrap' }, "Voucher Cost (Skippy Points) "),
                                 react_1["default"].createElement(Input_1["default"], { type: 'number', value: formValue.price, onChange: function (e) { return setField('price', e.target.value); }, name: '', divStyle: "w-full", className: ' w-full p-2 border border-[#CFD1D5] rounded-lg' }))),
                         react_1["default"].createElement("div", { className: "w-full  p-4" },
                             react_1["default"].createElement("label", { className: 'my-1 text-[#171837]' }, "Embed Code"),
@@ -303,7 +303,7 @@ var CreateVoucher = function () {
                             // label="Your role in the chair"
                             , { 
                                 // label="Your role in the chair"
-                                options: ["active", "inactive"], required: true, value: formValue.status, onChange: function (value) { return setField("status", value); } })),
+                                className: "w-full p-2 border border-[#CFD1D5] rounded-lg", options: ["active", "inactive"], required: true, value: formValue.status, onChange: function (value) { return setField("status", value); } })),
                         react_1["default"].createElement(Switch_1["default"], { label: "Turn on notifications for voucher validity", className: 'p-4' })))),
             react_1["default"].createElement("div", { className: "flex  items-center justify-between bg-[#FCFCFF] border-[#F1F3FF] border p-5  w-[100%]" },
                 react_1["default"].createElement("div", { className: "gap-x-3 flex" },

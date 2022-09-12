@@ -4,6 +4,7 @@ import { toast } from "react-toastify"
 import Button from "../../components/button/Button"
 import DropDownInout from "../../components/DropDownInput/DropDownInput"
 import Input from "../../components/input/Input"
+import { Select } from "../../components/Select/Select"
 import Switch from "../../components/switch/Switch"
 import { useCreateAdminMutation } from "../../features/UserManagement/User ManagementApiSlcie"
 import "./settings.css"
@@ -22,9 +23,9 @@ interface initialStateType {
     email?: string,
     mobile?: string,
     type?: string
-  }
+}
 
-const initialState:initialStateType = {
+const initialState: initialStateType = {
     firstName: "",
     lastName: "",
     email: "",
@@ -34,7 +35,7 @@ const initialState:initialStateType = {
 
 const Settings = () => {
 
-    const [createAdmin, { isSuccess, isLoading}] = useCreateAdminMutation()
+    const [createAdmin, { isSuccess, isLoading }] = useCreateAdminMutation()
 
     // const [formValue, setFormValue] = useState<initialStateType>(initialState)
 
@@ -53,6 +54,12 @@ const Settings = () => {
 
     // const handleChange = (e: any) => setFormValue({ ...formValue, [e.target.name]: e.target.value })
 
+    // const setField = (field: any, value: any) => {
+    //     setRoles({
+    //       type,
+    //       [field]: value,
+    //     });
+    //   };
 
     const selectSTyle = {
         display: "block",
@@ -79,9 +86,9 @@ const Settings = () => {
 
         try {
             //  await createAdmin(formValue).unwrap()
-            if( firstName && lastName && email && mobile && type) {
+            if (firstName && lastName && email && mobile && type) {
                 await createAdmin({
-                   firstName, lastName, email, mobile,type
+                    firstName, lastName, email, mobile, type
                 }).unwrap()
 
                 setFirstName('')
@@ -117,23 +124,13 @@ const Settings = () => {
                             <label htmlFor="" className="text-xs text-[#516CF5]">
                                 {("ROLE")}
                             </label>
-                            {/* <DropDownInout
-                                className="my-3"
-                                value={type}
-                                placeholder="Select Role"
-                                data={[
-                                    { label: 'admin', value: 'Super Admin 🍏' },
-                                    { label: 'regular', value: 'Regular 🍌' },
-                                    { label: 'normal', value: 'Normal Admin 🥝' },
-                                    { label: 'others', value: 'Others 🥝' },
-                                ]}
-                                getValue={v => v.value.toString()}
-                                onChange={e => setRoles(e.target.value)}
-                            /> */}
+
 
                             <select
                             placeholder="Select Role"
+                            defaultValue={type}
                             style={selectSTyle}
+                            required
                             name={type}
                             onChange={(e) => {
                                 const select = e.target as HTMLSelectElement
@@ -150,35 +147,15 @@ const Settings = () => {
                                 </option>
                                 ))}
                             </select>
-                            {/* <select
-                                placeholder="Select Role"
-                                style={selectSTyle}
-                                name={type}
-                                id=""
-                                // className="bg-white text-[#949AB1] border-[#949AB1] outline-none border-2 rounded p-2 mb-3 w-full"
-                                onChange={(e) => {
-                                    const select = e.target as HTMLSelectElement
-                                    setRoles(select.options.item(select.selectedIndex)?.innerText!)
-                                }}>
-                                <option disabled className="text-[#949AB1]">
-                                    {("Select Role")}
-                                </option>
-                                <option value="admin">
-                                    {("Super Admin")}
-                                </option>
-                                <option value="normal">
-                                    {("Normal Admin")}
-                                </option>
-                                <option value="regular">
-                                    {("Regular Admin")}
-                                </option>
-                                <option value="account">
-                                    {("Bad Admin")}
-                                </option>
-                                <option value="other">
-                                    {("Other")}
-                                </option>
-                            </select> */}
+                            {/* <Select
+                                // label="Your role in the chair"
+                                className="border-[#949AB1] border-2 rounded w-full p-2 my-3"
+                                options={["active", "inactive"]}
+                                required
+                                value={type}
+                                //   onChange={(value: any) => setField("status", value)}
+                                onChange={(e: any) => setRoles(e.target.value)}
+                            /> */}
                         </div>
 
 

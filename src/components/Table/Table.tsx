@@ -1,6 +1,5 @@
-
-
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import ReactPaginate from 'react-paginate';
 import './table.css'
 
 interface Props<T = any> {
@@ -18,72 +17,39 @@ interface Props<T = any> {
 
 const Table = ({ limit, renderHead, bodyData, headData, renderBody, isFetching }: Props) => {
 
-    const initDataShow = limit && bodyData ? bodyData.slice(0, (limit)) : bodyData
+    const itemsPerPage = 3
 
-    const [dataShow, setDataShow] = useState(initDataShow)
-    const [currPage, setCurrPage] = useState(0)
+    // for react paginate
 
-    // new
-    const [pageNumberLimit, setpageNumberLimit] = useState(5);
-    const [maxPageNumberLimit, setmaxPageNumberLimit] = useState(5);
-    const [minPageNumberLimit, setminPageNumberLimit] = useState(1);
-    // let pages = 1
-    let pages: number | number[] | any = 1
+    // We start with an empty list of items.setCurrentItems
+    const [currentItems, setCurrentItems] = useState(bodyData);
+    const [pageCount, setPageCount] = useState(0);
+    // Here we use item offsets; we could also use page offsets
+    // following the API or data you're working with.
+    const [itemOffset, setItemOffset] = useState(0);
 
-    let range: number[] = []
+    useEffect(() => {
+        // Fetch items from another resources.
+        const endOffset = itemOffset + itemsPerPage;
+        console.log(`Loading items from ${itemOffset} to ${endOffset}`);
+        setCurrentItems(bodyData.slice(itemOffset, endOffset));
+        setPageCount(Math.ceil(bodyData.length / itemsPerPage));
+    }, [itemOffset, itemsPerPage, bodyData]);
 
-    if (limit !== undefined) {
-        let page = Math.floor(bodyData?.length / (limit))
-        pages = bodyData?.length % (limit) === 0 ? page : page + 1
-        // range = [...Array(pages).keys()]
-        // range = [...Array(pages)]
-    }
-
-
-    const selectPage = (page: number) => {
-        const start = Number(limit) * page
-        const end = start + Number(limit)
-
-        // setDataShow(bodyData.slice(start, end))
-
-        setCurrPage(page)
-    }
-
-
-    const handleNextbtn = () => {
-        setCurrPage(currPage + 1);
-        selectPage(currPage + 1)
-
-        if (currPage + 1 > maxPageNumberLimit) {
-            setmaxPageNumberLimit(maxPageNumberLimit + pageNumberLimit);
-            setminPageNumberLimit(minPageNumberLimit + pageNumberLimit);
-        }
+    // Invoke when user click to request another page.
+    const handlePageClick = (event: any) => {
+        const newOffset = (event.selected * itemsPerPage) % bodyData.length;
+        console.log(
+            `User requested page number ${event.selected}, which is offset ${newOffset}`
+        );
+        setItemOffset(newOffset);
     };
 
-    const handlePrevbtn = () => {
-        setCurrPage(currPage - 1);
-        // selectPage(currPage - 1)
-
-        if ((currPage - 1) % pageNumberLimit === 0) {
-            setmaxPageNumberLimit(maxPageNumberLimit - pageNumberLimit);
-            setminPageNumberLimit(minPageNumberLimit - pageNumberLimit);
-        }
-    };
+    // end of react paginate
 
 
-    let pageIncrementBtn = null;
-    if (pages.length > maxPageNumberLimit) {
-        pageIncrementBtn = <li onClick={handleNextbtn}> &hellip; </li>;
-    }
+    // const initDataShow = limit && bodyData ? bodyData.slice(0, (limit)) : bodyData
 
-    let pageDecrementBtn = null;
-    if (minPageNumberLimit >= 1) {
-        pageDecrementBtn = <li onClick={handlePrevbtn}> &hellip; </li>;
-    }
-
-    //   const handleLoadMore = () => {
-    //     setitemsPerPage(itemsPerPage + 5);
-    //   };
 
     return (
         <div>
@@ -102,11 +68,11 @@ const Table = ({ limit, renderHead, bodyData, headData, renderBody, isFetching }
                     }
                     {isFetching ? <td className='text-center w-full p-5 text-2l font-bold'>isFetching Data</td> : <>
                         {
-                            bodyData && (bodyData !== null || undefined) ? (
+                            currentItems && (currentItems !== null || undefined) ? (
                                 <tbody>
                                     {
                                         // dataShow?.map((item: any, index: number) => renderBody(item, index))
-                                        bodyData?.map((item: any, index: number) => renderBody(item, index))
+                                        currentItems?.map((item: any, index: number) => renderBody(item, index))
                                     }
                                 </tbody>
                             ) : (
@@ -124,14 +90,9 @@ const Table = ({ limit, renderHead, bodyData, headData, renderBody, isFetching }
             <div className='footerPagination'>
                 <div style={{ display: 'flex', alignItems: 'center' }}>
                     <select
-                    // value={currPage}
-                     className='tableSelectDropDown' onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
-
-                        // setCurrPage(e.target.value)
-                    // const select = e.target as HTMLSelectElement
-                    // setCurrPage(select.options.item(select.selectedIndex)?.innerText!)
-                }
-                    }>
+                        // value={currPage}
+                        className='tableSelectDropDown' onChange={(e: React.ChangeEvent<HTMLSelectElement>) => { }
+                        }>
                         <option disabled>Items per page</option>
                         <option value="5">5</option>
                         <option value="10">10</option>
@@ -156,7 +117,8 @@ const Table = ({ limit, renderHead, bodyData, headData, renderBody, isFetching }
                         </div>
                     ) : null
                 } */}
-                {pages > 0 && (<>
+
+                {/* {pages > 0 && (<>
                     <div className="table__pagination">
                         {
 
@@ -167,7 +129,32 @@ const Table = ({ limit, renderHead, bodyData, headData, renderBody, isFetching }
                             ))
                         }
                     </div>
-                </>)}
+                </>)} */}
+
+                <ReactPaginate
+                    pageCount={pageCount}
+                    onPageChange={handlePageClick}
+                    //   pageCount={Math.floor(results.numberOfResults / size)}
+                    disabledClassName="disabled"
+                    initialPage={1}
+                    nextLabel="next >"
+                    previousLabel="< previous"
+                    breakLabel="..."
+                    breakClassName="break-me"
+                    marginPagesDisplayed={2}
+                    pageRangeDisplayed={5}
+                    //   subContainerClassName="pages pagination"
+                    //   subContainerClassName="table__pagination"
+                    breakLinkClassName="page-link"
+                    containerClassName="table__pagination"
+                    pageClassName="page-item"
+                    pageLinkClassName="page-link"
+                    previousClassName="page-item"
+                    previousLinkClassName="page-link"
+                    nextClassName="page-item"
+                    nextLinkClassName="page-link"
+                    activeClassName="active"
+                />
             </div>
         </div>
     )

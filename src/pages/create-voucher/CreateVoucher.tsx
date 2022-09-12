@@ -121,7 +121,7 @@ const CreateVoucher = () => {
         </div>
 
         <div className="grid md:grid-cols-12 gap-10 m-5">
-          <div className='md:col-span-7 flex flex-col bg-white'>
+          <div className='md:col-span-7 flex flex-col bg-white p-4'>
             <div className="p-2 items-center flex justify-between"> <span>Voucher  Deal </span> <span className="text-[#949AB1]">e.g. 30% off / Buy 1 get 1 free</span></div>
 
             <Input type='number' value={formValue.value} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setField('value', e.target.value)}  className='flex-1 w-full flex border border-[#CFD1D5] p-2 mb-5 rounded-lg' placeholder='N1500.00 Voucher' />
@@ -189,7 +189,7 @@ const CreateVoucher = () => {
                 </div>
                 <div className="py-2 px-4 bg-white rounded-b-lg dark:bg-gray-800">
                   <label className="sr-only">Publish post</label>
-                  <textarea id="editor" value={formValue.description} onChange={e => setField("description", e.target.value)} className="block px-0 w-full text-sm text-gray-800 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="Write an article..." required></textarea>
+                  <textarea id="editor" value={formValue.description} onChange={e => setField("description", e.target.value)} className="focus:ring-blue-500 focus:border-blue-500 block px-0 w-full text-sm text-gray-800 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="Write an article..." required></textarea>
                 </div>
 
               </div>
@@ -315,7 +315,7 @@ const CreateVoucher = () => {
                   <Input type='number' name='' value={formValue.value} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setField('value', e.target.value)}  divStyle="w-full" className='rounded-lg w-full p-2 border border-[#CFD1D5]' />
                 </div>
                 <div className="w-full">
-                  <label className='my-1 text-[#171837]'>Voucher Cost (Skippy Points) </label>
+                  <label className='my-1 text-[#171837] whitespace-nowrap'>Voucher Cost (Skippy Points) </label>
                   <Input type='number' value={formValue.price} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setField('price', e.target.value)} name='' divStyle="w-full" className=' w-full p-2 border border-[#CFD1D5] rounded-lg' />
                 </div>
               </div>
@@ -327,9 +327,9 @@ const CreateVoucher = () => {
 
               <div className='my-2 mx-4'>
                         <label htmlFor="">status</label>
-
                         <Select
                           // label="Your role in the chair"
+                          className="w-full p-2 border border-[#CFD1D5] rounded-lg"
                           options={["active", "inactive"]}
                           required
                           value={formValue.status}
