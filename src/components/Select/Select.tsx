@@ -40,15 +40,15 @@ export const Select = ({
             ? () => toast.error( "error")
             : () => {}
         }
-        className="border-2  border-[#DDDDDD] px-3 rounded  text-sm md:text-base"
+        className="  text-sm md:text-base"
       >
         <select
           value={value}
           defaultValue={value}
         //   id={id}
           disabled={disabled}
-          onChange={(e) => onChange(e.target.value)}
-          className={`${className} h-14  lg:h-10 border-none focus:outline-none w-full md:auto bg-white`}
+          onChange={(e) => onChange(e.target.value) || onChange}
+          className={`${className}  focus:outline-none w-full md:auto bg-white`}
           required={required}
         >
           <option value="" disabled>
@@ -61,6 +61,7 @@ export const Select = ({
             ) => (
               <option
                 // key={`${id}-option_${optionIndex}`}
+                className="p-4"
                 key={`-option_${optionIndex}`}
                 value={typeof option === "string" ? option : option.value}
               >

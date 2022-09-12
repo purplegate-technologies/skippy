@@ -10,13 +10,13 @@ exports.Select = function (_a) {
         react_1["default"].createElement("div", { onClick: disabled && canNotEdit
                 // ? () => toastMessage("contact support@ezeevoucher.com", "error")
                 ? function () { return react_toastify_1.toast.error("error"); }
-                : function () { }, className: "border-2  border-[#DDDDDD] px-3 rounded  text-sm md:text-base" },
+                : function () { }, className: "  text-sm md:text-base" },
             react_1["default"].createElement("select", { value: value, defaultValue: value, 
                 //   id={id}
-                disabled: disabled, onChange: function (e) { return onChange(e.target.value); }, className: className + " h-14  lg:h-10 border-none focus:outline-none w-full md:auto bg-white", required: required },
+                disabled: disabled, onChange: function (e) { return onChange(e.target.value) || onChange; }, className: className + "  focus:outline-none w-full md:auto bg-white", required: required },
                 react_1["default"].createElement("option", { value: "", disabled: true }, placeholder || "Select"),
                 options.map(function (option, optionIndex) { return (react_1["default"].createElement("option", { 
                     // key={`${id}-option_${optionIndex}`}
-                    key: "-option_" + optionIndex, value: typeof option === "string" ? option : option.value }, typeof option === "string" ? option : option.name)); })))));
+                    className: "p-4", key: "-option_" + optionIndex, value: typeof option === "string" ? option : option.value }, typeof option === "string" ? option : option.name)); })))));
 };
 // export default Select;

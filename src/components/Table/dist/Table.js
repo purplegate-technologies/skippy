@@ -1,88 +1,61 @@
 "use strict";
 exports.__esModule = true;
 var react_1 = require("react");
+var react_paginate_1 = require("react-paginate");
 require("./table.css");
 var Table = function (_a) {
     var limit = _a.limit, renderHead = _a.renderHead, bodyData = _a.bodyData, headData = _a.headData, renderBody = _a.renderBody, isFetching = _a.isFetching;
-    var initDataShow = limit && bodyData ? bodyData.slice(0, (limit)) : bodyData;
-    var _b = react_1.useState(initDataShow), dataShow = _b[0], setDataShow = _b[1];
-    var _c = react_1.useState(0), currPage = _c[0], setCurrPage = _c[1];
-    // new
-    var _d = react_1.useState(5), pageNumberLimit = _d[0], setpageNumberLimit = _d[1];
-    var _e = react_1.useState(5), maxPageNumberLimit = _e[0], setmaxPageNumberLimit = _e[1];
-    var _f = react_1.useState(1), minPageNumberLimit = _f[0], setminPageNumberLimit = _f[1];
-    // let pages = 1
-    var pages = 1;
-    var range = [];
-    if (limit !== undefined) {
-        var page = Math.floor((bodyData === null || bodyData === void 0 ? void 0 : bodyData.length) / (limit));
-        pages = (bodyData === null || bodyData === void 0 ? void 0 : bodyData.length) % (limit) === 0 ? page : page + 1;
-        // range = [...Array(pages).keys()]
-        // range = [...Array(pages)]
-    }
-    var selectPage = function (page) {
-        var start = Number(limit) * page;
-        var end = start + Number(limit);
-        // setDataShow(bodyData.slice(start, end))
-        setCurrPage(page);
+    var _b = react_1.useState(10), itemsPerPage = _b[0], setItemsPerPage = _b[1];
+    // for react paginate
+    // We start with an empty list of items.setCurrentItems
+    var _c = react_1.useState(bodyData), currentItems = _c[0], setCurrentItems = _c[1];
+    var _d = react_1.useState(0), pageCount = _d[0], setPageCount = _d[1];
+    // Here we use item offsets; we could also use page offsets
+    // following the API or data you're working with.
+    var _e = react_1.useState(0), itemOffset = _e[0], setItemOffset = _e[1];
+    react_1.useEffect(function () {
+        // Fetch items from another resources.
+        var endOffset = itemOffset + itemsPerPage;
+        console.log("Loading items from " + itemOffset + " to " + endOffset);
+        setCurrentItems(bodyData.slice(itemOffset, endOffset));
+        setPageCount(Math.ceil(bodyData.length / itemsPerPage));
+    }, [itemOffset, itemsPerPage, bodyData]);
+    // Invoke when user click to request another page.
+    var handlePageClick = function (event) {
+        var newOffset = (event.selected * itemsPerPage) % bodyData.length;
+        console.log("User requested page number " + event.selected + ", which is offset " + newOffset);
+        setItemOffset(newOffset);
     };
-    var handleNextbtn = function () {
-        setCurrPage(currPage + 1);
-        selectPage(currPage + 1);
-        if (currPage + 1 > maxPageNumberLimit) {
-            setmaxPageNumberLimit(maxPageNumberLimit + pageNumberLimit);
-            setminPageNumberLimit(minPageNumberLimit + pageNumberLimit);
-        }
-    };
-    var handlePrevbtn = function () {
-        setCurrPage(currPage - 1);
-        // selectPage(currPage - 1)
-        if ((currPage - 1) % pageNumberLimit === 0) {
-            setmaxPageNumberLimit(maxPageNumberLimit - pageNumberLimit);
-            setminPageNumberLimit(minPageNumberLimit - pageNumberLimit);
-        }
-    };
-    var pageIncrementBtn = null;
-    if (pages.length > maxPageNumberLimit) {
-        pageIncrementBtn = React.createElement("li", { onClick: handleNextbtn }, " \u2026 ");
-    }
-    var pageDecrementBtn = null;
-    if (minPageNumberLimit >= 1) {
-        pageDecrementBtn = React.createElement("li", { onClick: handlePrevbtn }, " \u2026 ");
-    }
-    //   const handleLoadMore = () => {
-    //     setitemsPerPage(itemsPerPage + 5);
-    //   };
+    // end of react paginate
+    // const initDataShow = limit && bodyData ? bodyData.slice(0, (limit)) : bodyData
     return (React.createElement("div", null,
         React.createElement("div", { className: "table-wrapper" },
             React.createElement("table", null,
                 headData && renderHead ? (React.createElement("thead", null,
                     React.createElement("tr", null, headData.map(function (item, index) { return renderHead(item, index); })))) : null,
-                isFetching ? React.createElement("td", { className: 'text-center w-full p-5 text-2l font-bold' }, "isFetching Data") : React.createElement(React.Fragment, null, bodyData && (bodyData !== null || undefined) ? (React.createElement("tbody", null, 
+                isFetching ? React.createElement("td", { className: 'text-center w-full p-5 text-2l font-bold' }, "isFetching Data") : React.createElement(React.Fragment, null, currentItems && (currentItems !== null || undefined) ? (React.createElement("tbody", null, 
                 // dataShow?.map((item: any, index: number) => renderBody(item, index))
-                bodyData === null || 
+                currentItems === null || 
                 // dataShow?.map((item: any, index: number) => renderBody(item, index))
-                bodyData === void 0 ? void 0 : 
+                currentItems === void 0 ? void 0 : 
                 // dataShow?.map((item: any, index: number) => renderBody(item, index))
-                bodyData.map(function (item, index) { return renderBody(item, index); }))) : (React.createElement("tbody", { className: '' },
+                currentItems.map(function (item, index) { return renderBody(item, index); }))) : (React.createElement("tbody", { className: '' },
                     React.createElement("tr", null,
                         React.createElement("td", { className: 'text-center w-full p-5 text-2l font-bold' }, "No Data"))))))),
         React.createElement("div", { className: 'footerPagination' },
             React.createElement("div", { style: { display: 'flex', alignItems: 'center' } },
-                React.createElement("select", { 
-                    // value={currPage}
-                    className: 'tableSelectDropDown', onChange: function (e) {
-                        // setCurrPage(e.target.value)
-                        // const select = e.target as HTMLSelectElement
-                        // setCurrPage(select.options.item(select.selectedIndex)?.innerText!)
-                    } },
+                React.createElement("select", { value: itemsPerPage, className: 'tableSelectDropDown', onChange: function (e) { setItemsPerPage(e.target.value); } },
                     React.createElement("option", { disabled: true }, "Items per page"),
                     React.createElement("option", { value: "5" }, "5"),
                     React.createElement("option", { value: "10" }, "10"),
                     React.createElement("option", { value: "15" }, "15")),
                 " ",
                 React.createElement("span", { style: { marginLeft: '10px' } }, "Items per page")),
-            pages > 0 && (React.createElement(React.Fragment, null,
-                React.createElement("div", { className: "table__pagination" }, range.slice(0, 5).map(function (item, index) { return (React.createElement("div", { key: index, className: "table__pagination-item " + (currPage === index && 'active'), onClick: function () { return selectPage(index); } }, item + 1)); })))))));
+            React.createElement(react_paginate_1["default"], { pageCount: pageCount, onPageChange: handlePageClick, 
+                //   pageCount={Math.floor(results.numberOfResults / size)}
+                disabledClassName: "disabled", initialPage: 1, nextLabel: "next >", previousLabel: "< previous", breakLabel: "...", breakClassName: "break-me", marginPagesDisplayed: 2, pageRangeDisplayed: 5, 
+                //   subContainerClassName="pages pagination"
+                //   subContainerClassName="table__pagination"
+                breakLinkClassName: "page-link", containerClassName: "table__pagination", pageClassName: "table__pagination-item", pageLinkClassName: "table__pagination-item", previousClassName: "page-item", previousLinkClassName: "page-link", nextClassName: "page-item", nextLinkClassName: "page-link", activeClassName: "active" }))));
 };
 exports["default"] = Table;
