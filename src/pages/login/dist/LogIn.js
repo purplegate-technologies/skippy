@@ -50,7 +50,6 @@ exports.__esModule = true;
 require("./login.css");
 var CompanyLogo_1 = require("../../assets/svg/CompanyLogo");
 var react_router_dom_1 = require("react-router-dom");
-// import { useLoginUserMutation } from '../../services/authApis'
 var hooks_1 = require("../../app/hooks");
 var react_1 = require("react");
 var authSlice_1 = require("../../features/auth/authSlice");
@@ -109,9 +108,11 @@ var LogIn = function () {
                     // set user data and token in redux store
                     // dispatch(setUser({ user: admin.firstName, token }))
                     dispatch(authSlice_1.setUser({ user: admin, token: token }));
+                    if (isLoginSuccess) {
+                        navigate('/', { replace: true });
+                        react_toastify_1.toast.success("Login successful");
+                    }
                     setFormValue({ email: '', password: '' });
-                    react_toastify_1.toast.success("Login successful");
-                    navigate('/', { replace: true });
                     return [3 /*break*/, 5];
                 case 4:
                     react_toastify_1.toast.error("Please fill all Input field");
@@ -144,10 +145,10 @@ var LogIn = function () {
         if (isLoginSuccess) {
             var token = loginData.token, admin = loginData.admin;
             dispatch(authSlice_1.setUser({ user: admin, token: token }));
-            tokenForUser && navigate('/', { replace: true });
+            navigate('/', { replace: true });
             react_toastify_1.toast.success("User Login Successfully");
         }
-    }, [isLoginSuccess, navigate, tokenForUser, dispatch, loginData]);
+    }, [isLoginSuccess, navigate, dispatch, loginData]);
     return (react_1["default"].createElement("div", { className: "h-screen" },
         react_1["default"].createElement("div", { className: "absolute scale-75 top-[-98px] left-[-40px]" },
             react_1["default"].createElement(LoginBackGIcons_1["default"], null)),

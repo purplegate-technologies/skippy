@@ -5,10 +5,7 @@ import './table.css'
 interface Props<T = any> {
     limit?: number
     headData?: string[]
-    // bodyData?: T[];
     bodyData?: any;
-    // type?: ETableType;
-    // column?: TColumnType[];
     renderBody: (n: any, b: number) => JSX.Element
     renderHead: (n: any, b: number) => JSX.Element
     isSuccess?: boolean
@@ -45,12 +42,6 @@ const Table = ({ limit, renderHead, bodyData, headData, renderBody, isFetching }
         setItemOffset(newOffset);
     };
 
-    // end of react paginate
-
-
-    // const initDataShow = limit && bodyData ? bodyData.slice(0, (limit)) : bodyData
-
-
     return (
         <div>
             <div className="table-wrapper">
@@ -66,7 +57,7 @@ const Table = ({ limit, renderHead, bodyData, headData, renderBody, isFetching }
                             </thead>
                         ) : null
                     }
-                    {isFetching ? <td className='text-center w-full p-5 text-2l font-bold'>isFetching Data</td> : <>
+                    {isFetching ? <td className='text-center w-full p-5 text-2l font-bold'>Fetching Data</td> : <>
                         {
                             currentItems && (currentItems !== null || undefined) ? (
                                 <tbody>
@@ -102,40 +93,11 @@ const Table = ({ limit, renderHead, bodyData, headData, renderBody, isFetching }
                     {" "}
                     <span style={{ marginLeft: '10px' }}>Items per page</span>
                 </div>
-                {/* {pages > 0 ? (
-                        <div className="table__pagination">
-                            <button onClick={handlePrevbtn} disabled={currPage === pages[0] ? true : false}>Prev</button>
-                               {range.map((item: any, index: number) => {
-                                    if (item < maxPageNumberLimit + 1 && item > minPageNumberLimit) {
-                                    return <div key={index} className={`table__pagination-item ${currPage === index && 'active'}`} onClick={() => selectPage(index)}>
-                                        {item}
-                                    </div>
-                                    } else {
-                                        return null
-                                    }
-                                })}
-                            <button onClick={handleNextbtn} disabled={currPage === pages[pages.length - 1] ? true : false}>Next</button>
-                        </div>
-                    ) : null
-                } */}
 
-                {/* {pages > 0 && (<>
-                    <div className="table__pagination">
-                        {
-
-                            range.slice(0, 5).map((item, index) => (
-                                <div key={index} className={`table__pagination-item ${currPage === index && 'active'}`} onClick={() => selectPage(index)}>
-                                    {item + 1}
-                                </div>
-                            ))
-                        }
-                    </div>
-                </>)} */}
 
                 <ReactPaginate
                     pageCount={pageCount}
                     onPageChange={handlePageClick}
-                    //   pageCount={Math.floor(results.numberOfResults / size)}
                     disabledClassName="disabled"
                     initialPage={1}
                     nextLabel="next >"
@@ -144,17 +106,16 @@ const Table = ({ limit, renderHead, bodyData, headData, renderBody, isFetching }
                     breakClassName="break-me"
                     marginPagesDisplayed={2}
                     pageRangeDisplayed={5}
-                    //   subContainerClassName="pages pagination"
-                    //   subContainerClassName="table__pagination"
                     breakLinkClassName="page-link"
                     containerClassName="table__pagination"
                     pageClassName="table__pagination-item"
                     pageLinkClassName="table__pagination-item"
-                    previousClassName="page-item"
+                    previousClassName="page-item mr-3"
                     previousLinkClassName="page-link"
-                    nextClassName="page-item"
+                    nextClassName="page-item ml-3"
                     nextLinkClassName="page-link"
                     activeClassName="active"
+                    activeLinkClassName="active"
                 />
             </div>
         </div>

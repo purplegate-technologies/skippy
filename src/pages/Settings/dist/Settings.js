@@ -60,7 +60,6 @@ var initialState = {
 };
 var Settings = function () {
     var _a = User_ManagementApiSlcie_1.useCreateAdminMutation(), createAdmin = _a[0], _b = _a[1], isSuccess = _b.isSuccess, isLoading = _b.isLoading;
-    // const [formValue, setFormValue] = useState<initialStateType>(initialState)
     var _c = react_1.useState(""), firstName = _c[0], setFirstName = _c[1];
     var _d = react_1.useState(""), lastName = _d[0], setLastName = _d[1];
     var _e = react_1.useState(""), email = _e[0], setEmail = _e[1];
@@ -71,13 +70,6 @@ var Settings = function () {
             react_toastify_1.toast.success("Created an Administrator successfully");
         }
     }, [isSuccess]);
-    // const handleChange = (e: any) => setFormValue({ ...formValue, [e.target.name]: e.target.value })
-    // const setField = (field: any, value: any) => {
-    //     setRoles({
-    //       type,
-    //       [field]: value,
-    //     });
-    //   };
     var selectSTyle = {
         display: "block",
         width: "100%",
@@ -140,27 +132,11 @@ var Settings = function () {
                                 setRoles((_a = select.options.item(select.selectedIndex)) === null || _a === void 0 ? void 0 : _a.innerText);
                             } }, options.map(function (option) { return (React.createElement("option", { disabled: option.disabled, key: option.value, value: option.value }, option.text)); }))),
                     React.createElement("div", { className: "grid md:grid-cols-2 gap-x-4 " },
-                        React.createElement(Input_1["default"]
-                        // divStyle="w-[19rem]contactUs-form-lable"
-                        , { 
-                            // divStyle="w-[19rem]contactUs-form-lable"
-                            labelStyle: "", divStyle: "lable w-full", className: "border-[#949AB1] border-1 rounded p-2 my-3 w-full", label: ("FIRST NAME"), name: "Firstname", placeholder: ("First Name"), value: firstName, onChange: function (e) { return setFirstName(e.target.value); } }),
-                        React.createElement(Input_1["default"]
-                        // divStyle="w-[19rem]contactUs-form-lable"
-                        , { 
-                            // divStyle="w-[19rem]contactUs-form-lable"
-                            divStyle: "contactUs-form-lable", className: "border-[#949AB1] border-1 rounded p-2 my-3 w-full", label: ("SURNAME"), name: "surname", placeholder: ("Surname"), value: lastName, onChange: function (e) { return setLastName(e.target.value); } })),
+                        React.createElement(Input_1["default"], { labelStyle: "", divStyle: "lable w-full", className: "border-[#949AB1] border-1 rounded p-2 my-3 w-full", label: ("FIRST NAME"), name: "Firstname", placeholder: ("First Name"), value: firstName, onChange: function (e) { return setFirstName(e.target.value); } }),
+                        React.createElement(Input_1["default"], { divStyle: "contactUs-form-lable", className: "border-[#949AB1] border-1 rounded p-2 my-3 w-full", label: ("SURNAME"), name: "surname", placeholder: ("Surname"), value: lastName, onChange: function (e) { return setLastName(e.target.value); } })),
                     React.createElement("div", { className: "" },
-                        React.createElement(Input_1["default"]
-                        // divStyle="w-[19rem]contactUs-form-lable"
-                        , { 
-                            // divStyle="w-[19rem]contactUs-form-lable"
-                            divStyle: "contactUs-form-lable", className: "border-[#949AB1] border-1 rounded p-2 my-3 w-full", label: ("EMAIL"), name: "email", placeholder: ("admin@skippy.com"), type: "email", value: email, onChange: function (e) { return setEmail(e.target.value); } }),
-                        React.createElement(Input_1["default"]
-                        // divStyle="w-[19rem]contactUs-form-lable"
-                        , { 
-                            // divStyle="w-[19rem]contactUs-form-lable"
-                            divStyle: "contactUs-form-lable", className: "border-[#949AB1] border-1 rounded p-2 my-3 w-full", label: ("MOBILE NUMBER"), name: "mobile", placeholder: ("09039278115"), type: "tel", value: mobile, onChange: function (e) { return setMobile(e.target.value); } }),
+                        React.createElement(Input_1["default"], { divStyle: "contactUs-form-lable", className: "border-[#949AB1] border-1 rounded p-2 my-3 w-full", label: ("EMAIL"), name: "email", placeholder: ("admin@skippy.com"), type: "email", value: email, onChange: function (e) { return setEmail(e.target.value); } }),
+                        React.createElement(Input_1["default"], { divStyle: "contactUs-form-lable", className: "border-[#949AB1] border-1 rounded p-2 my-3 w-full", label: ("MOBILE NUMBER"), name: "mobile", placeholder: ("09039278115"), type: "tel", value: mobile, onChange: function (e) { return setMobile(e.target.value); } }),
                         React.createElement(Switch_1["default"], { label: "Activate Account" }),
                         React.createElement(Button_1["default"], { loading: isLoading, className: "mt-[2.5rem] mb-[2.36rem] capitalize bg-[#516CF5] ", text: "Save Changes", type: "submit" })))))));
 };

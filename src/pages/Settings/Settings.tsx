@@ -37,8 +37,6 @@ const Settings = () => {
 
     const [createAdmin, { isSuccess, isLoading }] = useCreateAdminMutation()
 
-    // const [formValue, setFormValue] = useState<initialStateType>(initialState)
-
     const [firstName, setFirstName] = useState("")
     const [lastName, setLastName] = useState("")
     const [email, setEmail] = useState("")
@@ -51,15 +49,6 @@ const Settings = () => {
         }
 
     }, [isSuccess]);
-
-    // const handleChange = (e: any) => setFormValue({ ...formValue, [e.target.name]: e.target.value })
-
-    // const setField = (field: any, value: any) => {
-    //     setRoles({
-    //       type,
-    //       [field]: value,
-    //     });
-    //   };
 
     const selectSTyle = {
         display: "block",
@@ -85,7 +74,6 @@ const Settings = () => {
         e.preventDefault();
 
         try {
-            //  await createAdmin(formValue).unwrap()
             if (firstName && lastName && email && mobile && type) {
                 await createAdmin({
                     firstName, lastName, email, mobile, type
@@ -97,10 +85,6 @@ const Settings = () => {
                 setMobile('')
                 setRoles('')
             }
-
-
-            // .then(() => {})
-            // .then((error) => {console.log(error)})
         } catch {
             toast.error("Failed Please Try again")
         }
@@ -119,7 +103,6 @@ const Settings = () => {
                     </div>
 
                     <div className="card-settings">
-                        {/* Select Roles */}
                         <div className="contactUs-form-lable">
                             <label htmlFor="" className="text-xs text-[#516CF5]">
                                 {("ROLE")}
@@ -160,9 +143,7 @@ const Settings = () => {
 
 
                         <div className="grid md:grid-cols-2 gap-x-4 ">
-                            {/* <div className="flex justify-between gap-[2.8rem] mb-8"> */}
                             <Input
-                                // divStyle="w-[19rem]contactUs-form-lable"
                                 labelStyle=""
                                 divStyle="lable w-full"
                                 className={"border-[#949AB1] border-1 rounded p-2 my-3 w-full"}
@@ -173,7 +154,6 @@ const Settings = () => {
                                 onChange={(e: Event) => setFirstName((e.target as HTMLInputElement).value)}
                             />
                             <Input
-                                // divStyle="w-[19rem]contactUs-form-lable"
                                 divStyle="contactUs-form-lable"
                                 className={"border-[#949AB1] border-1 rounded p-2 my-3 w-full"}
                                 label={("SURNAME")}
@@ -185,9 +165,7 @@ const Settings = () => {
                         </div>
 
                         <div className="">
-                            {/* <div className="flex flex-wrap justify-between gap-[2.8rem] mb-8"> */}
                             <Input
-                                // divStyle="w-[19rem]contactUs-form-lable"
                                 divStyle="contactUs-form-lable"
                                 className={"border-[#949AB1] border-1 rounded p-2 my-3 w-full"}
                                 label={("EMAIL")}
@@ -198,7 +176,6 @@ const Settings = () => {
                                 onChange={(e: Event) => setEmail((e.target as HTMLInputElement).value)}
                             />
                             <Input
-                                // divStyle="w-[19rem]contactUs-form-lable"
                                 divStyle="contactUs-form-lable"
                                 className={"border-[#949AB1] border-1 rounded p-2 my-3 w-full"}
                                 label={("MOBILE NUMBER")}

@@ -26,14 +26,12 @@ var Table = function (_a) {
         console.log("User requested page number " + event.selected + ", which is offset " + newOffset);
         setItemOffset(newOffset);
     };
-    // end of react paginate
-    // const initDataShow = limit && bodyData ? bodyData.slice(0, (limit)) : bodyData
     return (React.createElement("div", null,
         React.createElement("div", { className: "table-wrapper" },
             React.createElement("table", null,
                 headData && renderHead ? (React.createElement("thead", null,
                     React.createElement("tr", null, headData.map(function (item, index) { return renderHead(item, index); })))) : null,
-                isFetching ? React.createElement("td", { className: 'text-center w-full p-5 text-2l font-bold' }, "isFetching Data") : React.createElement(React.Fragment, null, currentItems && (currentItems !== null || undefined) ? (React.createElement("tbody", null, 
+                isFetching ? React.createElement("td", { className: 'text-center w-full p-5 text-2l font-bold' }, "Fetching Data") : React.createElement(React.Fragment, null, currentItems && (currentItems !== null || undefined) ? (React.createElement("tbody", null, 
                 // dataShow?.map((item: any, index: number) => renderBody(item, index))
                 currentItems === null || 
                 // dataShow?.map((item: any, index: number) => renderBody(item, index))
@@ -51,11 +49,6 @@ var Table = function (_a) {
                     React.createElement("option", { value: "15" }, "15")),
                 " ",
                 React.createElement("span", { style: { marginLeft: '10px' } }, "Items per page")),
-            React.createElement(react_paginate_1["default"], { pageCount: pageCount, onPageChange: handlePageClick, 
-                //   pageCount={Math.floor(results.numberOfResults / size)}
-                disabledClassName: "disabled", initialPage: 1, nextLabel: "next >", previousLabel: "< previous", breakLabel: "...", breakClassName: "break-me", marginPagesDisplayed: 2, pageRangeDisplayed: 5, 
-                //   subContainerClassName="pages pagination"
-                //   subContainerClassName="table__pagination"
-                breakLinkClassName: "page-link", containerClassName: "table__pagination", pageClassName: "table__pagination-item", pageLinkClassName: "table__pagination-item", previousClassName: "page-item", previousLinkClassName: "page-link", nextClassName: "page-item", nextLinkClassName: "page-link", activeClassName: "active" }))));
+            React.createElement(react_paginate_1["default"], { pageCount: pageCount, onPageChange: handlePageClick, disabledClassName: "disabled", initialPage: 1, nextLabel: "next >", previousLabel: "< previous", breakLabel: "...", breakClassName: "break-me", marginPagesDisplayed: 2, pageRangeDisplayed: 5, breakLinkClassName: "page-link", containerClassName: "table__pagination", pageClassName: "table__pagination-item", pageLinkClassName: "table__pagination-item", previousClassName: "page-item mr-3", previousLinkClassName: "page-link", nextClassName: "page-item ml-3", nextLinkClassName: "page-link", activeClassName: "active", activeLinkClassName: "active" }))));
 };
 exports["default"] = Table;

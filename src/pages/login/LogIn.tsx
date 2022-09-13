@@ -1,10 +1,9 @@
 import './login.css'
 import CompanyLogo from "../../assets/svg/CompanyLogo"
 import { Link, useNavigate } from 'react-router-dom'
-// import { useLoginUserMutation } from '../../services/authApis'
 import { useAppDispatch, useAppSelector } from '../../app/hooks'
 import React, { useEffect, useRef, useState } from 'react'
-import { selectCurrentToken, setUser, setUserDetails, setUserToken } from '../../features/auth/authSlice'
+import { selectCurrentToken, setUser} from '../../features/auth/authSlice'
 import { toast } from 'react-toastify';
 import Button from '../../components/button/Button'
 import LoginBackGIcons from '../../assets/svg/LoginBackGIcons'
@@ -67,9 +66,11 @@ const LogIn = () => {
         // set user data and token in redux store
         // dispatch(setUser({ user: admin.firstName, token }))
         dispatch(setUser({ user: admin, token }))
+        if(isLoginSuccess) {
+          navigate('/', { replace: true })
+          toast.success("Login successful");
+        }
         setFormValue({email: '', password:''})
-        toast.success("Login successful");
-        navigate('/', { replace: true })
         // tokenForUser && navigate('/', { replace: true })
       } else {
         toast.error("Please fill all Input field")
@@ -97,10 +98,10 @@ const LogIn = () => {
     if (isLoginSuccess) {
       const { token, admin }: any = loginData
       dispatch(setUser({ user: admin, token}))
-      tokenForUser && navigate('/', { replace: true })
+       navigate('/', { replace: true })
       toast.success("User Login Successfully")
     }
-  }, [isLoginSuccess, navigate, tokenForUser, dispatch, loginData])
+  }, [isLoginSuccess, navigate, dispatch, loginData])
 
 
   return (

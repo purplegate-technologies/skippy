@@ -274,8 +274,6 @@ const Advertisements = () => {
 
       </div>
 
-      {/* Table End */}
-      {/* <Outlet /> */}
     </div>
   )
 }

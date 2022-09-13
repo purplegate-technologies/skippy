@@ -1,6 +1,5 @@
 import React, { ReactElement, MouseEvent } from "react"
 
-// Form type
 
 export interface IFormType {
     input?: string
@@ -85,7 +84,6 @@ const Input = ({
             checked={checked}
             maxLength={maxLength}
             minLength={minLength}
-            // TrailingIcon={TrailingIcon}
         />
     )
 
