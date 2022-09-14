@@ -72,9 +72,9 @@ tbody > tr:hover {
   background: #ffffff;
   border: 0.96px solid var(--txt-pre);
   border-radius: 1.92px;
-  padding: 5px;
+  padding: 0px;
   max-width: 20%;
-  height: 30px;
+  height: 35px;
   border-radius: 2.92px;
   outline: none;
 }
