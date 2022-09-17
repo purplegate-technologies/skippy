@@ -108,7 +108,7 @@ const ResetPassword = () => {
 
         <div className="login z-10 p-3 w-full max-w-[23rem] md:bg-white bg-transparent">
 
-          <div className='p-[10px]'>
+          <div className='p-[10px]'> 
             <span className='text-[#949AB1] text-sm'>Reset Password</span>
             <h1 className='font-bold'>Admin</h1>
           </div>
