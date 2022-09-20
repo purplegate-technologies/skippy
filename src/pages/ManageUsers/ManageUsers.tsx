@@ -9,18 +9,84 @@ import { useNavigate, Link } from 'react-router-dom'
 import Administrators from './Administrators'
 import AppUsers from './AppUsers'
 import { useGetUserStatsQuery } from '../../features/stats/statsApis'
+import StatusCardIcon from '../../assets/svg/StatusCardIcon'
 
 
 const ManageUsers = () => {
+  const [iconState, setIconState] = useState<string>("")
 
   const [tabIndex, setTabIndex] = useState<string>("Administrators")
-  const {data} = useGetUserStatsQuery()
+  const { data } = useGetUserStatsQuery()
 
   console.log(data, "useGetUserStatsQuery")
 
   return (
     <div>
-      <StatusCards />
+      <div>
+        <h4 className='cardHead font-semibold'>Overview</h4>
+        <div className="row">
+          {/* card one */}
+          <div className="col-3">
+            <div className="status-card"
+              onMouseEnter={() => setIconState("store")}
+              onMouseLeave={() => setIconState("")}>
+              <div className="status-card__info">
+                <span>{("total Installed Apps")?.toString().toUpperCase()}</span>
+                <h4>{data ? data?.data?.endDate?.totalUsers : "-"}</h4>
+                <div className="status-card__info__percent">
+                  <span className='percentUp'>{data ? `${((data?.data?.endDate?.totalUsers - data?.data?.startDate?.totalUsers) / data?.data?.endDate?.totalUsers * 100).toFixed(1)}% ↑ ` : "-% ↑"}</span>{" "}
+                  <span>{data ? `from ${data?.data?.startDate?.totalUsers}` : "from -"}</span>
+                </div>
+              </div>
+
+              <div className="status-card__icon">
+                <StatusCardIcon hovering={iconState === "store"} />
+              </div>
+            </div>
+          </div>
+          {/* CARD TWO */}
+          <div className="col-3">
+            <div className="status-card"
+              onMouseEnter={() => setIconState("store")}
+              onMouseLeave={() => setIconState("")}>
+              <div className="status-card__info">
+                <span>{("Total Active Users")?.toString().toUpperCase()}</span>
+                <h4>{data ? data?.data?.endDate?.totalActiveUsers : "-"}</h4>
+                <div className="status-card__info__percent">
+                  <span className='percentUp'>{data ? `${((data?.data?.endDate?.totalActiveUsers - data?.data?.startDate?.totalActiveUsers) / data?.data?.endDate?.totalActiveUsers * 100).toFixed(1)}% ↑ ` : "-% ↑"}</span>{" "}
+                  <span>{data ? `from ${data?.data?.startDate?.totalActiveUsers}` : "from -"}</span>
+                </div>
+              </div>
+
+              <div className="status-card__icon">
+                <StatusCardIcon hovering={iconState === "store"} />
+              </div>
+            </div>
+          </div>
+          {/* CARD three */}
+          <div className="col-3">
+            <div className="status-card"
+              onMouseEnter={() => setIconState("store")}
+              onMouseLeave={() => setIconState("")}>
+              <div className="status-card__info">
+                <span>{("Total inactive Players")?.toString().toUpperCase()}</span>
+                <h4>{data ? data?.data?.endDate?.totalInactiveUsers : "-"}</h4>
+                <div className="status-card__info__percent">
+                  <span className='percentUp'>{data ? `${((data?.data?.endDate?.totalInactiveUsers - data?.data?.startDate?.totalInactiveUsers) / data?.data?.endDate?.totalInactiveUsers * 100).toFixed(1)}% ↑ ` : "-% ↑"}</span>{" "}
+                  <span>{data ? `from ${data?.data?.startDate?.totalInactiveUsers}` : "from -"}</span>
+                </div>
+              </div>
+
+              <div className="status-card__icon">
+                <StatusCardIcon hovering={iconState === "store"} />
+              </div>
+            </div>
+          </div>
+
+          {/* End of all card */}
+        </div>
+      </div>
+
       {/* Tabs */}
 
       {/* Support Search  */}

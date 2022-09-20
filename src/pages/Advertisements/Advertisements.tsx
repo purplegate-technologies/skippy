@@ -137,7 +137,6 @@ const Advertisements = () => {
 
   return (
     <div>
-      {(data) ?
         <div>
           <h4 className='cardHead font-semibold'>Overview</h4>
           <div className="row">
@@ -220,9 +219,7 @@ const Advertisements = () => {
             {/* End of all card */}
           </div>
         </div>
-        :
-        <StatusCards />
-      }
+    
       {/* Support Search */}
 
 

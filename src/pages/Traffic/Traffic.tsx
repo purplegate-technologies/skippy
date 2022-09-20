@@ -123,7 +123,6 @@ const Traffic = () => {
 
   return (
     <section className='mb-10'>
-      {(data && data?.data) ?
         <div>
           <div className="row">
             {/* card one */}
@@ -205,9 +204,7 @@ const Traffic = () => {
             {/* End of all card */}
           </div>
         </div>
-        :
-        <StatusCards />
-      }
+      
 
       <div className='traffic-flex'>
 

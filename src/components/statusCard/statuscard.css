@@ -5,7 +5,7 @@
   display: flex;
   align-items: center;
   /* background: var(--main-bg); */
-  box-shadow: var(--box-shadow);
+  /* box-shadow: var(--box-shadow); */
   /* border-radius: var(--border-radius); */
   border-radius: 10px;
   position: relative;
@@ -15,7 +15,16 @@
   margin-bottom: 30px;
   /* color: #949AB1; */
   color: #171837;
+  border: 1.1px solid #E4E9FF ;
 }
+
+/* .status-card__info span {
+  font-size: 10px;
+  font-weight: 700;
+}
+.status-card__info h4 {
+  padding: 15px 0;
+} */
 
 /* card head overview */
 .cardHead {
@@ -46,7 +55,7 @@
   font-size: 12px;
   line-height: 16px;
   text-align: center;
-  padding: 3px;
+  padding: 5px;
   color: #516cf5;
 }
 
@@ -93,12 +102,13 @@
   font-weight: 700;
   font-size: 21px;
   line-height: 29px;
+  padding: 15px 0;
 }
 
 .status-card__info > span {
   /* font-family: "Manrope"; */
   font-style: normal;
-  font-weight: 500;
+  font-weight: 700;
   font-size: 12px;
   line-height: 16px;
 }
@@ -140,7 +150,7 @@
 .status-card:hover::before {
   transform: scale(3);
 }
-.status-card:hover::before, 
+.status-card:hover::before,
 .status-card__info__percent :nth-child(1):hover {
   /* background: red; */
   color: white;

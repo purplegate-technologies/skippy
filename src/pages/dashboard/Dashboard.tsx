@@ -270,92 +270,89 @@ const Dashboard = () => {
     return (
         <>
             <section className='mb-10'>
-                {(data && data?.data) ?
-                    <div>
-                        <h4 className='cardHead font-semibold'>Overview</h4>
-                        <div className="row">
-                            {/* card one */}
-                            <div className="col-3">
-                                <div className="status-card"
-                                    onMouseEnter={() => setIconState("store")}
-                                    onMouseLeave={() => setIconState("")}>
-                                    <div className="status-card__info">
-                                        <span>{("Overall Users")?.toString().toUpperCase()}</span>
-                                        <h4>{data ? data?.data?.endDate?.totalUsers : "-"}</h4>
-                                        <div className="status-card__info__percent">
-                                            <span className='percentUp'>{ data ? `${((data?.data?.endDate?.totalUsers - data?.data?.startDate?.totalUsers) / data?.data?.endDate?.totalUsers * 100).toFixed(1)}% ↑ ` : "-% ↑"}</span>{" "}
-                                            <span>{ data ? `from ${data?.data?.startDate?.totalUsers}` : "from -"}</span>
-                                        </div>
-                                    </div>
-
-                                    <div className="status-card__icon">
-                                        <StatusCardIcon hovering={iconState === "store"} />
+                <div>
+                    <h4 className='cardHead font-semibold'>Overview</h4>
+                    <div className="row">
+                        {/* card one */}
+                        <div className="col-3">
+                            <div className="status-card"
+                                onMouseEnter={() => setIconState("store")}
+                                onMouseLeave={() => setIconState("")}>
+                                <div className="status-card__info">
+                                    <span>{("Overall Users")?.toString().toUpperCase()}</span>
+                                    <h4>{data ? data?.data?.endDate?.totalUsers : "-"}</h4>
+                                    <div className="status-card__info__percent">
+                                        <span className='percentUp'>{data ? `${((data?.data?.endDate?.totalUsers - data?.data?.startDate?.totalUsers) / data?.data?.endDate?.totalUsers * 100).toFixed(1)}% ↑ ` : "-% ↑"}</span>{" "}
+                                        <span>{data ? `from ${data?.data?.startDate?.totalUsers}` : "from -"}</span>
                                     </div>
                                 </div>
-                            </div>
-                            {/* CARD TWO */}
-                            <div className="col-3">
-                                <div className="status-card"
-                                    onMouseEnter={() => setIconState("store")}
-                                    onMouseLeave={() => setIconState("")}>
-                                    <div className="status-card__info">
-                                        <span>{("Overall Ads")?.toString().toUpperCase()}</span>
-                                        <h4>{data ? data?.data?.endDate?.totalAdverts : "-"}</h4>
-                                        <div className="status-card__info__percent">
-                                            <span className='percentUp'>{ data ? `${((data?.data?.endDate?.totalAdverts - data?.data?.startDate?.totalAdverts) / data?.data?.endDate?.totalAdverts * 100).toFixed(1)}% ↑ ` : "-% ↑"}</span>{" "}
-                                            <span>{data ? `from ${data?.data?.startDate?.totalAdverts}` : "from -"}</span>
-                                        </div>
-                                    </div>
 
-                                    <div className="status-card__icon">
-                                        <StatusCardIcon hovering={iconState === "store"} />
-                                    </div>
+                                <div className="status-card__icon">
+                                    <StatusCardIcon hovering={iconState === "store"} />
                                 </div>
                             </div>
-                            {/* CARD three */}
-                            <div className="col-3">
-                                <div className="status-card"
-                                    onMouseEnter={() => setIconState("store")}
-                                    onMouseLeave={() => setIconState("")}>
-                                    <div className="status-card__info">
-                                        <span>{("Total Payout")?.toString().toUpperCase()}</span>
-                                        <h4>{data ? data?.data?.endDate?.totalPayout : "-"}</h4>
-                                        <div className="status-card__info__percent">
-                                            <span className='percentUp'>{data ? `${((data?.data?.endDate?.totalPayout - data?.data?.startDate?.totalPayout) / data?.data?.endDate?.totalPayout * 100).toFixed(1)}% ↑ ` : "-% ↑"}</span>{" "}
-                                            <span>{data ? `from ${data?.data?.startDate?.totalPayout}` : "from -"}</span>
-                                        </div>
-                                    </div>
-
-                                    <div className="status-card__icon">
-                                        <StatusCardIcon hovering={iconState === "store"} />
-                                    </div>
-                                </div>
-                            </div>
-                            {/* card four */}
-                            <div className="col-3">
-                                <div className="status-card"
-                                    onMouseEnter={() => setIconState("store")}
-                                    onMouseLeave={() => setIconState("")}>
-                                    <div className="status-card__info">
-                                        <span>{("Vouchers Redeemed")?.toString().toUpperCase()}</span>
-                                        <h4>{data ? data?.data?.endDate?.voucherUsage : "-"}</h4>
-                                        <div className="status-card__info__percent">
-                                            <span className='percentUp'>{data ? `${((data?.data?.endDate?.voucherUsage - data?.data?.startDate?.voucherUsage) / data?.data?.endDate?.voucherUsage * 100).toFixed(1)}% ↑ ` : "-% ↑"}</span>{" "}
-                                            <span>{data ? `from ${data?.data?.startDate?.voucherUsage}` : "from -"}</span>
-                                        </div>
-                                    </div>
-
-                                    <div className="status-card__icon">
-                                        <StatusCardIcon hovering={iconState === "store"} />
-                                    </div>
-                                </div>
-                            </div>
-                            {/* End of all card */}
                         </div>
+                        {/* CARD TWO */}
+                        <div className="col-3">
+                            <div className="status-card"
+                                onMouseEnter={() => setIconState("store")}
+                                onMouseLeave={() => setIconState("")}>
+                                <div className="status-card__info">
+                                    <span>{("Overall Ads")?.toString().toUpperCase()}</span>
+                                    <h4>{data ? data?.data?.endDate?.totalAdverts : "-"}</h4>
+                                    <div className="status-card__info__percent">
+                                        <span className='percentUp'>{data ? `${((data?.data?.endDate?.totalAdverts - data?.data?.startDate?.totalAdverts) / data?.data?.endDate?.totalAdverts * 100).toFixed(1)}% ↑ ` : "-% ↑"}</span>{" "}
+                                        <span>{data ? `from ${data?.data?.startDate?.totalAdverts}` : "from -"}</span>
+                                    </div>
+                                </div>
+
+                                <div className="status-card__icon">
+                                    <StatusCardIcon hovering={iconState === "store"} />
+                                </div>
+                            </div>
+                        </div>
+                        {/* CARD three */}
+                        <div className="col-3">
+                            <div className="status-card"
+                                onMouseEnter={() => setIconState("store")}
+                                onMouseLeave={() => setIconState("")}>
+                                <div className="status-card__info">
+                                    <span>{("Total Payout")?.toString().toUpperCase()}</span>
+                                    <h4>{data ? data?.data?.endDate?.totalPayout : "-"}</h4>
+                                    <div className="status-card__info__percent">
+                                        <span className='percentUp'>{data ? `${((data?.data?.endDate?.totalPayout - data?.data?.startDate?.totalPayout) / data?.data?.endDate?.totalPayout * 100).toFixed(1)}% ↑ ` : "-% ↑"}</span>{" "}
+                                        <span>{data ? `from ${data?.data?.startDate?.totalPayout}` : "from -"}</span>
+                                    </div>
+                                </div>
+
+                                <div className="status-card__icon">
+                                    <StatusCardIcon hovering={iconState === "store"} />
+                                </div>
+                            </div>
+                        </div>
+                        {/* card four */}
+                        <div className="col-3">
+                            <div className="status-card"
+                                onMouseEnter={() => setIconState("store")}
+                                onMouseLeave={() => setIconState("")}>
+                                <div className="status-card__info">
+                                    <span>{("Vouchers Redeemed")?.toString().toUpperCase()}</span>
+                                    <h4>{data ? data?.data?.endDate?.voucherUsage : "-"}</h4>
+                                    <div className="status-card__info__percent">
+                                        <span className='percentUp'>{data ? `${((data?.data?.endDate?.voucherUsage - data?.data?.startDate?.voucherUsage) / data?.data?.endDate?.voucherUsage * 100).toFixed(1)}% ↑ ` : "-% ↑"}</span>{" "}
+                                        <span>{data ? `from ${data?.data?.startDate?.voucherUsage}` : "from -"}</span>
+                                    </div>
+                                </div>
+
+                                <div className="status-card__icon">
+                                    <StatusCardIcon hovering={iconState === "store"} />
+                                </div>
+                            </div>
+                        </div>
+                        {/* End of all card */}
                     </div>
-                    :
-                    <StatusCards />
-                }
+                </div>
+
                 <h4 className='dashheade'>Ads  Statistics</h4>
 
                 <div className='grid lg:grid-cols-7'>
