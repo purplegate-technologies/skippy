@@ -41,7 +41,6 @@ var react_router_dom_1 = require("react-router-dom");
 var react_toastify_1 = require("react-toastify");
 var Button_1 = require("../../components/button/Button");
 var Input_1 = require("../../components/input/Input");
-var Select_1 = require("../../components/Select/Select");
 var Switch_1 = require("../../components/switch/Switch");
 var User_ManagementApiSlcie_1 = require("../../features/UserManagement/User ManagementApiSlcie");
 require("./settings.css");
@@ -126,7 +125,6 @@ var Settings = function () {
                     React.createElement(react_router_dom_1.Link, { to: "", onClick: function () { return navigate(-1); }, className: "text-[#516CF5]" }, "< < Back")),
                 React.createElement("div", { className: "card-settings" },
                     React.createElement("div", { className: "contactUs-form-lable" },
-                        React.createElement(Select_1.Select, { label: "ROLE", placeholder: "Select Role", required: true, value: type, options: ['admin', 'normal', 'bad'], className: "border-[#949AB1] border-1 rounded p-2 my-3 w-full", onChange: function (e) { return setRoles(e.atrget.options); } }),
                         React.createElement("label", { htmlFor: "", className: "text-xs text-[#516CF5]" }, ("ROLE")),
                         React.createElement("select", { placeholder: "Select Role", defaultValue: type, style: selectSTyle, required: true, name: type, onChange: function (e) {
                                 var _a;
