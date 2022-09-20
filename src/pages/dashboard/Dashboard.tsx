@@ -282,10 +282,10 @@ const Dashboard = () => {
                                     onMouseLeave={() => setIconState("")}>
                                     <div className="status-card__info">
                                         <span>{("Overall Users")?.toString().toUpperCase()}</span>
-                                        <h4>{(data?.data?.endDate?.totalUsers)}</h4>
+                                        <h4>{data ? data?.data?.endDate?.totalUsers : "-"}</h4>
                                         <div className="status-card__info__percent">
-                                            <span className='percentUp'>{"-% ↑"}</span>{" "}
-                                            <span>{"from -"}</span>
+                                            <span className='percentUp'>{ data ? `${((data?.data?.endDate?.totalUsers - data?.data?.startDate?.totalUsers) / data?.data?.endDate?.totalUsers * 100).toFixed(2)}% ↑ ` : "-% ↑"}</span>{" "}
+                                            <span>{ data ? `from ${data?.data?.startDate?.totalUsers}` : "from -"}</span>
                                         </div>
                                     </div>
 
@@ -301,10 +301,10 @@ const Dashboard = () => {
                                     onMouseLeave={() => setIconState("")}>
                                     <div className="status-card__info">
                                         <span>{("Overall Ads")?.toString().toUpperCase()}</span>
-                                        <h4>{(data?.data?.endDate?.totalAdverts)}</h4>
+                                        <h4>{data ? data?.data?.endDate?.totalAdverts : "-"}</h4>
                                         <div className="status-card__info__percent">
-                                            <span className='percentUp'>{"-% ↑"}</span>{" "}
-                                            <span>{"from -"}</span>
+                                            <span className='percentUp'>{ data ? `${((data?.data?.endDate?.totalAdverts - data?.data?.startDate?.totalAdverts) / data?.data?.endDate?.totalAdverts * 100).toFixed(2)}% ↑ ` : "-% ↑"}</span>{" "}
+                                            <span>{data ? `from ${data?.data?.startDate?.totalAdverts}` : "from -"}</span>
                                         </div>
                                     </div>
 
@@ -320,10 +320,10 @@ const Dashboard = () => {
                                     onMouseLeave={() => setIconState("")}>
                                     <div className="status-card__info">
                                         <span>{("Total Payout")?.toString().toUpperCase()}</span>
-                                        <h4>{(data?.data?.endDate?.totalPayout)}</h4>
+                                        <h4>{data ? data?.data?.endDate?.totalPayout : "-"}</h4>
                                         <div className="status-card__info__percent">
-                                            <span className='percentUp'>{"-% ↑"}</span>{" "}
-                                            <span>{"from -"}</span>
+                                            <span className='percentUp'>{data ? `${((data?.data?.endDate?.totalPayout - data?.data?.startDate?.totalPayout) / data?.data?.endDate?.totalPayout * 100).toFixed(2)}% ↑ ` : "-% ↑"}</span>{" "}
+                                            <span>{data ? `from ${data?.data?.startDate?.totalPayout}` : "from -"}</span>
                                         </div>
                                     </div>
 
@@ -339,10 +339,10 @@ const Dashboard = () => {
                                     onMouseLeave={() => setIconState("")}>
                                     <div className="status-card__info">
                                         <span>{("Vouchers Redeemed")?.toString().toUpperCase()}</span>
-                                        <h4>{(data?.data?.endDate?.voucherUsage)}</h4>
+                                        <h4>{data ? data?.data?.endDate?.voucherUsage : "-"}</h4>
                                         <div className="status-card__info__percent">
-                                            <span className='percentUp'>{"-% ↑"}</span>{" "}
-                                            <span>{"from -"}</span>
+                                            <span className='percentUp'>{data ? `${((data?.data?.endDate?.voucherUsage - data?.data?.startDate?.voucherUsage) / data?.data?.endDate?.voucherUsage * 100).toFixed(2)}% ↑ ` : "-% ↑"}</span>{" "}
+                                            <span>{data ? `from ${data?.data?.startDate?.voucherUsage}` : "from -"}</span>
                                         </div>
                                     </div>
 
