@@ -5,8 +5,6 @@ import Table from '../../components/Table/Table'
 import { UserData } from '../../assets/data/data'
 import ThreeVdots from '../../assets/svg/ThreeVdots'
 import SearchBar from '../../components/support/SearchBar'
-import advertlist from "../../assets/jsonData/advert-list.json"
-import StatusCards from '../../components/statusCard/StatusCards'
 import { useGetAdvertStatsQuery } from '../../features/stats/statsApis'
 import { useGetAdvertAdminQuery } from '../../features/adverts/AdvertsApiSlice'
 import CategoryFilter from '../../components/CategoryFilter/CategoryFilter'
@@ -219,7 +217,7 @@ const Advertisements = () => {
             {/* End of all card */}
           </div>
         </div>
-    
+
       {/* Support Search */}
 
 

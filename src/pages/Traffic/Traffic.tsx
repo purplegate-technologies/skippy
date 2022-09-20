@@ -1,10 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import BarChart from '../../components/charts/BarChart'
-import StatusCards from '../../components/statusCard/StatusCards'
 import { UserData } from '../../assets/data/data'
 import Button from '../../components/button/Button';
-// import DoughnutChart from '../../components/charts/DoughnutChart';
-// import { AntPieChart } from '../../components/charts/AntPieChart';
 import ThreeVdots from '../../assets/svg/ThreeVdots';
 import { useGetTrafficStatsQuery } from '../../features/stats/statsApis';
 import StatusCardIcon from '../../assets/svg/StatusCardIcon'
@@ -204,7 +201,7 @@ const Traffic = () => {
             {/* End of all card */}
           </div>
         </div>
-      
+
 
       <div className='traffic-flex'>
 

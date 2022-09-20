@@ -5,8 +5,6 @@ var react_1 = require("react");
 var BarChart_1 = require("../../components/charts/BarChart");
 var data_1 = require("../../assets/data/data");
 var Button_1 = require("../../components/button/Button");
-// import DoughnutChart from '../../components/charts/DoughnutChart';
-// import { AntPieChart } from '../../components/charts/AntPieChart';
 var ThreeVdots_1 = require("../../assets/svg/ThreeVdots");
 var statsApis_1 = require("../../features/stats/statsApis");
 var StatusCardIcon_1 = require("../../assets/svg/StatusCardIcon");

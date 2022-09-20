@@ -1,11 +1,5 @@
 import { useState } from 'react'
-import StatusCards from '../../components/statusCard/StatusCards'
-import advertlist from "../../assets/jsonData/advert-list.json"
-import Table from '../../components/Table/Table'
-import SearchBar from '../../components/support/SearchBar'
-// import Input from '../../components/input/Input'
 import "./styles.css"
-import { useNavigate, Link } from 'react-router-dom'
 import Administrators from './Administrators'
 import AppUsers from './AppUsers'
 import { useGetUserStatsQuery } from '../../features/stats/statsApis'
