@@ -35,7 +35,7 @@ const Advertisements = () => {
   const [externalGraph, setExternalGraph] = useState(userData)
   const [internalGraph, setInternalGraph] = useState(userData)
   const { data } = useGetAdvertStatsQuery()
-  const { data: getAds, isLoading, isFetching } = useGetAdvertAdminQuery({ })
+  const { data: getAds, isLoading, isFetching } = useGetAdvertAdminQuery({})
 
 
   // console.log(data, "useGetAdvertStatsQuery")
@@ -46,66 +46,66 @@ const Advertisements = () => {
   // InternalGraph
   useEffect(() => {
     // weekly stats
-    if(data && data?.graphStats) {
-     const internalAdsStats: string[] = [];
-     const internalAdsStatsValue: number[] = [];
+    if (data && data?.graphStats) {
+      const internalAdsStats: string[] = [];
+      const internalAdsStatsValue: number[] = [];
 
-     Object.entries(data?.graphStats?.internalAdsStats).map(val => {
-         internalAdsStats.push(val[0]);
-         //@ts-ignore
-         internalAdsStatsValue.push(val[1]);
-     });
+      Object.entries(data?.graphStats?.internalAdsStats).map(val => {
+        internalAdsStats.push(val[0]);
+        //@ts-ignore
+        internalAdsStatsValue.push(val[1]);
+      });
 
 
-     setInternalGraph({
-         labels: internalAdsStats.map(data => data.toUpperCase()),
-         datasets: [
-             {
-                 label: "Ads Watched",
-                 data: internalAdsStatsValue.map((data) => data),
-                 backgroundColor: "#2a71d0",
-                 borderColor: "#2a71d0",
-                 borderWidth: 1,
-             },
-         ]
-     });
+      setInternalGraph({
+        labels: internalAdsStats.map(data => data.toUpperCase()),
+        datasets: [
+          {
+            label: "Ads Watched",
+            data: internalAdsStatsValue.map((data) => data),
+            backgroundColor: "#2a71d0",
+            borderColor: "#2a71d0",
+            borderWidth: 1,
+          },
+        ]
+      });
 
     }
 
- },[data]);
+  }, [data]);
 
-//  ExternalGraph
+  //  ExternalGraph
 
   useEffect(() => {
     // weekly stats
-    if(data && data?.graphStats) {
-     const externalAdsStats: string[] = [];
-     const externalAdsStatsValue: number[] = [];
+    if (data && data?.graphStats) {
+      const externalAdsStats: string[] = [];
+      const externalAdsStatsValue: number[] = [];
 
-     Object.entries(data?.graphStats?.externalAdsStats).map(val => {
-         externalAdsStats.push(val[0]);
-         //@ts-ignore
-         externalAdsStatsValue.push(val[1]);
-     });
+      Object.entries(data?.graphStats?.externalAdsStats).map(val => {
+        externalAdsStats.push(val[0]);
+        //@ts-ignore
+        externalAdsStatsValue.push(val[1]);
+      });
 
 
-     setExternalGraph({
-         labels: externalAdsStats.map(data => data.toUpperCase()),
-         datasets: [
-             {
-                 label: "Ads Watched",
-                 data: externalAdsStatsValue.map((data) => data),
-                 backgroundColor: "#2a71d0",
-                 borderColor: "#2a71d0",
-                 borderWidth: 1,
-                //  borderRadius: 5,
-             },
-         ]
-     });
+      setExternalGraph({
+        labels: externalAdsStats.map(data => data.toUpperCase()),
+        datasets: [
+          {
+            label: "Ads Watched",
+            data: externalAdsStatsValue.map((data) => data),
+            backgroundColor: "#2a71d0",
+            borderColor: "#2a71d0",
+            borderWidth: 1,
+            //  borderRadius: 5,
+          },
+        ]
+      });
 
     }
 
- },[data]);
+  }, [data]);
 
   const customerTableHead: Array<string> = [
     'Brand Name/ Ad Title',
@@ -137,93 +137,93 @@ const Advertisements = () => {
 
   return (
     <div>
-                {(data) ?
-                    <div>
-                        {!data?.data?.endDate?.totalAdverts}
-                      <h4 className='cardHead font-semibold'>Overview</h4>
-                        <div className="row">
-                            {/* card one */}
-                            <div className="col-3">
-                                <div className="status-card"
-                                    onMouseEnter={() => setIconState("store")}
-                                    onMouseLeave={() => setIconState("")}>
-                                    <div className="status-card__info">
-                                        <span>{("Overall Internal ads")?.toString().toUpperCase()}</span>
-                                        <h4>{(data?.endDate?.totalInternalAdverts)}</h4>
-                                        <div className="status-card__info__percent">
-                                            <span className='percentUp'>{"-% ↑"}</span>{" "}
-                                            <span>{"from -"}</span>
-                                        </div>
-                                    </div>
+      {(data) ?
+        <div>
+          {!data?.data?.endDate?.totalAdverts}
+          <h4 className='cardHead font-semibold'>Overview</h4>
+          <div className="row">
+            {/* card one */}
+            <div className="col-3">
+              <div className="status-card"
+                onMouseEnter={() => setIconState("store")}
+                onMouseLeave={() => setIconState("")}>
+                <div className="status-card__info">
+                  <span>{("Overall Internal ads")?.toString().toUpperCase()}</span>
+                  <h4>{(data?.endDate?.totalInternalAdverts)}</h4>
+                  <div className="status-card__info__percent">
+                    <span className='percentUp'>{"-% ↑"}</span>{" "}
+                    <span>{"from -"}</span>
+                  </div>
+                </div>
 
-                                    <div className="status-card__icon">
-                                        <StatusCardIcon hovering={iconState === "store"} />
-                                    </div>
-                                </div>
-                            </div>
-                            {/* CARD TWO */}
-                            <div className="col-3">
-                                <div className="status-card"
-                                    onMouseEnter={() => setIconState("store")}
-                                    onMouseLeave={() => setIconState("")}>
-                                    <div className="status-card__info">
-                                        <span>{("Overall External Ads")?.toString().toUpperCase()}</span>
-                                        <h4>{(data?.endDate?.totalExternalAdverts)}</h4>
-                                        <div className="status-card__info__percent">
-                                            <span className='percentUp'>{"-% ↑"}</span>{" "}
-                                            <span>{"from -"}</span>
-                                        </div>
-                                    </div>
+                <div className="status-card__icon">
+                  <StatusCardIcon hovering={iconState === "store"} />
+                </div>
+              </div>
+            </div>
+            {/* CARD TWO */}
+            <div className="col-3">
+              <div className="status-card"
+                onMouseEnter={() => setIconState("store")}
+                onMouseLeave={() => setIconState("")}>
+                <div className="status-card__info">
+                  <span>{("Overall External Ads")?.toString().toUpperCase()}</span>
+                  <h4>{(data?.endDate?.totalExternalAdverts)}</h4>
+                  <div className="status-card__info__percent">
+                    <span className='percentUp'>{"-% ↑"}</span>{" "}
+                    <span>{"from -"}</span>
+                  </div>
+                </div>
 
-                                    <div className="status-card__icon">
-                                        <StatusCardIcon hovering={iconState === "store"} />
-                                    </div>
-                                </div>
-                            </div>
-                            {/* CARD Three */}
-                            <div className="col-3">
-                                <div className="status-card"
-                                    onMouseEnter={() => setIconState("store")}
-                                    onMouseLeave={() => setIconState("")}>
-                                    <div className="status-card__info">
-                                        <span>{("completed Sessions")?.toString().toUpperCase()}</span>
-                                        <h4>{(data?.endDate?.totalStreams)}</h4>
-                                        <div className="status-card__info__percent">
-                                            <span className='percentUp'>{"-% ↑"}</span>{" "}
-                                            <span>{"from -"}</span>
-                                        </div>
-                                    </div>
+                <div className="status-card__icon">
+                  <StatusCardIcon hovering={iconState === "store"} />
+                </div>
+              </div>
+            </div>
+            {/* CARD Three */}
+            <div className="col-3">
+              <div className="status-card"
+                onMouseEnter={() => setIconState("store")}
+                onMouseLeave={() => setIconState("")}>
+                <div className="status-card__info">
+                  <span>{("completed Sessions")?.toString().toUpperCase()}</span>
+                  <h4>{(data?.endDate?.totalStreams)}</h4>
+                  <div className="status-card__info__percent">
+                    <span className='percentUp'>{"-% ↑"}</span>{" "}
+                    <span>{"from -"}</span>
+                  </div>
+                </div>
 
-                                    <div className="status-card__icon">
-                                        <StatusCardIcon hovering={iconState === "store"} />
-                                    </div>
-                                </div>
-                            </div>
-                            {/* card four */}
-                            <div className="col-3">
-                                <div className="status-card"
-                                    onMouseEnter={() => setIconState("store")}
-                                    onMouseLeave={() => setIconState("")}>
-                                    <div className="status-card__info">
-                                        <span>{("Avg. INTERACTION Rate")?.toString().toUpperCase()}</span>
-                                        <h4>{(data?.endDate?.totalCompletedStreams)}</h4>
-                                        <div className="status-card__info__percent">
-                                            <span className='percentUp'>{"-% ↑"}</span>{" "}
-                                            <span>{"from -"}</span>
-                                        </div>
-                                    </div>
+                <div className="status-card__icon">
+                  <StatusCardIcon hovering={iconState === "store"} />
+                </div>
+              </div>
+            </div>
+            {/* card four */}
+            <div className="col-3">
+              <div className="status-card"
+                onMouseEnter={() => setIconState("store")}
+                onMouseLeave={() => setIconState("")}>
+                <div className="status-card__info">
+                  <span>{("Avg. INTERACTION Rate")?.toString().toUpperCase()}</span>
+                  <h4>{(data?.endDate?.totalCompletedStreams)}</h4>
+                  <div className="status-card__info__percent">
+                    <span className='percentUp'>{"-% ↑"}</span>{" "}
+                    <span>{"from -"}</span>
+                  </div>
+                </div>
 
-                                    <div className="status-card__icon">
-                                        <StatusCardIcon hovering={iconState === "store"} />
-                                    </div>
-                                </div>
-                            </div>
-                            {/* End of all card */}
-                        </div>
-                    </div>
-                    :
-                    <StatusCards />
-                }
+                <div className="status-card__icon">
+                  <StatusCardIcon hovering={iconState === "store"} />
+                </div>
+              </div>
+            </div>
+            {/* End of all card */}
+          </div>
+        </div>
+        :
+        <StatusCards />
+      }
       {/* Support Search */}
 
 
@@ -251,7 +251,7 @@ const Advertisements = () => {
       <div className='my-5' />
 
       <div className="card">
-        <SearchBar HeaderTitle='All Adverts' placeholder='Enter Brand/Ad Name' text='Create Advert' onClick={() => navigate('/create-adverts')} prefixIcon={<CreateAdsPlus />}  />
+        <SearchBar HeaderTitle='All Adverts' placeholder='Enter Brand/Ad Name' text='Create Advert' onClick={() => navigate('/create-adverts')} prefixIcon={<CreateAdsPlus />} />
         <CategoryFilter />
         {/* Table */}
         <div className="row ">
@@ -264,8 +264,8 @@ const Advertisements = () => {
                   renderHead={(item: any, index: number) => renderHead(item, index)}
                   bodyData={isFetching ? ['Loaded Data'] : getAds?.docs}
                   renderBody={(item: any, index: number) => renderBody(item, index)}
-                  {...{isLoading}}
-                  {...{isFetching}}
+                  {...{ isLoading }}
+                  {...{ isFetching }}
                 />
               </div>
             </div>
