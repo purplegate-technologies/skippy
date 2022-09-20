@@ -26,8 +26,8 @@ var LinearGradientChart_1 = require("../../components/charts/LinearGradientChart
 var StatusCardIcon_1 = require("../../assets/svg/StatusCardIcon");
 var CreateAdsPlus_1 = require("../../assets/svg/CreateAdsPlus");
 var Advertisements = function () {
-    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k;
-    var _l = react_1.useState(""), iconState = _l[0], setIconState = _l[1];
+    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r, _s, _t, _u, _v, _w, _x, _y, _z;
+    var _0 = react_1.useState(""), iconState = _0[0], setIconState = _0[1];
     var userData = react_1.useState({
         labels: data_1.UserData.map(function (data) { return data.day.toUpperCase(); }),
         datasets: [
@@ -40,11 +40,11 @@ var Advertisements = function () {
             },
         ]
     })[0];
-    var _m = react_1.useState(userData), externalGraph = _m[0], setExternalGraph = _m[1];
-    var _o = react_1.useState(userData), internalGraph = _o[0], setInternalGraph = _o[1];
+    var _1 = react_1.useState(userData), externalGraph = _1[0], setExternalGraph = _1[1];
+    var _2 = react_1.useState(userData), internalGraph = _2[0], setInternalGraph = _2[1];
     var data = statsApis_1.useGetAdvertStatsQuery().data;
-    var _p = AdvertsApiSlice_1.useGetAdvertAdminQuery({}), getAds = _p.data, isLoading = _p.isLoading, isFetching = _p.isFetching;
-    // console.log(data, "useGetAdvertStatsQuery")
+    var _3 = AdvertsApiSlice_1.useGetAdvertAdminQuery({}), getAds = _3.data, isLoading = _3.isLoading, isFetching = _3.isFetching;
+    console.log(data, "useGetAdvertStatsQuery");
     // console.log(getAds?.docs, "gerAds")
     var navigate = react_router_dom_1.useNavigate();
     // InternalGraph
@@ -125,51 +125,50 @@ var Advertisements = function () {
     return (React.createElement("div", null,
         (data) ?
             React.createElement("div", null,
-                !((_b = (_a = data === null || data === void 0 ? void 0 : data.data) === null || _a === void 0 ? void 0 : _a.endDate) === null || _b === void 0 ? void 0 : _b.totalAdverts),
                 React.createElement("h4", { className: 'cardHead font-semibold' }, "Overview"),
                 React.createElement("div", { className: "row" },
                     React.createElement("div", { className: "col-3" },
                         React.createElement("div", { className: "status-card", onMouseEnter: function () { return setIconState("store"); }, onMouseLeave: function () { return setIconState(""); } },
                             React.createElement("div", { className: "status-card__info" },
-                                React.createElement("span", null, (_c = ("Overall Internal ads")) === null || _c === void 0 ? void 0 : _c.toString().toUpperCase()),
-                                React.createElement("h4", null, ((_d = data === null || data === void 0 ? void 0 : data.endDate) === null || _d === void 0 ? void 0 : _d.totalInternalAdverts)),
+                                React.createElement("span", null, (_a = ("Overall Internal ads")) === null || _a === void 0 ? void 0 : _a.toString().toUpperCase()),
+                                React.createElement("h4", null, data ? (_b = data === null || data === void 0 ? void 0 : data.endDate) === null || _b === void 0 ? void 0 : _b.totalInternalAdverts : "-"),
                                 React.createElement("div", { className: "status-card__info__percent" },
-                                    React.createElement("span", { className: 'percentUp' }, "-% ↑"),
+                                    React.createElement("span", { className: 'percentUp' }, data ? ((((_c = data === null || data === void 0 ? void 0 : data.endDate) === null || _c === void 0 ? void 0 : _c.totalInternalAdverts) - ((_d = data === null || data === void 0 ? void 0 : data.startDate) === null || _d === void 0 ? void 0 : _d.totalInternalAdverts)) / ((_e = data === null || data === void 0 ? void 0 : data.endDate) === null || _e === void 0 ? void 0 : _e.totalInternalAdverts) * 100).toFixed(1) + "% \u2191 " : "-% ↑"),
                                     " ",
-                                    React.createElement("span", null, "from -"))),
+                                    React.createElement("span", null, data ? "from " + ((_f = data === null || data === void 0 ? void 0 : data.startDate) === null || _f === void 0 ? void 0 : _f.totalInternalAdverts) : "from -"))),
                             React.createElement("div", { className: "status-card__icon" },
                                 React.createElement(StatusCardIcon_1["default"], { hovering: iconState === "store" })))),
                     React.createElement("div", { className: "col-3" },
                         React.createElement("div", { className: "status-card", onMouseEnter: function () { return setIconState("store"); }, onMouseLeave: function () { return setIconState(""); } },
                             React.createElement("div", { className: "status-card__info" },
-                                React.createElement("span", null, (_e = ("Overall External Ads")) === null || _e === void 0 ? void 0 : _e.toString().toUpperCase()),
-                                React.createElement("h4", null, ((_f = data === null || data === void 0 ? void 0 : data.endDate) === null || _f === void 0 ? void 0 : _f.totalExternalAdverts)),
+                                React.createElement("span", null, (_g = ("Overall External Ads")) === null || _g === void 0 ? void 0 : _g.toString().toUpperCase()),
+                                React.createElement("h4", null, data ? (_h = data === null || data === void 0 ? void 0 : data.endDate) === null || _h === void 0 ? void 0 : _h.totalExternalAdverts : "-"),
                                 React.createElement("div", { className: "status-card__info__percent" },
-                                    React.createElement("span", { className: 'percentUp' }, "-% ↑"),
+                                    React.createElement("span", { className: 'percentUp' }, data ? ((((_j = data === null || data === void 0 ? void 0 : data.endDate) === null || _j === void 0 ? void 0 : _j.totalExternalAdverts) - ((_k = data === null || data === void 0 ? void 0 : data.startDate) === null || _k === void 0 ? void 0 : _k.totalExternalAdverts)) / ((_l = data === null || data === void 0 ? void 0 : data.endDate) === null || _l === void 0 ? void 0 : _l.totalExternalAdverts) * 100).toFixed(1) + "% \u2191 " : "-% ↑"),
                                     " ",
-                                    React.createElement("span", null, "from -"))),
+                                    React.createElement("span", null, data ? "from " + ((_m = data === null || data === void 0 ? void 0 : data.startDate) === null || _m === void 0 ? void 0 : _m.totalExternalAdverts) : "from -"))),
                             React.createElement("div", { className: "status-card__icon" },
                                 React.createElement(StatusCardIcon_1["default"], { hovering: iconState === "store" })))),
                     React.createElement("div", { className: "col-3" },
                         React.createElement("div", { className: "status-card", onMouseEnter: function () { return setIconState("store"); }, onMouseLeave: function () { return setIconState(""); } },
                             React.createElement("div", { className: "status-card__info" },
-                                React.createElement("span", null, (_g = ("completed Sessions")) === null || _g === void 0 ? void 0 : _g.toString().toUpperCase()),
-                                React.createElement("h4", null, ((_h = data === null || data === void 0 ? void 0 : data.endDate) === null || _h === void 0 ? void 0 : _h.totalStreams)),
+                                React.createElement("span", null, (_o = ("completed Sessions")) === null || _o === void 0 ? void 0 : _o.toString().toUpperCase()),
+                                React.createElement("h4", null, data ? (_p = data === null || data === void 0 ? void 0 : data.endDate) === null || _p === void 0 ? void 0 : _p.totalStreams : "-"),
                                 React.createElement("div", { className: "status-card__info__percent" },
-                                    React.createElement("span", { className: 'percentUp' }, "-% ↑"),
+                                    React.createElement("span", { className: 'percentUp' }, data ? ((((_q = data === null || data === void 0 ? void 0 : data.endDate) === null || _q === void 0 ? void 0 : _q.totalStreams) - ((_r = data === null || data === void 0 ? void 0 : data.startDate) === null || _r === void 0 ? void 0 : _r.totalStreams)) / ((_s = data === null || data === void 0 ? void 0 : data.endDate) === null || _s === void 0 ? void 0 : _s.totalStreams) * 100).toFixed(1) + "% \u2191 " : "-% ↑"),
                                     " ",
-                                    React.createElement("span", null, "from -"))),
+                                    React.createElement("span", null, data ? "from " + ((_t = data === null || data === void 0 ? void 0 : data.startDate) === null || _t === void 0 ? void 0 : _t.totalStreams) : "from -"))),
                             React.createElement("div", { className: "status-card__icon" },
                                 React.createElement(StatusCardIcon_1["default"], { hovering: iconState === "store" })))),
                     React.createElement("div", { className: "col-3" },
                         React.createElement("div", { className: "status-card", onMouseEnter: function () { return setIconState("store"); }, onMouseLeave: function () { return setIconState(""); } },
                             React.createElement("div", { className: "status-card__info" },
-                                React.createElement("span", null, (_j = ("Avg. INTERACTION Rate")) === null || _j === void 0 ? void 0 : _j.toString().toUpperCase()),
-                                React.createElement("h4", null, ((_k = data === null || data === void 0 ? void 0 : data.endDate) === null || _k === void 0 ? void 0 : _k.totalCompletedStreams)),
+                                React.createElement("span", null, (_u = ("Avg. INTERACTION Rate")) === null || _u === void 0 ? void 0 : _u.toString().toUpperCase()),
+                                React.createElement("h4", null, data ? (_v = data === null || data === void 0 ? void 0 : data.endDate) === null || _v === void 0 ? void 0 : _v.totalCompletedStreams : "-"),
                                 React.createElement("div", { className: "status-card__info__percent" },
-                                    React.createElement("span", { className: 'percentUp' }, "-% ↑"),
+                                    React.createElement("span", { className: 'percentUp' }, data ? ((((_w = data === null || data === void 0 ? void 0 : data.endDate) === null || _w === void 0 ? void 0 : _w.totalCompletedStreams) - ((_x = data === null || data === void 0 ? void 0 : data.startDate) === null || _x === void 0 ? void 0 : _x.totalCompletedStreams)) / ((_y = data === null || data === void 0 ? void 0 : data.endDate) === null || _y === void 0 ? void 0 : _y.totalCompletedStreams) * 100).toFixed(1) + "% \u2191 " : "-% ↑"),
                                     " ",
-                                    React.createElement("span", null, "from -"))),
+                                    React.createElement("span", null, data ? "from " + ((_z = data === null || data === void 0 ? void 0 : data.startDate) === null || _z === void 0 ? void 0 : _z.totalCompletedStreams) : "from -"))),
                             React.createElement("div", { className: "status-card__icon" },
                                 React.createElement(StatusCardIcon_1["default"], { hovering: iconState === "store" }))))))
             :

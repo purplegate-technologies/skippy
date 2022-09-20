@@ -24,11 +24,11 @@ exports.barChartData = [
     },
 ];
 var Traffic = function () {
-    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m;
-    var _o = react_1.useState(""), iconState = _o[0], setIconState = _o[1];
+    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r, _s, _t, _u, _v, _w, _x, _y, _z, _0, _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11, _12, _13, _14, _15, _16;
+    var _17 = react_1.useState(""), iconState = _17[0], setIconState = _17[1];
     var data = statsApis_1.useGetTrafficStatsQuery().data;
     // console.log(data?.data, "data data data")
-    var _p = react_1.useState({
+    var userData = react_1.useState({
         labels: data_1.UserData.map(function (data) { return data.day.toUpperCase(); }),
         datasets: [
             {
@@ -40,8 +40,8 @@ var Traffic = function () {
                 borderRadius: 5
             },
         ]
-    }), userData = _p[0], setUserrData = _p[1];
-    var _q = react_1.useState(userData), dataSet = _q[0], setDataSet = _q[1];
+    })[0];
+    var _18 = react_1.useState(userData), dataSet = _18[0], setDataSet = _18[1];
     // const options = {
     //   responsive: true,
     //   interaction: {
@@ -118,44 +118,44 @@ var Traffic = function () {
                         react_1["default"].createElement("div", { className: "status-card", onMouseEnter: function () { return setIconState("store"); }, onMouseLeave: function () { return setIconState(""); } },
                             react_1["default"].createElement("div", { className: "status-card__info" },
                                 react_1["default"].createElement("span", null, (_a = ("total Active users")) === null || _a === void 0 ? void 0 : _a.toString().toUpperCase()),
-                                react_1["default"].createElement("h4", null, ((_c = (_b = data === null || data === void 0 ? void 0 : data.data) === null || _b === void 0 ? void 0 : _b.endDate) === null || _c === void 0 ? void 0 : _c.totalActiveUsers)),
+                                react_1["default"].createElement("h4", null, data ? (_c = (_b = data === null || data === void 0 ? void 0 : data.data) === null || _b === void 0 ? void 0 : _b.endDate) === null || _c === void 0 ? void 0 : _c.totalActiveUsers : "-"),
                                 react_1["default"].createElement("div", { className: "status-card__info__percent" },
-                                    react_1["default"].createElement("span", { className: 'percentUp' }, "-% ↑"),
+                                    react_1["default"].createElement("span", { className: 'percentUp' }, data ? ((((_e = (_d = data === null || data === void 0 ? void 0 : data.data) === null || _d === void 0 ? void 0 : _d.endDate) === null || _e === void 0 ? void 0 : _e.totalActiveUsers) - ((_g = (_f = data === null || data === void 0 ? void 0 : data.data) === null || _f === void 0 ? void 0 : _f.startDate) === null || _g === void 0 ? void 0 : _g.totalActiveUsers)) / ((_j = (_h = data === null || data === void 0 ? void 0 : data.data) === null || _h === void 0 ? void 0 : _h.endDate) === null || _j === void 0 ? void 0 : _j.totalActiveUsers) * 100).toFixed(1) + "% \u2191 " : "-% ↑"),
                                     " ",
-                                    react_1["default"].createElement("span", null, "from -"))),
+                                    react_1["default"].createElement("span", null, data ? "from " + ((_l = (_k = data === null || data === void 0 ? void 0 : data.data) === null || _k === void 0 ? void 0 : _k.startDate) === null || _l === void 0 ? void 0 : _l.totalActiveUsers) : "from -"))),
                             react_1["default"].createElement("div", { className: "status-card__icon" },
                                 react_1["default"].createElement(StatusCardIcon_1["default"], { hovering: iconState === "store" })))),
                     react_1["default"].createElement("div", { className: "col-3" },
                         react_1["default"].createElement("div", { className: "status-card", onMouseEnter: function () { return setIconState("store"); }, onMouseLeave: function () { return setIconState(""); } },
                             react_1["default"].createElement("div", { className: "status-card__info" },
-                                react_1["default"].createElement("span", null, (_d = ("Completed streams")) === null || _d === void 0 ? void 0 : _d.toString().toUpperCase()),
-                                react_1["default"].createElement("h4", null, ((_f = (_e = data === null || data === void 0 ? void 0 : data.data) === null || _e === void 0 ? void 0 : _e.endDate) === null || _f === void 0 ? void 0 : _f.totalCompletedStreams)),
+                                react_1["default"].createElement("span", null, (_m = ("Completed streams")) === null || _m === void 0 ? void 0 : _m.toString().toUpperCase()),
+                                react_1["default"].createElement("h4", null, data ? (_p = (_o = data === null || data === void 0 ? void 0 : data.data) === null || _o === void 0 ? void 0 : _o.endDate) === null || _p === void 0 ? void 0 : _p.totalCompletedStreams : "-"),
                                 react_1["default"].createElement("div", { className: "status-card__info__percent" },
-                                    react_1["default"].createElement("span", { className: 'percentUp' }, "-% ↑"),
+                                    react_1["default"].createElement("span", { className: 'percentUp' }, data ? ((((_r = (_q = data === null || data === void 0 ? void 0 : data.data) === null || _q === void 0 ? void 0 : _q.endDate) === null || _r === void 0 ? void 0 : _r.totalCompletedStreams) - ((_t = (_s = data === null || data === void 0 ? void 0 : data.data) === null || _s === void 0 ? void 0 : _s.startDate) === null || _t === void 0 ? void 0 : _t.totalCompletedStreams)) / ((_v = (_u = data === null || data === void 0 ? void 0 : data.data) === null || _u === void 0 ? void 0 : _u.endDate) === null || _v === void 0 ? void 0 : _v.totalCompletedStreams) * 100).toFixed(1) + "% \u2191 " : "-% ↑"),
                                     " ",
-                                    react_1["default"].createElement("span", null, "from -"))),
+                                    react_1["default"].createElement("span", null, data ? "from " + ((_x = (_w = data === null || data === void 0 ? void 0 : data.data) === null || _w === void 0 ? void 0 : _w.startDate) === null || _x === void 0 ? void 0 : _x.totalCompletedStreams) : "from -"))),
                             react_1["default"].createElement("div", { className: "status-card__icon" },
                                 react_1["default"].createElement(StatusCardIcon_1["default"], { hovering: iconState === "store" })))),
                     react_1["default"].createElement("div", { className: "col-3" },
                         react_1["default"].createElement("div", { className: "status-card", onMouseEnter: function () { return setIconState("store"); }, onMouseLeave: function () { return setIconState(""); } },
                             react_1["default"].createElement("div", { className: "status-card__info" },
-                                react_1["default"].createElement("span", null, (_g = ("Overall impressions")) === null || _g === void 0 ? void 0 : _g.toString().toUpperCase()),
-                                react_1["default"].createElement("h4", null, ((_j = (_h = data === null || data === void 0 ? void 0 : data.data) === null || _h === void 0 ? void 0 : _h.endDate) === null || _j === void 0 ? void 0 : _j.totalStreams)),
+                                react_1["default"].createElement("span", null, (_y = ("Overall impressions")) === null || _y === void 0 ? void 0 : _y.toString().toUpperCase()),
+                                react_1["default"].createElement("h4", null, data ? (_0 = (_z = data === null || data === void 0 ? void 0 : data.data) === null || _z === void 0 ? void 0 : _z.endDate) === null || _0 === void 0 ? void 0 : _0.totalStreams : "-"),
                                 react_1["default"].createElement("div", { className: "status-card__info__percent" },
-                                    react_1["default"].createElement("span", { className: 'percentUp' }, "-% ↑"),
+                                    react_1["default"].createElement("span", { className: 'percentUp' }, data ? ((((_2 = (_1 = data === null || data === void 0 ? void 0 : data.data) === null || _1 === void 0 ? void 0 : _1.endDate) === null || _2 === void 0 ? void 0 : _2.totalStreams) - ((_4 = (_3 = data === null || data === void 0 ? void 0 : data.data) === null || _3 === void 0 ? void 0 : _3.startDate) === null || _4 === void 0 ? void 0 : _4.totalStreams)) / ((_6 = (_5 = data === null || data === void 0 ? void 0 : data.data) === null || _5 === void 0 ? void 0 : _5.endDate) === null || _6 === void 0 ? void 0 : _6.totalStreams) * 100).toFixed(1) + "% \u2191 " : "-% ↑"),
                                     " ",
-                                    react_1["default"].createElement("span", null, "from -"))),
+                                    react_1["default"].createElement("span", null, data ? "from " + ((_8 = (_7 = data === null || data === void 0 ? void 0 : data.data) === null || _7 === void 0 ? void 0 : _7.startDate) === null || _8 === void 0 ? void 0 : _8.totalStreams) : "from -"))),
                             react_1["default"].createElement("div", { className: "status-card__icon" },
                                 react_1["default"].createElement(StatusCardIcon_1["default"], { hovering: iconState === "store" })))),
                     react_1["default"].createElement("div", { className: "col-3" },
                         react_1["default"].createElement("div", { className: "status-card", onMouseEnter: function () { return setIconState("store"); }, onMouseLeave: function () { return setIconState(""); } },
                             react_1["default"].createElement("div", { className: "status-card__info" },
-                                react_1["default"].createElement("span", null, (_k = ("Overall Engagements")) === null || _k === void 0 ? void 0 : _k.toString().toUpperCase()),
-                                react_1["default"].createElement("h4", null, ((_m = (_l = data === null || data === void 0 ? void 0 : data.data) === null || _l === void 0 ? void 0 : _l.endDate) === null || _m === void 0 ? void 0 : _m.totalCompletedStreams)),
+                                react_1["default"].createElement("span", null, (_9 = ("Overall Engagements")) === null || _9 === void 0 ? void 0 : _9.toString().toUpperCase()),
+                                react_1["default"].createElement("h4", null, data ? (_11 = (_10 = data === null || data === void 0 ? void 0 : data.data) === null || _10 === void 0 ? void 0 : _10.endDate) === null || _11 === void 0 ? void 0 : _11.percentageEngagedAdverts : "-"),
                                 react_1["default"].createElement("div", { className: "status-card__info__percent" },
-                                    react_1["default"].createElement("span", { className: 'percentUp' }, "-% ↑"),
+                                    react_1["default"].createElement("span", { className: 'percentUp' }, data ? ((((_12 = data === null || data === void 0 ? void 0 : data.endDate) === null || _12 === void 0 ? void 0 : _12.percentageEngagedAdverts) - ((_13 = data === null || data === void 0 ? void 0 : data.startDate) === null || _13 === void 0 ? void 0 : _13.percentageEngagedAdverts)) / ((_14 = data === null || data === void 0 ? void 0 : data.endDate) === null || _14 === void 0 ? void 0 : _14.percentageEngagedAdverts) * 100).toFixed(1) + "% \u2191 " : "-% ↑"),
                                     " ",
-                                    react_1["default"].createElement("span", null, "from -"))),
+                                    react_1["default"].createElement("span", null, data ? "from " + ((_16 = (_15 = data === null || data === void 0 ? void 0 : data.data) === null || _15 === void 0 ? void 0 : _15.startDate) === null || _16 === void 0 ? void 0 : _16.percentageEngagedAdverts) : "from -"))),
                             react_1["default"].createElement("div", { className: "status-card__icon" },
                                 react_1["default"].createElement(StatusCardIcon_1["default"], { hovering: iconState === "store" }))))))
             :

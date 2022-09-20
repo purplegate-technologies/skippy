@@ -6,28 +6,28 @@ const statusData = [
     {
         "icon": "bx bx-shopping-bag",
         "count": "-",
-        "title": "overall users",
+        "title": "-",
         "percent": "-% ↑",
         "from": "from -"
     },
     {
         "icon": "bx bx-cart",
         "count": "-",
-        "title": "overllads",
+        "title": "-",
         "percent": "-% ↑",
         "from": "from -"
     },
     {
         "icon": "bx bx-dollar-circle",
         "count": "-",
-        "title": "total payout",
+        "title": "-",
         "percent": "-% ↑",
         "from": "from -"
     },
     {
         "icon": "bx bx-receipt",
         "count": "-",
-        "title": "Vouchers redeemed",
+        "title": "-",
         "percent": "-% ↑",
         "from": "from -"
     }

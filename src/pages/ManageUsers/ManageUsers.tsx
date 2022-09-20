@@ -8,11 +8,15 @@ import "./styles.css"
 import { useNavigate, Link } from 'react-router-dom'
 import Administrators from './Administrators'
 import AppUsers from './AppUsers'
+import { useGetUserStatsQuery } from '../../features/stats/statsApis'
 
 
 const ManageUsers = () => {
 
   const [tabIndex, setTabIndex] = useState<string>("Administrators")
+  const {data} = useGetUserStatsQuery()
+
+  console.log(data, "useGetUserStatsQuery")
 
   return (
     <div>

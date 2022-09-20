@@ -38,7 +38,7 @@ const Advertisements = () => {
   const { data: getAds, isLoading, isFetching } = useGetAdvertAdminQuery({})
 
 
-  // console.log(data, "useGetAdvertStatsQuery")
+  console.log(data, "useGetAdvertStatsQuery")
   // console.log(getAds?.docs, "gerAds")
   const navigate = useNavigate()
 
@@ -139,7 +139,6 @@ const Advertisements = () => {
     <div>
       {(data) ?
         <div>
-          {!data?.data?.endDate?.totalAdverts}
           <h4 className='cardHead font-semibold'>Overview</h4>
           <div className="row">
             {/* card one */}
@@ -149,10 +148,10 @@ const Advertisements = () => {
                 onMouseLeave={() => setIconState("")}>
                 <div className="status-card__info">
                   <span>{("Overall Internal ads")?.toString().toUpperCase()}</span>
-                  <h4>{(data?.endDate?.totalInternalAdverts)}</h4>
+                  <h4>{data ? data?.endDate?.totalInternalAdverts  : "-"}</h4>
                   <div className="status-card__info__percent">
-                    <span className='percentUp'>{"-% ↑"}</span>{" "}
-                    <span>{"from -"}</span>
+                    <span className='percentUp'>{data ? `${((data?.endDate?.totalInternalAdverts - data?.startDate?.totalInternalAdverts) / data?.endDate?.totalInternalAdverts * 100).toFixed(1)}% ↑ ` : "-% ↑"}</span>{" "}
+                    <span>{data ? `from ${data?.startDate?.totalInternalAdverts}` : "from -"}</span>
                   </div>
                 </div>
 
@@ -168,10 +167,10 @@ const Advertisements = () => {
                 onMouseLeave={() => setIconState("")}>
                 <div className="status-card__info">
                   <span>{("Overall External Ads")?.toString().toUpperCase()}</span>
-                  <h4>{(data?.endDate?.totalExternalAdverts)}</h4>
+                  <h4>{data ? data?.endDate?.totalExternalAdverts : "-"}</h4>
                   <div className="status-card__info__percent">
-                    <span className='percentUp'>{"-% ↑"}</span>{" "}
-                    <span>{"from -"}</span>
+                    <span className='percentUp'>{data ? `${((data?.endDate?.totalExternalAdverts - data?.startDate?.totalExternalAdverts) / data?.endDate?.totalExternalAdverts * 100).toFixed(1)}% ↑ ` : "-% ↑"}</span>{" "}
+                    <span>{data ? `from ${data?.startDate?.totalExternalAdverts}` : "from -"}</span>
                   </div>
                 </div>
 
@@ -187,10 +186,10 @@ const Advertisements = () => {
                 onMouseLeave={() => setIconState("")}>
                 <div className="status-card__info">
                   <span>{("completed Sessions")?.toString().toUpperCase()}</span>
-                  <h4>{(data?.endDate?.totalStreams)}</h4>
+                  <h4>{data ? data?.endDate?.totalStreams : "-"}</h4>
                   <div className="status-card__info__percent">
-                    <span className='percentUp'>{"-% ↑"}</span>{" "}
-                    <span>{"from -"}</span>
+                    <span className='percentUp'>{data ? `${((data?.endDate?.totalStreams - data?.startDate?.totalStreams) / data?.endDate?.totalStreams * 100).toFixed(1)}% ↑ ` : "-% ↑"}</span>{" "}
+                    <span>{data ? `from ${data?.startDate?.totalStreams}` : "from -"}</span>
                   </div>
                 </div>
 
@@ -206,10 +205,10 @@ const Advertisements = () => {
                 onMouseLeave={() => setIconState("")}>
                 <div className="status-card__info">
                   <span>{("Avg. INTERACTION Rate")?.toString().toUpperCase()}</span>
-                  <h4>{(data?.endDate?.totalCompletedStreams)}</h4>
+                  <h4>{data ? data?.endDate?.totalCompletedStreams : "-"}</h4>
                   <div className="status-card__info__percent">
-                    <span className='percentUp'>{"-% ↑"}</span>{" "}
-                    <span>{"from -"}</span>
+                    <span className='percentUp'>{data ? `${((data?.endDate?.totalCompletedStreams - data?.startDate?.totalCompletedStreams) / data?.endDate?.totalCompletedStreams * 100).toFixed(1)}% ↑ ` : "-% ↑"}</span>{" "}
+                    <span>{data ? `from ${data?.startDate?.totalCompletedStreams}` : "from -"}</span>
                   </div>
                 </div>
 

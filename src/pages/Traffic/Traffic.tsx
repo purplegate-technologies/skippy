@@ -30,7 +30,7 @@ const Traffic = () => {
   const { data } = useGetTrafficStatsQuery()
   // console.log(data?.data, "data data data")
 
-  const [userData, setUserrData] = useState({
+  const [userData] = useState({
     labels: UserData.map((data) => data.day.toUpperCase()),
     datasets: [
       {
@@ -133,10 +133,10 @@ const Traffic = () => {
                 onMouseLeave={() => setIconState("")}>
                 <div className="status-card__info">
                   <span>{("total Active users")?.toString().toUpperCase()}</span>
-                  <h4>{(data?.data?.endDate?.totalActiveUsers)}</h4>
+                  <h4>{data ? data?.data?.endDate?.totalActiveUsers : "-"}</h4>
                   <div className="status-card__info__percent">
-                    <span className='percentUp'>{"-% ↑"}</span>{" "}
-                    <span>{"from -"}</span>
+                    <span className='percentUp'>{data ? `${((data?.data?.endDate?.totalActiveUsers - data?.data?.startDate?.totalActiveUsers) / data?.data?.endDate?.totalActiveUsers * 100).toFixed(1)}% ↑ ` : "-% ↑"}</span>{" "}
+                    <span>{data ? `from ${data?.data?.startDate?.totalActiveUsers}` : "from -"}</span>
                   </div>
                 </div>
 
@@ -152,10 +152,10 @@ const Traffic = () => {
                 onMouseLeave={() => setIconState("")}>
                 <div className="status-card__info">
                   <span>{("Completed streams")?.toString().toUpperCase()}</span>
-                  <h4>{(data?.data?.endDate?.totalCompletedStreams)}</h4>
+                  <h4>{data ? data?.data?.endDate?.totalCompletedStreams : "-"}</h4>
                   <div className="status-card__info__percent">
-                    <span className='percentUp'>{"-% ↑"}</span>{" "}
-                    <span>{"from -"}</span>
+                    <span className='percentUp'>{data ? `${((data?.data?.endDate?.totalCompletedStreams - data?.data?.startDate?.totalCompletedStreams) / data?.data?.endDate?.totalCompletedStreams * 100).toFixed(1)}% ↑ ` : "-% ↑"}</span>{" "}
+                    <span>{data ? `from ${data?.data?.startDate?.totalCompletedStreams}` : "from -"}</span>
                   </div>
                 </div>
 
@@ -171,10 +171,10 @@ const Traffic = () => {
                 onMouseLeave={() => setIconState("")}>
                 <div className="status-card__info">
                   <span>{("Overall impressions")?.toString().toUpperCase()}</span>
-                  <h4>{(data?.data?.endDate?.totalStreams)}</h4>
+                  <h4>{data ? data?.data?.endDate?.totalStreams : "-"}</h4>
                   <div className="status-card__info__percent">
-                    <span className='percentUp'>{"-% ↑"}</span>{" "}
-                    <span>{"from -"}</span>
+                    <span className='percentUp'>{data ? `${((data?.data?.endDate?.totalStreams - data?.data?.startDate?.totalStreams) / data?.data?.endDate?.totalStreams * 100).toFixed(1)}% ↑ ` : "-% ↑"}</span>{" "}
+                    <span>{data ? `from ${data?.data?.startDate?.totalStreams}` : "from -"}</span>
                   </div>
                 </div>
 
@@ -190,10 +190,10 @@ const Traffic = () => {
                 onMouseLeave={() => setIconState("")}>
                 <div className="status-card__info">
                   <span>{("Overall Engagements")?.toString().toUpperCase()}</span>
-                  <h4>{(data?.data?.endDate?.totalCompletedStreams)}</h4>
+                  <h4>{data ? data?.data?.endDate?.percentageEngagedAdverts : "-"}</h4>
                   <div className="status-card__info__percent">
-                    <span className='percentUp'>{"-% ↑"}</span>{" "}
-                    <span>{"from -"}</span>
+                    <span className='percentUp'>{data ? `${((data?.endDate?.percentageEngagedAdverts - data?.startDate?.percentageEngagedAdverts) / data?.endDate?.percentageEngagedAdverts * 100).toFixed(1)}% ↑ ` : "-% ↑"}</span>{" "}
+                    <span>{data ? `from ${data?.data?.startDate?.percentageEngagedAdverts}` : "from -"}</span>
                   </div>
                 </div>
 

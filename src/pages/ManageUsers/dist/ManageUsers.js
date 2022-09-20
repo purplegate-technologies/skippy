@@ -6,8 +6,11 @@ var StatusCards_1 = require("../../components/statusCard/StatusCards");
 require("./styles.css");
 var Administrators_1 = require("./Administrators");
 var AppUsers_1 = require("./AppUsers");
+var statsApis_1 = require("../../features/stats/statsApis");
 var ManageUsers = function () {
     var _a = react_1.useState("Administrators"), tabIndex = _a[0], setTabIndex = _a[1];
+    var data = statsApis_1.useGetUserStatsQuery().data;
+    console.log(data, "useGetUserStatsQuery");
     return (React.createElement("div", null,
         React.createElement(StatusCards_1["default"], null),
         React.createElement("div", { className: "" },

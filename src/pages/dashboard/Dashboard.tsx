@@ -272,7 +272,6 @@ const Dashboard = () => {
             <section className='mb-10'>
                 {(data && data?.data) ?
                     <div>
-                        {!data?.data?.endDate?.totalAdverts}
                         <h4 className='cardHead font-semibold'>Overview</h4>
                         <div className="row">
                             {/* card one */}
@@ -284,7 +283,7 @@ const Dashboard = () => {
                                         <span>{("Overall Users")?.toString().toUpperCase()}</span>
                                         <h4>{data ? data?.data?.endDate?.totalUsers : "-"}</h4>
                                         <div className="status-card__info__percent">
-                                            <span className='percentUp'>{ data ? `${((data?.data?.endDate?.totalUsers - data?.data?.startDate?.totalUsers) / data?.data?.endDate?.totalUsers * 100).toFixed(2)}% ↑ ` : "-% ↑"}</span>{" "}
+                                            <span className='percentUp'>{ data ? `${((data?.data?.endDate?.totalUsers - data?.data?.startDate?.totalUsers) / data?.data?.endDate?.totalUsers * 100).toFixed(1)}% ↑ ` : "-% ↑"}</span>{" "}
                                             <span>{ data ? `from ${data?.data?.startDate?.totalUsers}` : "from -"}</span>
                                         </div>
                                     </div>
@@ -303,7 +302,7 @@ const Dashboard = () => {
                                         <span>{("Overall Ads")?.toString().toUpperCase()}</span>
                                         <h4>{data ? data?.data?.endDate?.totalAdverts : "-"}</h4>
                                         <div className="status-card__info__percent">
-                                            <span className='percentUp'>{ data ? `${((data?.data?.endDate?.totalAdverts - data?.data?.startDate?.totalAdverts) / data?.data?.endDate?.totalAdverts * 100).toFixed(2)}% ↑ ` : "-% ↑"}</span>{" "}
+                                            <span className='percentUp'>{ data ? `${((data?.data?.endDate?.totalAdverts - data?.data?.startDate?.totalAdverts) / data?.data?.endDate?.totalAdverts * 100).toFixed(1)}% ↑ ` : "-% ↑"}</span>{" "}
                                             <span>{data ? `from ${data?.data?.startDate?.totalAdverts}` : "from -"}</span>
                                         </div>
                                     </div>
@@ -322,7 +321,7 @@ const Dashboard = () => {
                                         <span>{("Total Payout")?.toString().toUpperCase()}</span>
                                         <h4>{data ? data?.data?.endDate?.totalPayout : "-"}</h4>
                                         <div className="status-card__info__percent">
-                                            <span className='percentUp'>{data ? `${((data?.data?.endDate?.totalPayout - data?.data?.startDate?.totalPayout) / data?.data?.endDate?.totalPayout * 100).toFixed(2)}% ↑ ` : "-% ↑"}</span>{" "}
+                                            <span className='percentUp'>{data ? `${((data?.data?.endDate?.totalPayout - data?.data?.startDate?.totalPayout) / data?.data?.endDate?.totalPayout * 100).toFixed(1)}% ↑ ` : "-% ↑"}</span>{" "}
                                             <span>{data ? `from ${data?.data?.startDate?.totalPayout}` : "from -"}</span>
                                         </div>
                                     </div>
@@ -341,7 +340,7 @@ const Dashboard = () => {
                                         <span>{("Vouchers Redeemed")?.toString().toUpperCase()}</span>
                                         <h4>{data ? data?.data?.endDate?.voucherUsage : "-"}</h4>
                                         <div className="status-card__info__percent">
-                                            <span className='percentUp'>{data ? `${((data?.data?.endDate?.voucherUsage - data?.data?.startDate?.voucherUsage) / data?.data?.endDate?.voucherUsage * 100).toFixed(2)}% ↑ ` : "-% ↑"}</span>{" "}
+                                            <span className='percentUp'>{data ? `${((data?.data?.endDate?.voucherUsage - data?.data?.startDate?.voucherUsage) / data?.data?.endDate?.voucherUsage * 100).toFixed(1)}% ↑ ` : "-% ↑"}</span>{" "}
                                             <span>{data ? `from ${data?.data?.startDate?.voucherUsage}` : "from -"}</span>
                                         </div>
                                     </div>
