@@ -1,7 +1,6 @@
 "use strict";
 exports.__esModule = true;
 var react_1 = require("react");
-// import Input from '../../components/input/Input'
 require("./styles.css");
 var Administrators_1 = require("./Administrators");
 var AppUsers_1 = require("./AppUsers");

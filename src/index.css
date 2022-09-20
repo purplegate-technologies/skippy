@@ -137,6 +137,7 @@ code {
   font-weight: 700;
   font-size: 12px;
   line-height: 16px;
+  white-space: nowrap;
 }
 
 .status-card::before {
