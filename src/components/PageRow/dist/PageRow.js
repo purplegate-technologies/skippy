@@ -13,11 +13,9 @@ var PageRow = function (_a) {
                     React.createElement("p", null, rowSize),
                     React.createElement("p", { className: "text-black" }, dropdown ? (
                     // <AIarrowup1Bol width={18} height={18} />
-                        >
-                    ) : (
+                    React.createElement(React.Fragment, null, "up")) : (
                     // <AIarrowdownbol width={18} height={18} />
-                        <
-                    ))),
+                    React.createElement(React.Fragment, null, "down")))),
                 React.createElement("p", { className: "text-md" }, "Rows/page")),
             React.createElement("div", { className: "\n\t\t\t\tw-12\n\t\t\t\tflex\n\t\t\t\tflex-col\n\t\t\t\tgap-4\n\t\t\t\titems-center\n\t\t\t\tabsolute\n\t\t\t\tz-10\n\t\t\t\tbg-white\n\t\t\t\tpy-2\n\t\t\t\tmt-1\n\t\t\t\tbottom-10\n\t\t\t\trounded\n\t\t\t\tborder\n\t\t\t\tborder-grey-beau\n\t\t\t\t" + (dropdown ? 'block' : 'hidden') }, size &&
                 size.map(function (item) { return (React.createElement("p", { key: item, onClick: function () {

@@ -23,14 +23,10 @@ const PageRow = ({ rowSize, rowSizeChange, reset }: IRows) => {
 						<p className="text-black">
 							{dropdown ? (
 								// <AIarrowup1Bol width={18} height={18} />
-                                <>
-                                >
-                                </>
+                                <>up</>
 							) : (
 								// <AIarrowdownbol width={18} height={18} />
-                                <>
-                                <
-                                </>
+                                <>down</>
 							)}
 						</p>
 					</div>

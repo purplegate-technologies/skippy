@@ -104,6 +104,21 @@ const Settings = () => {
 
                     <div className="card-settings">
                         <div className="contactUs-form-lable">
+                            {/* <Select
+                            label="ROLE"
+                            placeholder="Select Role"
+                            required
+                            value={type}
+                            options={['admin', 'normal', 'bad']}
+                            className={"border-[#949AB1] border-1 rounded p-2 my-3 w-full"}
+                            onChange={(e: any) => setRoles(e.atrget.options)}
+
+                            // onChange={(e: any) => {
+                            //     const select = e.target as HTMLSelectElement
+                            //     setRoles(selec[t.options.item(select.selectedIndex)?.innerText!)]
+                            // }}
+                            /> */}
+
                             <label htmlFor="" className="text-xs text-[#516CF5]">
                                 {("ROLE")}
                             </label>

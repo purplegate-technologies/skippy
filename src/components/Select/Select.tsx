@@ -45,7 +45,7 @@ export const Select = ({
         <select
           value={value}
           defaultValue={value}
-        //   id={id}
+        //   id={id}  
           disabled={disabled}
           onChange={(e) => onChange(e.target.value) || onChange}
           className={`${className}  focus:outline-none w-full md:auto bg-white`}

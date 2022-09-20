@@ -12,7 +12,7 @@ exports.Select = function (_a) {
                 ? function () { return react_toastify_1.toast.error("error"); }
                 : function () { }, className: "  text-sm md:text-base" },
             react_1["default"].createElement("select", { value: value, defaultValue: value, 
-                //   id={id}
+                //   id={id}  
                 disabled: disabled, onChange: function (e) { return onChange(e.target.value) || onChange; }, className: className + "  focus:outline-none w-full md:auto bg-white", required: required },
                 react_1["default"].createElement("option", { value: "", disabled: true }, placeholder || "Select"),
                 options.map(function (option, optionIndex) { return (react_1["default"].createElement("option", { 
