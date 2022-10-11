@@ -109,9 +109,6 @@ code {
 .status-card__info__percent :nth-child(2) {
   margin-left: 10px;
 }
-/* .status-card:hover::before,
-.status-card__info__percent :nth-child(1) {
-} */
 
 .status-card__icon {
   width: 30%;

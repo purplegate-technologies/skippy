@@ -3,11 +3,16 @@ import Table from '../../components/Table/Table'
 import advertlist from "../../assets/jsonData/advert-list.json"
 import "./activity.css"
 import SearchBar from '../../components/support/SearchBar'
-import { useNavigate, Link } from 'react-router-dom'
+import { useNavigate, Link, useParams } from 'react-router-dom'
 import CreateAdsPlus from '../../assets/svg/CreateAdsPlus'
+import { useGetAppUserQuery } from '../../features/UserManagement/User ManagementApiSlcie'
 
 const ActivityLog = () => {
+  const id = useParams()
   const navigate = useNavigate()
+
+  const {data} = useGetAppUserQuery(id)
+  console.log(data?.data?.docs, "datadata")
 
   const customerTableHead = [
     'User',

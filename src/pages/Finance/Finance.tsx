@@ -16,7 +16,7 @@ const Finance = () => {
 
   const navigate = useNavigate()
 
-  const { data, isLoading, isFetching } = useGetVouchersQuery({})
+  const { data = null, isLoading, isFetching } = useGetVouchersQuery({})
   const { data: stats } = useGetFinanceStatsQuery()
 
 
@@ -155,7 +155,7 @@ const Finance = () => {
                   limit={10}
                   headData={customerTableHead}
                   renderHead={(item: any, index: number) => renderHead(item, index)}
-                  bodyData={isFetching ? [] : data?.docs}
+                  bodyData={isLoading  ? [] : data?.docs}
                   renderBody={(item: any, index: number) => renderBody(item, index)}
                   {...{ isLoading }}
                   {...{ isFetching }}

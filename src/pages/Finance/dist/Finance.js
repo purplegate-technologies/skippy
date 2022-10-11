@@ -25,7 +25,7 @@ var Finance = function () {
     var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r, _s, _t, _u, _v, _w, _x, _y, _z, _0, _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11, _12, _13, _14, _15, _16, _17, _18, _19;
     var _20 = react_1.useState(""), iconState = _20[0], setIconState = _20[1];
     var navigate = react_router_dom_1.useNavigate();
-    var _21 = VouchersApiSlice_1.useGetVouchersQuery({}), data = _21.data, isLoading = _21.isLoading, isFetching = _21.isFetching;
+    var _21 = VouchersApiSlice_1.useGetVouchersQuery({}), _22 = _21.data, data = _22 === void 0 ? null : _22, isLoading = _21.isLoading, isFetching = _21.isFetching;
     var stats = statsApis_1.useGetFinanceStatsQuery().data;
     var customerTableHead = [
         'Brand Name',
@@ -105,6 +105,6 @@ var Finance = function () {
                 React.createElement("div", { className: "col-12" },
                     React.createElement("div", { className: "" },
                         React.createElement("div", { className: "card__body" },
-                            React.createElement(Table_1["default"], __assign({ limit: 10, headData: customerTableHead, renderHead: function (item, index) { return renderHead(item, index); }, bodyData: isFetching ? [] : data === null || data === void 0 ? void 0 : data.docs, renderBody: function (item, index) { return renderBody(item, index); } }, { isLoading: isLoading }, { isFetching: isFetching })))))))));
+                            React.createElement(Table_1["default"], __assign({ limit: 10, headData: customerTableHead, renderHead: function (item, index) { return renderHead(item, index); }, bodyData: isLoading ? [] : data === null || data === void 0 ? void 0 : data.docs, renderBody: function (item, index) { return renderBody(item, index); } }, { isLoading: isLoading }, { isFetching: isFetching })))))))));
 };
 exports["default"] = Finance;

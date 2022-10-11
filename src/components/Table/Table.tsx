@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import ReactPaginate from 'react-paginate';
+import Row from '../Pagination/Row/Row';
 import './table.css'
 
 interface Props<T = any> {
@@ -10,16 +11,17 @@ interface Props<T = any> {
     renderHead: (n: any, b: number) => JSX.Element
     isSuccess?: boolean
     isFetching?: boolean
+    isLoading?: boolean
 }
 
-const Table = ({ limit, renderHead, bodyData, headData, renderBody, isFetching }: Props) => {
+const Table = ({ limit, renderHead, bodyData, headData, renderBody, isFetching, isLoading }: Props) => {
 
     const [itemsPerPage, setItemsPerPage] = useState(10)
 
     // for react paginate
 
     // We start with an empty list of items.setCurrentItems
-    const [currentItems, setCurrentItems] = useState(bodyData);
+    const [currentItems, setCurrentItems] = useState([]);
     const [pageCount, setPageCount] = useState(0);
     // Here we use item offsets; we could also use page offsets
     // following the API or data you're working with.
@@ -32,6 +34,10 @@ const Table = ({ limit, renderHead, bodyData, headData, renderBody, isFetching }
         setCurrentItems(bodyData.slice(itemOffset, endOffset));
         setPageCount(Math.ceil(bodyData.length / itemsPerPage));
     }, [itemOffset, itemsPerPage, bodyData]);
+
+    useEffect(() => {
+        setCurrentItems(bodyData);
+    },[bodyData])
 
     // Invoke when user click to request another page.
     const handlePageClick = (event: any) => {
@@ -57,7 +63,8 @@ const Table = ({ limit, renderHead, bodyData, headData, renderBody, isFetching }
                             </thead>
                         ) : null
                     }
-                    {isFetching ? <td className='text-center w-full p-5 text-2l font-bold'>Fetching Data</td> : <>
+                    {isLoading && "Loading Data" &&
+                        isFetching ? <td className='text-center w-full p-5 text-2l font-bold'>Fetching Data</td> : <>
                         {
                             currentItems && (currentItems !== null || undefined) ? (
                                 <tbody>
@@ -80,10 +87,16 @@ const Table = ({ limit, renderHead, bodyData, headData, renderBody, isFetching }
 
             <div className='footerPagination'>
                 <div style={{ display: 'flex', alignItems: 'center' }}>
+
+                    {/* <Row
+                        rowSize={itemsPerPage}
+                        rowSizeChange={() => null}
+                        // reset={() => false}
+                    /> */}
                     <select
                         value={itemsPerPage}
                         className='tableSelectDropDown'
-                        onChange={(e: React.ChangeEvent<HTMLSelectElement | any>) => { setItemsPerPage(e.target.value)}
+                        onChange={(e: React.ChangeEvent<HTMLSelectElement | any>) => { setItemsPerPage(e.target.value) }
                         }>
                         <option disabled>Items per page</option>
                         <option value="5">5</option>
@@ -99,13 +112,13 @@ const Table = ({ limit, renderHead, bodyData, headData, renderBody, isFetching }
                     pageCount={pageCount}
                     onPageChange={handlePageClick}
                     disabledClassName="disabled"
-                    initialPage={1}
+                    // initialPage={0}
                     nextLabel="next >"
                     previousLabel="< previous"
                     breakLabel="..."
                     breakClassName="break-me"
                     marginPagesDisplayed={2}
-                    pageRangeDisplayed={5}
+                    // pageRangeDisplayed={5}
                     breakLinkClassName="page-link"
                     containerClassName="table__pagination"
                     pageClassName="table__pagination-item"

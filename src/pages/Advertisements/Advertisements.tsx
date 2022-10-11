@@ -37,7 +37,7 @@ const Advertisements = () => {
 
 
   console.log(data, "useGetAdvertStatsQuery")
-  // console.log(getAds?.docs, "gerAds")
+  console.log(getAds?.docs, "gerAds")
   const navigate = useNavigate()
 
 
@@ -256,7 +256,7 @@ const Advertisements = () => {
                   limit={10}
                   headData={customerTableHead}
                   renderHead={(item: any, index: number) => renderHead(item, index)}
-                  bodyData={isFetching ? ['Loaded Data'] : getAds?.docs}
+                  bodyData={isLoading ? []  : getAds?.docs}
                   renderBody={(item: any, index: number) => renderBody(item, index)}
                   {...{ isLoading }}
                   {...{ isFetching }}

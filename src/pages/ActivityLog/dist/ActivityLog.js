@@ -7,8 +7,13 @@ require("./activity.css");
 var SearchBar_1 = require("../../components/support/SearchBar");
 var react_router_dom_1 = require("react-router-dom");
 var CreateAdsPlus_1 = require("../../assets/svg/CreateAdsPlus");
+var User_ManagementApiSlcie_1 = require("../../features/UserManagement/User ManagementApiSlcie");
 var ActivityLog = function () {
+    var _a;
+    var id = react_router_dom_1.useParams();
     var navigate = react_router_dom_1.useNavigate();
+    var data = User_ManagementApiSlcie_1.useGetAppUserQuery(id).data;
+    console.log((_a = data === null || data === void 0 ? void 0 : data.data) === null || _a === void 0 ? void 0 : _a.docs, "datadata");
     var customerTableHead = [
         'User',
         'User TYPE',

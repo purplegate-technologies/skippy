@@ -310,7 +310,7 @@ var Dashboard = function () {
             React.createElement("div", { className: 'row justify-center my-10 gap-x-3' },
                 React.createElement("div", { className: 'col-6 card' },
                     React.createElement("div", { className: 'basis-1/2' },
-                        React.createElement("div", { className: "flex items-center justify-between" },
+                        React.createElement("div", { className: "flex items-center justify-between gap-x-4" },
                             React.createElement("h6", { className: 'text-[#171837] text-sm' }, "Total Advert Watch Trend"),
                             React.createElement(ThreeVdots_1["default"], null)),
                         React.createElement(LinearGradientChart_1["default"], { chartData: totalAdvertTrend }))),

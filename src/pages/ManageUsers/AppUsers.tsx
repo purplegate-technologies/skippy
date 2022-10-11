@@ -5,6 +5,7 @@ import SearchBar from '../../components/support/SearchBar'
 import Table from '../../components/Table/Table'
 import { useNavigate, Link } from 'react-router-dom'
 import advertlist from "../../assets/jsonData/advert-list.json"
+import { useGetAppUsersQuery } from '../../features/UserManagement/User ManagementApiSlcie'
 
 
 const customerTableHead = [
@@ -21,18 +22,22 @@ const customerTableHead = [
 
   const renderBody = (item: any, index: number) => (
     <tr key={index}>
-      <td>{item.id}</td>
+      <td>{item?.appId}</td>
       <td>{item.name}</td>
-      <td>{item.email}</td>
-      <td>{item.phone}</td>
-      <td>{item.total_orders}</td>
+      <td>{item?.createdAt}</td>
+      <td>{item?.updatedAt}</td>
+      <td>{item?.status}</td>
       {/* <td>{item.total_spend}</td> */}
-      <td><Link to="/activity-overview" className='underline text-blue-600'>{item.location}</Link></td>
+      <td><Link to={`/manage-users/${item?._id}`} className='underline text-blue-600'>View Details</Link></td>
+      {/* <td><Link to={`/activity-overview/${item?._id}`} className='underline text-blue-600'>View Details</Link></td> */}
     </tr>
   )
 
 const AppUsers = () => {
-    const navigate = useNavigate()
+  const navigate = useNavigate()
+
+  const { data, isFetching, isLoading } = useGetAppUsersQuery()
+  console.log(data?.data?.docs, "App Users")
 
   return (
     <div>
@@ -50,7 +55,8 @@ const AppUsers = () => {
                       limit={10}
                       headData={customerTableHead}
                       renderHead={(item: any, index: number) => renderHead(item, index)}
-                      bodyData={advertlist}
+                      // bodyData={advertlist}
+                      bodyData={isLoading ? [] : data?.data?.docs}
                       renderBody={(item: any, index: number) => renderBody(item, index)}
                     />
                   </div>

@@ -391,7 +391,7 @@ const Dashboard = () => {
                 <div className='row justify-center my-10 gap-x-3'>
                     <div className='col-6 card'>
                         <div className='basis-1/2'>
-                            <div className="flex items-center justify-between">
+                            <div className="flex items-center justify-between gap-x-4">
                                 <h6 className='text-[#171837] text-sm'>Total Advert Watch Trend</h6>
                                 <ThreeVdots />
                             </div>
