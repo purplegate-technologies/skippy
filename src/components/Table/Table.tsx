@@ -37,7 +37,7 @@ const Table = ({ limit, renderHead, bodyData, headData, renderBody, isFetching, 
 
     useEffect(() => {
         setCurrentItems(bodyData);
-    },[bodyData])
+    }, [bodyData])
 
     // Invoke when user click to request another page.
     const handlePageClick = (event: any) => {
@@ -63,8 +63,8 @@ const Table = ({ limit, renderHead, bodyData, headData, renderBody, isFetching, 
                             </thead>
                         ) : null
                     }
-                    {isLoading && "Loading Data" &&
-                        isFetching ? <td className='text-center w-full p-5 text-2l font-bold'>Fetching Data</td> : <>
+
+                    {isFetching ? <td className='text-center w-full p-5 text-2l font-bold'>Fetching Data</td> : <>
                         {
                             currentItems && (currentItems !== null || undefined) ? (
                                 <tbody>

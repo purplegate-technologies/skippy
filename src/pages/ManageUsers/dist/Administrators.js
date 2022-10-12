@@ -5,7 +5,6 @@ var CreateAdsPlus_1 = require("../../assets/svg/CreateAdsPlus");
 var SearchBar_1 = require("../../components/support/SearchBar");
 var Table_1 = require("../../components/Table/Table");
 var react_router_dom_1 = require("react-router-dom");
-var advert_list_json_1 = require("../../assets/jsonData/advert-list.json");
 var column = [
     {
         name: 'App (ID)',
@@ -93,7 +92,7 @@ var Administrators = function () {
                 react_1["default"].createElement("div", { className: "col-12" },
                     react_1["default"].createElement("div", { className: "" },
                         react_1["default"].createElement("div", { className: "card__body" },
-                            react_1["default"].createElement(Table_1["default"], { limit: 10, headData: customerTableHead, renderHead: function (item, index) { return renderHead(item, index); }, bodyData: advert_list_json_1["default"], renderBody: function (item, index) { return renderBody(item, index); } }),
+                            react_1["default"].createElement(Table_1["default"], { limit: 10, headData: customerTableHead, renderHead: function (item, index) { return renderHead(item, index); }, bodyData: [], renderBody: function (item, index) { return renderBody(item, index); } }),
                             react_1["default"].createElement("div", { className: "p-8 bg-other-ghost" }))))))));
 };
 exports["default"] = Administrators;

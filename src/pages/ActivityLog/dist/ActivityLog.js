@@ -2,7 +2,7 @@
 exports.__esModule = true;
 var react_1 = require("react");
 var Table_1 = require("../../components/Table/Table");
-var advert_list_json_1 = require("../../assets/jsonData/advert-list.json");
+// import advertlist from "../../assets/jsonData/advert-list.json"
 require("./activity.css");
 var SearchBar_1 = require("../../components/support/SearchBar");
 var react_router_dom_1 = require("react-router-dom");
@@ -36,6 +36,6 @@ var ActivityLog = function () {
                 react_1["default"].createElement("div", { className: "" },
                     react_1["default"].createElement("div", { className: "" },
                         react_1["default"].createElement("div", { className: "card__body" },
-                            react_1["default"].createElement(Table_1["default"], { limit: 10, headData: customerTableHead, renderHead: function (item, index) { return renderHead(item, index); }, bodyData: advert_list_json_1["default"], renderBody: function (item, index) { return renderBody(item, index); } }))))))));
+                            react_1["default"].createElement(Table_1["default"], { limit: 10, headData: customerTableHead, renderHead: function (item, index) { return renderHead(item, index); }, bodyData: [], renderBody: function (item, index) { return renderBody(item, index); } }))))))));
 };
 exports["default"] = ActivityLog;

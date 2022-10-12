@@ -1,6 +1,6 @@
 import React from 'react'
 import Table from '../../components/Table/Table'
-import advertlist from "../../assets/jsonData/advert-list.json"
+// import advertlist from "../../assets/jsonData/advert-list.json"
 import "./activity.css"
 import SearchBar from '../../components/support/SearchBar'
 import { useNavigate, Link, useParams } from 'react-router-dom'
@@ -52,7 +52,7 @@ const ActivityLog = () => {
                   limit={10}
                   headData={customerTableHead}
                   renderHead={(item: any, index: number) => renderHead(item, index)}
-                  bodyData={advertlist}
+                  bodyData={[]}
                   renderBody={(item: any, index: number) => renderBody(item, index)}
                 />
               </div>
