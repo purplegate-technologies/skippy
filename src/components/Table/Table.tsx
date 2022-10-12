@@ -63,10 +63,17 @@ const Table = ({ limit, renderHead, bodyData, headData, renderBody, isFetching, 
                             </thead>
                         ) : null
                     }
+                    {isLoading && (
+                        <tbody className=''>
+                            <tr>
+                                <td className='text-center w-full p-5 text-2l font-bold'>Loading Data...</td>
+                            </tr>
+                        </tbody>
+                    )}
 
                     {isFetching ? <td className='text-center w-full p-5 text-2l font-bold'>Fetching Data</td> : <>
                         {
-                            currentItems && (currentItems !== null || undefined) ? (
+                            currentItems && (currentItems.length <= 0 || !undefined) ? (
                                 <tbody>
                                     {
                                         // dataShow?.map((item: any, index: number) => renderBody(item, index))

@@ -34,7 +34,10 @@ var Table = function (_a) {
             React.createElement("table", null,
                 headData && renderHead ? (React.createElement("thead", null,
                     React.createElement("tr", null, headData.map(function (item, index) { return renderHead(item, index); })))) : null,
-                isFetching ? React.createElement("td", { className: 'text-center w-full p-5 text-2l font-bold' }, "Fetching Data") : React.createElement(React.Fragment, null, currentItems && (currentItems !== null || undefined) ? (React.createElement("tbody", null, 
+                isLoading && (React.createElement("tbody", { className: '' },
+                    React.createElement("tr", null,
+                        React.createElement("td", { className: 'text-center w-full p-5 text-2l font-bold' }, "Loading Data...")))),
+                isFetching ? React.createElement("td", { className: 'text-center w-full p-5 text-2l font-bold' }, "Fetching Data") : React.createElement(React.Fragment, null, currentItems && (currentItems.length <= 0 || !undefined) ? (React.createElement("tbody", null, 
                 // dataShow?.map((item: any, index: number) => renderBody(item, index))
                 currentItems === null || 
                 // dataShow?.map((item: any, index: number) => renderBody(item, index))
