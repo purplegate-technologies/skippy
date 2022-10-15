@@ -5,6 +5,7 @@ var CreateAdsPlus_1 = require("../../assets/svg/CreateAdsPlus");
 var SearchBar_1 = require("../../components/support/SearchBar");
 var Table_1 = require("../../components/Table/Table");
 var react_router_dom_1 = require("react-router-dom");
+var advert_list_json_1 = require("../../assets/jsonData/advert-list.json");
 var column = [
     {
         name: 'App (ID)',
@@ -59,15 +60,15 @@ var customerTableHead = [
     'Status',
     'Action',
 ];
-var renderHead = function (item, index) { return react_1["default"].createElement("th", { key: index }, item); };
-var renderBody = function (item, index) { return (react_1["default"].createElement("tr", { key: index },
-    react_1["default"].createElement("td", null, item.id),
-    react_1["default"].createElement("td", null, item.name),
-    react_1["default"].createElement("td", null, item.email),
-    react_1["default"].createElement("td", null, item.phone),
-    react_1["default"].createElement("td", null, item.total_orders),
-    react_1["default"].createElement("td", null,
-        react_1["default"].createElement(react_router_dom_1.Link, { to: "/user-details", className: 'underline text-blue-600' }, item.location)))); };
+var renderHead = function (item, index) { return React.createElement("th", { key: index }, item); };
+var renderBody = function (item, index) { return (React.createElement("tr", { key: index },
+    React.createElement("td", null, item.id),
+    React.createElement("td", null, item.name),
+    React.createElement("td", null, item.email),
+    React.createElement("td", null, item.phone),
+    React.createElement("td", null, item.total_orders),
+    React.createElement("td", null,
+        React.createElement(react_router_dom_1.Link, { to: "/user-details", className: 'underline text-blue-600' }, item.location)))); };
 var Administrators = function () {
     var navigate = react_router_dom_1.useNavigate();
     var _a = react_1.useState(1), currentPage = _a[0], setCurrentPage = _a[1];
@@ -85,14 +86,14 @@ var Administrators = function () {
     react_1.useEffect(function () {
         getData();
     }, [currentPage, rowSize]);
-    return (react_1["default"].createElement("div", null,
-        react_1["default"].createElement("div", { className: "card" },
-            react_1["default"].createElement(SearchBar_1["default"], { HeaderTitle: 'Administrators', text: "Create Admin", onClick: function () { return navigate('/settings'); }, prefixIcon: react_1["default"].createElement(CreateAdsPlus_1["default"], null) }),
-            react_1["default"].createElement("div", { className: "row" },
-                react_1["default"].createElement("div", { className: "col-12" },
-                    react_1["default"].createElement("div", { className: "" },
-                        react_1["default"].createElement("div", { className: "card__body" },
-                            react_1["default"].createElement(Table_1["default"], { limit: 10, headData: customerTableHead, renderHead: function (item, index) { return renderHead(item, index); }, bodyData: [], renderBody: function (item, index) { return renderBody(item, index); } }),
-                            react_1["default"].createElement("div", { className: "p-8 bg-other-ghost" }))))))));
+    return (React.createElement("div", null,
+        React.createElement("div", { className: "card" },
+            React.createElement(SearchBar_1["default"], { HeaderTitle: 'Administrators', text: "Create Admin", onClick: function () { return navigate('/settings'); }, prefixIcon: React.createElement(CreateAdsPlus_1["default"], null) }),
+            React.createElement("div", { className: "row" },
+                React.createElement("div", { className: "col-12" },
+                    React.createElement("div", { className: "" },
+                        React.createElement("div", { className: "card__body" },
+                            React.createElement(Table_1["default"], { limit: 10, headData: customerTableHead, renderHead: function (item, index) { return renderHead(item, index); }, bodyData: advert_list_json_1["default"], renderBody: function (item, index) { return renderBody(item, index); } }),
+                            React.createElement("div", { className: "p-8 bg-other-ghost" }))))))));
 };
 exports["default"] = Administrators;

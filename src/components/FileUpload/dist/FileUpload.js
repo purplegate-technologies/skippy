@@ -9,35 +9,14 @@ var FileUpload = function () {
     // const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     var changeHandler = function (event) {
         setSelectedFile((event.target).files[0]);
-        // setIsSelected(true);
     };
-    // const handleSubmission = (e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
-    //     e.preventDefault()
-    //     const formData = new FormData();
-    //     formData.append('File', selectedFile);
-    //     fetch(
-    //         'https://freeimage.host/api/1/upload?key=<YOUR_API_KEY>',
-    //         {
-    //             method: 'POST',
-    //             body: formData,
-    //         }
-    //     )
-    //         .then((response) => response.json())
-    //         .then((result) => {
-    //             console.log('Success:', result);
-    //         })
-    //         .catch((error) => {
-    //             console.error('Error:', error);
-    //         });
-    //         console.log(formData)
-    // };
-    return (react_1["default"].createElement("div", null,
-        react_1["default"].createElement("section", { className: 'flex items-center my-3' },
-            react_1["default"].createElement("label", { className: "flex flex-col justify-center items-center w-full h-10 bg-[#F1F3FF] border-2 border-gray-300  cursor-pointer dark:hover:bg-bray-800 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 " },
-                react_1["default"].createElement("div", { className: "flex flex-col justify-center items-start" },
-                    react_1["default"].createElement("p", { className: "text-left" }, "Select an audio file")),
-                react_1["default"].createElement(Input_1["default"], { type: "file", name: '', className: "hidden w-full", required: true, value: "" })),
-            react_1["default"].createElement("div", null,
-                react_1["default"].createElement(Button_1["default"], { type: 'submit', className: 'rounded-none bg-[#516CF5]' }, "Add Audio")))));
+    return (React.createElement("div", null,
+        React.createElement("section", { className: 'flex items-center my-3' },
+            React.createElement("label", { className: "flex flex-col justify-center items-center w-full h-10 bg-[#F1F3FF] border-2 border-gray-300  cursor-pointer dark:hover:bg-bray-800 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 " },
+                React.createElement("div", { className: "flex flex-col justify-center items-start" },
+                    React.createElement("p", { className: "text-left" }, "Select an audio file")),
+                React.createElement(Input_1["default"], { type: "file", name: '', className: "hidden w-full", required: true, value: "" })),
+            React.createElement("div", null,
+                React.createElement(Button_1["default"], { type: 'submit', className: 'rounded-none bg-[#516CF5]' }, "Add Audio")))));
 };
 exports["default"] = FileUpload;

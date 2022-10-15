@@ -1,7 +1,6 @@
-import React from 'react'
 import Table from '../../components/Table/Table'
+import { useGetVouchersUsersQuery } from '../../features/vouchers/VouchersApiSlice'
 import ValidVoucherIcon from './ValidVoucherIcon'
-
 
 
 const customerTableHead = [
@@ -9,24 +8,22 @@ const customerTableHead = [
     'GENERATED ON',
     'EXPIRY DATE',
     'Status',
-
 ]
 
 const renderHead = (item: any, index: number) => <th key={index}>{item}</th>
 
 const renderBody = (item: any, index: number) => (
-    <tr key={index}>
-        <td>{item.id}</td>
-        <td>{item.name}</td>
-        <td>{item.email}</td>
-        <td>{item.phone}</td>
-        <td>{item.total_orders}</td>
-        <td>{item.total_spend}</td>
-        <td>{item.location}</td>
+    <tr key={item?._id}>
+        <td>{item?.title}</td>
+        <td>{item?.createdAt}</td>
+        <td>{item?.createdBy}</td>
+        <td>{item?.status}</td>
     </tr>
 )
 
 const VoucherDetails = () => {
+    const {data, isLoading, isFetching} = useGetVouchersUsersQuery({})
+
     return (
         <>
             <div className="grid lg:grid-cols-7 bg-[#FCFCFF] lg:gap-x-10">
@@ -35,8 +32,10 @@ const VoucherDetails = () => {
                         limit={10}
                         headData={customerTableHead}
                         renderHead={(item: any, index: number) => renderHead(item, index)}
-                        bodyData={[]}
+                        bodyData={isLoading ? []  : data?.docs}
                         renderBody={(item: any, index: number) => renderBody(item, index)}
+                        {...{ isLoading }}
+                        {...{ isFetching }}
                     />
                 </div>
 

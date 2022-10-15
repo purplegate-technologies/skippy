@@ -36,7 +36,7 @@ const VideoPlayer: React.FC<IVideoPlayerProps> = ({ options, className, onReady 
       ...options,
       // onReady && onReady(player);
     }).ready(function () {
-      // console.log('onPlayerReady', this);
+      
     });
     return () => {
       if (player.current) {

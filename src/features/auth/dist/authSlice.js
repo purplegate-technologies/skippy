@@ -13,7 +13,6 @@ exports.authSlice = toolkit_1.createSlice({
     reducers: {
         setUserDetail: function (state, _a) {
             var payload = _a.payload;
-            console.log(payload, "user details");
             state.user = {
                 firstName: payload.firstName,
                 lastName: payload.lastName,

@@ -64,7 +64,8 @@ const Settings = () => {
         outlineWidth: 1,
         outlineColor: "transparent",
         outlineStyle: "solid",
-        marginBottom: "8px"
+        marginBottom: "0.75rem",
+        marginTop: '0.75rem'
 
     }
 
@@ -119,30 +120,29 @@ const Settings = () => {
                             // }}
                             /> */}
 
-                            <label htmlFor="" className="text-xs text-[#516CF5]">
-                                {("ROLE")}
-                            </label>
-
+                            <label htmlFor="" className="text-xs text-[#516CF5]">ROLE</label>
 
                             <select
-                            placeholder="Select Role"
-                            defaultValue={type}
-                            style={selectSTyle}
-                            required
-                            name={type}
-                            onChange={(e) => {
-                                const select = e.target as HTMLSelectElement
-                                setRoles(select.options.item(select.selectedIndex)?.innerText!)
-                            }}
+                                placeholder="Select Role"
+                                defaultValue={type}
+                                style={selectSTyle}
+                                required
+                                name={type}
+                                onChange={(e) => {
+                                    const select = e.target as HTMLSelectElement
+                                    setRoles(select.options.item(select.selectedIndex)?.innerText!)
+                                }}
                             >
-                            {options.map(option => (
-                                <option
-                                    disabled={option.disabled}
-                                    key={option.value}
-                                    value={option.value}
-                                >
-                                    {option.text}
-                                </option>
+                                {options.map(option => (
+                                    <option
+                                        disabled={option.disabled}
+                                        key={option.value}
+                                        value={option.value}
+                                    >
+                                        <div   className="bg-[#516CF5] py-4" >
+                                        {option.text}
+                                        </div>
+                                    </option>
                                 ))}
                             </select>
                             {/* <Select

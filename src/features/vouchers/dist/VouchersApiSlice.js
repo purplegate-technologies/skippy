@@ -11,7 +11,7 @@ var __rest = (this && this.__rest) || function (s, e) {
     return t;
 };
 exports.__esModule = true;
-exports.useUpdateVoucherMutation = exports.useDeleteVoucherMutation = exports.useGetVoucherByIdQuery = exports.useGetVouchersQuery = exports.useCreateVouchersMutation = exports.VouchersApiSlice = void 0;
+exports.useGetVouchersUsersQuery = exports.useUpdateVoucherMutation = exports.useDeleteVoucherMutation = exports.useGetVoucherByIdQuery = exports.useGetVouchersQuery = exports.useCreateVouchersMutation = exports.VouchersApiSlice = void 0;
 var apiSlice_1 = require("../../services/api/apiSlice");
 exports.VouchersApiSlice = apiSlice_1.apiSlice.injectEndpoints({
     endpoints: function (builder) { return ({
@@ -27,6 +27,12 @@ exports.VouchersApiSlice = apiSlice_1.apiSlice.injectEndpoints({
         }),
         getVouchers: builder.query({
             query: function () { return "vouchers"; },
+            // Pick out data and prevent nested properties in a hook or selector
+            transformResponse: function (response) { return response.data; },
+            providesTags: ['Vouchers']
+        }),
+        getVouchersUsers: builder.query({
+            query: function () { return "vouchers/users"; },
             // Pick out data and prevent nested properties in a hook or selector
             transformResponse: function (response) { return response.data; },
             providesTags: ['Vouchers']
@@ -61,4 +67,4 @@ exports.VouchersApiSlice = apiSlice_1.apiSlice.injectEndpoints({
         })
     }); }
 });
-exports.useCreateVouchersMutation = exports.VouchersApiSlice.useCreateVouchersMutation, exports.useGetVouchersQuery = exports.VouchersApiSlice.useGetVouchersQuery, exports.useGetVoucherByIdQuery = exports.VouchersApiSlice.useGetVoucherByIdQuery, exports.useDeleteVoucherMutation = exports.VouchersApiSlice.useDeleteVoucherMutation, exports.useUpdateVoucherMutation = exports.VouchersApiSlice.useUpdateVoucherMutation;
+exports.useCreateVouchersMutation = exports.VouchersApiSlice.useCreateVouchersMutation, exports.useGetVouchersQuery = exports.VouchersApiSlice.useGetVouchersQuery, exports.useGetVoucherByIdQuery = exports.VouchersApiSlice.useGetVoucherByIdQuery, exports.useDeleteVoucherMutation = exports.VouchersApiSlice.useDeleteVoucherMutation, exports.useUpdateVoucherMutation = exports.VouchersApiSlice.useUpdateVoucherMutation, exports.useGetVouchersUsersQuery = exports.VouchersApiSlice.useGetVouchersUsersQuery;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import CompanyLogo from '../../assets/svg/CompanyLogo';
 import Button from '../../components/button/Button';
@@ -46,11 +46,6 @@ const CreateAderts = () => {
     setSelectedOption(val)
   }
 
-
-  // const onFinish = (e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
-
-
-
   const setField = (field: any, value: any) => {
     setFormValue({
       ...formValues,
@@ -61,17 +56,12 @@ const CreateAderts = () => {
 
   const [tabIndex, setTabIndex] = useState<string>("Scene")
   const [tabIndexText, setTabIndexText] = useState<string>("Add")
-  // const [roles, setRoles] = useState("Finances and billing")
-  // create Adverts
+
   const [createAdvert] = useCreateAdvertMutation()
 
   const [deleteAdvert] = useDeleteAdvertMutation()
 
   const [updateAdvert] = useUpdateAdvertMutation()
-
-
-  // const { data } = useGetStreamAdminQuery({})
-  // console.log(data, 'data useGetStreamAdminQuery')
 
   const handleDelete = async (id: any) => {
     await deleteAdvert(id)
@@ -83,7 +73,6 @@ const CreateAderts = () => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("files", e.target.files[0]);
-    console.log(e.target.files[0])
     setField("file", e.target.files[0].name)
   }
 
@@ -121,7 +110,6 @@ const CreateAderts = () => {
     } catch (e: any) {
       toast.error(e)
     }
-
   };
 
   const navigate = useNavigate();
@@ -130,7 +118,6 @@ const CreateAderts = () => {
       <form onSubmit={onFinish}>
         <div className='flex'>
           <div className="sidebar__logo">
-            {/* <img src={""} alt="company logo" /> */}
             <Link to="/"><CompanyLogo /></Link>
             <Link to="/" style={{ textDecoration: 'none', color: 'black', marginLeft: '8px' }}>Admin@skippy.com</Link>
             <div className='h-10' />
@@ -156,7 +143,6 @@ const CreateAderts = () => {
 
               <div>
                 <Button className='rounded-none bg-[#516CF5]'
-                  // onClick={handleSubmission}
                   onClick={handleUploadCover}
                 >Add Audio</Button>
               </div>
@@ -324,17 +310,7 @@ const CreateAderts = () => {
                           onChange={handleChangeSeelect}
                           options={options}
                           className="w-full my-2"
-                        // components={{ DropdownIndicator:() => null, IndicatorSeparator:() => null }}
-                        // styles={{
-                        // indicatorSeparator: defaultStyles => ({
-                        //   ...defaultStyles,
-                        //   '& svg': { display: 'none' }
-                        // }), // removes the "stick"
-                        // dropdownIndicator: defaultStyles => ({
-                        //   ...defaultStyles,
-                        //   '& svg': { display: 'none' }
-                        // })
-                        // }}
+
                         />
 
                       </div>

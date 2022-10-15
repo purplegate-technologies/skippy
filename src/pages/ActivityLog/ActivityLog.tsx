@@ -11,8 +11,7 @@ const ActivityLog = () => {
   const id = useParams()
   const navigate = useNavigate()
 
-  const {data} = useGetAppUserQuery(id)
-  console.log(data?.data?.docs, "datadata")
+  const {data, isFetching, isLoading} = useGetAppUserQuery(id)
 
   const customerTableHead = [
     'User',
@@ -54,6 +53,8 @@ const ActivityLog = () => {
                   renderHead={(item: any, index: number) => renderHead(item, index)}
                   bodyData={[]}
                   renderBody={(item: any, index: number) => renderBody(item, index)}
+                  {...{isFetching}}
+                  {...{isLoading}}
                 />
               </div>
             </div>

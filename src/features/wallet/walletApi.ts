@@ -22,5 +22,7 @@ export const walletApiSlice = apiSlice.injectEndpoints({
 })
 
 export const {
-    useGetWalletQuery
+    useGetWalletQuery,
+    useGetWalletHistoryQuery,
+    useGetRedeemPointsQuery
 } = walletApiSlice

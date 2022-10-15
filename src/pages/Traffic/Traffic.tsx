@@ -25,7 +25,6 @@ const Traffic = () => {
   const [iconState, setIconState] = useState<string>("")
 
   const { data } = useGetTrafficStatsQuery()
-  // console.log(data?.data, "data data data")
 
   const [userData] = useState({
     labels: UserData.map((data) => data.day.toUpperCase()),
@@ -232,10 +231,6 @@ const Traffic = () => {
                     <p className='text-lg text-[#171837]'>75,000</p>
                   </div>
                 </div>
-
-                {/* <DoughnutChart className='flex items-center justify-center' /> */}
-                {/* <div className="h-36 flex items-start justify-center"> */}
-
 
 
                 <CircularProgressbar value={100} text="70%" strokeWidth={10} className="w-[150px] h-[150px] mb-5 justify-self-center flex-1"

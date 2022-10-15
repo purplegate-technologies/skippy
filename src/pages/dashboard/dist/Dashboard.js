@@ -2,18 +2,17 @@
 exports.__esModule = true;
 /* eslint-disable no-labels */
 require("./dashboard.css");
-var LinearGradientChart_1 = require("../../components/charts/LinearGradientChart");
 var react_1 = require("react");
 var data_1 = require("../../assets/data/data");
-var BarChart_1 = require("../../components/charts/BarChart");
-var statsApis_1 = require("../../features/stats/statsApis");
 var ThreeVdots_1 = require("../../assets/svg/ThreeVdots");
+var BarChart_1 = require("../../components/charts/BarChart");
 var StatusCardIcon_1 = require("../../assets/svg/StatusCardIcon");
+var statsApis_1 = require("../../features/stats/statsApis");
+var LinearGradientChart_1 = require("../../components/charts/LinearGradientChart");
 var Dashboard = function () {
     var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r, _s, _t, _u, _v, _w, _x, _y, _z, _0, _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11, _12, _13, _14, _15, _16, _17, _18, _19;
     var data = statsApis_1.useGetDashboardStatsQuery().data;
     var _20 = react_1.useState(""), iconState = _20[0], setIconState = _20[1];
-    // console.log(data, "data dashboard")
     var lineData = react_1.useState({
         // labels: Object.values(data?.data).map((data) => data.month.toUpperCase()),
         labels: data_1.datasetDash.map(function (data) { return data.month.toUpperCase(); }),

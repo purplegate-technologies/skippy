@@ -12,8 +12,6 @@ const ManageUsers = () => {
   const [tabIndex, setTabIndex] = useState<string>("Administrators")
   const { data } = useGetUserStatsQuery()
 
-  console.log(data, "useGetUserStatsQuery")
-
   return (
     <div>
       <div>
@@ -102,7 +100,6 @@ const ManageUsers = () => {
           <AppUsers />
         </>)}
       </div>
-      {/* /////// */}
     </div>
   )
 }

@@ -1,6 +1,16 @@
 "use strict";
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 exports.__esModule = true;
-var react_1 = require("react");
 var CreateAdsPlus_1 = require("../../assets/svg/CreateAdsPlus");
 var CategoryFilter_1 = require("../../components/CategoryFilter/CategoryFilter");
 var SearchBar_1 = require("../../components/support/SearchBar");
@@ -15,30 +25,27 @@ var customerTableHead = [
     'Status',
     'Action',
 ];
-var renderHead = function (item, index) { return react_1["default"].createElement("th", { key: index }, item); };
-var renderBody = function (item, index) { return (react_1["default"].createElement("tr", { key: index },
-    react_1["default"].createElement("td", null, item === null || item === void 0 ? void 0 : item.appId),
-    react_1["default"].createElement("td", null, item.name),
-    react_1["default"].createElement("td", null, item === null || item === void 0 ? void 0 : item.createdAt),
-    react_1["default"].createElement("td", null, item === null || item === void 0 ? void 0 : item.updatedAt),
-    react_1["default"].createElement("td", null, item === null || item === void 0 ? void 0 : item.status),
-    react_1["default"].createElement("td", null,
-        react_1["default"].createElement(react_router_dom_1.Link, { to: "/manage-users/" + (item === null || item === void 0 ? void 0 : item._id), className: 'underline text-blue-600' }, "View Details")))); };
+var renderHead = function (item, index) { return React.createElement("th", { key: index }, item); };
+var renderBody = function (item, index) { return (React.createElement("tr", { key: index },
+    React.createElement("td", null, item === null || item === void 0 ? void 0 : item.appId),
+    React.createElement("td", null, item.name),
+    React.createElement("td", null, item === null || item === void 0 ? void 0 : item.createdAt),
+    React.createElement("td", null, item === null || item === void 0 ? void 0 : item.updatedAt),
+    React.createElement("td", null, item === null || item === void 0 ? void 0 : item.status),
+    React.createElement("td", null,
+        React.createElement(react_router_dom_1.Link, { to: "/activity-overview/" + (item === null || item === void 0 ? void 0 : item._id), className: 'underline text-blue-600 whitespace-nowrap' }, "View Details")))); };
 var AppUsers = function () {
-    var _a, _b;
+    var _a;
     var navigate = react_router_dom_1.useNavigate();
-    var _c = User_ManagementApiSlcie_1.useGetAppUsersQuery(), data = _c.data, isFetching = _c.isFetching, isLoading = _c.isLoading;
-    console.log((_a = data === null || data === void 0 ? void 0 : data.data) === null || _a === void 0 ? void 0 : _a.docs, "App Users");
-    return (react_1["default"].createElement("div", null,
-        react_1["default"].createElement("div", { className: "card" },
-            react_1["default"].createElement(SearchBar_1["default"], { HeaderTitle: 'App Users', text: "Invite User", onClick: function () { return navigate('/invite-users'); }, prefixIcon: react_1["default"].createElement(CreateAdsPlus_1["default"], null) }),
-            react_1["default"].createElement(CategoryFilter_1["default"], null),
-            react_1["default"].createElement("div", { className: "row" },
-                react_1["default"].createElement("div", { className: "col-12" },
-                    react_1["default"].createElement("div", { className: "" },
-                        react_1["default"].createElement("div", { className: "card__body" },
-                            react_1["default"].createElement(Table_1["default"], { limit: 10, headData: customerTableHead, renderHead: function (item, index) { return renderHead(item, index); }, 
-                                // bodyData={advertlist}
-                                bodyData: isLoading ? [] : (_b = data === null || data === void 0 ? void 0 : data.data) === null || _b === void 0 ? void 0 : _b.docs, renderBody: function (item, index) { return renderBody(item, index); } }))))))));
+    var _b = User_ManagementApiSlcie_1.useGetAppUsersQuery(), data = _b.data, isFetching = _b.isFetching, isLoading = _b.isLoading;
+    return (React.createElement("div", null,
+        React.createElement("div", { className: "card" },
+            React.createElement(SearchBar_1["default"], { HeaderTitle: 'App Users', text: "Invite User", onClick: function () { return navigate('/invite-users'); }, prefixIcon: React.createElement(CreateAdsPlus_1["default"], null) }),
+            React.createElement(CategoryFilter_1["default"], null),
+            React.createElement("div", { className: "row" },
+                React.createElement("div", { className: "col-12" },
+                    React.createElement("div", { className: "" },
+                        React.createElement("div", { className: "card__body" },
+                            React.createElement(Table_1["default"], __assign({ limit: 10, headData: customerTableHead, renderHead: function (item, index) { return renderHead(item, index); }, bodyData: isLoading ? [] : (_a = data === null || data === void 0 ? void 0 : data.data) === null || _a === void 0 ? void 0 : _a.docs, renderBody: function (item, index) { return renderBody(item, index); } }, { isFetching: isFetching }, { isLoading: isLoading })))))))));
 };
 exports["default"] = AppUsers;

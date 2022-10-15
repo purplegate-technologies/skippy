@@ -68,8 +68,6 @@ var initialState = {
 var LogIn = function () {
     var _a = react_1.useState(initialState), formValue = _a[0], setFormValue = _a[1];
     var email = formValue.email, password = formValue.password;
-    // const userRef = useRef<any>()
-    // const errRef = useRef<any>()
     var _b = react_1.useState(""), errMsg = _b[0], setErrMsg = _b[1];
     var navigate = react_router_dom_1.useNavigate();
     var dispatch = hooks_1.useAppDispatch();

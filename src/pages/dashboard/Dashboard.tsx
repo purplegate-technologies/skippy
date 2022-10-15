@@ -1,20 +1,16 @@
 /* eslint-disable no-labels */
 import './dashboard.css'
-import LinearGradientChart from '../../components/charts/LinearGradientChart'
 import { useEffect, useState } from 'react'
 import { datasetDash } from '../../assets/data/data'
-import BarChart from '../../components/charts/BarChart'
-import { useGetDashboardStatsQuery } from '../../features/stats/statsApis'
 import ThreeVdots from '../../assets/svg/ThreeVdots'
+import BarChart from '../../components/charts/BarChart'
 import StatusCardIcon from '../../assets/svg/StatusCardIcon'
+import { useGetDashboardStatsQuery } from '../../features/stats/statsApis'
+import LinearGradientChart from '../../components/charts/LinearGradientChart'
 
 const Dashboard = () => {
     const { data } = useGetDashboardStatsQuery()
     const [iconState, setIconState] = useState<string>("")
-
-
-    // console.log(data, "data dashboard")
-
 
     const [lineData] = useState({
         // labels: Object.values(data?.data).map((data) => data.month.toUpperCase()),

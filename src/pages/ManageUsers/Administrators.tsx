@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import {useState, useEffect} from 'react'
 import CreateAdsPlus from '../../assets/svg/CreateAdsPlus'
 import SearchBar from '../../components/support/SearchBar'
 import Table from '../../components/Table/Table'
@@ -121,7 +121,7 @@ const Administrators = () => {
                      limit={10}
                       headData={customerTableHead}
                       renderHead={(item: any, index: number) => renderHead(item, index)}
-                      bodyData={[]}
+                      bodyData={advertlist}
                       renderBody={(item: any, index: number) => renderBody(item, index)}
                 />
 

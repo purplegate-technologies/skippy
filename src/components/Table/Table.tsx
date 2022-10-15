@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import ReactPaginate from 'react-paginate';
-import Row from '../Pagination/Row/Row';
+// import Row from '../Pagination/Row/Row';
 import './table.css'
 
 interface Props<T = any> {
@@ -63,20 +63,21 @@ const Table = ({ limit, renderHead, bodyData, headData, renderBody, isFetching, 
                             </thead>
                         ) : null
                     }
-                    {isLoading && (
+                    {isLoading ? (
                         <tbody className=''>
                             <tr>
                                 <td className='text-center w-full p-5 text-2l font-bold'>Loading Data...</td>
                             </tr>
                         </tbody>
-                    )}
-
-                    {isFetching ? <td className='text-center w-full p-5 text-2l font-bold'>Fetching Data</td> : <>
+                    )
+                :
+               ( <>
+                   {isFetching ? <td className='text-center w-full p-5 text-2l font-bold'>Fetching Data</td> :
+                        <>
                         {
-                            currentItems && (currentItems.length <= 0 || !undefined) ? (
+                            currentItems && (currentItems.length > 0 || currentItems !== undefined  || !null) ? (
                                 <tbody>
                                     {
-                                        // dataShow?.map((item: any, index: number) => renderBody(item, index))
                                         currentItems?.map((item: any, index: number) => renderBody(item, index))
                                     }
                                 </tbody>
@@ -88,7 +89,9 @@ const Table = ({ limit, renderHead, bodyData, headData, renderBody, isFetching, 
                                 </tbody>
                             )
                         }
-                    </>}
+                        </>}
+               </>)}
+
                 </table>
             </div>
 

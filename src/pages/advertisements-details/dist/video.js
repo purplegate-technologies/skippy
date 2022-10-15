@@ -32,7 +32,6 @@ var VideoPlayer = function (_a) {
     React.useEffect(function () {
         // player.current?.cancelFullScreen()
         player.current = video_js_1["default"](videoNode.current, __assign(__assign({}, initialOptions), options)).ready(function () {
-            // console.log('onPlayerReady', this);
         });
         return function () {
             if (player.current) {

@@ -53,7 +53,7 @@ function App() {
             <Route path="activity-log" element={<ActivityLog />} />
             <Route path="manage-users/:id" element={<ActivityLog />} />
             <Route path="user-details" element={<UserDetails />} />
-            <Route path="activity-overview" element={<ActivityOverview />} />
+            <Route path="activity-overview/:id" element={<ActivityOverview />} />
             <Route path="settings" element={<Settings />} />
           </Route>
         </Route>

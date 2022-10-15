@@ -2,6 +2,7 @@
 exports.__esModule = true;
 var react_1 = require("react");
 var react_paginate_1 = require("react-paginate");
+// import Row from '../Pagination/Row/Row';
 require("./table.css");
 var Table = function (_a) {
     var limit = _a.limit, renderHead = _a.renderHead, bodyData = _a.bodyData, headData = _a.headData, renderBody = _a.renderBody, isFetching = _a.isFetching, isLoading = _a.isLoading;
@@ -34,18 +35,14 @@ var Table = function (_a) {
             React.createElement("table", null,
                 headData && renderHead ? (React.createElement("thead", null,
                     React.createElement("tr", null, headData.map(function (item, index) { return renderHead(item, index); })))) : null,
-                isLoading && (React.createElement("tbody", { className: '' },
+                isLoading ? (React.createElement("tbody", { className: '' },
                     React.createElement("tr", null,
-                        React.createElement("td", { className: 'text-center w-full p-5 text-2l font-bold' }, "Loading Data...")))),
-                isFetching ? React.createElement("td", { className: 'text-center w-full p-5 text-2l font-bold' }, "Fetching Data") : React.createElement(React.Fragment, null, currentItems && (currentItems.length <= 0 || !undefined) ? (React.createElement("tbody", null, 
-                // dataShow?.map((item: any, index: number) => renderBody(item, index))
-                currentItems === null || 
-                // dataShow?.map((item: any, index: number) => renderBody(item, index))
-                currentItems === void 0 ? void 0 : 
-                // dataShow?.map((item: any, index: number) => renderBody(item, index))
-                currentItems.map(function (item, index) { return renderBody(item, index); }))) : (React.createElement("tbody", { className: '' },
-                    React.createElement("tr", null,
-                        React.createElement("td", { className: 'text-center w-full p-5 text-2l font-bold' }, "No Data"))))))),
+                        React.createElement("td", { className: 'text-center w-full p-5 text-2l font-bold' }, "Loading Data..."))))
+                    :
+                        (React.createElement(React.Fragment, null, isFetching ? React.createElement("td", { className: 'text-center w-full p-5 text-2l font-bold' }, "Fetching Data") :
+                            React.createElement(React.Fragment, null, currentItems && (currentItems.length > 0 || currentItems !== undefined || !null) ? (React.createElement("tbody", null, currentItems === null || currentItems === void 0 ? void 0 : currentItems.map(function (item, index) { return renderBody(item, index); }))) : (React.createElement("tbody", { className: '' },
+                                React.createElement("tr", null,
+                                    React.createElement("td", { className: 'text-center w-full p-5 text-2l font-bold' }, "No Data"))))))))),
         React.createElement("div", { className: 'footerPagination' },
             React.createElement("div", { style: { display: 'flex', alignItems: 'center' } },
                 React.createElement("select", { value: itemsPerPage, className: 'tableSelectDropDown', onChange: function (e) { setItemsPerPage(e.target.value); } },

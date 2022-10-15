@@ -5,14 +5,6 @@ import { authApi } from '../services/authApis';
 import { apiSlice } from '../services/api/apiSlice';
 import authReducer from "../features/auth/authSlice"
 
-// const persistConfig = {
-//   key: "root",
-//   version: 1,
-//   storage,
-//   whitelist: ["auth"],
-// };
-// const persistedReducer = persistReducer(persistConfig, rootReducer);
-
 export const store = configureStore({
   reducer: {
     counter: counterReducer,

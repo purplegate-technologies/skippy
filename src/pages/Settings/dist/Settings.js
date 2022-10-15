@@ -84,7 +84,8 @@ var Settings = function () {
         outlineWidth: 1,
         outlineColor: "transparent",
         outlineStyle: "solid",
-        marginBottom: "8px"
+        marginBottom: "0.75rem",
+        marginTop: '0.75rem'
     };
     var navigate = react_router_dom_1.useNavigate();
     var HandleSubmit = function (e) { return __awaiter(void 0, void 0, void 0, function () {
@@ -125,12 +126,15 @@ var Settings = function () {
                     React.createElement(react_router_dom_1.Link, { to: "", onClick: function () { return navigate(-1); }, className: "text-[#516CF5]" }, "< < Back")),
                 React.createElement("div", { className: "card-settings" },
                     React.createElement("div", { className: "contactUs-form-lable" },
-                        React.createElement("label", { htmlFor: "", className: "text-xs text-[#516CF5]" }, ("ROLE")),
+                        React.createElement("label", { htmlFor: "", className: "text-xs text-[#516CF5]" }, "ROLE"),
                         React.createElement("select", { placeholder: "Select Role", defaultValue: type, style: selectSTyle, required: true, name: type, onChange: function (e) {
                                 var _a;
                                 var select = e.target;
                                 setRoles((_a = select.options.item(select.selectedIndex)) === null || _a === void 0 ? void 0 : _a.innerText);
-                            } }, options.map(function (option) { return (React.createElement("option", { disabled: option.disabled, key: option.value, value: option.value }, option.text)); }))),
+                            } }, options.map(function (option) { return (React.createElement("option", { 
+                            // className="bg-[#] py-4"
+                            disabled: option.disabled, key: option.value, value: option.value },
+                            React.createElement("div", { className: "bg-[#516CF5] py-4" }, option.text))); }))),
                     React.createElement("div", { className: "grid md:grid-cols-2 gap-x-4 " },
                         React.createElement(Input_1["default"], { labelStyle: "", divStyle: "lable w-full", className: "border-[#949AB1] border-1 rounded p-2 my-3 w-full", label: ("FIRST NAME"), name: "Firstname", placeholder: ("First Name"), value: firstName, onChange: function (e) { return setFirstName(e.target.value); } }),
                         React.createElement(Input_1["default"], { divStyle: "contactUs-form-lable", className: "border-[#949AB1] border-1 rounded p-2 my-3 w-full", label: ("SURNAME"), name: "surname", placeholder: ("Surname"), value: lastName, onChange: function (e) { return setLastName(e.target.value); } })),

@@ -3,6 +3,8 @@ import React from 'react'
 import Table from '../../components/Table/Table'
 import { CircularProgressbar } from "react-circular-progressbar"
 import 'react-circular-progressbar/dist/styles.css';
+import { useGetWalletHistoryQuery } from '../../features/wallet/walletApi';
+
 
 const customerTableHead = [
     'Advert',
@@ -25,6 +27,9 @@ const renderBody = (item: any, index: number) => (
 )
 
 const EarningHistory = () => {
+
+    // const {data} = useGetWalletHistoryQuery({})
+
     return (
         <>
             <div className="grid lg:grid-cols-7 lg:gqp-10 bg-[#FCFCFF] lg:space-x-5">

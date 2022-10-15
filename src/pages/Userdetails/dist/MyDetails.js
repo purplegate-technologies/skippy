@@ -60,11 +60,6 @@ var MyDetails = function () {
         confirmPassword: ''
     };
     var _a = react_1.useState(initialValues), formValues = _a[0], setFormValues = _a[1];
-    // const [firstName, setFirstName] = useState("")
-    // const [surname, setLastName] = useState("")
-    // const [email, setEmail] = useState("")
-    // const [phoneNumber, setPhoneNumber] = useState("")
-    // const [roles, setRoles] = useState("Finances and billing")
     var firstName = formValues.firstName, lastName = formValues.lastName, email = formValues.email, phoneNumber = formValues.phoneNumber, confirmPassword = formValues.confirmPassword, password = formValues.password;
     var handleChange = function (e) {
         var _a;
@@ -73,45 +68,20 @@ var MyDetails = function () {
     var handleSubmit = function (e) { return __awaiter(void 0, void 0, void 0, function () {
         return __generator(this, function (_a) {
             e.preventDefault();
-            console.log(formValues);
             return [2 /*return*/];
         });
     }); };
     return (react_1["default"].createElement("div", { className: "max-w-3xl" },
         react_1["default"].createElement("form", { onSubmit: handleSubmit, className: "card -mb-5" },
             react_1["default"].createElement("div", { className: "grid md:grid-cols-2 gap-x-4 " },
-                react_1["default"].createElement(Input_1["default"]
-                // divStyle="w-[19rem]contactUs-form-lable"
-                , { 
-                    // divStyle="w-[19rem]contactUs-form-lable"
-                    labelStyle: "", divStyle: "lable w-full", className: "border-[#949AB1] border-1 rounded p-2 my-3 w-full", label: "FIRST NAME", name: "firstName", placeholder: "First Name", value: firstName, onChange: handleChange }),
-                react_1["default"].createElement(Input_1["default"]
-                // divStyle="w-[19rem]contactUs-form-lable"
-                , { 
-                    // divStyle="w-[19rem]contactUs-form-lable"
-                    divStyle: "contactUs-form-lable", className: "border-[#949AB1] border-1 rounded p-2 my-3 w-full", label: "SURNAME", name: "lastName", placeholder: "SURNAME", value: lastName, onChange: handleChange })),
+                react_1["default"].createElement(Input_1["default"], { labelStyle: "", divStyle: "lable w-full", className: "border-[#949AB1] border-1 rounded p-2 my-3 w-full", label: "FIRST NAME", name: "firstName", placeholder: "First Name", value: firstName, onChange: handleChange }),
+                react_1["default"].createElement(Input_1["default"], { divStyle: "contactUs-form-lable", className: "border-[#949AB1] border-1 rounded p-2 my-3 w-full", label: "SURNAME", name: "lastName", placeholder: "SURNAME", value: lastName, onChange: handleChange })),
             react_1["default"].createElement("div", { className: "grid md:grid-cols-2 gap-x-4" },
-                react_1["default"].createElement(Input_1["default"]
-                // divStyle="w-[19rem]contactUs-form-lable"
-                , { 
-                    // divStyle="w-[19rem]contactUs-form-lable"
-                    divStyle: "contactUs-form-lable", className: "border-[#949AB1] border-1 rounded p-2 my-3 w-full", label: "EMAIL", name: "email", placeholder: "admin@skippy.com", type: "email", value: email, onChange: handleChange }),
-                react_1["default"].createElement(Input_1["default"]
-                // divStyle="w-[19rem]contactUs-form-lable"
-                , { 
-                    // divStyle="w-[19rem]contactUs-form-lable"
-                    divStyle: "contactUs-form-lable", className: "border-[#949AB1] border-1 rounded p-2 my-3 w-full", label: "MOBILE NUMBER", name: "phoneNumber", placeholder: "09039278115", type: "tel", value: phoneNumber, onChange: handleChange })),
+                react_1["default"].createElement(Input_1["default"], { divStyle: "contactUs-form-lable", className: "border-[#949AB1] border-1 rounded p-2 my-3 w-full", label: "EMAIL", name: "email", placeholder: "admin@skippy.com", type: "email", value: email, onChange: handleChange }),
+                react_1["default"].createElement(Input_1["default"], { divStyle: "contactUs-form-lable", className: "border-[#949AB1] border-1 rounded p-2 my-3 w-full", label: "MOBILE NUMBER", name: "phoneNumber", placeholder: "09039278115", type: "tel", value: phoneNumber, onChange: handleChange })),
             react_1["default"].createElement("div", { className: "grid md:grid-cols-2 gap-x-4" },
-                react_1["default"].createElement(Input_1["default"]
-                // divStyle="w-[19rem]contactUs-form-lable"
-                , { 
-                    // divStyle="w-[19rem]contactUs-form-lable"
-                    divStyle: "contactUs-form-lable", className: "border-[#949AB1] border-1 rounded p-2 my-3 w-full", label: "PASSWORD", name: "password", placeholder: "Password", type: "password", value: password, onChange: handleChange }),
-                react_1["default"].createElement(Input_1["default"]
-                // divStyle="w-[19rem]contactUs-form-lable"
-                , { 
-                    // divStyle="w-[19rem]contactUs-form-lable"
-                    divStyle: "contactUs-form-lable", className: "border-[#949AB1] border-1 rounded p-2 my-3 w-full", label: "cONFRIM PASSWORD", name: "confirmPassword", placeholder: "Confrim Password", type: "password", value: confirmPassword, onChange: handleChange })),
+                react_1["default"].createElement(Input_1["default"], { divStyle: "contactUs-form-lable", className: "border-[#949AB1] border-1 rounded p-2 my-3 w-full", label: "PASSWORD", name: "password", placeholder: "Password", type: "password", value: password, onChange: handleChange }),
+                react_1["default"].createElement(Input_1["default"], { divStyle: "contactUs-form-lable", className: "border-[#949AB1] border-1 rounded p-2 my-3 w-full", label: "cONFRIM PASSWORD", name: "confirmPassword", placeholder: "Confrim Password", type: "password", value: confirmPassword, onChange: handleChange })),
             react_1["default"].createElement(Button_1["default"], { className: "mt-[2.5rem] mb-[2.36rem] capitalize bg-[#516CF5] ", text: "Save Changes", type: "submit" }))));
 };
 exports["default"] = MyDetails;

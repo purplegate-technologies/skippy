@@ -15,8 +15,7 @@ const CircularBar = () => {
             circumference - (fakeUploadPercentage[i] / 100) * circumference;
         loading.innerHTML = fakeUploadPercentage[i] + "%";
         i++;
-        console.log(i);
-        if (i == fakeUploadPercentage.length) {
+        if (i === fakeUploadPercentage.length) {
             clearInterval(interval);
             loading.innerHTML = "Ok :)";
         }

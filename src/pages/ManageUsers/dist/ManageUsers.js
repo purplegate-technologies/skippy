@@ -11,7 +11,6 @@ var ManageUsers = function () {
     var _9 = react_1.useState(""), iconState = _9[0], setIconState = _9[1];
     var _10 = react_1.useState("Administrators"), tabIndex = _10[0], setTabIndex = _10[1];
     var data = statsApis_1.useGetUserStatsQuery().data;
-    console.log(data, "useGetUserStatsQuery");
     return (React.createElement("div", null,
         React.createElement("div", null,
             React.createElement("h4", { className: 'cardHead font-semibold' }, "Overview"),

@@ -2,7 +2,7 @@ import './login.css'
 import CompanyLogo from "../../assets/svg/CompanyLogo"
 import { Link, useNavigate } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from '../../app/hooks'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { selectCurrentToken, setUser} from '../../features/auth/authSlice'
 import { toast } from 'react-toastify';
 import Button from '../../components/button/Button'
@@ -30,15 +30,12 @@ const LogIn = () => {
   const [formValue, setFormValue] = useState<initialStateType>(initialState)
   const { email, password, } = formValue
 
-  // const userRef = useRef<any>()
-  // const errRef = useRef<any>()
   const [errMsg, setErrMsg] = useState("")
 
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
 
   const  tokenForUser  = useAppSelector(selectCurrentToken)
-
 
   const [loginUser,
     {
