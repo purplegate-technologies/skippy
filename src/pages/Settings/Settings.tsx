@@ -57,7 +57,6 @@ const Settings = () => {
         borderWidth: "2px",
         borderOpacity: 1,
         borderColor: "#949AB1",
-        // --tw-bg-opacity: 1,
         backgroundColor: "white",
         padding: "0.5rem",
         outlineOffset: "2px",

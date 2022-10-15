@@ -77,7 +77,6 @@ var Settings = function () {
         borderWidth: "2px",
         borderOpacity: 1,
         borderColor: "#949AB1",
-        // --tw-bg-opacity: 1,
         backgroundColor: "white",
         padding: "0.5rem",
         outlineOffset: "2px",
@@ -131,9 +130,7 @@ var Settings = function () {
                                 var _a;
                                 var select = e.target;
                                 setRoles((_a = select.options.item(select.selectedIndex)) === null || _a === void 0 ? void 0 : _a.innerText);
-                            } }, options.map(function (option) { return (React.createElement("option", { 
-                            // className="bg-[#] py-4"
-                            disabled: option.disabled, key: option.value, value: option.value },
+                            } }, options.map(function (option) { return (React.createElement("option", { disabled: option.disabled, key: option.value, value: option.value },
                             React.createElement("div", { className: "bg-[#516CF5] py-4" }, option.text))); }))),
                     React.createElement("div", { className: "grid md:grid-cols-2 gap-x-4 " },
                         React.createElement(Input_1["default"], { labelStyle: "", divStyle: "lable w-full", className: "border-[#949AB1] border-1 rounded p-2 my-3 w-full", label: ("FIRST NAME"), name: "Firstname", placeholder: ("First Name"), value: firstName, onChange: function (e) { return setFirstName(e.target.value); } }),

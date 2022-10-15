@@ -40,7 +40,7 @@ var Table = function (_a) {
                         React.createElement("td", { className: 'text-center w-full p-5 text-2l font-bold' }, "Loading Data..."))))
                     :
                         (React.createElement(React.Fragment, null, isFetching ? React.createElement("td", { className: 'text-center w-full p-5 text-2l font-bold' }, "Fetching Data") :
-                            React.createElement(React.Fragment, null, currentItems && (currentItems.length > 0 || currentItems !== undefined || !null) ? (React.createElement("tbody", null, currentItems === null || currentItems === void 0 ? void 0 : currentItems.map(function (item, index) { return renderBody(item, index); }))) : (React.createElement("tbody", { className: '' },
+                            React.createElement(React.Fragment, null, currentItems && (currentItems.length > 0 || currentItems !== undefined || !null) ? (React.createElement("tbody", { className: 'border border-[#F1F3FF]' }, currentItems === null || currentItems === void 0 ? void 0 : currentItems.map(function (item, index) { return renderBody(item, index); }))) : (React.createElement("tbody", { className: '' },
                                 React.createElement("tr", null,
                                     React.createElement("td", { className: 'text-center w-full p-5 text-2l font-bold' }, "No Data"))))))))),
         React.createElement("div", { className: 'footerPagination' },

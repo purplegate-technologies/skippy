@@ -10,7 +10,6 @@ table {
 }
 
 thead {
-  /* background-color: var(--second-bg); */
   background-color: var(--txt-pre);
   color: white;
 }
@@ -24,6 +23,7 @@ td {
   text-transform: capitalize;
   padding: 10px 10px;
   font-size: 0.8rem;
+  border-bottom: 1px solid #F1F3FF;
 }
 td {
   color: #464646;
@@ -31,8 +31,6 @@ td {
 
 tbody > tr:hover {
   background-color: #fff8f7;
-  /* background-color: #FFF8F7; */
-  /* color: var(--txt-white); */
 }
 
 .table__pagination {
@@ -40,7 +38,6 @@ tbody > tr:hover {
   width: 100%;
   justify-content: flex-end;
   align-items: center;
-  /* margin-top: 20px; */
 }
 
 .table__pagination-item ~ .table__pagination-item {

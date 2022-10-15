@@ -76,7 +76,7 @@ const Table = ({ limit, renderHead, bodyData, headData, renderBody, isFetching, 
                         <>
                         {
                             currentItems && (currentItems.length > 0 || currentItems !== undefined  || !null) ? (
-                                <tbody>
+                                <tbody className='border border-[#F1F3FF]'>
                                     {
                                         currentItems?.map((item: any, index: number) => renderBody(item, index))
                                     }
