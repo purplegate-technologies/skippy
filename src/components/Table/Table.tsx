@@ -64,33 +64,35 @@ const Table = ({ limit, renderHead, bodyData, headData, renderBody, isFetching, 
                         ) : null
                     }
                     {isLoading ? (
-                        <tbody className=''>
-                            <tr>
-                                <td className='text-center w-full p-5 text-2l font-bold'>Loading Data...</td>
-                            </tr>
-                        </tbody>
+                        <table>
+                            <tbody className=''>
+                                <tr>
+                                    <td className='text-center w-full p-5 text-2l font-bold'>Loading Data...</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     )
-                :
-               ( <>
-                   {isFetching ? <td className='text-center w-full p-5 text-2l font-bold'>Fetching Data</td> :
-                        <>
-                        {
-                            currentItems && (currentItems.length > 0 || currentItems !== undefined  || !null) ? (
-                                <tbody className='border border-[#F1F3FF]'>
+                        :
+                        (<>
+                            {isFetching ? <td className='text-center w-full p-5 text-2l font-bold'>Fetching Data</td> :
+                                <>
                                     {
-                                        currentItems?.map((item: any, index: number) => renderBody(item, index))
+                                        currentItems && (currentItems.length > 0 || currentItems !== undefined || !null) ? (
+                                            <tbody className='border border-[#F1F3FF]'>
+                                                {
+                                                    currentItems?.map((item: any, index: number) => renderBody(item, index))
+                                                }
+                                            </tbody>
+                                        ) : (
+                                            <tbody className=''>
+                                                <tr>
+                                                    <td className='text-center w-full p-5 text-2l font-bold'>No Data</td>
+                                                </tr>
+                                            </tbody>
+                                        )
                                     }
-                                </tbody>
-                            ) : (
-                                <tbody className=''>
-                                    <tr>
-                                        <td className='text-center w-full p-5 text-2l font-bold'>No Data</td>
-                                    </tr>
-                                </tbody>
-                            )
-                        }
-                        </>}
-               </>)}
+                                </>}
+                        </>)}
 
                 </table>
             </div>
