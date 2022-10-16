@@ -32,7 +32,7 @@ var renderBody = function (item, index) { return (React.createElement("tr", { ke
     React.createElement("td", null, item === null || item === void 0 ? void 0 : item.createdAt),
     React.createElement("td", null, item === null || item === void 0 ? void 0 : item.updatedAt),
     React.createElement("td", null,
-        React.createElement("span", { className: "py-2 px-4 " + ((item === null || item === void 0 ? void 0 : item.status) === 'active' ? 'bg-[#47EOAA] rounded-full' : 'bg-red-100 text-red-600 rounded-full') }, item === null || item === void 0 ? void 0 : item.status)),
+        React.createElement("span", { className: "py-1 px-4 " + ((item === null || item === void 0 ? void 0 : item.status) === 'active' ? 'bg-[#E5FBF3] rounded-full text-[#00D48A]' : 'bg-red-100 text-red-600 rounded-full') }, item === null || item === void 0 ? void 0 : item.status)),
     React.createElement("td", null,
         React.createElement(react_router_dom_1.Link, { to: "/activity-overview/" + (item === null || item === void 0 ? void 0 : item._id), className: 'underline text-blue-600 whitespace-nowrap' }, "View Details")))); };
 var AppUsers = function () {

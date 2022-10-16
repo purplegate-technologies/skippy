@@ -65,8 +65,8 @@ const Table = ({ limit, renderHead, bodyData, headData, renderBody, isFetching, 
                     }
                     {isLoading ? (
                             <tbody className=''>
-                                <tr>
-                                    <td className='text-center w-full p-5 text-2l font-bold'>Loading Data...</td>
+                                <tr className='text-center w-full p-5 text-2l font-bold'>
+                                    <td >Loading Data...</td>
                                 </tr>
                             </tbody>
                     )

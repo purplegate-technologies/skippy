@@ -16,13 +16,15 @@ const renderBody = (item: any, index: number) => (
     <tr key={item?._id}>
         <td>{item?.title}</td>
         <td>{item?.createdAt}</td>
-        <td>{item?.createdBy}</td>
+        <td>{item?.updatedAt}</td>
         <td ><span className={`py-1 px-4 ${item?.status === 'active' ? 'bg-[#E5FBF3] rounded-full text-[#00D48A]' : 'bg-red-100 text-red-600 rounded-full'}`}>{item?.status}</span></td>
     </tr>
 )
 
 const VoucherDetails = () => {
-    const {data, isLoading, isFetching} = useGetVouchersUsersQuery({})
+    const { data, isLoading, isFetching } = useGetVouchersUsersQuery({})
+
+    console.log(data, '----sjsjhs')
 
     return (
         <>

@@ -24,10 +24,12 @@ var renderHead = function (item, index) { return React.createElement("th", { key
 var renderBody = function (item, index) { return (React.createElement("tr", { key: item === null || item === void 0 ? void 0 : item._id },
     React.createElement("td", null, item === null || item === void 0 ? void 0 : item.title),
     React.createElement("td", null, item === null || item === void 0 ? void 0 : item.createdAt),
-    React.createElement("td", null, item === null || item === void 0 ? void 0 : item.createdBy),
-    React.createElement("td", null, item === null || item === void 0 ? void 0 : item.status))); };
+    React.createElement("td", null, item === null || item === void 0 ? void 0 : item.updatedAt),
+    React.createElement("td", null,
+        React.createElement("span", { className: "py-1 px-4 " + ((item === null || item === void 0 ? void 0 : item.status) === 'active' ? 'bg-[#E5FBF3] rounded-full text-[#00D48A]' : 'bg-red-100 text-red-600 rounded-full') }, item === null || item === void 0 ? void 0 : item.status)))); };
 var VoucherDetails = function () {
     var _a = VouchersApiSlice_1.useGetVouchersUsersQuery({}), data = _a.data, isLoading = _a.isLoading, isFetching = _a.isFetching;
+    console.log(data, '----sjsjhs');
     return (React.createElement(React.Fragment, null,
         React.createElement("div", { className: "grid lg:grid-cols-7 bg-[#FCFCFF] lg:gap-x-10" },
             React.createElement("div", { className: "card__body lg:col-span-5" },
