@@ -4,6 +4,7 @@ import Table from '../../components/Table/Table'
 import { CircularProgressbar } from "react-circular-progressbar"
 import 'react-circular-progressbar/dist/styles.css';
 import { useGetWalletHistoryQuery } from '../../features/wallet/walletApi';
+import { useParams } from 'react-router-dom';
 
 
 const customerTableHead = [
@@ -28,7 +29,9 @@ const renderBody = (item: any, index: number) => (
 
 const EarningHistory = () => {
 
-    const { data } = useGetWalletHistoryQuery({})
+    const id = useParams()
+
+    const { data } = useGetWalletHistoryQuery('62e8478e96f7fa1130c24c89')
 
     console.log(data, '---data---')
 

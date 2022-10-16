@@ -125,7 +125,7 @@ const Advertisements = () => {
       <td>{item?.lengthInSeconds}</td>
       <td className="whitespace-nowrap">{item?.createdAt}</td>
       <td className="whitespace-nowrap">{item?.updatedAt}</td>
-      <td>{item?.status}</td>
+      <td ><span className={`py-1 px-4 ${item?.status === 'active' ? 'bg-[#E5FBF3] rounded-full text-[#00D48A]' : 'bg-red-100 text-red-600 rounded-full'}`}>{item?.status}</span></td>
       <td><Link to={`/advertisements/${item?._id}`} className="underline text-[#516CF5] whitespace-nowrap">View Details</Link></td>
     </tr>
   )

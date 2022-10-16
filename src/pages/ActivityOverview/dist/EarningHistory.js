@@ -6,6 +6,7 @@ var Table_1 = require("../../components/Table/Table");
 var react_circular_progressbar_1 = require("react-circular-progressbar");
 require("react-circular-progressbar/dist/styles.css");
 var walletApi_1 = require("../../features/wallet/walletApi");
+var react_router_dom_1 = require("react-router-dom");
 var customerTableHead = [
     'Advert',
     'Date',
@@ -21,7 +22,8 @@ var renderBody = function (item, index) { return (react_1["default"].createEleme
     react_1["default"].createElement("td", null, item.total_spend),
     react_1["default"].createElement("td", null, item.location))); };
 var EarningHistory = function () {
-    var data = walletApi_1.useGetWalletHistoryQuery({}).data;
+    var id = react_router_dom_1.useParams();
+    var data = walletApi_1.useGetWalletHistoryQuery('62e8478e96f7fa1130c24c89').data;
     console.log(data, '---data---');
     return (react_1["default"].createElement(react_1["default"].Fragment, null,
         react_1["default"].createElement("div", { className: "grid lg:grid-cols-7 lg:gqp-10 bg-[#FCFCFF] lg:space-x-5" },

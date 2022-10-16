@@ -43,7 +43,7 @@ const Finance = () => {
           <div className="font-normal text-gray-500 text-xs" style={{ overflow: 'hidden', textOverflow: 'ellipsis' }}>{item?.terms}</div>
         </div>
       </td>
-      <td>{item?.status}</td>
+      <td ><span className={`py-1 px-4 ${item?.status === 'active' ? 'bg-[#E5FBF3] rounded-full text-[#00D48A]' : 'bg-red-100 text-red-600 rounded-full'}`}>{item?.status}</span></td>
       <td>{item?.userQuantity}</td>
       <td>{item?.value}</td>
       <td className="whitespace-nowrap">{item?.startDate}</td>

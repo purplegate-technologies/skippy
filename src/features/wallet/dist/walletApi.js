@@ -10,8 +10,8 @@ exports.walletApiSlice = apiSlice_1.apiSlice.injectEndpoints({
             providesTags: ['Wallet']
         }),
         getWalletHistory: builder.query({
-            query: function () { return "wallet/history"; },
-            transformResponse: function (response) { return response.data; },
+            query: function (id) { return "wallet/admin/" + id + "/history"; },
+            transformResponse: function (response, meta, arg) { return response.data; },
             providesTags: ['Wallet']
         }),
         getRedeemPoints: builder.query({
