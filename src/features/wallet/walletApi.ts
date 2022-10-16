@@ -9,7 +9,7 @@ export const walletApiSlice = apiSlice.injectEndpoints({
         }),
         getWalletHistory: builder.query({ // get advert user
             query: () => `wallet/history`,
-            transformResponse: (response: { data: {} }, meta, arg) => response.data,
+            transformResponse: (response: any) => response.data,
             providesTags: ['Wallet'],
         }),
         getRedeemPoints: builder.query({ // get advert user

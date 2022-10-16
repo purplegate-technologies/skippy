@@ -30,7 +30,7 @@ const Table = ({ limit, renderHead, bodyData, headData, renderBody, isFetching, 
     useEffect(() => {
         // Fetch items from another resources.
         const endOffset = itemOffset + itemsPerPage;
-        console.log(`Loading items from ${itemOffset} to ${endOffset}`);
+        // console.log(`Loading items from ${itemOffset} to ${endOffset}`);
         setCurrentItems(bodyData.slice(itemOffset, endOffset));
         setPageCount(Math.ceil(bodyData.length / itemsPerPage));
     }, [itemOffset, itemsPerPage, bodyData]);
@@ -64,13 +64,11 @@ const Table = ({ limit, renderHead, bodyData, headData, renderBody, isFetching, 
                         ) : null
                     }
                     {isLoading ? (
-                        <table>
                             <tbody className=''>
                                 <tr>
                                     <td className='text-center w-full p-5 text-2l font-bold'>Loading Data...</td>
                                 </tr>
                             </tbody>
-                        </table>
                     )
                         :
                         (<>

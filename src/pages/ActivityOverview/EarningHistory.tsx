@@ -28,7 +28,9 @@ const renderBody = (item: any, index: number) => (
 
 const EarningHistory = () => {
 
-    // const {data} = useGetWalletHistoryQuery({})
+    const { data } = useGetWalletHistoryQuery({})
+
+    console.log(data, '---data---')
 
     return (
         <>
