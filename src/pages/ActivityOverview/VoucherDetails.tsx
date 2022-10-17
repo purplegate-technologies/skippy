@@ -24,8 +24,6 @@ const renderBody = (item: any, index: number) => (
 const VoucherDetails = () => {
     const { data, isLoading, isFetching } = useGetVouchersUsersQuery({})
 
-    console.log(data, '----sjsjhs')
-
     return (
         <>
             <div className="grid lg:grid-cols-7 bg-[#FCFCFF] lg:gap-x-10">

@@ -24,7 +24,8 @@ const renderBody = (item: any, index: number) => (
     <td>{item?.createdAt}</td>
     <td>{item?.updatedAt}</td>
     <td ><span className={`py-1 px-4 ${item?.status === 'active' ? 'bg-[#E5FBF3] rounded-full text-[#00D48A]' : 'bg-red-100 text-red-600 rounded-full'}`}>{item?.status}</span></td>
-    <td><Link to={`/activity-overview/${item?._id}`} className='underline text-blue-600 whitespace-nowrap'>View Details</Link></td>
+    {/* <td><Link to={`/activity-overview/${item?._id}`} className='underline text-blue-600 whitespace-nowrap'>View Details</Link></td> */}
+    <td><Link to={`/manage-users/${item?._id}`} className='underline text-blue-600 whitespace-nowrap'>View Details</Link></td>
   </tr>
 )
 

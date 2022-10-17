@@ -31,7 +31,7 @@ const EarningHistory = () => {
 
     const id = useParams()
 
-    const { data } = useGetWalletHistoryQuery('62e8478e96f7fa1130c24c89')
+    const { data } = useGetWalletHistoryQuery(id)
 
     console.log(data, '---data---')
 

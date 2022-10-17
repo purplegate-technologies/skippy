@@ -45,9 +45,8 @@ function App() {
                     React.createElement(react_router_dom_1.Route, { path: "manage-users", element: React.createElement(ManageUsers_1["default"], null) }),
                     React.createElement(react_router_dom_1.Route, { path: "invite-users", element: React.createElement(InviteUser_1["default"], null) }),
                     React.createElement(react_router_dom_1.Route, { path: "activity-log", element: React.createElement(ActivityLog_1["default"], null) }),
-                    React.createElement(react_router_dom_1.Route, { path: "manage-users/:id", element: React.createElement(ActivityLog_1["default"], null) }),
                     React.createElement(react_router_dom_1.Route, { path: "user-details", element: React.createElement(UserDetails_1["default"], null) }),
-                    React.createElement(react_router_dom_1.Route, { path: "activity-overview/:id", element: React.createElement(ActivityOverview_1["default"], null) }),
+                    React.createElement(react_router_dom_1.Route, { path: "manage-users/:id", element: React.createElement(ActivityOverview_1["default"], null) }),
                     React.createElement(react_router_dom_1.Route, { path: "settings", element: React.createElement(Settings_1["default"], null) })))),
         React.createElement(ScrollTop_1["default"], null)));
 }

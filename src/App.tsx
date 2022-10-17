@@ -51,9 +51,10 @@ function App() {
             <Route path="manage-users" element={<ManageUsers />} />
             <Route path="invite-users" element={<InviteUser />} />
             <Route path="activity-log" element={<ActivityLog />} />
-            <Route path="manage-users/:id" element={<ActivityLog />} />
+            {/* <Route path="manage-users/:id" element={<ActivityLog />} /> */}
             <Route path="user-details" element={<UserDetails />} />
-            <Route path="activity-overview/:id" element={<ActivityOverview />} />
+            <Route path="manage-users/:id" element={<ActivityOverview />} />
+            {/* <Route path="activity-overview/:id" element={<ActivityOverview />} /> */}
             <Route path="settings" element={<Settings />} />
           </Route>
         </Route>
