@@ -51,7 +51,7 @@ const ActivityLog = () => {
                   limit={10}
                   headData={customerTableHead}
                   renderHead={(item: any, index: number) => renderHead(item, index)}
-                  bodyData={[]}
+                  bodyData={isLoading ? [] : []}
                   renderBody={(item: any, index: number) => renderBody(item, index)}
                   {...{isFetching}}
                   {...{isLoading}}

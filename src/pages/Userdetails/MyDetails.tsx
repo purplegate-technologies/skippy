@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import Button from '../../components/button/Button'
 import Input from '../../components/input/Input'
 
 const MyDetails = () => {
+
+    const inputValues = useRef()
 
     const initialValues = {
         firstName: '',
@@ -18,7 +20,7 @@ const MyDetails = () => {
     const { firstName, lastName, email, phoneNumber, confirmPassword, password } = formValues
 
     const  handleChange  = (e: React.ChangeEvent<HTMLFormElement>) => {
-        setFormValues({...formValues, [e.target.values]: e.target.name})
+        setFormValues({...formValues, [e.target.value]: e.target.name})
     }
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -31,12 +33,13 @@ const MyDetails = () => {
                 <div className="grid md:grid-cols-2 gap-x-4 ">
                     <Input
                         labelStyle=""
-                        divStyle="lable w-full"
+                        divStyle="label w-full"
                         className={"border-[#949AB1] border-1 rounded p-2 my-3 w-full"}
                         label="FIRST NAME"
                         name="firstName"
                         placeholder="First Name"
                         value={firstName}
+                        type='text'
                         onChange={handleChange}
                         // onChange={(e: Event) => setFirstName((e.target as HTMLInputElement).value)}
                     />
@@ -47,6 +50,7 @@ const MyDetails = () => {
                         name="lastName"
                         placeholder="SURNAME"
                         value={lastName}
+                        type='text'
                         onChange={handleChange}
                     />
                 </div>
@@ -88,9 +92,9 @@ const MyDetails = () => {
                     <Input
                         divStyle="contactUs-form-lable"
                         className={"border-[#949AB1] border-1 rounded p-2 my-3 w-full"}
-                        label="cONFRIM PASSWORD"
+                        label="CONFIRM PASSWORD"
                         name="confirmPassword"
-                        placeholder="Confrim Password"
+                        placeholder="Confirm Password"
                         type="password"
                         value={confirmPassword}
                         onChange={handleChange}

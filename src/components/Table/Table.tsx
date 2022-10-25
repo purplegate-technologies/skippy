@@ -64,29 +64,27 @@ const Table = ({ limit, renderHead, bodyData, headData, renderBody, isFetching, 
                         ) : null
                     }
                     {isLoading ? (
-                            <tbody className=''>
-                                <tr className='text-center w-full p-5 text-2l font-bold'>
+                        <tr className='text-center w-full p-5 text-2l font-bold'>
+                                   <tbody className=''>
+                                    </tbody>
                                     <td >Loading Data...</td>
                                 </tr>
-                            </tbody>
                     )
                         :
                         (<>
                             {isFetching ? <td className='text-center w-full p-5 text-2l font-bold'>Fetching Data</td> :
                                 <>
-                                    {
-                                        currentItems && (currentItems.length > 0 || currentItems !== undefined || !null) ? (
+                                    {(currentItems.length >= 0) ? (
                                             <tbody className='border border-[#F1F3FF]'>
                                                 {
                                                     currentItems?.map((item: any, index: number) => renderBody(item, index))
                                                 }
                                             </tbody>
                                         ) : (
-                                            <tbody className=''>
+
                                                 <tr>
                                                     <td className='text-center w-full p-5 text-2l font-bold'>No Data</td>
                                                 </tr>
-                                            </tbody>
                                         )
                                     }
                                 </>}

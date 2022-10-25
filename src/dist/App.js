@@ -23,7 +23,6 @@ var InviteUser_1 = require("./pages/InviteUser/InviteUser");
 var ResetPassword_1 = require("./pages/login/ResetPassword");
 var ActivityOverview_1 = require("./pages/ActivityOverview/ActivityOverview");
 function App() {
-    // const  token  = useAppSelector(selectCurrentToken)
     return (React.createElement(React.Fragment, null,
         React.createElement(react_toastify_1.ToastContainer, null),
         React.createElement(react_router_dom_1.Routes, null,

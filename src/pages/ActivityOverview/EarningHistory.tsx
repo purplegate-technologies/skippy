@@ -29,9 +29,9 @@ const renderBody = (item: any, index: number) => (
 
 const EarningHistory = () => {
 
-    const id = useParams()
+    const { id } = useParams()
 
-    const { data } = useGetWalletHistoryQuery(id)
+    const { data, isLoading, isFetching } = useGetWalletHistoryQuery(id)
 
     console.log(data, '---data---')
 
@@ -43,8 +43,10 @@ const EarningHistory = () => {
                         limit={10}
                         headData={customerTableHead}
                         renderHead={(item: any, index: number) => renderHead(item, index)}
-                        bodyData={[]}
+                        bodyData={isLoading ? [] : data}
                         renderBody={(item: any, index: number) => renderBody(item, index)}
+                        {...{ isLoading }}
+                        {...{ isFetching }}
                     />
                 </div>
 

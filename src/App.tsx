@@ -23,7 +23,6 @@ import ResetPassword from "./pages/login/ResetPassword";
 import ActivityOverview from "./pages/ActivityOverview/ActivityOverview";
 
 function App() {
-  // const  token  = useAppSelector(selectCurrentToken)
   return (
     <>
       <ToastContainer />

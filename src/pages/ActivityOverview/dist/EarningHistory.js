@@ -1,4 +1,15 @@
 "use strict";
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 exports.__esModule = true;
 var react_1 = require("react");
 // import DoughnutChart from '../../components/charts/DoughnutChart'
@@ -22,13 +33,13 @@ var renderBody = function (item, index) { return (react_1["default"].createEleme
     react_1["default"].createElement("td", null, item.total_spend),
     react_1["default"].createElement("td", null, item.location))); };
 var EarningHistory = function () {
-    var id = react_router_dom_1.useParams();
-    var data = walletApi_1.useGetWalletHistoryQuery(id).data;
+    var id = react_router_dom_1.useParams().id;
+    var _a = walletApi_1.useGetWalletHistoryQuery(id), data = _a.data, isLoading = _a.isLoading, isFetching = _a.isFetching;
     console.log(data, '---data---');
     return (react_1["default"].createElement(react_1["default"].Fragment, null,
         react_1["default"].createElement("div", { className: "grid lg:grid-cols-7 lg:gqp-10 bg-[#FCFCFF] lg:space-x-5" },
             react_1["default"].createElement("div", { className: "card__body lg:col-span-5" },
-                react_1["default"].createElement(Table_1["default"], { limit: 10, headData: customerTableHead, renderHead: function (item, index) { return renderHead(item, index); }, bodyData: [], renderBody: function (item, index) { return renderBody(item, index); } })),
+                react_1["default"].createElement(Table_1["default"], __assign({ limit: 10, headData: customerTableHead, renderHead: function (item, index) { return renderHead(item, index); }, bodyData: isLoading ? [] : data, renderBody: function (item, index) { return renderBody(item, index); } }, { isLoading: isLoading }, { isFetching: isFetching }))),
             react_1["default"].createElement("div", { className: "lg:col-span-2 gap-x-5" },
                 react_1["default"].createElement("div", { className: "py-6 card" },
                     react_1["default"].createElement("div", { className: "min-w-[355]" },

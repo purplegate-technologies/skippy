@@ -79,9 +79,12 @@ var baseQueryWithReauth = function (args, api, extraOptions) { return __awaiter(
                 result = _b.sent();
                 if (!((((_a = result === null || result === void 0 ? void 0 : result.error) === null || _a === void 0 ? void 0 : _a.status) === 403 || result.error) && result.error.status === 401)) return [3 /*break*/, 5];
                 console.log('sending refresh token');
-                return [4 /*yield*/, baseQuery('/refresh', api, extraOptions)];
+                return [4 /*yield*/, baseQuery(args, api, extraOptions)
+                    // const refreshResult: any = await baseQuery('/refresh', api, extraOptions)
+                ];
             case 2:
                 refreshResult = _b.sent();
+                // const refreshResult: any = await baseQuery('/refresh', api, extraOptions)
                 console.log(refreshResult, "refreshResult refreshResult refreshResult refreshResult ");
                 if (!(refreshResult === null || refreshResult === void 0 ? void 0 : refreshResult.data)) return [3 /*break*/, 4];
                 user = api.getState().auth.user;

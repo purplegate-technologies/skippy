@@ -121,7 +121,7 @@ const Administrators = () => {
                      limit={10}
                       headData={customerTableHead}
                       renderHead={(item: any, index: number) => renderHead(item, index)}
-                      bodyData={advertlist}
+                      bodyData={[]}
                       renderBody={(item: any, index: number) => renderBody(item, index)}
                 />
 
