@@ -69,6 +69,14 @@ var MyDetails = function () {
     var handleSubmit = function (e) { return __awaiter(void 0, void 0, void 0, function () {
         return __generator(this, function (_a) {
             e.preventDefault();
+            setFormValues({
+                firstName: '',
+                lastName: '',
+                email: '',
+                phoneNumber: "",
+                password: '',
+                confirmPassword: ''
+            });
             return [2 /*return*/];
         });
     }); };

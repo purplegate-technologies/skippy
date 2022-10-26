@@ -25,6 +25,16 @@ const MyDetails = () => {
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+
+
+        setFormValues({
+            firstName: '',
+            lastName: '',
+            email: '',
+            phoneNumber:"",
+            password: '',
+            confirmPassword: ''
+        })
     }
 
     return (
