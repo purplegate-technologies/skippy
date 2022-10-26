@@ -64,7 +64,7 @@ var MyDetails = function () {
     var firstName = formValues.firstName, lastName = formValues.lastName, email = formValues.email, phoneNumber = formValues.phoneNumber, confirmPassword = formValues.confirmPassword, password = formValues.password;
     var handleChange = function (e) {
         var _a;
-        setFormValues(__assign(__assign({}, formValues), (_a = {}, _a[e.target.value] = e.target.name, _a)));
+        setFormValues(__assign(__assign({}, formValues), (_a = {}, _a[e.target.name] = e.target.value, _a)));
     };
     var handleSubmit = function (e) { return __awaiter(void 0, void 0, void 0, function () {
         return __generator(this, function (_a) {

@@ -20,7 +20,7 @@ const MyDetails = () => {
     const { firstName, lastName, email, phoneNumber, confirmPassword, password } = formValues
 
     const  handleChange  = (e: React.ChangeEvent<HTMLFormElement>) => {
-        setFormValues({...formValues, [e.target.value]: e.target.name})
+        setFormValues({...formValues, [e.target.name]: e.target.value})
     }
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
