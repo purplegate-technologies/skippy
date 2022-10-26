@@ -1,10 +1,10 @@
-import React, { useState, useRef } from 'react'
+import React, { useState } from 'react'
 import Button from '../../components/button/Button'
 import Input from '../../components/input/Input'
 
 const MyDetails = () => {
 
-    const inputValues = useRef()
+    // const inputValues = useRef()
 
     const initialValues = {
         firstName: '',
