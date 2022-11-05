@@ -39,7 +39,7 @@ var EarningHistory = function () {
     return (react_1["default"].createElement(react_1["default"].Fragment, null,
         react_1["default"].createElement("div", { className: "grid lg:grid-cols-7 lg:gqp-10 bg-[#FCFCFF] lg:space-x-5" },
             react_1["default"].createElement("div", { className: "card__body lg:col-span-5" },
-                react_1["default"].createElement(Table_1["default"], __assign({ limit: 10, headData: customerTableHead, renderHead: function (item, index) { return renderHead(item, index); }, bodyData: isLoading ? [] : data, renderBody: function (item, index) { return renderBody(item, index); } }, { isLoading: isLoading }, { isFetching: isFetching }))),
+                react_1["default"].createElement(Table_1["default"], __assign({ limit: 10, headData: customerTableHead, renderHead: function (item, index) { return renderHead(item, index); }, bodyData: isLoading ? [] : [], renderBody: function (item, index) { return renderBody(item, index); } }, { isLoading: isLoading }, { isFetching: isFetching }))),
             react_1["default"].createElement("div", { className: "lg:col-span-2 gap-x-5" },
                 react_1["default"].createElement("div", { className: "py-6 card" },
                     react_1["default"].createElement("div", { className: "min-w-[355]" },

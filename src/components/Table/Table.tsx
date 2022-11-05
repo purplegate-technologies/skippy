@@ -95,7 +95,6 @@ const Table = ({ limit, renderHead, bodyData, headData, renderBody, isFetching, 
 
             <div className='footerPagination'>
                 <div style={{ display: 'flex', alignItems: 'center' }}>
-
                     {/* <Row
                         rowSize={itemsPerPage}
                         rowSizeChange={() => null}
@@ -126,7 +125,7 @@ const Table = ({ limit, renderHead, bodyData, headData, renderBody, isFetching, 
                     breakLabel="..."
                     breakClassName="break-me"
                     marginPagesDisplayed={2}
-                    // pageRangeDisplayed={5}
+                    pageRangeDisplayed={5}
                     breakLinkClassName="page-link"
                     containerClassName="table__pagination"
                     pageClassName="table__pagination-item"

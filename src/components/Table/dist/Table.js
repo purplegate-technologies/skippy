@@ -53,8 +53,6 @@ var Table = function (_a) {
                 React.createElement("span", { style: { marginLeft: '10px' } }, "Items per page")),
             React.createElement(react_paginate_1["default"], { pageCount: pageCount, onPageChange: handlePageClick, disabledClassName: "disabled", 
                 // initialPage={0}
-                nextLabel: "next >", previousLabel: "< previous", breakLabel: "...", breakClassName: "break-me", marginPagesDisplayed: 2, 
-                // pageRangeDisplayed={5}
-                breakLinkClassName: "page-link", containerClassName: "table__pagination", pageClassName: "table__pagination-item", pageLinkClassName: "table__pagination-item", previousClassName: "page-item mr-3", previousLinkClassName: "page-link", nextClassName: "page-item ml-3", nextLinkClassName: "page-link", activeClassName: "active", activeLinkClassName: "active" }))));
+                nextLabel: "next >", previousLabel: "< previous", breakLabel: "...", breakClassName: "break-me", marginPagesDisplayed: 2, pageRangeDisplayed: 5, breakLinkClassName: "page-link", containerClassName: "table__pagination", pageClassName: "table__pagination-item", pageLinkClassName: "table__pagination-item", previousClassName: "page-item mr-3", previousLinkClassName: "page-link", nextClassName: "page-item ml-3", nextLinkClassName: "page-link", activeClassName: "active", activeLinkClassName: "active" }))));
 };
 exports["default"] = Table;
