@@ -5,6 +5,8 @@ import Table from '../../components/Table/Table'
 import { useNavigate, Link } from 'react-router-dom'
 import advertlist from "../../assets/jsonData/advert-list.json"
 import TablePag, { ETableType } from '../../components/Table/TablePag'
+import { useGetAdministratorsQuery } from '../../features/UserManagement/User ManagementApiSlcie'
+
 
 
 
@@ -72,17 +74,21 @@ const renderHead = (item: any, index: number) => <th key={index}>{item}</th>
 
 const renderBody = (item: any, index: number) => (
   <tr key={index}>
-    <td>{item.id}</td>
-    <td>{item.name}</td>
+    <td>{item?._id}</td>
+    <td>{item?.type}</td>
     <td>{item.email}</td>
-    <td>{item.phone}</td>
-    <td>{item.total_orders}</td>
-    {/* <td>{item.total_spend}</td> */}
+    <td>{item?.createdAt}</td>
+    {/* <td>{item?.status}</td> */}
+    <td ><span className={`py-1 px-4 ${item?.status === 'active' ? 'bg-[#E5FBF3] rounded-full text-[#00D48A]' : 'bg-red-100 text-red-600 rounded-full'}`}>{item?.status}</span></td>
+    <td>{item?.total_orders}</td>
     <td><Link to="/user-details" className='underline text-blue-600'>{item.location}</Link></td>
   </tr>
 )
 
 const Administrators = () => {
+
+  const { data, isLoading, isFetching } = useGetAdministratorsQuery()
+  // console.log(data?.data?.docs, 'useGetAdministratorsQuery')
   const navigate = useNavigate()
 
   const [currentPage, setCurrentPage] = useState<number>(1);
@@ -121,8 +127,10 @@ const Administrators = () => {
                      limit={10}
                       headData={customerTableHead}
                       renderHead={(item: any, index: number) => renderHead(item, index)}
-                      bodyData={[]}
+                      bodyData={isLoading ? [] : data?.data?.docs}
                       renderBody={(item: any, index: number) => renderBody(item, index)}
+                      {...{isFetching}}
+                      {...{isLoading}}
                 />
 
                 {/* <TablePag /> */}

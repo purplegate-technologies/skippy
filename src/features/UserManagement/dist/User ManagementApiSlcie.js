@@ -1,6 +1,6 @@
 "use strict";
 exports.__esModule = true;
-exports.useGetAppUserQuery = exports.useGetAppUsersQuery = exports.useCreateAdminMutation = exports.UserManagermentApiSlice = void 0;
+exports.useGetAdministratorsQuery = exports.useGetAppUserQuery = exports.useGetAppUsersQuery = exports.useCreateAdminMutation = exports.UserManagermentApiSlice = void 0;
 var apiSlice_1 = require("../../services/api/apiSlice");
 exports.UserManagermentApiSlice = apiSlice_1.apiSlice.injectEndpoints({
     endpoints: function (builder) { return ({
@@ -18,6 +18,11 @@ exports.UserManagermentApiSlice = apiSlice_1.apiSlice.injectEndpoints({
             // transformResponse: (response: { data: {} }, meta, arg) => response.data,
             providesTags: ['UserManagerment']
         }),
+        getAdministrators: builder.query({
+            query: function () { return "users/admin"; },
+            // transformResponse: (response: { data: {} }, meta, arg) => response.data,
+            providesTags: ['UserManagerment']
+        }),
         getAppUser: builder.query({
             query: function (id) { return "users/app-users/" + id; },
             transformResponse: function (response) { return response.data; },
@@ -25,4 +30,4 @@ exports.UserManagermentApiSlice = apiSlice_1.apiSlice.injectEndpoints({
         })
     }); }
 });
-exports.useCreateAdminMutation = exports.UserManagermentApiSlice.useCreateAdminMutation, exports.useGetAppUsersQuery = exports.UserManagermentApiSlice.useGetAppUsersQuery, exports.useGetAppUserQuery = exports.UserManagermentApiSlice.useGetAppUserQuery;
+exports.useCreateAdminMutation = exports.UserManagermentApiSlice.useCreateAdminMutation, exports.useGetAppUsersQuery = exports.UserManagermentApiSlice.useGetAppUsersQuery, exports.useGetAppUserQuery = exports.UserManagermentApiSlice.useGetAppUserQuery, exports.useGetAdministratorsQuery = exports.UserManagermentApiSlice.useGetAdministratorsQuery;

@@ -16,6 +16,11 @@ export const UserManagermentApiSlice = apiSlice.injectEndpoints({
             // transformResponse: (response: { data: {} }, meta, arg) => response.data,
             providesTags: ['UserManagerment'],
         }),
+        getAdministrators: builder.query<{} | undefined | any, void>({ // get traffic stats
+            query: () => `users/admin`,
+            // transformResponse: (response: { data: {} }, meta, arg) => response.data,
+            providesTags: ['UserManagerment'],
+        }),
         getAppUser: builder.query({ // get traffic stats
             query: (id) => `users/app-users/${id}`,
             transformResponse: (response: any) => response.data,
@@ -26,4 +31,4 @@ export const UserManagermentApiSlice = apiSlice.injectEndpoints({
 })
 
 
-export const { useCreateAdminMutation, useGetAppUsersQuery, useGetAppUserQuery } = UserManagermentApiSlice
+export const { useCreateAdminMutation, useGetAppUsersQuery, useGetAppUserQuery, useGetAdministratorsQuery } = UserManagermentApiSlice

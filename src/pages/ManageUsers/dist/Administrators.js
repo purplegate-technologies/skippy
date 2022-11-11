@@ -1,10 +1,22 @@
 "use strict";
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 exports.__esModule = true;
 var react_1 = require("react");
 var CreateAdsPlus_1 = require("../../assets/svg/CreateAdsPlus");
 var SearchBar_1 = require("../../components/support/SearchBar");
 var Table_1 = require("../../components/Table/Table");
 var react_router_dom_1 = require("react-router-dom");
+var User_ManagementApiSlcie_1 = require("../../features/UserManagement/User ManagementApiSlcie");
 var column = [
     {
         name: 'App (ID)',
@@ -61,18 +73,23 @@ var customerTableHead = [
 ];
 var renderHead = function (item, index) { return React.createElement("th", { key: index }, item); };
 var renderBody = function (item, index) { return (React.createElement("tr", { key: index },
-    React.createElement("td", null, item.id),
-    React.createElement("td", null, item.name),
+    React.createElement("td", null, item === null || item === void 0 ? void 0 : item._id),
+    React.createElement("td", null, item === null || item === void 0 ? void 0 : item.type),
     React.createElement("td", null, item.email),
-    React.createElement("td", null, item.phone),
-    React.createElement("td", null, item.total_orders),
+    React.createElement("td", null, item === null || item === void 0 ? void 0 : item.createdAt),
+    React.createElement("td", null,
+        React.createElement("span", { className: "py-1 px-4 " + ((item === null || item === void 0 ? void 0 : item.status) === 'active' ? 'bg-[#E5FBF3] rounded-full text-[#00D48A]' : 'bg-red-100 text-red-600 rounded-full') }, item === null || item === void 0 ? void 0 : item.status)),
+    React.createElement("td", null, item === null || item === void 0 ? void 0 : item.total_orders),
     React.createElement("td", null,
         React.createElement(react_router_dom_1.Link, { to: "/user-details", className: 'underline text-blue-600' }, item.location)))); };
 var Administrators = function () {
+    var _a;
+    var _b = User_ManagementApiSlcie_1.useGetAdministratorsQuery(), data = _b.data, isLoading = _b.isLoading, isFetching = _b.isFetching;
+    // console.log(data?.data?.docs, 'useGetAdministratorsQuery')
     var navigate = react_router_dom_1.useNavigate();
-    var _a = react_1.useState(1), currentPage = _a[0], setCurrentPage = _a[1];
-    var _b = react_1.useState(10), rowSize = _b[0], setRowSize = _b[1];
-    var _c = react_1.useState([]), content = _c[0], setContent = _c[1];
+    var _c = react_1.useState(1), currentPage = _c[0], setCurrentPage = _c[1];
+    var _d = react_1.useState(10), rowSize = _d[0], setRowSize = _d[1];
+    var _e = react_1.useState([]), content = _e[0], setContent = _e[1];
     var onPage = function (e) {
         setRowSize(e.row);
         setCurrentPage(e.page);
@@ -92,7 +109,7 @@ var Administrators = function () {
                 React.createElement("div", { className: "col-12" },
                     React.createElement("div", { className: "" },
                         React.createElement("div", { className: "card__body" },
-                            React.createElement(Table_1["default"], { limit: 10, headData: customerTableHead, renderHead: function (item, index) { return renderHead(item, index); }, bodyData: [], renderBody: function (item, index) { return renderBody(item, index); } }),
+                            React.createElement(Table_1["default"], __assign({ limit: 10, headData: customerTableHead, renderHead: function (item, index) { return renderHead(item, index); }, bodyData: isLoading ? [] : (_a = data === null || data === void 0 ? void 0 : data.data) === null || _a === void 0 ? void 0 : _a.docs, renderBody: function (item, index) { return renderBody(item, index); } }, { isFetching: isFetching }, { isLoading: isLoading })),
                             React.createElement("div", { className: "p-8 bg-other-ghost" }))))))));
 };
 exports["default"] = Administrators;

@@ -2,8 +2,8 @@ import { apiSlice } from "../../services/api/apiSlice";
 
 export const walletApiSlice = apiSlice.injectEndpoints({
     endpoints: builder => ({
-        getWallet: builder.query({ // get wallet
-            query: () => `wallet`,
+        getWalletByAdmin: builder.query({ // get wallet
+            query: () => `wallet/admin`,
             transformResponse: (response: { data: {} }, meta, arg) => response.data,
             providesTags: ['Wallet'],
         }),
@@ -21,7 +21,8 @@ export const walletApiSlice = apiSlice.injectEndpoints({
 })
 
 export const {
-    useGetWalletQuery,
+    useGetWalletByAdminQuery,
     useGetWalletHistoryQuery,
-    useGetRedeemPointsQuery
+    useGetRedeemPointsQuery,
+
 } = walletApiSlice
