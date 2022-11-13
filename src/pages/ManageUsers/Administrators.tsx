@@ -91,26 +91,6 @@ const Administrators = () => {
   // console.log(data?.data?.docs, 'useGetAdministratorsQuery')
   const navigate = useNavigate()
 
-  const [currentPage, setCurrentPage] = useState<number>(1);
-	const [rowSize, setRowSize] = useState<number>(10);
-	const [content, setContent] = useState([]);
-
-	const onPage = (e: any) => {
-		setRowSize(e.row);
-		setCurrentPage(e.page);
-	};
-
-	const getData = () => {
-		fetch(
-			`https://jsonplaceholder.typicode.com/posts?_page=${currentPage}&_limit=${rowSize}`
-		)
-			.then(response => response.json())
-			.then(json => setContent(json));
-	};
-
-	useEffect(() => {
-		getData();
-	}, [currentPage, rowSize]);
 
   return (
     <div>

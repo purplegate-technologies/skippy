@@ -11,7 +11,6 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 exports.__esModule = true;
-var react_1 = require("react");
 var CreateAdsPlus_1 = require("../../assets/svg/CreateAdsPlus");
 var SearchBar_1 = require("../../components/support/SearchBar");
 var Table_1 = require("../../components/Table/Table");
@@ -87,21 +86,6 @@ var Administrators = function () {
     var _b = User_ManagementApiSlcie_1.useGetAdministratorsQuery(), data = _b.data, isLoading = _b.isLoading, isFetching = _b.isFetching;
     // console.log(data?.data?.docs, 'useGetAdministratorsQuery')
     var navigate = react_router_dom_1.useNavigate();
-    var _c = react_1.useState(1), currentPage = _c[0], setCurrentPage = _c[1];
-    var _d = react_1.useState(10), rowSize = _d[0], setRowSize = _d[1];
-    var _e = react_1.useState([]), content = _e[0], setContent = _e[1];
-    var onPage = function (e) {
-        setRowSize(e.row);
-        setCurrentPage(e.page);
-    };
-    var getData = function () {
-        fetch("https://jsonplaceholder.typicode.com/posts?_page=" + currentPage + "&_limit=" + rowSize)
-            .then(function (response) { return response.json(); })
-            .then(function (json) { return setContent(json); });
-    };
-    react_1.useEffect(function () {
-        getData();
-    }, [currentPage, rowSize]);
     return (React.createElement("div", null,
         React.createElement("div", { className: "card" },
             React.createElement(SearchBar_1["default"], { HeaderTitle: 'Administrators', text: "Create Admin", onClick: function () { return navigate('/settings'); }, prefixIcon: React.createElement(CreateAdsPlus_1["default"], null) }),
