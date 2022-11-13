@@ -32,7 +32,7 @@ const VoucherDetails = () => {
                         limit={10}
                         headData={customerTableHead}
                         renderHead={(item: any, index: number) => renderHead(item, index)}
-                        bodyData={isLoading ? []  : data?.docs}
+                        bodyData={isLoading ? [] : data?.docs}
                         renderBody={(item: any, index: number) => renderBody(item, index)}
                         {...{ isLoading }}
                         {...{ isFetching }}
@@ -41,20 +41,20 @@ const VoucherDetails = () => {
 
                 <div className="md:col-span-2 flex flex-col bg-white  items-center justify-between gap-8 mt-10 md:mt-0">
 
-                        <div className='flex flex-1 w-full rounded-lg p-2 items-center  bg-[#F1F3FF]'>
-                            <ValidVoucherIcon />
-                            <div className='p-3'>
-                                <p className='text-[#404040]] text-md'>N1,500.00 Voucher</p>
-                                <p className='text-xs my-1 text-[#949AB1]'>Valid till: 11/10/2023, 10:00am</p>
-                            </div>
+                    <div className='flex flex-1 w-full rounded-lg p-2 items-center  bg-[#F1F3FF]'>
+                        <ValidVoucherIcon />
+                        <div className='p-3'>
+                            <p className='text-[#404040]] text-md'>N1,500.00 Voucher</p>
+                            <p className='text-xs my-1 text-[#949AB1]'>Valid till: 11/10/2023, 10:00am</p>
                         </div>
-                        <div className='flex flex-1 w-full rounded-lg p-2 items-center  bg-[#F1F3FF]'>
-                            <ValidVoucherIcon />
-                            <div className='p-3'>
-                                <p className='text-[#404040] text-md'>N1,000.00 Voucher</p>
-                                <p className='text-xs my-1 text-[#949AB1]'>Valid till: 11/10/2023, 10:00am</p>
-                            </div>
+                    </div>
+                    <div className='flex flex-1 w-full rounded-lg p-2 items-center  bg-[#F1F3FF]'>
+                        <ValidVoucherIcon />
+                        <div className='p-3'>
+                            <p className='text-[#404040] text-md'>N1,000.00 Voucher</p>
+                            <p className='text-xs my-1 text-[#949AB1]'>Valid till: 11/10/2023, 10:00am</p>
                         </div>
+                    </div>
 
                 </div>
             </div>
